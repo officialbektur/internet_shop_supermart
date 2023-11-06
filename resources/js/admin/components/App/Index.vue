@@ -2,7 +2,7 @@
 	<h2 class="_title">Настройки</h2>
 
 	<div class="page__content">
-		<git remote set-url></git>
+		<logo-component></logo-component>
 	</div>
 </template>
 
