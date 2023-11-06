@@ -1,0 +1,236 @@
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: toRem(15) toRem(15);
+	width: toRem(280);
+	height: 100%;
+	@include adaptiveValue("height", 80, 62, 0, 991.98);
+	background-color: #293895;
+	user-select: none;
+	z-index: 5;
+	transition: width 0.6s ease 0s;
+	@media (min-width: $tablet) {
+		overflow-x: hidden;
+		.menu-open & {
+			width: toRem(65);
+		}
+	}
+
+	@media (max-width: $tablet) {
+		width: 100%;
+	}
+	// .sidebar__header
+	&__header {
+		display: flex;
+		align-items: center;
+		column-gap: toRem(12);
+		margin-bottom: toRem(22);
+		@media (max-width: $tablet) {
+			width: 100%;
+			height: 100%;
+			justify-content: space-between;
+			flex-direction: row-reverse;
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0%;
+				width: 100%;
+				height: 100%;
+				z-index: 2;
+				background-color: #293895;
+				pointer-events: none;
+			}
+		}
+	}
+	// .sidebar__menu
+	&__menu {
+		cursor: pointer;
+		@include adaptiveValue("width", 44, 28, 0, 991.98);
+		@include adaptiveValue("height", 44, 28, 0, 991.98);
+		@media (max-width: $tablet) {
+			position: relative;
+			z-index: 2;
+		}
+		& * {
+			pointer-events: none;
+		}
+		html._pc &:hover {
+			&::before {
+				background-color: rgba($color: #000000, $alpha: 0.2);
+			}
+		}
+	}
+	// .sidebar__logo
+	&__logo {
+		color: $colorWhite;
+		font-size: toRem(22);
+		@include adaptiveValue("font-size", 22, 16, 0, 991.98);
+		font-weight: 700;
+		line-height: 1;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		@media (max-width: $tablet) {
+			position: relative;
+			z-index: 2;
+		}
+	}
+	// .sidebar__body
+	&__body {
+
+		@media (max-width: $tablet) {
+			position: fixed;
+			top: 0;
+			left: 200%;
+			padding-top: toRem(90);
+			@include adaptiveValue("padding-top", 90, 72, 0, 991.98);
+			padding-bottom: toRem(40);
+			@include adaptiveValue("padding-bottom", 40, 20, 0, 991.98);
+			padding-left: toRem(40);
+			@include adaptiveValue("padding-left", 40, 10, 0, 991.98);
+			padding-right: toRem(40);
+			@include adaptiveValue("padding-right", 40, 10, 0, 991.98);
+			width: 100%;
+			height: 100%;
+			overflow-x: hidden;
+			overflow-y: auto;
+			background-color: rgba($color: #000000, $alpha: 0.9);
+			z-index: 1;
+			transition: left 0.6s ease 0s;
+			.menu-open & {
+				left: 0;
+			}
+		}
+	}
+	// .sidebar__lists
+	&__lists {
+		& li {
+			list-style: none;
+		}
+	}
+	// .sidebar__list
+	&__list {
+		@media (max-width: $tablet) {
+			html._pc &.a-hover-bgc:hover {
+				&::before {
+					background-color: rgba($color: #ffffff, $alpha: 0.1);
+				}
+			}
+		}
+		&._exit {
+			& .sidebar__icon svg {
+				fill: $colorRed;
+			}
+			& .sidebar__title {
+				color: $colorRed;
+			}
+		}
+	}
+	// .sidebar__sublist
+	&__sublist {
+	}
+}
+
+.sidebar-list {
+	// .sidebar-list__link
+	&__link {
+		padding: toRem(8) toRem(0);
+		cursor: pointer;
+		-webkit-tap-highlight-color: $clickByTouchColor1;
+	}
+	// .sidebar-list__icon
+	&__icon {
+	}
+	// .sidebar-list__title
+	&__title {
+
+	}
+}
+.sidebar-sublist {
+	// .sidebar-sublist__button
+	&__button {
+		padding: toRem(8) toRem(0);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: toRem(12);
+		width: 100%;
+		overflow: hidden;
+		cursor: pointer;
+		-webkit-tap-highlight-color: $clickByTouchColor1;
+
+		@media (min-width: $tablet) {
+			.menu-open & {
+				overflow: inherit;
+			}
+			html._pc.menu-open &:hover {
+				& .button-hover-bgc::before {
+					background-color: rgba($color: #000000, $alpha: 0.2);
+				}
+			}
+		}
+		@media (max-width: $tablet) {
+			html._pc &.a-hover-bgc:hover {
+				&::before {
+					background-color: rgba($color: #ffffff, $alpha: 0.1);
+				}
+			}
+		}
+
+		& * {
+			pointer-events: none;
+		}
+	}
+	// .sidebar-sublist__content
+	&__content {
+		padding: toRem(6) toRem(12);
+		@include adaptiveValue("padding-left", 12, 8, 0, 991.98);
+		@include adaptiveValue("padding-right", 12, 8, 0, 991.98);
+	}
+	// .sidebar-sublist__lists
+	&__lists{
+
+	}
+}
+.sidebar-sublist-button {
+	// .sidebar-sublist-button__info
+	&__info {
+	}
+	// .sidebar-sublist-button__icon
+	&__icon {
+	}
+	// .sidebar-sublist-button__title
+	&__title {
+	}
+	// .sidebar-sublist-button__button
+	&__button {
+		padding: toRem(4);
+		@include adaptiveValue("padding", 4, 2, 0, 991.98);
+		margin: toRem(4);
+
+		width: toRem(20);
+		@include adaptiveValue("width", 18, 16, 0, 991.98);
+		height: toRem(20);
+		@include adaptiveValue("height", 18, 16, 0, 991.98);
+
+		flex-shrink: 0;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		-webkit-tap-highlight-color: $clickByTouchColor0;
+		transition: all 0.6s ease 0s;
+		.sidebar-sublist__button._active & {
+			transform: rotate(-180deg);
+		}
+		& svg {
+			fill: $colorWhite;
+		}
+		@media (min-width: $tablet) {
+			.menu-open & {
+				display: none;
+			}
+		}
+	}
+}

@@ -1,0 +1,50 @@
+/* ===================================  Background Colors  --Start--  =================================== */
+$bgcbody: #E4EBF5;
+/* ===================================  Background Colors  --End--  =================================== */
+/* ====================  Additionally Used Colors For The Background In The Layout  --Start--  ==================== */
+
+
+
+/* ====================  Additionally Used Colors For The Background In The Layout  --End--  ==================== */
+/* ===================================  Touch Colors  --Start--  =================================== */
+$clickByTouchColor0: rgba(0, 0, 0, 0);
+$clickByTouchColor1: rgba(68, 178, 195, 0.3);
+/* ===================================  Touch Colors  --End--  =================================== */
+/* ===================================  Colors  --Start--  =================================== */
+$colorWhite: #FFFFFF;
+$colorBlack: #000000;
+$colorRed: #FF0000;
+$colorYellow: #FFFF00;
+$colorOrange: #FFA500;
+$colorBlue: #0000FF;
+$colorNavy: #000080;
+$colorGreen: #008000;
+$colorLime: #008000;
+$colorFuchsia: #008000;
+$colorPurple: #800080;
+$colorIndigo: #4B0082;
+/* ===================================  Colors  --End--  =================================== */
+/* ====================  Additionally Used Colors in the Layout  --Start--  ==================== */
+$colorIconMenu: #ffffff;
+$colorSignalBlack: #303030;
+$colorGainsboro: #DaDaDa;
+$colorLightGray: #b8b8b8;
+/* ====================  Additionally Used Colors in the Layout  --End--  ==================== */
+
+
+$primary-light: #8abdff;
+$primary: #6d5dfc;
+$primary-dark: #5b0eeb;
+
+$greyLight-1: #E4EBF5;
+$greyLight-2: #c8d0e7;
+$greyLight-3: #bec8e4;
+$greyDark: #9baacf;
+$limeDark: #41b883;
+//* ===================================  Colors  --End--  =================================== */
+$shadow: rem(4.8) rem(4.8) rem(9.6) $greyLight-2,
+			rem(-3.2) rem(-3.2) rem(8) $colorWhite;
+$inner-shadow: inset rem(3.2) rem(3.2) rem(8) $greyLight-2,
+					inset rem(-3.2) rem(-3.2) rem(8) $colorWhite;
+$shadow-error: rem(3.2) rem(3.2) rem(8) #ff000061,
+				rem(-3.2) rem(-3.2) rem(8) #fd9090;

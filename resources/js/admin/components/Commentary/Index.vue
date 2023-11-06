@@ -1,0 +1,338 @@
+<template>
+	<div class="block">
+		<div class="block__title">Все комментарий</div>
+		<div class="block__content">
+			<div class="block__header block-header">
+				<form method="post" class="block-header__form">
+					<input
+						v-model="search_input"
+						:readonly="isReadOnly"
+						autocomplete="off"
+						type="text"
+						name="form"
+						placeholder="Найти по коду товара, id, имени, рейтингу и сообщений..."
+						class="block-header__input">
+						<button
+							type="button"
+							@click.prevent="clearSearch"
+							class="block-header__clear block-header-clear a-hover-bgc"
+							:class="{ '_active': search_input !== '' }">
+							<span class="block-header-clear__icon">
+								<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99h144v-144C192 62.32 206.33 48 224 48s32 14.32 32 32.01v144h144c17.7-.01 32 14.29 32 31.99z"/></svg>
+							</span>
+						</button>
+						<div class="block-header__innersubmit">
+							<button
+								type="submit"
+								@click.prevent="search"
+								:disabled="isReadOnly"
+								class="block-header__button block-header__submit block-header-submit">
+								Найти
+							</button>
+						</div>
+				</form>
+				<div class="block-header__sidebar">
+					<div class="block-header__sorting block-header-sorting">
+						<button
+							type="button"
+							@click.prevent="filtesContent = !filtesContent"
+							class="block-header-sorting__button block-header-sorting-button a-hover-bgc">
+							<span class="block-header-sorting-button__icon">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"/></svg>
+							</span>
+							<span class="block-header-sorting-button__title">
+								Фильтрация
+							</span>
+						</button>
+						<div
+							class="block-header-sorting__content"
+							:class="{ '_show': filtesContent }">
+							<div
+								v-for="(list, index) in filter_lists"
+								:key="index"
+								:disabled="isReadOnly"
+								@click.prevent="filterAdd(index)"
+								class="block-header-sorting__list a-hover-bgc"
+								:class="{ '_active': (index == filter) }">
+								{{ list }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="block__tovars">
+				<table class="block__table block-table">
+					<thead class="block-table__header block-table-header">
+						<tr>
+							<th class="block-table-header__list block-table-header__code">
+								#
+							</th>
+							<th class="block-table-header__list block-table-header__title">
+								Название
+							</th>
+							<th class="block-table-header__list block-table-header__delete">
+								Статус
+							</th>
+						</tr>
+					</thead>
+					<tbody class="block-table__body">
+						<tr
+							v-if="!lazyLoading && notCommentaries"
+							class="block-table__tr">
+							<td colspan="3" class="block-table__notd">Нету отзывов!</td>
+						</tr>
+						<tr
+							v-if="commentaries.length > 0 && !notCommentaries"
+							v-for="(commentary, index) in commentaries"
+							:key="index"
+							class="block-table__tr">
+							<td class="block-table__td block-table__tdcode">
+								{{ commentary.id }}
+							</td>
+							<td class="block-table__td block-table__tdinfo block-table-tdinfo">
+								<div class="block-table-tdtitle__menu">
+									<router-link :to="{ name: 'tovars.index', query: { q: commentary.product_id, sort: 1 } }" class="block-table-tdtitle__sticker block-table-tdtitle__title a-hover-bgc">Посмотреть продукт {{ commentary.product_id }}</router-link>
+								</div>
+								<div class="block-table-tdinfo__content">
+									<div class="block-table-tdinfo__avatar">
+										{{ commentary.name[0] }}
+									</div>
+									<div class="block-table-tdinfo__infotext">
+										<div class="block-table-tdinfo__name">{{ commentary.name }}</div>
+										<div class="block-table-tdinfo__ratinganddate">
+											<div class="block-table-tdinfo__rating block-table-tdinfo-rating">
+												<span v-for="index in 5" :key="index" class="block-table-tdinfo-rating__icon" :class="{ '_active': index <= commentary.rating }"></span>
+											</div>
+											<div class="block-table-tdinfo__data">{{ commentary.data }}</div>
+										</div>
+									</div>
+								</div>
+								<div class="block-table-tdinfo__message">
+									{{ commentary.message }}
+								</div>
+							</td>
+							<td class="block-table__td block-table__tddelete">
+								<div class="block-table__delete block-table-delete">
+									<div class="mrb-admin-form__chekbox mrb-admin-form-chekbox">
+										<div class="mrb-admin-form-chekbox__input">
+											<input
+												:disabled="isReadOnly"
+												@click="deleteProduct(commentary.id, index)"
+												:id="'delete_' + index"
+												:checked="commentary.status == 1"
+												type="checkbox"
+												name="delete">
+											<label :for="'delete_' + index"></label>
+											<div class="mrb-admin-form-chekbox__status mrb-admin-form-chekbox-status">
+												<div class="mrb-admin-form-chekbox-status__not">Нет</div>
+												<div class="mrb-admin-form-chekbox-status__yes">Да</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div @click.prevent="sendMore" ref="targetElementLoading" class="more__loading more-loading" :class="{ '_show': lazyLoading && !notCommentaries }">
+			<div class="more-loading__content">
+				<div class="more-loading__icon">
+					<img src="/storage/project/loading.gif" alt="loading">
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+	import API from "@/admin/api";
+	import { ref, reactive, watchEffect, onMounted } from "vue";
+
+	export default {
+		name: "Index",
+		setup() {
+			const commentaries = ref([]);
+			const notCommentaries = ref(false);
+
+			const filter = ref(0);
+			const filtesContent = ref(false);
+			const filter_lists = [
+				"По умолчанию",
+				"Сначала новые",
+				"Сначала с высокой оценкой",
+				"Сначала с низкой оценкой",
+				"Показать связанные отзывы",
+				"Сначала удаленные",
+			];
+
+			const search_input = ref("");
+			const page = ref(1);
+
+			const isLoading = ref(false);
+			const isReadOnly = ref(false);
+
+			const lazyLoading = ref(true);
+
+			const targetElementLoading = ref(null);
+
+			// Create an Intersection Observer
+			const observer = new IntersectionObserver((entries) => {
+				if (entries[0].isIntersecting && lazyLoading.value) {
+					getCommentaries();
+				}
+			});
+
+			watchEffect(() => {
+				if (targetElementLoading.value) {
+					observer.observe(targetElementLoading.value);
+				}
+			});
+
+			const getCommentaries = async () => {
+				if (!lazyLoading) {
+					return false;
+				}
+
+				isLoading.value = false;
+
+				const search =
+					search_input.value.length > 0 ? `?q=${search_input.value}` : "";
+				const filterQuery =
+					search_input.value.length > 0 ? `&sort=${filter.value}` : `?sort=${filter.value}`;
+				const pageQuery = `&page=${page.value}`;
+
+				page.value++;
+
+				try {
+					const response = await API.get(`/api/admin/commentaries${search}${filterQuery}${pageQuery}`);
+					if (response && response.data && response.data.length > 0) {
+						notCommentaries.value = false;
+						const arrayProducts = commentaries.value;
+						arrayProducts.push(...response.data);
+						commentaries.value = arrayProducts;
+						isReadOnly.value = false;
+						isLoading.value = true;
+
+						if (response.data.length !== 20) {
+							lazyLoading.value = false;
+							isReadOnly.value = false;
+						}
+					} else {
+						if (response.data.length === 0) {
+							lazyLoading.value = false;
+							isReadOnly.value = false;
+
+							if (commentaries.value.length === 0) {
+								notCommentaries.value = true;
+							}
+						} else {
+							isReadOnly.value = false;
+						}
+					}
+				} catch (error) {
+					isReadOnly.value = false;
+
+					if (commentaries.value.length === 0) {
+						notCommentaries.value = true;
+					}
+				}
+			};
+
+			const getSearchHref = (query) => {
+				if (query) {
+					const queryParams = new URLSearchParams(query);
+
+					if (queryParams.has('q')) {
+						search_input.value = queryParams.get('q').trim()
+					}
+					if (queryParams.has('sort')) {
+						filter.value = queryParams.get('sort');
+					}
+
+					search()
+				}
+			};
+
+			const search = () => {
+				isReadOnly.value = true;
+				isLoading.value = true;
+				lazyLoading.value = true;
+
+				if (filter.value >= 0) {
+					commentaries.value = [];
+					page.value = 1;
+					getCommentaries();
+				} else {
+					isReadOnly.value = false;
+				}
+			};
+
+			const clearSearch = () => {
+				search_input.value = "";
+			};
+
+			const deleteProduct = async (id, index) => {
+				isReadOnly.value = true;
+				try {
+					const response = await API.delete(`/api/admin/commentaries/${id}`);
+					if (response && response.data) {
+						const updatedProducts = commentaries.value;
+						updatedProducts[index].status = response.data.status;
+						commentaries.value = updatedProducts;
+						isReadOnly.value = false;
+					} else {
+						isReadOnly.value = false;
+					}
+				} catch (error) {
+					isReadOnly.value = false;
+				}
+			};
+
+			const sendMore = () => {
+				if (lazyLoading) {
+					getCommentaries();
+				}
+			};
+
+			const filterAdd = (index) => {
+				filtesContent.value = false;
+				filter.value = index;
+				search();
+			};
+
+			return {
+				commentaries,
+				notCommentaries,
+				filter,
+				filtesContent,
+				filter_lists,
+				search_input,
+				isLoading,
+				isReadOnly,
+				lazyLoading,
+				targetElementLoading,
+				getCommentaries,
+				getSearchHref,
+				search,
+				clearSearch,
+				deleteProduct,
+				sendMore,
+				filterAdd,
+			};
+		},
+		mounted() {
+			if (this.$route.query) {
+				this.getSearchHref(this.$route.query);
+			} else {
+				this.getCommentaries();
+			}
+		},
+		updated() {
+			this.$store.dispatch("lazyMedia")
+		}
+	};
+</script>
+<style scoped lang="scss">
+</style>

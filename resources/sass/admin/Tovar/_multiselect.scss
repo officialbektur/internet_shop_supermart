@@ -1,0 +1,234 @@
+.multiselect {
+	position: relative;
+
+	padding: toRem(20) toRem(12);
+	@include adaptiveValue("padding-top", 20, 12, 0, 767.98);
+	@include adaptiveValue("padding-bottom", 20, 12, 0, 767.98);
+	@include adaptiveValue("padding-left", 12, 10, 0, 767.98);
+	@include adaptiveValue("padding-right", 12, 10, 0, 767.98);
+
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	align-items: center;
+	column-gap: rem(6);
+
+	color: $greyDark;
+	font-size: toRem(18);
+	@include adaptiveValue("font-size", 18, 14, 0, 991.98);
+	font-weight: 700;
+	line-height: 1;
+
+	box-shadow: $inner-shadow;
+
+	border-radius: toRem(12);
+	@include adaptiveValue("border-radius", 12, 6, 0, 767.98);
+	// .multiselect__select
+	&__select {
+		width: rem(26);
+		height: rem(26);
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		border-radius: rem(6);
+
+		cursor: pointer;
+
+		transition: all 0.6s ease;
+		.multiselect--active &::before {
+			transform: rotate(180deg);
+		}
+		html._pc &:hover {
+			background-color: rgba($color: #000000, $alpha: 0.1);
+		}
+		&::before {
+			content: "";
+			margin-top: rem(4);
+			border-style: solid;
+			border-width: rem(8) rem(8) 0 rem(8);
+			border-color: $primary transparent transparent transparent;
+			transition: all 0.6s ease;
+		}
+	}
+	// .multiselect__tags
+	&__tags {
+		padding: rem(0);
+		width: 100%;
+		height: 100%;
+
+		min-height: auto;
+
+		display: flex;
+		row-gap: rem(6);
+		flex-direction: column;
+
+		border-radius: rem(0);
+		border: none;
+		background: transparent;
+		// .multiselect__tags-wrap
+		&-wrap {
+			display: flex;
+			flex-wrap: wrap;
+			row-gap: rem(4);
+			column-gap: rem(10);
+		}
+	}
+	&__tag {
+		position: relative;
+
+		max-width: 100%;
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: rem(5);
+
+		padding: rem(4) rem(8);
+
+		border-radius: rem(4);
+
+		color: $colorWhite;
+		line-height: 1;
+		background: $limeDark;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+
+		overflow: hidden;
+		&-icon {
+			padding: rem(6) rem(6);
+			color: #266d4d;
+			font-size: rem(14);
+			font-weight: 700;
+			line-height: 1;
+			text-align: center;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			border-radius: rem(4);
+
+			cursor: pointer;
+
+			html._pc &:hover {
+				background-color: rgba($color: #000000, $alpha: 0.1);
+			}
+		}
+
+		&-icon::after {
+			content: "×";
+			transition: all 0.6s ease 0s;
+		}
+
+		&-icon:focus::after,
+		&-icon:hover::after {
+			color: $colorWhite;
+		}
+	}
+
+
+	// .multiselect__spinner
+	&__spinner {
+	}
+	// .multiselect__input
+	&__input {
+		width: 100%;
+		height: 100%;
+
+		color: $primary;
+		font-size: toRem(20);
+		@include adaptiveValue("font-size", 20, 12, 0, 767.98);
+		line-height: 1;
+		font-weight: 400;
+
+		background: transparent;
+		border: none;
+		outline: none;
+		&::placeholder {
+			color: $greyDark;
+		}
+	}
+	// .multiselect__placeholder
+	&__placeholder {
+		color: $greyDark;
+		font-size: toRem(20);
+		@include adaptiveValue("font-size", 20, 12, 0, 767.98);
+		line-height: 1;
+		font-weight: 400;
+	}
+	// .multiselect__content-wrapper
+	&__content-wrapper {
+		position: absolute;
+		top: 100%;
+		left: 0;
+
+		width: 100%;
+		background-color: $colorWhite;
+
+		padding: toRem(20) toRem(12);
+		@include adaptiveValue("padding-top", 20, 12, 0, 767.98);
+		@include adaptiveValue("padding-bottom", 20, 12, 0, 767.98);
+		@include adaptiveValue("padding-left", 12, 10, 0, 767.98);
+		@include adaptiveValue("padding-right", 12, 10, 0, 767.98);
+
+		overflow-x: hidden;
+		overflow-y: auto;
+		z-index: $zIndex4;
+	}
+	// .multiselect__content
+	&__content {
+		width: 100%;
+	}
+	// .multiselect__element
+	&__element {
+		margin: rem(2) rem(0);
+	}
+
+	// .multiselect__option
+	&__option {
+		width: 100%;
+		padding: rem(12) rem(6);
+		display: flex;
+		justify-content: space-between;
+		cursor: pointer;
+
+		// .multiselect__option--highlight
+		&--highlight {
+			outline: none;
+			color: $colorWhite;
+			background: $limeDark;
+			display: flex;
+			justify-content: space-between;
+			column-gap: rem(12);
+			// .multiselect__option--highlight::after
+			&::after {
+				content: attr(data-select);
+				color: $colorWhite;
+			}
+		}
+		// .multiselect__option--selected
+		&--selected {
+			background: $primary;
+			color: $colorWhite;
+			// .multiselect__option--selected::after
+			&::after {
+				content: attr(data-selected);
+				color: $colorWhite;
+			}
+			// .multiselect__option--selected.multiselect__option--highlight
+			&.multiselect__option--highlight {
+				background: #ff6a6a;
+				color: $colorWhite;
+				&::after {
+					content: attr(data-deselect);
+				}
+			}
+		}
+	}
+	// .multiselect__single
+	&__single {
+		color: $primary;
+	}
+}

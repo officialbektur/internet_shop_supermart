@@ -1,0 +1,131 @@
+.user {
+	margin: auto;
+
+	padding: toRem(60) toRem(0);
+
+	width: 100%;
+	height: 100%;
+	// .user__header
+	&__header {
+		display: flex;
+		align-items: center;
+		margin-bottom: toRem(40);
+		@include adaptiveValue("margin-bottom", 40, 25, 0, 767.98);
+		overflow: hidden;
+	}
+	// .user-header
+	&-header {
+		// .user-header-button-back
+		&-button-back {
+			position: absolute;
+			padding: toRem(4) toRem(4);
+
+			display: flex;
+			align-items: center;
+
+			color: $colorRed;
+			font-size: toRem(16);
+			@include adaptiveValue("font-size", 16, 10, 0, 767.98);
+			font-weight: 700;
+			line-height: 1;
+			z-index: 1;
+			// .user-header-button-back__icon
+			&__icon {
+				width: toRem(28);
+				height: toRem(28);
+				@include adaptiveValue("width", 28, 16, 0, 767.98);
+				@include adaptiveValue("height", 28, 16, 0, 767.98);
+				& svg {
+					width: 100%;
+					height: 100%;
+				}
+			}
+			// .user-header-button-back__title
+			&__title {
+			}
+		}
+		// .user-header__title
+		&__title {
+			padding: toRem(4) toRem(90);
+			@include adaptiveValue("padding-left", 90, 70, 0, 767.98);
+			@include adaptiveValue("padding-right", 90, 70, 0, 767.98);
+
+			width: 100%;
+
+			color: $primary;
+			font-size: toRem(28);
+			@include adaptiveValue("font-size", 28, 16, 0, 767.98);
+			font-weight: 700;
+			line-height: 1;
+
+			text-align: center;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+	// .user__body
+	&__body {
+		position: relative;
+		max-width: toRem(991.98);
+
+		margin: toRem(0) auto;
+
+		padding: toRem(60) toRem(60);
+		@include adaptiveValue("padding-top", 60, 26, 0, 767.98);
+		@include adaptiveValue("padding-bottom", 60, 26, 0, 767.98);
+		@include adaptiveValue("padding-left", 60, 10, 0, 767.98);
+		@include adaptiveValue("padding-right", 60, 10, 0, 767.98);
+
+		border-radius: toRem(60);
+		@include adaptiveValue("border-radius", 60, 26, 0, 767.98);
+
+		background-color: $greyLight-1;
+		box-shadow: toRem(12.8) toRem(12.8) toRem(22.4) $greyLight-2,
+					toRem(-3.2) toRem(-3.2) toRem(28.8) $colorWhite;
+	}
+	// .user__avatar
+	&__avatar {
+		padding: toRem(22);
+		@include adaptiveValue("padding", 22, 18, 0, 767.98);
+
+		width: toRem(160);
+		height: toRem(160);
+		@include adaptiveValue("width", 160, 80, 0, 767.98);
+		@include adaptiveValue("height", 160, 80, 0, 767.98);
+
+		fill: $greyDark;
+
+		border-radius: 50%;
+
+		box-shadow: toRem(4.8) toRem(4.8) toRem(9.6) $greyLight-2,
+					toRem(-3.2) toRem(-3.2) toRem(8) $colorWhite;
+
+		margin: toRem(0) auto;
+		& svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	// .user__form
+	&__form {
+		max-width: 100%;
+		margin-top: toRem(48);
+		@include adaptiveValue("margin-top", 48, 20, 0, 767.98);
+	}
+	// .user-form
+	&-form {
+		// .user-form__text
+		&__text {
+			color: $colorBlack;
+			font-size: toRem(20);
+			@include adaptiveValue("font-size", 20, 12, 0, 767.98);
+			font-weight: 400;
+			line-height: 1;
+			text-align: center;
+		}
+		// .user-form__link
+		&__link {
+			color: $primary;
+		}
+	}
+}

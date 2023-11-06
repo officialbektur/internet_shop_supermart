@@ -1,0 +1,82 @@
+@import "@vueup/vue-quill/dist/vue-quill.snow.css";
+
+
+.ql-container {
+	height: rem(520);
+}
+.ql-snow .ql-picker {
+	font-size: rem(15);
+	height: rem(32);
+	width: rem(32);
+}
+.ql-toolbar.ql-snow .ql-formats {
+	margin-right: rem(0);
+	// margin-right: rem(6);
+}
+.ql-snow.ql-toolbar button,
+.ql-snow .ql-toolbar button,
+.ql-snow.ql-toolbar button,
+.ql-snow .ql-toolbar button,
+.ql-snow.ql-toolbar .ql-picker-label,
+.ql-snow .ql-toolbar .ql-picker-label,
+.ql-snow.ql-toolbar .ql-picker-item,
+.ql-snow .ql-toolbar .ql-picker-item {
+	border-radius: rem(4);
+	transition: background-color 0.6s ease 0s;
+}
+.ql-snow.ql-toolbar button:hover,
+.ql-snow .ql-toolbar button:hover,
+.ql-snow.ql-toolbar button:focus,
+.ql-snow .ql-toolbar button:focus,
+.ql-snow.ql-toolbar .ql-picker-label:hover,
+.ql-snow .ql-toolbar .ql-picker-label:hover,
+.ql-snow.ql-toolbar .ql-picker-item:hover,
+.ql-snow .ql-toolbar .ql-picker-item:hover {
+	background-color: rgba($color: #000000, $alpha: 0.1);
+}
+.ql-snow .ql-picker.ql-font {
+	width: rem(120);
+}
+.ql-snow .ql-picker.ql-expanded .ql-picker-label {
+	color: $primary;
+	& svg {
+		stroke: $primary;
+		& * {
+			stroke: $primary;
+		}
+	}
+}
+.ql-align.ql-picker.ql-icon-picker.ql-expanded .ql-picker-label.ql-active {
+	& svg {
+		stroke: $primary;
+		& * {
+			stroke: $primary;
+		}
+	}
+}
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label {
+	& svg {
+		stroke: $colorBlue;
+		& * {
+			stroke: $colorBlue;
+		}
+	}
+}
+.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+	height: rem(32);
+	width: rem(32);
+	margin-right: rem(4);
+	margin-left: rem(4);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.ql-snow .ql-picker-label::before {
+	display: flex;
+	align-items: center;
+	line-height: 1;
+}
+.ql-editor {
+	font-size: rem(18);
+}
