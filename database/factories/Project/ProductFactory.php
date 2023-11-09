@@ -27,7 +27,6 @@ class ProductFactory extends Factory
 			'price_old' => $price_old,
 			'price_now' => random_int(1, 9999),
 			'category_id' => Category::get()->random()->id,
-			'discount' => random_int(0, 1),
 			'hit' => random_int(0, 1),
         ];
     }

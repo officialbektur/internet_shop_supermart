@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class DiscountController extends Controller {
 	public function __invoke()
 	{
-		$products = Product::where('discount', 1)->paginate(20);
+		$products = Product::where('price_old', '>', 0)->paginate(20);
 		$productsResource = IndexResource::collection($products);
 		return response()->json($productsResource);
 	}

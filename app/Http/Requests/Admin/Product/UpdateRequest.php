@@ -32,7 +32,6 @@ class UpdateRequest extends FormRequest
 			'price_now' => 'required|integer',
 			'tags' => 'required|array',
 			'tags.*' => 'required',
-			'discount' => 'required|integer',
 			'hit' => 'required|integer',
 			'content' => 'nullable|string',
 			'status' => 'required|integer',

@@ -74,7 +74,7 @@ class ProductFilter extends AbstractFilter
 				$builder->orderBy('id', 'asc');
 				break;
 			case 1:
-				$builder->orderByDesc('discount');
+				$builder->orderByDesc('price_old');
 				break;
 			case 2:
 				$builder->orderByDesc('hit');

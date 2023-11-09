@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { LogoComponent } from "./includes/logo/IndexComponent.vue";
+import LogoComponent from "./includes/logo/IndexComponent.vue";
 	export default {
 		name: 'SettingComponent',
 		data() {
@@ -22,7 +22,7 @@ import { LogoComponent } from "./includes/logo/IndexComponent.vue";
 
 		},
 		components: {
-			LogoComponent,
+			'logo-component': LogoComponent,
 		}
 	}
 </script>

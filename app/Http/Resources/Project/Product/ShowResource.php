@@ -77,7 +77,7 @@ class ShowResource extends JsonResource
 			"price_old" => $this->price_old,
 			"price_now" => $this->price_now,
 			"categories" => $categoryHierarchy,
-			"discount" => $this->discount,
+			"discount" => $this->price_old == 0 ? 0 : 1,
 			"hit" => $this->hit,
 			"rating" => $roundedRating,
 			"tags" => $tags,

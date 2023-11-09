@@ -32,7 +32,6 @@ class StoreRequest extends FormRequest
 			'price_now' => 'required|integer',
 			'tags' => 'required|array',
 			'tags.*' => 'required|array',
-			'discount' => 'required|boolean',
 			'hit' => 'required|boolean',
 			'content' => 'nullable|string',
 			'status' => 'required|boolean',

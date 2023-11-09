@@ -224,25 +224,6 @@
 				</div>
 				<div class="mrb-admin-form__item">
 					<div class="mrb-admin-form__chekbox mrb-admin-form-chekbox">
-						<div class="mrb-admin-form__labelinner">
-							<label for="discount" class="mrb-admin-form-chekbox__title">Скидки будет ?</label>
-						</div>
-						<div class="mrb-admin-form-chekbox__input">
-							<input
-								v-model="discount"
-								id="discount"
-								type="checkbox"
-								name="discount">
-							<label for="discount"></label>
-							<div class="mrb-admin-form-chekbox__status mrb-admin-form-chekbox-status">
-								<div class="mrb-admin-form-chekbox-status__not">Нет</div>
-								<div class="mrb-admin-form-chekbox-status__yes">Да</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="mrb-admin-form__item">
-					<div class="mrb-admin-form__chekbox mrb-admin-form-chekbox">
 						<label for="hit" class="mrb-admin-form-chekbox__title">Оно хит продажи ?</label>
 						<div class="mrb-admin-form-chekbox__input">
 							<input
@@ -378,7 +359,6 @@
 				isTag: false,
 				tag_valid_message: [],
 
-				discount: false,
 				hit: false,
 				status: 1,
 
@@ -445,7 +425,6 @@
 						this.selectedSpecification = this.product.specifications;
 						this.tags_values = this.product.tags;
 
-						this.discount = this.product.discount == 0 ?? true;
 						this.hit = this.product.hit == 0 ?? true;
 						this.status = this.product.status;
 
@@ -473,7 +452,6 @@
 					price_old: this.isPriceOld ? this.price_old : 0,
 					price_now: this.price_now,
 					tags: this.tags_values,
-					discount: this.discount ? 1 : 0,
 					hit: this.hit ? 1 : 0,
 					content: this.isDescription ? this.editorContent : '',
 					status: this.status

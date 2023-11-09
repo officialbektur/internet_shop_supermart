@@ -29,7 +29,7 @@ class AdminProductFilter extends AbstractFilter
 				$builder->orderBy('id', 'asc');
 				break;
 			case 2:
-				$builder->orderByDesc('discount');
+				$builder->orderByDesc('price_old');
 				break;
 			case 3:
 				$builder->orderByDesc('hit');

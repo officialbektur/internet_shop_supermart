@@ -17,7 +17,6 @@ return new class extends Migration
 			$table->unsignedBigInteger('price_old')->default(0);
 			$table->unsignedBigInteger('price_now');
 			$table->foreignId("category_id")->constrained("categories")->references("id");
-			$table->string('discount')->default(0);
 			$table->string('hit')->default(0);
 			$table->timestamps();
 

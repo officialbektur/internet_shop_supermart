@@ -47,7 +47,7 @@ class IndexResource extends JsonResource
 			"price_now" => $this->price_now,
 			"categories" => $categoryHierarchy,
 			"commentaries" => $commentariesCountFormatted,
-			"discount" => (int) $this->discount,
+			"discount" => $this->price_old == 0 ? 0 : 1,
 			"hit" => (int) $this->hit,
 			"status" => is_null($this->deleted_at) ? 1 : 0,
 		];
