@@ -168,7 +168,7 @@
 						setTimeout(() => {
 							this.isReadOnly = false
 						}, 600);
-					}, 1400);
+					}, 2400);
 				}, 600);
 			},
 			handleFileChange(event) {

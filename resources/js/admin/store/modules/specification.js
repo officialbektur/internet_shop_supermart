@@ -3,12 +3,16 @@ import axios from 'axios';
 import API from '@/admin/api';
 
 const state = {
+	isDeleteSpecification: false,
+
 	specifications: [],
 	specification: [],
 	specificationTitle: '',
 }
 
 const getters = {
+	isDeleteSpecification: (state) => state.isDeleteSpecification,
+
 	specifications: (state) => state.specifications,
 	specification: (state) => state.specification,
 	specificationTitle: (state) => state.specificationTitle,
@@ -242,9 +246,7 @@ const actions = {
 
 		commit("setSpecificationTitle", titleString)
 	},
-	async deleteSpecification({ commit, getters, dispatch }, id) {
-		commit("setIsReadOnly", true)
-		commit("setLoading", true)
+	async destroySpecification({ commit, getters, dispatch }, id) {
 		try {
 			let response = await API.delete('/api/admin/specifications/' + id);
 			if (response && response.data && response.data.message) {
@@ -274,10 +276,27 @@ const actions = {
 				});
 			}
 		}
-	}
+	},
+	deleteSpecification({ commit, getters, dispatch }, id) {
+		if (!getters.isDeleteSpecification) {
+			commit("setIsDeleteSpecification", true)
+			setTimeout(() => {
+				commit("setIsDeleteSpecification", false)
+			}, 2600);
+		} else {
+			commit("setIsReadOnly", true)
+			commit("setLoading", true)
+			dispatch("destroySpecification", id)
+			commit("setIsDeleteSpecification", false)
+		}
+	},
 }
 
 const mutations = {
+	setIsDeleteSpecification(state, isDeleteSpecification) {
+		state.isDeleteSpecification = isDeleteSpecification
+	},
+
 	setSpecification(state, specification) {
 		state.specification = specification
 	},

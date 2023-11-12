@@ -226,18 +226,17 @@ const router = createRouter({
 	]
 });
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach((to, from, next) => {
 	const accessToken = localStorage.getItem('access_token');
 
 	if (!accessToken) {
 		if (to.name === 'users.registration') {
-			try {
-				const res = await API.post('/api/admin/users/count');
+			API.post('/api/admin/users/count')
+			.then( res => {
 				if (res.data.status > 0) {
-				return next({ name: 'users.login' });
+					return next({ name: 'users.login' });
 				}
-			} catch (error) {
-			}
+			})
 		} else if (to.name !== 'users.login' && to.name !== 'users.resetpassword') {
 			return next({ name: 'users.login' });
 		}

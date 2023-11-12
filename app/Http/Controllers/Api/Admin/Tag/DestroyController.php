@@ -21,6 +21,7 @@ class DestroyController extends Controller
 			}
 
 			if ($result->products->isNotEmpty()) {
+				DB::rollBack();
 				return response()->json(['error' => 'Нельзя удалить тег, пока у неё есть связанные товары'], 400);
 			}
 

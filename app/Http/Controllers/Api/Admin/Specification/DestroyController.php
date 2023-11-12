@@ -20,8 +20,9 @@ class DestroyController extends Controller
 				return response()->json(['error' => 'Такой характеристики не существует!'], 404);
 			}
 
-			if ($result->products->isNotEmpty()) {
-				return response()->json(['error' => 'Нельзя удалить характеристику, пока у неё есть связанные товары!'], 400);
+			if ($result->categories->isNotEmpty()) {
+				DB::rollBack();
+				return response()->json(['error' => 'Нельзя удалить характеристику, пока у неё есть связанные категорий!'], 400);
 			}
 
 			$result->delete();

@@ -21,7 +21,13 @@ class DestroyController extends Controller
 			}
 
 			if ($result->products->isNotEmpty()) {
+				DB::rollBack();
 				return response()->json(['error' => 'Нельзя удалить категорию, пока у неё есть связанные товары!'], 400);
+			}
+
+			if ($result->specifications->isNotEmpty()) {
+				DB::rollBack();
+				return response()->json(['error' => 'Нельзя удалить категорию, пока у неё есть связанные характеристики!'], 400);
 			}
 
 			$result->delete();
@@ -34,7 +40,7 @@ class DestroyController extends Controller
 		} catch (QueryException $exception) {
 			DB::rollBack();
 
-			return response()->json(['error' => 'Ошибка со стороны БД'], 500);
+			return response()->json(['error' => $exception->getMessage()], 500);
 		} catch (\Exception $exception) {
 			DB::rollBack();
 

@@ -44,7 +44,7 @@ const actions = {
 				setTimeout(() => {
 					commit("setIsReadOnly", false)
 				}, 600);
-			}, 1400);
+			}, 2400);
 		}, 600);
 	},
 	inputWatchName({ commit, getters, dispatch }, event) {

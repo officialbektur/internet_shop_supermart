@@ -204,7 +204,7 @@
 						setTimeout(() => {
 							this.isReadOnly = false
 						}, 600);
-					}, 1200);
+					}, 1400);
 				}, 600);
 			},
 			validEmail() {

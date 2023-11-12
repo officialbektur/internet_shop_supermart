@@ -3,12 +3,16 @@ import axios from 'axios';
 import API from '@/admin/api';
 
 const state = {
+	isDeleteTag: false,
+
 	tags: [],
 	tag: [],
 	tagTitle: '',
 }
 
 const getters = {
+	isDeleteTag: (state) => state.isDeleteTag,
+
 	tags: (state) => state.tags,
 	tag: (state) => state.tag,
 	tagTitle: (state) => state.tagTitle,
@@ -206,9 +210,7 @@ const actions = {
 
 		commit("setTagTitle", titleString)
 	},
-	async deleteTag({ commit, getters, dispatch }, id) {
-		commit("setIsReadOnly", true)
-		commit("setLoading", true)
+	async destroyTag({ commit, getters, dispatch }, id) {
 		try {
 			let response = await API.delete('/api/admin/tags/' + id);
 			if (response && response.data && response.data.message) {
@@ -239,10 +241,27 @@ const actions = {
 				});
 			}
 		}
-	}
+	},
+	deleteTag({ commit, getters, dispatch }, id) {
+		if (!getters.isDeleteTag) {
+			commit("setIsDeleteTag", true)
+			setTimeout(() => {
+				commit("setIsDeleteTag", false)
+			}, 2600);
+		} else {
+			commit("setIsReadOnly", true)
+			commit("setLoading", true)
+			dispatch("destroyTag", id)
+			commit("setIsDeleteTag", false)
+		}
+	},
 }
 
 const mutations = {
+	setIsDeleteTag(state, isDeleteTag) {
+		state.isDeleteTag = isDeleteTag
+	},
+
 	setTag(state, tag) {
 		state.tag = tag
 	},

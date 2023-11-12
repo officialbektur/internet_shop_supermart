@@ -1,5 +1,5 @@
 <template>
-	<div class="moreinfo-tovar-body-reviews__comentary moreinfo-tovar-body-reviews-comentary">
+	<div class="moreinfo-tovar-body-reviews__commentary moreinfo-tovar-body-reviews-comentary">
 		<div class="moreinfo-tovar-body-reviews-comentary__title">Отзывы: <span>{{ commentariesCount }}</span></div>
 		<div class="moreinfo-tovar-body-reviews-comentary__body">
 			<template v-if="commentaries && commentaries.length > 0">

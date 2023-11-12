@@ -138,7 +138,7 @@
 							this.map = ''
 							this.title = ''
 							this.adress_href = ''
-							
+
 						} else if (response.data.error) {
 							this.finishResult(response.data.error, true);
 						} else {
@@ -225,7 +225,7 @@
 						setTimeout(() => {
 							this.isReadOnly = false
 						}, 600);
-					}, 1400);
+					}, 2400);
 				}, 600);
 			},
 		},

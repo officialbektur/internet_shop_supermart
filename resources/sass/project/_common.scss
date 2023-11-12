@@ -1973,6 +1973,36 @@
 				font-weight: 700;
 				text-align: center;
 			}
+			// .moreinfo-tovar-body-specifications__content
+			&__content {
+				list-style: none;
+			}
+			// .moreinfo-tovar-body-specifications__list
+			&__list {
+				margin-block-start: em(12,16);
+				margin-block-end: em(12,16);
+
+				font-size: rem(16);
+				@include adaptiveValue("font-size", 18, 14, 0, 767.98);
+				line-height: math.div(16, 20);
+				font-weight: 700;
+				& * {
+					font-size: inherit;
+					line-height: inherit;
+					font-weight: inherit;
+				}
+			}
+			// .moreinfo-tovar-body-specifications-list
+			&-list {
+				// .moreinfo-tovar-body-specifications-list__title
+				&__title {
+					color: #5c5c5c;
+				}
+				// .moreinfo-tovar-body-specifications-list__text
+				&__text {
+					color: $colorBlack;
+				}
+			}
 		}
 		// .moreinfo-tovar-body__description
 		&__description {
@@ -1991,7 +2021,7 @@
 		}
 		// .moreinfo-tovar-body-description
 		&-description {
-			// .moreinfo-tovar-body-specifications__title
+			// .moreinfo-tovar-body-description__title
 			&__title {
 				margin-top: rem(12);
 				@include adaptiveValue("margin-top", 12, 8);
@@ -2002,31 +2032,6 @@
 				@include adaptiveValue("font-size", 26, 20);
 				font-weight: 700;
 				text-align: center;
-			}
-		}
-		// .moreinfo-tovar-body-description
-		&-description {
-			// .moreinfo-tovar-body-description__block
-			&__block {
-				margin-block-start: em(12,16);
-				margin-block-end: em(12,16);
-
-				font-size: rem(16);
-				@include adaptiveValue("font-size", 18, 14, 0, 767.98);
-			}
-			// .moreinfo-tovar-body-description__btitle
-			&__btitle {
-				color: #5c5c5c;
-				margin-block-start: em(4,16);
-				margin-block-end: em(4,16);
-			}
-			// .moreinfo-tovar-body-description__btext
-			&__btext {
-				color: $colorBlack;
-				margin-block-start: em(4,16);
-				margin-block-end: em(4,16);
-
-				font-weight: 700;
 			}
 		}
 		// .moreinfo-tovar-body__reviews
@@ -2393,8 +2398,8 @@
 					}
 				}
 			}
-			// .moreinfo-tovar-body-reviews__comentary
-			&__comentary {
+			// .moreinfo-tovar-body-reviews__commentary
+			&__commentary {
 				padding: rem(0) rem(20);
 				@include adaptiveValue("padding-left", 20, 15);
 				@include adaptiveValue("padding-right", 20, 15);

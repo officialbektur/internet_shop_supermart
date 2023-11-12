@@ -97,7 +97,7 @@
 				'_error': isErrorResult
 			}">
 
-			<span class="block-form-submit__title">Добавить</span>
+			<span class="block-form-submit__title">Изменить</span>
 			<span class="block-form-submit__result">{{ resultMessage }}</span>
 		</button>
 		</div>
@@ -246,7 +246,7 @@ export default {
 				setTimeout(() => {
 				this.isReadOnly = false;
 				}, 600);
-			}, 1400);
+			}, 2400);
 			}, 600);
 		},
 	},

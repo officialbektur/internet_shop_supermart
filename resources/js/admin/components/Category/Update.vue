@@ -1,6 +1,6 @@
 <template>
 	<div class="block">
-		<div class="block__header df ">
+		<div class="block__header df">
 			<div class="block__title">
 				Редактирование категорий:
 			</div>
