@@ -1,27 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Api\Admin\Category;
+namespace App\Http\Controllers\Api\Admin\App\Adress;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
-use App\Models\Project\Category;
+
+use App\Models\Project\About\Adress;
 
 class DestroyController extends Controller
 {
-	public function __invoke($category)
+	public function __invoke($adress)
 	{
 		try {
-			$result = Category::find($category);
+			$result = Adress::find($adress);
 
 			if (!isset($result)) {
 				DB::rollBack();
-				return response()->json(['error' => 'Такой категории не существует!'], 404);
-			}
-
-			if ($result->products->isNotEmpty()) {
-				return response()->json(['error' => 'Нельзя удалить категорию, пока у неё есть связанные товары!'], 400);
+				return response()->json(['error' => 'Такого адресса не сушествует!'], 404);
 			}
 
 			$result->delete();
@@ -29,7 +26,7 @@ class DestroyController extends Controller
 			DB::commit();
 
 			return response()->json([
-				'message' => 'Категория успешно удалена!'
+				'message' => 'Адресс успешно удалена!'
 			], 200);
 		} catch (QueryException $exception) {
 			DB::rollBack();

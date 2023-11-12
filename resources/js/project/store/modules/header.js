@@ -84,7 +84,6 @@ const actions = {
 				filteredParams[key] = queryParams[key];
 			}
 		}
-		console.log(filteredParams);
 		dispatch("setSaveTovarSearch", getters.searchInput.trim());
 		flsFunctions.bodyUnlock();
 		commit("setIsActiveSearch", false);

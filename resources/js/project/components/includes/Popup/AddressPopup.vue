@@ -21,7 +21,7 @@
 						<div class="popup-map__items popup-map-items">
 							<a v-for="(info, index) in infos.adresses" :key="index" :href="info.href" class="popup-map__item popup-map-item">
 								<span class="popup-map-item__title">
-									Адреc{{ ' ' + (index + 1) }}:
+									Адреc № {{++index }}:
 								</span>
 								<span class="popup-map-item__textinfo">
 									{{ info.title }}

@@ -9,18 +9,45 @@
 						<label class="mrb-admin-form__label">
 							Выберите изображение:
 						</label>
-						<button @click.prevent="resetImageInputs" type="button" data-admin-image-button-reset class="mrb-admin-form__label mrb-admin-form__label_resetimages">
+						<button
+							:disabled="$store.getters.isReadOnly"
+							@click.prevent="resetImageInputs"
+							type="button"
+							data-admin-image-button-reset
+							class="mrb-admin-form__label mrb-admin-form__label_resetimages">
 							Очистить все медиа.
 						</button>
 					</div>
-					<div :ref="`draganandgrop`" data-draganandgrop-style="1" class="mrb-admin-form__media mrb-admin-form-media">
-						<div v-for="(image, index) in imagesCount" :key="index" data-draganandgrop-cell class="mrb-admin-form-media__block mrb-admin-form-media-block">
-							<div data-draganandgrop-card draggable="true" class="mrb-admin-form-media__content">
-								<input @change="handleFileChange($event)" :ref="`inputElement${index}`" accept=".jpg, .png, .jpeg, .webp" type="file" name="images[]" multiple class="mrb-admin-form-media-block__input">
+					<div
+						ref="draganandgrop"
+						data-draganandgrop-style="1"
+						class="mrb-admin-form__media mrb-admin-form-media">
+						<div
+							v-for="(image, index) in imagesCount"
+							:key="index"
+							data-draganandgrop-cell
+							class="mrb-admin-form-media__block mrb-admin-form-media-block">
+							<div
+								data-draganandgrop-card
+								draggable="true"
+								class="mrb-admin-form-media__content">
+								<input
+									@change="handleFileChange($event)"
+									:ref="`inputImages_${index}`"
+									:disabled="$store.getters.isReadOnly"
+									accept=".jpg, .png, .jpeg, .webp"
+									type="file"
+									name="images[]"
+									multiple
+									class="mrb-admin-form-media-block__input">
 								<div class="mrb-admin-form-media-block__preview"></div>
-								<div @click.prevent="resetImageInput(index)" class="mrb-admin-form-media-block__close">
+								<button
+									:disabled="$store.getters.isReadOnly"
+									@click.prevent="resetImageInput(index)"
+									type="button"
+									class="mrb-admin-form-media-block__close">
 									<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99h144v-144C192 62.32 206.33 48 224 48s32 14.32 32 32.01v144h144c17.7-.01 32 14.29 32 31.99z"/></svg>
-								</div>
+								</button>
 								<div class="mrb-admin-form-media-block__hello mrb-admin-form-media-block-hello">
 									<div class="mrb-admin-form-media-block-hello__icon">
 										<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M30 6l3.66 4H40c2.2 0 4 1.8 4 4v24c0 2.2-1.8 4-4 4H8c-2.2 0-4-1.8-4-4V14c0-2.2 1.8-4 4-4h6.34L18 6h12zm-6 13.6a6.4 6.4 0 100 12.8 6.4 6.4 0 000-12.8zM24 36c-5.52 0-10-4.48-10-10s4.48-10 10-10 10 4.48 10 10-4.48 10-10 10z"/></svg>
@@ -29,9 +56,13 @@
 										Добавьте фото
 									</div>
 								</div>
-								<div @click.prevent="addBossBlock(index)" class="mrb-admin-form-media-block__buttonlvl">
+								<button
+									:disabled="$store.getters.isReadOnly"
+									@click.prevent="addBossBlock(index)"
+									type="button"
+									class="mrb-admin-form-media-block__buttonlvl">
 									Сделать Главным
-								</div>
+								</button>
 							</div>
 							<div v-if="index == 0" class="mrb-admin-form-media-block__bosstitle">Главная</div>
 						</div>
@@ -65,8 +96,11 @@
 							class="mrb-admin-form__label"
 							:class="{ '_error': isCategory }">
 							Категория*:
-							<template v-if="isCategory">
-								<span v-for="message in category_valid_message" :key="message">
+							<template
+								v-if="isCategory">
+								<span
+									v-for="message in category_valid_message"
+									:key="message">
 									{{ message + ' ' }}
 								</span>
 							</template>
@@ -83,9 +117,13 @@
 							<div class="block-form-item-select-button__icon">
 								<svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M352 352c-8.188 0-16.38-3.125-22.62-9.375L192 205.3 54.6 342.7c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25-6.2 6.2-14.4 9.3-22.6 9.3z"/></svg>
 							</div>
-							<div @click.prevent="$store.dispatch('clearCategory')" class="block-form-item-select-button__clear a-hover-bgc">
+							<button
+								:disabled="$store.getters.isReadOnly"
+								@click.prevent="$store.dispatch('clearCategory')"
+								type="button"
+								class="block-form-item-select-button__clear a-hover-bgc">
 								<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99h144v-144C192 62.32 206.33 48 224 48s32 14.32 32 32.01v144h144c17.7-.01 32 14.29 32 31.99z"/></svg>
-							</div>
+							</button>
 						</div>
 					</a>
 					<categories-popup></categories-popup>
@@ -263,7 +301,12 @@
 							class="mrb-admin-form__label">
 							Дополнительные данные:
 						</label>
-						<button @click.prevent="addDescription" type="button" data-admin-image-button-reset class="mrb-admin-form__label mrb-admin-form__label_resetimages">
+						<button
+							:disabled="$store.getters.isReadOnly"
+							@click.prevent="addDescription"
+							type="button"
+							data-admin-image-button-reset
+							class="mrb-admin-form__label mrb-admin-form__label_resetimages">
 							Добавить описание
 						</button>
 					</div>
@@ -320,7 +363,7 @@
 				title_valid_message: [],
 
 				isCategory: false,
-				categry_valid_message: [],
+				category_valid_message: [],
 
 				specifications: [],
 				isSpecifications: false,
@@ -413,7 +456,7 @@
 								this.title_valid_message = [];
 
 								this.isCategory = false;
-								this.categry_valid_message = [];
+								this.category_valid_message = [];
 
 								this.specifications = [];
 								this.isSpecifications = false;
@@ -589,9 +632,9 @@
 				const inputsImages = this.$refs[`draganandgrop`].querySelectorAll(".mrb-admin-form-media-block__input");
 				const images = [];
 				for (let index = 0; index < inputsImages.length; index++) {
-					const inputElement = inputsImages[index];
-					if (inputElement.files.length > 0) {
-						images.push(inputElement.files[0]);
+					const inputImage = inputsImages[index];
+					if (inputImage.files.length > 0) {
+						images.push(inputImage.files[0]);
 					}
 				}
 				return images;
@@ -764,18 +807,18 @@
 				body.addEventListener('drop', (e) => {
 					e.preventDefault();
 					if (e.dataTransfer.files.length > 0) {
-						const inputElements = [];
+						const inputImages = [];
 						for (let index = 0; index < this.imagesCount; index++) {
-							const inputElement = this.$refs[`inputElement${index}`][0];
-							const inputValue = inputElement.value;
-							const imageDataValue = inputElement.getAttribute('data-image-value');
+							const inputImage = this.$refs[`inputImages_${index}`][0];
+							const inputValue = inputImage.value;
+							const imageDataValue = inputImage.getAttribute('data-image-value');
 
 							if (inputValue === '' && !imageDataValue) {
-								inputElements.push(inputElement);
+								inputImages.push(inputImage);
 							}
 						}
-						if (inputElements.length > 0) {
-							this.addimageinput(e.dataTransfer);
+						if (inputImages.length > 0) {
+							this.addImageInput(e.dataTransfer);
 						}
 					}
 				})
@@ -784,13 +827,13 @@
 				const selectedFiles = event.target.files;
 				if (selectedFiles.length > 0) {
 					if (selectedFiles.length > 1) {
-						this.addimageinput(event.target);
+						this.addImageInput(event.target);
 					} else {
 						this.uploadFile(event.target);
 					}
 				}
 			},
-			addimageinput(valueInput) {
+			addImageInput(valueInput) {
 				const files = valueInput.files;
 				const newFiles = [];
 				for (let i = 0; i < files.length; i++) {
@@ -798,22 +841,22 @@
 				}
 				if (newFiles.length > 0) {
 					valueInput.value = "";
-					let inputElements = [];
+					let inputImages = [];
 					for (let index = 0; index < this.imagesCount; index++) {
-						if (this.$refs[`inputElement${index}`][0].value == '') {
-							inputElements.push(this.$refs[`inputElement${index}`][0])
+						if (this.$refs[`inputImages_${index}`][0].value == '') {
+							inputImages.push(this.$refs[`inputImages_${index}`][0])
 						}
 					}
 					let newFilesLength = newFiles.length;
-					if (newFiles.length >= inputElements.length) {
-						newFilesLength = inputElements.length;
+					if (newFiles.length >= inputImages.length) {
+						newFilesLength = inputImages.length;
 					}
 					for (let i = 0; i < newFilesLength; i++) {
 						const newFileList = new ClipboardEvent("").clipboardData || new DataTransfer();
 						if (newFiles[i]) {
 							newFileList.items.add(newFiles[i]);
-							inputElements[i].files = newFileList.files;
-							this.uploadFile(inputElements[i]);
+							inputImages[i].files = newFileList.files;
+							this.uploadFile(inputImages[i]);
 						}
 					}
 				} else {
@@ -846,20 +889,20 @@
 				reader.readAsDataURL(file.files[0]);
 			},
 			addBossBlock(index) {
-				let clickBlock = this.$refs[`inputElement${index}`][0];
+				let clickBlock = this.$refs[`inputImages_${index}`][0];
 				clickBlock.parentElement.parentElement.append(this.$refs['draganandgrop'].querySelector("[data-draganandgrop-cell] [data-draganandgrop-card]"));
 				this.$refs['draganandgrop'].querySelector("[data-draganandgrop-cell]").append(clickBlock.parentElement);
 			},
 			resetImageInputs() {
 				for (let index = 0; index < this.imagesCount; index++) {
-					let input = this.$refs[`inputElement${index}`][0];
+					let input = this.$refs[`inputImages_${index}`][0];
 					input.value = null
 					input.parentElement.classList.remove("_active");
 					input.parentElement.querySelector('.mrb-admin-form-media-block__preview').innerHTML = '';
 				}
 			},
 			resetImageInput(index) {
-				let input = this.$refs[`inputElement${index}`][0];
+				let input = this.$refs[`inputImages_${index}`][0];
 				input.value = null
 				input.parentElement.classList.remove("_active");
 				input.parentElement.querySelector('.mrb-admin-form-media-block__preview').innerHTML = '';

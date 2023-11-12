@@ -4,7 +4,7 @@ import API from '@/admin/api';
 import * as flsFunctions from "@/admin/files/functions.js";
 
 const state = {
-	table: 1,
+	isDeleteCategory: false,
 
 	name: '',
 	isName: false,
@@ -14,32 +14,22 @@ const state = {
 	isParentId: false,
 	parent_id_valid_message: [],
 
-	isReadOnly: false,
-
-	loading: false,
-	result: false,
-	isErrorResult: false,
-
-	resulMassage: '',
-
 	categories: [],
 	category: [],
 	categoryTitle: '',
 }
 
 const getters = {
-	table: (state) => state.table,
+	isDeleteCategory: (state) => state.isDeleteCategory,
+
 	name: (state) => state.name,
 	isName: (state) => state.isName,
 	name_valid_message: (state) => state.name_valid_message,
+
 	parent_id: (state) => state.parent_id,
 	isParentId: (state) => state.isParentId,
 	parent_id_valid_message: (state) => state.parent_id_valid_message,
-	isReadOnly: (state) => state.isReadOnly,
-	loading: (state) => state.loading,
-	result: (state) => state.result,
-	isErrorResult: (state) => state.isErrorResult,
-	resulMassage: (state) => state.resulMassage,
+
 	categories: (state) => state.categories,
 	category: (state) => state.category,
 	categoryTitle: (state) => state.categoryTitle,
@@ -218,29 +208,6 @@ const actions = {
 				break;
 		}
 	},
-	finishResult({ commit, getters, dispatch }, { message, errorStatus = false }) {
-		setTimeout(() => {
-			commit("setResulMassage", message)
-			commit("setResult", true)
-			commit("setLoading", false)
-
-			if (errorStatus) {
-				commit("setIsErrorResult", true)
-			}
-			setTimeout(() => {
-				commit("setResult", false)
-				if (errorStatus) {
-					commit("setIsErrorResult", false)
-				}
-				setTimeout(() => {
-					commit("setIsReadOnly", false)
-				}, 600);
-			}, 1400);
-		}, 600);
-	},
-	inputWatchName({ commit, getters, dispatch }, event) {
-		commit('setName', event.target.value.trim())
-	},
 	clearCategory({ commit, getters, dispatch }, ) {
 		commit("setIsReadOnly", true)
 		setTimeout(() => {
@@ -249,10 +216,6 @@ const actions = {
 		dispatch("removeHiddenCategories");
 		commit("setCategoryTitle", '')
 		commit("setParentId", null)
-	},
-	back({ commit, getters, dispatch }, ) {
-		let result = getters.table > 1 ? getters.table - 1 : 1
-		commit("setTable", result)
 	},
 	addClickCategory({ commit, getters, dispatch }, { id, event }) {
 		dispatch("removeActiveCategories");
@@ -306,9 +269,7 @@ const actions = {
 			element.classList.remove('_show');
 		});
 	},
-	async deleteCategory({ commit, getters, dispatch }, id) {
-		commit("setIsReadOnly", true)
-		commit("setLoading", true)
+	async destroyCategory({ commit, getters, dispatch }, id) {
 		try {
 			let response = await API.delete('/api/admin/categories/' + id);
 			if (response && response.data && response.data.message) {
@@ -338,13 +299,27 @@ const actions = {
 				});
 			}
 		}
-	}
+	},
+	deleteCategory({ commit, getters, dispatch }, id) {
+		if (!getters.isDeleteCategory) {
+			commit("setIsDeleteCategory", true)
+			setTimeout(() => {
+				commit("setIsDeleteCategory", false)
+			}, 2600);
+		} else {
+			commit("setIsReadOnly", true)
+			commit("setLoading", true)
+			dispatch("destroyCategory", id)
+			commit("setIsDeleteCategory", false)
+		}
+	},
 }
 
 const mutations = {
-	setTable(state, table) {
-		state.table = table
+	setIsDeleteCategory(state, isDeleteCategory) {
+		state.isDeleteCategory = isDeleteCategory
 	},
+
 	setName(state, name) {
 		state.name = name
 	},
@@ -354,6 +329,7 @@ const mutations = {
 	setNameValidMessage(state, name_valid_message) {
 		state.name_valid_message = name_valid_message
 	},
+
 	setParentId(state, parent_id) {
 		state.parent_id = parent_id
 	},
@@ -363,21 +339,7 @@ const mutations = {
 	setParentIdValidMessage(state, parent_id_valid_message) {
 		state.parent_id_valid_message = parent_id_valid_message
 	},
-	setIsReadOnly(state, isReadOnly) {
-		state.isReadOnly = isReadOnly
-	},
-	setLoading(state, loading) {
-		state.loading = loading
-	},
-	setResult(state, result) {
-		state.result = result
-	},
-	setIsErrorResult(state, isErrorResult) {
-		state.isErrorResult = isErrorResult
-	},
-	setResulMassage(state, resulMassage) {
-		state.resulMassage = resulMassage
-	},
+
 	setCategory(state, category) {
 		state.category = category
 	},

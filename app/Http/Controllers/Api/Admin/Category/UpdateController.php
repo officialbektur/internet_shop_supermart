@@ -29,7 +29,7 @@ class UpdateController extends Controller
 
 			if (!isset($category)) {
 				DB::rollBack();
-				return response()->json(['error' => 'Такого категории не существует!'], 404);
+				return response()->json(['error' => 'Такой категории не существует!'], 404);
 			}
 
 
@@ -52,12 +52,12 @@ class UpdateController extends Controller
 				'message' => 'Категория успешно отредактирована!'
 			], 201);
 		} catch (QueryException $exception) {
-			// Если возникла ошибка на стороне базы данных, откатываем транзакцию и возвращаем ошибку БД.
 			DB::rollBack();
+
 			return response()->json(['error' => 'Ошибка базы данных'], 500);
 		} catch (\Exception $exception) {
-			// Если возникла неожиданная ошибка на стороне сервера, откатываем транзакцию и возвращаем ошибку сервера.
 			DB::rollBack();
+
 			return response()->json(['error' => 'Ошибка сервера'], 500);
 		}
 	}

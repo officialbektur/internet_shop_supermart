@@ -10,7 +10,7 @@ const getters = {
 const actions = {
 	async getApp({ getters, commit, dispatch }) {
 		try {
-			let response = await axios.get('/api/index');
+			let response = await axios.get('/api/app');
 			if (response && response.data) {
 				commit("setApp", response.data)
 			}

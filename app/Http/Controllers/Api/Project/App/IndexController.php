@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Project\Index;
+namespace App\Http\Controllers\Api\Project\App;
 
 use App\Http\Controllers\Controller;
 
@@ -18,7 +18,7 @@ use App\Http\Resources\Project\About\Soc\SocResource;
 
 class IndexController extends Controller
 {
-    public function __invoke()
+	public function __invoke()
 	{
 		return response()->json($this->aboutinfo());
 	}

@@ -73,25 +73,14 @@ const actions = {
 	initializeProducts({ commit, getters, dispatch }) {
 		dispatch('getProducts');
 	},
-	// loadingOnScroll({ commit, getters, dispatch }) {
-	// 	if (getters.isLoading && getters.isLoadingEnd) {
-	// 		// const triggerElement = getters.loadTriggerElement;
-	// 		// const windowHeight = document.documentElement.clientHeight;
-	// 		// const rect = triggerElement.getBoundingClientRect();
-	// 		// const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-	// 		// const loadMoreBlockPos = rect.top + scrollTop;
-	// 		// // const loadMoreBlockPos = triggerElement.getBoundingClientRect().top;
-	// 		// const distanceToBottom = loadMoreBlockPos - (windowHeight * 3);
-	// 		// if (pageYOffset > distanceToBottom) {
-	// 		// 	dispatch('getProducts');
-	// 		// 	commit('setIsLoading', false);
-	// 		// }
-	// 	}
-	// },
 	loadMoreButton({ commit, dispatch }) {
 		dispatch('getProducts');
 	},
-	async getProducts({ commit, getters, dispatch }) {
+	async getProducts({ commit, getters, dispatch,
+	 state }) {
+		if (state.cancelTokenSource) {
+			state.cancelTokenSource.cancel("Request canceled");
+		}
 		if (getters.methods == 'post' && getters.ids.length == 0) {
 			commit('setIsMessage', true)
 			commit("setIsLoading", false);

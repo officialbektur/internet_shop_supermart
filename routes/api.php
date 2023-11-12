@@ -42,6 +42,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'api'], function () {
 			Route::post('/resetpassword', ResetPasswordController::class);
 			Route::post('/count', UsersCountController::class);
 		});
+		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'app', 'namespace' => 'App'], function ($router) {
+			Route::get('/', IndexController::class);
+			Route::group(['prefix' => 'logo', 'namespace' => 'Logo'], function ($router) {
+				Route::post('/', UpdateController::class);
+			});
+			Route::group(['prefix' => 'adress', 'namespace' => 'Adress'], function ($router) {
+				Route::post('/', StoreController::class);
+				Route::patch('/', UpdateController::class);
+				Route::delete('/{adress}', DestroyController::class);
+			});
+		});
 		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'categories', 'namespace' => 'Category'], function () {
 			Route::post('/', StoreController::class);
 			Route::patch('/', UpdateController::class);
@@ -124,7 +135,7 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api\Pr
 			Route::get('/searchhints/{id}', ShowController::class);
 		});
 	});
-	Route::group(['namespace' => 'Index'], function ($router) {
-		Route::get('/index', IndexController::class);
+	Route::group(['namespace' => 'App'], function ($router) {
+		Route::get('/app', IndexController::class);
 	});
 });

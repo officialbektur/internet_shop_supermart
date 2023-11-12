@@ -8,6 +8,10 @@
 	@include adaptiveValue("flex-basis", 150, 110, 767.98, 991.98);
 	@include adaptiveValue("flex-basis", 140, 120, 479.98, 767.98);
 	@include adaptiveValue("flex-basis", 130, 120, 0, 479.98);
-	height: 100%;
+	height: rem(50);
+
+	& img {
+		// object-fit: cover;
+	}
 }
 /* ===================================  Logo  --End--  =================================== */

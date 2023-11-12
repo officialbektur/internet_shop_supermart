@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Adress extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
 	protected $table = 'adresses';
-    protected $guarded = false;
-    protected $fillable = [];
+	protected $guarded = false;
+	protected $fillable = [];
 }
