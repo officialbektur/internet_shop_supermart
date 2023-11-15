@@ -9,7 +9,7 @@ const state = {
 	result: false,
 	isErrorResult: false,
 
-	resulMassage: '',
+	resultMessage: '',
 }
 
 const getters = {
@@ -19,7 +19,7 @@ const getters = {
 	loading: (state) => state.loading,
 	result: (state) => state.result,
 	isErrorResult: (state) => state.isErrorResult,
-	resulMassage: (state) => state.resulMassage,
+	resultMessage: (state) => state.resultMessage,
 }
 
 
@@ -29,7 +29,7 @@ const actions = {
 	},
 	finishResult({ commit, getters, dispatch }, { message, errorStatus = false }) {
 		setTimeout(() => {
-			commit("setResulMassage", message)
+			commit("setResultMessage", message)
 			commit("setResult", true)
 			commit("setLoading", false)
 
@@ -73,8 +73,8 @@ const mutations = {
 	setIsErrorResult(state, isErrorResult) {
 		state.isErrorResult = isErrorResult
 	},
-	setResulMassage(state, resulMassage) {
-		state.resulMassage = resulMassage
+	setResultMessage(state, resultMessage) {
+		state.resultMessage = resultMessage
 	},
 }
 

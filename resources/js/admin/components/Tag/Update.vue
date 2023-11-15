@@ -1,10 +1,12 @@
 <template>
+	<preloader :class="{ '_hidde': isPreloader }"></preloader>
 	<div class="block">
 		<div class="block__header df">
 			<div class="block__title">
 				Редактирование тега:
 			</div>
 			<button
+				v-if="isTag"
 				:disabled="$store.getters.isReadOnly"
 				@click.prevent="$store.dispatch('deleteTag', $route.params.id)"
 				type="button"
@@ -16,7 +18,7 @@
 				<div class="mrb-button-delete__agreement">?</div>
 			</button>
 		</div>
-		<form method="POST" class="block__content block__form block-form">
+		<form v-if="isTag" method="POST" class="block__content block__form block-form">
 			<div class="block-form__items">
 				<div
 					class="block-form__item"
@@ -57,19 +59,28 @@
 								'_error': $store.getters.isErrorResult
 							}">
 						<span class="block-form-submit__title">Добавить</span>
-						<span class="block-form-submit__result">{{ $store.getters.resulMassage }}</span>
+						<span class="block-form-submit__result">{{ $store.getters.resultMessage }}</span>
 					</button>
 				</div>
 			</div>
 		</form>
+		<div v-else class="block__title text-center">
+			<span class="_error">Нету данных!</span>
+		</div>
 	</div>
 </template>
 
 <script>
+	import Preloader from './../includes/PreloaderComponent.vue';
     export default {
 		name: 'Create',
+		beforeCreate() {
+			document.documentElement.classList.add('lock');
+		},
 		data() {
 			return {
+				isPreloader: false,
+				isTag: true,
 			}
 		},
 		mounted() {
@@ -78,6 +89,10 @@
 			this.getTag()
 		},
 		methods: {
+			preloader() {
+				document.documentElement.classList.remove('lock');
+				this.isPreloader = true;
+			},
 			async getTag() {
 				try {
 					let response = await axios.get('/api/tags/' + this.$route.params.id);
@@ -85,16 +100,18 @@
 						this.$store.commit("setTag", response.data);
 						this.$store.commit("setName", response.data.name)
 					} else {
-						this.$router.push({ name: 'tags.edit'});
+						this.isTag = false;
 					}
 				} catch (error) {
-					this.$router.push({ name: 'tags.edit'});
+					this.isTag = false;
 				}
+				this.preloader()
 			},
 		},
 		computed: {
 		},
 		components: {
+			'preloader': Preloader,
 		}
     }
 </script>

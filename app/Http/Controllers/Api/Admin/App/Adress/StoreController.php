@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
 
-use App\Models\Project\About\Adress;
+use App\Models\Project\App\Adress;
 
 class StoreController  extends Controller
 {
@@ -20,11 +20,12 @@ class StoreController  extends Controller
 
 			$data = $request->validated();
 
-			Adress::create($data);
+			$adress = Adress::create($data);
 
 			DB::commit();
 
 			return response()->json([
+				'id' => $adress->id,
 				'message' => 'Адресс успешно создан!'
 			], 201);
 		} catch (QueryException $exception) {

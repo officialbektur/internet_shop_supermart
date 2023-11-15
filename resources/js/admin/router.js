@@ -177,11 +177,6 @@ const router = createRouter({
 			name: 'tags.index'
 		},
 		{
-			path: '/admin/tags/edit',
-			component: () => import('./components/Tag/Edit.vue'),
-			name: 'tags.edit'
-		},
-		{
 			path: '/admin/tags/:id/update',
 			component: () => import('./components/Tag/Update.vue'),
 			name: 'tags.update'
@@ -200,11 +195,6 @@ const router = createRouter({
 			name: 'searchhints.index'
 		},
 		{
-			path: '/admin/searchhints/edit',
-			component: () => import('./components/SearchHints/Edit.vue'),
-			name: 'searchhints.edit'
-		},
-		{
 			path: '/admin/searchhints/:id/update',
 			component: () => import('./components/SearchHints/Update.vue'),
 			name: 'searchhints.update'
@@ -215,6 +205,14 @@ const router = createRouter({
 			name: 'searchhints.create'
 		},
 		/* ===================================  SearchHints  --End--  =================================== */
+
+		/* ===================================  About  --Start--  =================================== */
+		{
+			path: '/admin/abouts',
+			component: () => import('./components/About/Edit.vue'),
+			name: 'abouts.edit'
+		},
+		/* ===================================  About  --End--  =================================== */
 
 		/* ===================================  404  --Start--  =================================== */
 		{

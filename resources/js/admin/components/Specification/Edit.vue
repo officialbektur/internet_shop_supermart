@@ -1,9 +1,19 @@
 <template>
 	<div class="block">
 		<div class="block__title">Редактирование характеристик</div>
-		<ul class="block__content">
+		<ul v-if="isSpecifications" class="block__content">
 			<specifications v-if="specifications.length > 0" v-for="specification in specifications" :specification="specification" :key="specification"></specifications>
+			<div class="more__loading more-loading" :class="{ '_show': lazyLoading && isSpecifications }">
+				<div class="more-loading__content">
+					<div class="more-loading__icon">
+						<img src="/storage/project/loading.gif" alt="loading">
+					</div>
+				</div>
+			</div>
 		</ul>
+		<div v-else class="block__title text-center">
+			<span class="_error">Нету данных!</span>
+		</div>
 	</div>
 </template>
 
@@ -19,6 +29,7 @@
 			}
 		},
 		mounted() {
+			this.$store.commit("setLazyLoading", true)
 			this.$store.dispatch("zeroingSpecification")
 			this.$store.dispatch("getSpecifications")
 			if (!this.clickListenerAdded) {
@@ -59,6 +70,12 @@
 		computed: {
 			specifications() {
 				return this.$store.getters.specifications
+			},
+			lazyLoading() {
+				return this.$store.getters.lazyLoading
+			},
+			isSpecifications() {
+				return this.$store.getters.isSpecifications
 			}
 		},
 		components: {

@@ -1,10 +1,12 @@
 <template>
+	<preloader :class="{ '_hidde': isPreloader }"></preloader>
 	<div class="block">
 		<div class="block__header df">
 			<div class="block__title">
 				Редактирование характеристику:
 			</div>
 			<button
+				v-if="isSpecification"
 				:disabled="$store.getters.isReadOnly"
 				@click.prevent="$store.dispatch('deleteSpecification', $route.params.id)"
 				type="button"
@@ -16,7 +18,7 @@
 				<div class="mrb-button-delete__agreement">?</div>
 			</button>
 		</div>
-		<form method="POST" class="block__content block__form block-form">
+		<form v-if="isSpecification" method="POST" class="block__content block__form block-form">
 			<div class="block-form__items">
 				<div
 					v-if="$store.getters.table == 1"
@@ -85,7 +87,7 @@
 								'_error': $store.getters.isErrorResult
 							}">
 						<span class="block-form-submit__title">Добавить</span>
-						<span class="block-form-submit__result">{{ $store.getters.resulMassage }}</span>
+						<span class="block-form-submit__result">{{ $store.getters.resultMessage }}</span>
 					</button>
 				</div>
 				<div
@@ -101,16 +103,27 @@
 				</div>
 			</div>
 		</form>
+		<div v-else class="block__title text-center">
+			<span class="_error">Нету данных!</span>
+		</div>
 	</div>
 </template>
 
 <script>
 	import API from '@/admin/api';
+
+	import Preloader from './../includes/PreloaderComponent.vue';
+
 	import SpecificationsPopup from './../Popup/SpecificationPopup.vue';
 	export default {
 		name: 'Update',
+		beforeCreate() {
+			document.documentElement.classList.add('lock');
+		},
 		data() {
 			return {
+				isPreloader: false,
+				isSpecification: true,
 			}
 		},
 		mounted() {
@@ -118,6 +131,10 @@
 			this.getSpecification()
 		},
 		methods: {
+			preloader() {
+				document.documentElement.classList.remove('lock');
+				this.isPreloader = true;
+			},
 			async getSpecification() {
 				try {
 					let response = await API.get('/api/admin/specifications/' + this.$route.params.id);
@@ -132,16 +149,18 @@
 							this.$store.commit("setParentId", response.data[response.data.length - 2].id)
 						}
 					} else {
-						this.$router.push({ name: 'specifications.edit'});
+						this.isSpecification = false;
 					}
 				} catch (error) {
-					this.$router.push({ name: 'specifications.edit'});
+					this.isSpecification = false;
 				}
+				this.preloader()
 			},
 		},
 		computed: {
 		},
 		components: {
+			'preloader': Preloader,
 			'specifications-popup': SpecificationsPopup
 		}
 	}

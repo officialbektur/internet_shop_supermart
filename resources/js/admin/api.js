@@ -17,7 +17,7 @@ api.interceptors.request.use(config => {
 api.interceptors.response.use(response => {
 	return response;
 }, error => {
-	if (localStorage.getItem('access_token') && localStorage.getItem('access_token') !== 'undefined' && localStorage.getItem('access_token').length > 0) {
+	if (localStorage.getItem('access_token') && typeof localStorage.getItem('access_token') !== 'undefined' && localStorage.getItem('access_token').length > 0) {
 		if ('Token has expired' === error.response.data.message) {
 			return axios.post('/api/admin/auth/refresh', {}, {
 				headers: {

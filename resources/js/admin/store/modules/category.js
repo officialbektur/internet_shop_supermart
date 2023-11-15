@@ -17,6 +17,8 @@ const state = {
 	categories: [],
 	category: [],
 	categoryTitle: '',
+
+	isCategories: true,
 }
 
 const getters = {
@@ -33,6 +35,8 @@ const getters = {
 	categories: (state) => state.categories,
 	category: (state) => state.category,
 	categoryTitle: (state) => state.categoryTitle,
+
+	isCategories: (state) => state.isCategories,
 }
 
 
@@ -49,7 +53,7 @@ const actions = {
 		commit('setLoading', false)
 		commit('setResult', false)
 		commit('setIsErrorResult', false)
-		commit('setResulMassage', '')
+		commit('setResultMessage', '')
 		commit('setCategory', [])
 		commit('setCategoryTitle', '')
 	},
@@ -57,9 +61,15 @@ const actions = {
 		try {
 			let response = await axios.get('/api/categories');
 			if (response && response.data && response.data.length > 0) {
+				commit("setLazyLoading", false)
 				commit("setCategories", response.data)
+			} else {
+				commit("setLazyLoading", false)
+				commit("setIsCategories", false)
 			}
 		} catch (error) {
+			commit("setLazyLoading", false)
+			commit("setIsCategories", false)
 		}
 	},
 	updateCategory({ commit, getters, dispatch }) {
@@ -348,6 +358,10 @@ const mutations = {
 	},
 	setCategoryTitle(state, categoryTitle) {
 		state.categoryTitle = categoryTitle
+	},
+
+	setIsCategories(state, isCategories) {
+		state.isCategories = isCategories
 	},
 }
 

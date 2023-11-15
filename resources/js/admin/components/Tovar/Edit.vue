@@ -1,8 +1,8 @@
 <template>
+	<preloader :class="{ '_hidde': isPreloader }"></preloader>
 	<div class="block">
 		<h2 class="block__title">Изменить товар</h2>
-
-		<div class="page__content">
+		<div v-if="isProduct" class="page__content">
 			<form method="post" class="mrb-admin__form mrb-admin-form" enctype="multipart/form-data">
 				<div class="mrb-admin-form__item">
 					<div class="mrb-admin-form__labelinner">
@@ -119,8 +119,7 @@
 						href
 						:data-popup="$store.getters.isReadOnly ? $store.getters.isReadOnly : '#categories_tovar__popup'"
 						class="block-form-item__select block-form-item-select"
-						:class="{ '_show': $store.getters.categoryTitle.toString().length > 0 }"
-						>
+						:class="{ '_show': $store.getters.categoryTitle.toString().length > 0 }">
 						<div class="block-form-item-select__title">{{ $store.getters.categoryTitle.toString().length > 0 ? $store.getters.categoryTitle : 'Выберите категорию' }}</div>
 						<div class="block-form-item-select__button block-form-item-select-button">
 							<div class="block-form-item-select-button__icon">
@@ -375,10 +374,13 @@
 						}">
 
 						<span class="block-form-submit__title">Изменить</span>
-						<span class="block-form-submit__result">{{ $store.getters.resulMassage }}</span>
+						<span class="block-form-submit__result">{{ $store.getters.resultMessage }}</span>
 					</button>
 				</div>
 			</form>
+		</div>
+		<div v-else class="block__title text-center">
+			<span class="_error">Нету данных!</span>
 		</div>
 	</div>
 </template>
@@ -386,7 +388,9 @@
 	import { QuillEditor } from '@vueup/vue-quill'
 
 
-	import Multiselect from 'vue-multiselect'
+	import Preloader from './../includes/PreloaderComponent.vue';
+
+	import Multiselect from 'vue-multiselect';
 
 	import CategoriesPopup from './../Popup/CategoryTovarPopup.vue';
 
@@ -394,9 +398,15 @@
 
 	export default {
 		name: 'Edit',
+		beforeCreate() {
+			document.documentElement.classList.add('lock');
+		},
 		data() {
 			return {
+				isPreloader: false,
+
 				product: null,
+				isProduct: true,
 
 				imagesCount: 12,
 				isImages: false,
@@ -467,16 +477,23 @@
 		updated() {
 		},
 		methods: {
+			preloader() {
+				document.documentElement.classList.remove('lock');
+				this.isPreloader = true;
+			},
 			async getProduct() {
 				try {
 					let response = await API.get('/api/admin/products/' + this.$route.params.id);
+
 					if (response && response.data) {
 						this.product = response.data;
 
 						let title = [];
+
 						this.product.categories.forEach(element => {
 							title.push(element.name.trim());
 						});
+
 						const titleReversed = title.reverse()
 						const titleString = titleReversed.join(' / ');
 						this.$store.commit("setCategoryTitle", titleString)
@@ -495,9 +512,13 @@
 						this.status = this.product.status;
 
 						this.getProductDesc();
+					} else {
+						this.isProduct = false
 					}
 				} catch (error) {
+					this.isProduct = false
 				}
+				this.preloader();
 			},
 			async getProductDesc() {
 				axios.get(`/api/products/${this.$route.params.id}/description`)
@@ -588,67 +609,40 @@
 				this.tag_valid_message = []
 
 				if (this.title.toString().length < 3) {
-					let message = this.title_valid_message;
-					message.push('Не менее 3 символов!')
-
 					this.isTitle =  true
-					this.title_valid_message = message
+					this.title_valid_message.push('Не менее 3 символов!')
 				} else if (this.title.toString().length > 250) {
-					let message = this.title_valid_message;
-					message.push('Не более 250 символов!')
-
 					this.isTitle =  true
-					this.title_valid_message = message
+					this.title_valid_message.push('Не более 250 символов!')
 				}
 				if (!this.$store.getters.parent_id) {
-					let message = this.category_valid_message;
-					message.push('Выберите категорию!')
-
 					this.isCategory =  true
-					this.category_valid_message = message
+					this.category_valid_message.push('Выберите категорию!')
 				}
 				if (this.validSpecificationsValues()) {
-					let message = this.specification_valid_message;
-					message.push('Выберите дополнительные данные!')
-
 					this.isSpecification =  true
-					this.specification_valid_message = message
+					this.specification_valid_message.push('Выберите дополнительные данные!')
 				}
 				if (!this.isPriceOld) {
 					if (!this.price_now) {
-						let message = this.price_valid_message;
-						message.push('Заполните обезательное поле!')
-
 						this.isPrice = true
-						this.price_valid_message = message
+						this.price_valid_message.push('Заполните обезательное поле!')
 					} else if (this.price_now.toString().length > 11) {
-						let message = this.title_valid_message;
-						message.push('Не более 11 символов!')
-
 						this.isTitle =  true
-						this.title_valid_message = message
+						this.title_valid_message.push('Не более 11 символов!')
 					}
 				} else {
 					if (!this.price_old) {
-						let message = this.price_valid_message;
-						message.push('Заполните обезательное поле!')
-
 						this.isPrice = true
-						this.price_valid_message = message
+						this.price_valid_message.push('Заполните обезательное поле!')
 					} else if (this.price_old.toString().length > 11) {
-						let message = this.title_valid_message;
-						message.push('Не более 11 символов!')
-
 						this.isTitle =  true
-						this.title_valid_message = message
+						this.title_valid_message.push('Не более 11 символов!')
 					}
 				}
 				if (this.tags_values.length === 0) {
-					let message = this.tag_valid_message;
-					message.push('Выберите тег!')
-
 					this.isTag =  true
-					this.tag_valid_message = message
+					this.tag_valid_message.push('Выберите тег!')
 				}
 				if (!this.isTitle && !this.isCategory && !this.isSpecification && !this.isPrice && !this.isTag) {
 					this.updateTovar()
@@ -1006,6 +1000,7 @@
 			}
 		},
 		components: {
+			'preloader': Preloader,
 			'quill-editor': QuillEditor,
 			'multiselect': Multiselect,
 			'categories-popup': CategoriesPopup

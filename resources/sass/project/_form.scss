@@ -654,7 +654,7 @@
 
 			// .mrb-admin-form__button._loading
 			&._loading {
-				background-image: url("../img/loading.gif");
+				background-image: url("/public/storage/project/loading.gif");
 				background-size: rem(22);
 				background-color: #4f6146;
 			}
@@ -969,21 +969,21 @@
 	}
 }
 
-.mrb-admin-form__firstblock {
-	display: block;
-}
+// .mrb-admin-form__firstblock {
+// 	display: block;
+// }
 
-.mrb-admin-form__twoblock {
-	display: none;
-}
+// .mrb-admin-form__twoblock {
+// 	display: none;
+// }
 
-#twoblock:checked~.mrb-admin-form__firstblock {
-	display: none;
-}
+// #twoblock:checked~.mrb-admin-form__firstblock {
+// 	display: none;
+// }
 
-#twoblock:checked~.mrb-admin-form__twoblock {
-	display: block;
-}
+// #twoblock:checked~.mrb-admin-form__twoblock {
+// 	display: block;
+// }
 
 
 /* =============================================  MRB-ADMIN  --End--  ============================================= */

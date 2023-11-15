@@ -117,7 +117,6 @@ export default {
 		return {
 			isDelete: false,
 
-			map: '',
 			isMap: false,
 			map_valid_message: [],
 
@@ -138,7 +137,7 @@ export default {
 	},
 	methods: {
 		updateAdress() {
-			API.patch(`/api/admin/app/adress`, {
+			API.patch(`/api/admin/app/adresses`, {
 				id: this.adress.id,
 				map: this.adress.map,
 				title: this.adress.title,
@@ -179,7 +178,6 @@ export default {
 
 			this.isAdressHref = false;
 			this.adress_href_valid_message = [];
-
 			if (this.adress.map.length === 0) {
 				let message = this.map_valid_message;
 				message.push('Введите iframe!');
@@ -224,7 +222,7 @@ export default {
 
 				if (indexToRemove !== -1) {
 					this.$parent.adresses.splice(indexToRemove, 1);
-					API.delete(`/api/admin/app/adress/${id}`)
+					API.delete(`/api/admin/app/adresses/${id}`)
 				}
 
 				this.isDelete = false;

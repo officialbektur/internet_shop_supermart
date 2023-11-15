@@ -8,6 +8,8 @@ const state = {
 	specifications: [],
 	specification: [],
 	specificationTitle: '',
+
+	isSpecifications: true,
 }
 
 const getters = {
@@ -16,11 +18,14 @@ const getters = {
 	specifications: (state) => state.specifications,
 	specification: (state) => state.specification,
 	specificationTitle: (state) => state.specificationTitle,
+
+	isSpecifications: (state) => state.isSpecifications,
 }
 
 
 const actions = {
 	zeroingSpecification({ commit, getters, dispatch }) {
+		commit("setIsSpecifications", true)
 		commit('setTable', 1)
 		commit('setName', '')
 		commit('setIsName', false)
@@ -32,7 +37,7 @@ const actions = {
 		commit('setLoading', false)
 		commit('setResult', false)
 		commit('setIsErrorResult', false)
-		commit('setResulMassage', '')
+		commit('setResultMessage', '')
 		commit('setSpecifications', [])
 		commit('setSpecification', [])
 		commit('setSpecificationTitle', '')
@@ -41,9 +46,15 @@ const actions = {
 		try {
 			let response = await axios.get('/api/specifications');
 			if (response && response.data && response.data.length > 0) {
+				commit("setLazyLoading", false)
 				commit("setSpecifications", response.data)
+			} else {
+				commit("setLazyLoading", false)
+				commit("setIsSpecifications", false)
 			}
 		} catch (error) {
+			commit("setLazyLoading", false)
+			commit("setIsSpecifications", false)
 		}
 	},
 	async getSpecificationsChildrens({ commit, getters, dispatch }) {
@@ -51,9 +62,13 @@ const actions = {
 			let response = await API.get('/api/admin/specifications/childrens');
 			if (response && response.data && response.data.length > 0) {
 				commit("setSpecifications", response.data)
+			} else {
+				commit("setIsSpecifications", false)
 			}
 		} catch (error) {
+			commit("setIsSpecifications", false)
 		}
+		dispatch("preloaderСategorySpecification")
 	},
 	updateSpecification({ commit, getters, dispatch }) {
 		API.patch('/api/admin/specifications', {id: getters.specification[getters.specification.length - 1].id, name: getters.name.trim(), parent_id: getters.parent_id})
@@ -305,6 +320,10 @@ const mutations = {
 	},
 	setSpecificationTitle(state, specificationTitle) {
 		state.specificationTitle = specificationTitle
+	},
+
+	setIsSpecifications(state, isSpecifications) {
+		state.isSpecifications = isSpecifications
 	},
 }
 

@@ -2,12 +2,16 @@ import axios from 'axios';
 import lazyMedia from "./../../files/scroll/lazyload.js";
 const state = {
 	app: null,
-	accessToken: null
+	accessToken: null,
+
+	lazyLoading: true,
 }
 
 const getters = {
 	app: (state) => state.app,
 	accessToken: (state) => state.accessToken,
+
+	lazyLoading: (state) => state.lazyLoading,
 }
 
 
@@ -35,6 +39,10 @@ const mutations = {
 	},
 	setAccessToken(state, accessToken) {
 		state.accessToken = accessToken
+	},
+
+	setLazyLoading(state, lazyLoading) {
+		state.lazyLoading = lazyLoading
 	},
 }
 

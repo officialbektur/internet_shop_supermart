@@ -3,12 +3,16 @@ import axios from 'axios';
 import API from '@/admin/api';
 
 const state = {
+	isDeleteSearchHint: false,
+
 	searchhints: [],
 	searchhint: [],
 	searchhintTitle: '',
 }
 
 const getters = {
+	isDeleteSearchHint: (state) => state.isDeleteSearchHint,
+
 	searchhints: (state) => state.searchhints,
 	searchhint: (state) => state.searchhint,
 	searchhintTitle: (state) => state.searchhintTitle,
@@ -28,13 +32,13 @@ const actions = {
 		commit('setLoading', false)
 		commit('setResult', false)
 		commit('setIsErrorResult', false)
-		commit('setResulMassage', '')
+		commit('setResultMessage', '')
 		commit('setSearchhint', [])
 		commit('setSearchhintTitle', '')
 	},
 	async getSearchHints({ commit, getters, dispatch }) {
 		try {
-			let response = await axios.get('/api/searchhints');
+			let response = await API.get('/api/admin/searchhints');
 			if (response && response.data && response.data.length > 0) {
 				commit("setSearchhints", response.data)
 			}
@@ -180,12 +184,12 @@ const actions = {
 		commit("setParentId", id)
 		let title = [];
 		for (let i = 0; i < 6; i++) {
-			const category = currentElement.hasAttribute('data-category-link');
-			const hasDataMenu = currentElement.hasAttribute('data-category-menu');
-			const hasDataSubmenu = currentElement.hasAttribute('data-category-submenu');
+			const SearchHint = currentElement.hasAttribute('data-SearchHint-link');
+			const hasDataMenu = currentElement.hasAttribute('data-SearchHint-menu');
+			const hasDataSubmenu = currentElement.hasAttribute('data-SearchHint-submenu');
 
-			if (category) {
-				currentElement.classList.add('_activeCategory')
+			if (SearchHint) {
+				currentElement.classList.add('_activeSearchHint')
 
 				title.push(currentElement.innerText.trim());
 
@@ -193,9 +197,9 @@ const actions = {
 			}
 
 			if (hasDataSubmenu) {
-				currentElement.querySelector("[data-category-button]").classList.add('_activeCategory')
+				currentElement.querySelector("[data-SearchHint-button]").classList.add('_activeSearchHint')
 
-				title.push(currentElement.querySelector("[data-category-button]").innerText.trim());
+				title.push(currentElement.querySelector("[data-SearchHint-button]").innerText.trim());
 
 				i = 0
 			}
@@ -210,9 +214,7 @@ const actions = {
 
 		commit("setSearchhintTitle", titleString)
 	},
-	async deleteSearchHint({ commit, getters, dispatch }, id) {
-		commit("setIsReadOnly", true)
-		commit("setLoading", true)
+	async destroySearchHint({ commit, getters, dispatch }, id) {
 		try {
 			let response = await API.delete('/api/admin/searchhints/' + id);
 			if (response && response.data && response.data.message) {
@@ -243,10 +245,27 @@ const actions = {
 				});
 			}
 		}
-	}
+	},
+	deleteSearchHint({ commit, getters, dispatch }, id) {
+		if (!getters.isDeleteSearchHint) {
+			commit("setIsDeleteSearchHint", true)
+			setTimeout(() => {
+				commit("setIsDeleteSearchHint", false)
+			}, 2600);
+		} else {
+			commit("setIsReadOnly", true)
+			commit("setLoading", true)
+			dispatch("destroySearchHint", id)
+			commit("setIsDeleteSearchHint", false)
+		}
+	},
 }
 
 const mutations = {
+	setIsDeleteSearchHint(state, isDeleteSearchHint) {
+		state.isDeleteSearchHint = isDeleteSearchHint
+	},
+
 	setSearchhint(state, searchhint) {
 		state.searchhint = searchhint
 	},

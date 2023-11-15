@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
 
-use App\Models\Project\About\Adress;
+use App\Models\Project\App\Adress;
 
 class DestroyController extends Controller
 {

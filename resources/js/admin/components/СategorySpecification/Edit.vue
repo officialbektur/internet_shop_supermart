@@ -1,9 +1,19 @@
 <template>
 	<div class="block">
 		<div class="block__title">Изменить связь с категорием</div>
-		<ul class="block__content">
+		<ul v-if="isСategorySpecifications" class="block__content">
 			<categories v-if="categories.length > 0" v-for="category in categories" :category="category" :key="category"></categories>
+			<div class="more__loading more-loading" :class="{ '_show': lazyLoading && isСategorySpecifications }">
+				<div class="more-loading__content">
+					<div class="more-loading__icon">
+						<img src="/storage/project/loading.gif" alt="loading">
+					</div>
+				</div>
+			</div>
 		</ul>
+		<div v-else class="block__title text-center">
+			<span class="_error">Нету данных!</span>
+		</div>
 	</div>
 </template>
 
@@ -18,6 +28,7 @@
 			}
 		},
 		mounted() {
+			this.$store.commit("setLazyLoading", true)
 			this.$store.dispatch("zeroingCategory")
 			this.$store.dispatch("getCategories")
 			if (!this.clickListenerAdded) {
@@ -58,6 +69,12 @@
 		computed: {
 			categories() {
 				return this.$store.getters.categories
+			},
+			lazyLoading() {
+				return this.$store.getters.lazyLoading
+			},
+			isСategorySpecifications() {
+				return this.$store.getters.isСategorySpecifications
 			}
 		},
 		components: {

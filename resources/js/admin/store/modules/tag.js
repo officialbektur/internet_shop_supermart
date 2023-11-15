@@ -8,6 +8,8 @@ const state = {
 	tags: [],
 	tag: [],
 	tagTitle: '',
+
+	isTags: true,
 }
 
 const getters = {
@@ -16,6 +18,8 @@ const getters = {
 	tags: (state) => state.tags,
 	tag: (state) => state.tag,
 	tagTitle: (state) => state.tagTitle,
+
+	isTags: (state) => state.isTags,
 }
 
 
@@ -32,17 +36,23 @@ const actions = {
 		commit('setLoading', false)
 		commit('setResult', false)
 		commit('setIsErrorResult', false)
-		commit('setResulMassage', '')
+		commit('setResultMessage', '')
 		commit('setTag', [])
 		commit('setTagTitle', '')
 	},
 	async getTags({ commit, getters, dispatch }) {
 		try {
-			let response = await axios.get('/api/tags');
+		let response = await API.get('/api/admin/tags');
 			if (response && response.data && response.data.length > 0) {
+				commit("setLazyLoading", false)
 				commit("setTags", response.data)
+			} else {
+				commit("setLazyLoading", false)
+				commit("setIsTags", false)
 			}
 		} catch (error) {
+			commit("setLazyLoading", false)
+			commit("setIsTags", false)
 		}
 	},
 	updateTag({ commit, getters, dispatch }) {
@@ -219,11 +229,10 @@ const actions = {
 					errorStatus: true,
 				});
 				setTimeout(() => {
-					router.push({ name: 'tags.edit'});
+					router.push({ name: 'tags.index'});
 				}, 1400);
 			}
 		} catch (error) {
-			console.log(error);
 			if (error.response && error.response.data && error.response.data.error) {
 				dispatch("finishResult", {
 					message: error.response.data.error,
@@ -270,6 +279,10 @@ const mutations = {
 	},
 	setTagTitle(state, tagTitle) {
 		state.tagTitle = tagTitle
+	},
+
+	setIsTags(state, isTags) {
+		state.isTags = isTags
 	},
 }
 

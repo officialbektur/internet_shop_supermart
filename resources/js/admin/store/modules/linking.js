@@ -3,6 +3,8 @@ import axios from 'axios';
 import API from '@/admin/api';
 
 const state = {
+	isPreloaderСategorySpecification: false,
+
 	linkingCategory: [],
 
 	linkingCategoryIds: null,
@@ -11,9 +13,13 @@ const state = {
 	linkingSpecificationIds: [],
 	isLinkingSpecificationIds: false,
 	linkingSpecificationsIdValidMessage: [],
+
+	isСategorySpecifications: true,
 }
 
 const getters = {
+	isPreloaderСategorySpecification: (state) => state.isPreloaderСategorySpecification,
+
 	linkingCategory: (state) => state.linkingCategory,
 
 	linkingCategoryIds: (state) => state.linkingCategoryIds,
@@ -22,11 +28,19 @@ const getters = {
 	linkingSpecificationIds: (state) => state.linkingSpecificationIds,
 	isLinkingSpecificationIds: (state) => state.isLinkingSpecificationIds,
 	linkingSpecificationsIdValidMessage: (state) => state.linkingSpecificationsIdValidMessage,
+
+	isСategorySpecifications: (state) => state.isСategorySpecifications,
 }
 
 
 const actions = {
+	preloaderСategorySpecification({ commit, getters, dispatch }) {
+		document.documentElement.classList.remove('lock');
+		commit('setIsPreloaderСategorySpecification', true)
+	},
 	zeroingLinking({ commit, getters, dispatch }) {
+		commit('setIsPreloaderСategorySpecification', false)
+
 		commit('setTable', 1)
 
 		commit('setCategoryTitle', '')
@@ -45,7 +59,7 @@ const actions = {
 		commit('setLoading', false)
 		commit('setResult', false)
 		commit('setIsErrorResult', false)
-		commit('setResulMassage', '')
+		commit('setResultMessage', '')
 	},
 	sendLinkingStore({ commit, getters, dispatch }) {
 		API.post('/api/admin/category_specifications', {category_id: getters.linkingCategoryIds, specification_ids: getters.linkingSpecificationIds})
@@ -137,6 +151,10 @@ const actions = {
 }
 
 const mutations = {
+	setIsPreloaderСategorySpecification(state, isPreloaderСategorySpecification) {
+		state.isPreloaderСategorySpecification = isPreloaderСategorySpecification
+	},
+
 	setLinkingCategory(state, linkingCategory) {
 		state.linkingCategory = linkingCategory
 	},
@@ -155,6 +173,10 @@ const mutations = {
 	},
 	setLinkingSpecificationsIdValidMessage(state, linkingSpecificationsIdValidMessage) {
 		state.linkingSpecificationsIdValidMessage = linkingSpecificationsIdValidMessage
+	},
+
+	setIsСategorySpecifications(state, isСategorySpecifications) {
+		state.isСategorySpecifications = isСategorySpecifications
 	},
 }
 

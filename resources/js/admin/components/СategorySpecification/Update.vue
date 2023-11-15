@@ -1,7 +1,8 @@
 <template>
+	<preloader :class="{ '_hidde': isPreloaderСategorySpecification }"></preloader>
 	<div class="block">
 		<div class="block__title">Изменить связать характеристики с категорией</div>
-		<form method="POST" class="block__content block__form block-form">
+		<form v-if="isSpecifications" method="POST" class="block__content block__form block-form">
 			<div class="block-form__items">
 				<div
 					class="block-form__item"
@@ -36,20 +37,42 @@
 				</div>
 			</div>
 		</form>
+		<div v-else class="block__title text-center">
+			<span class="_error">Нету данных!</span>
+		</div>
 	</div>
 </template>
 
 <script>
-	import * as flsFunctions from "@/admin/files/functions.js";
-	import Specification from "./includes/Specifications/Specifications.vue";
 	import API from '@/admin/api';
+
+	import * as flsFunctions from "@/admin/files/functions.js";
+
+	import Preloader from './../includes/PreloaderComponent.vue';
+
+	import Specification from "./includes/Specifications/Specifications.vue";
+
 	export default {
 		name: 'Update',
+		beforeCreate() {
+			document.documentElement.classList.add('lock');
+		},
 		data() {
 			return {
 				ids: [],
 				array_specifications: [],
 				clickListenerAdded: false,
+			}
+		},
+		computed: {
+			specifications() {
+				return this.$store.getters.specifications
+			},
+			isSpecifications() {
+				return this.$store.getters.isSpecifications
+			},
+			isPreloaderСategorySpecification() {
+				return this.$store.getters.isPreloaderСategorySpecification
 			}
 		},
 		mounted() {
@@ -89,9 +112,9 @@
 					parent.classList.toggle('_active');
 				}
 			},
-			getSpecification() {
-				API.get('/api/admin/category_specifications/' + this.$route.params.id)
-				.then( response => {
+			async getSpecification() {
+				try {
+					let response = await API.get('/api/admin/category_specifications/' + this.$route.params.id);
 					if (response && response.data && response.data.length > 0) {
 						this.arrayIds(response.data);
 						this.arraySpecifications(response.data);
@@ -99,10 +122,9 @@
 						this.$store.commit("setLinkingSpecificationsIds", this.array_specifications);
 					}
 					this.$store.dispatch("getSpecificationsChildrens")
-				})
-				.catch( error => {
+				} catch (error) {
 					this.$store.dispatch("getSpecificationsChildrens")
-				});
+				}
 			},
 			arrayIds(data) {
 				data.forEach(element => {
@@ -123,12 +145,8 @@
 				});
 			}
 		},
-		computed: {
-			specifications() {
-				return this.$store.getters.specifications
-			}
-		},
 		components: {
+			'preloader': Preloader,
 			'specifications': Specification
 		}
 	}

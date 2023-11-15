@@ -1,10 +1,22 @@
 <template>
+	<div
+		class="preloader"
+		:class="{ '_hidde': isPreloader }">
+		<div class="preloader__content">
+			<div class="preloader__downloads">
+				<div class="preloader__downloads_icon preloader__downloads_icon-first"></div>
+				<div class="preloader__downloads_icon preloader__downloads_icon-second"></div>
+				<div class="preloader__downloads_icon preloader__downloads_icon-third"></div>
+			</div>
+		</div>
+	</div>
 	<div class="block">
 		<div class="block__header df">
 			<div class="block__title">
 				Редактирование категорий:
 			</div>
 			<button
+				v-if="isCategory"
 				:disabled="$store.getters.isReadOnly"
 				@click.prevent="$store.dispatch('deleteCategory', $route.params.id)"
 				type="button"
@@ -16,7 +28,7 @@
 				<div class="mrb-button-delete__agreement">?</div>
 			</button>
 		</div>
-		<form method="POST" class="block__content block__form block-form">
+		<form v-if="isCategory" method="POST" class="block__content block__form block-form">
 			<div class="block-form__items">
 				<div
 					v-if="$store.getters.table == 1"
@@ -85,7 +97,7 @@
 								'_error': $store.getters.isErrorResult
 							}">
 						<span class="block-form-submit__title">Добавить</span>
-						<span class="block-form-submit__result">{{ $store.getters.resulMassage }}</span>
+						<span class="block-form-submit__result">{{ $store.getters.resultMessage }}</span>
 					</button>
 				</div>
 				<div
@@ -101,15 +113,25 @@
 				</div>
 			</div>
 		</form>
+		<div v-else class="block__title text-center">
+			<span class="_error">Нету данных!</span>
+		</div>
 	</div>
 </template>
 
 <script>
+	import Preloader from './../includes/PreloaderComponent.vue';
+
 	import CategoriesPopup from './../Popup/CategoryPopup.vue';
     export default {
 		name: 'Create',
+		beforeCreate() {
+			document.documentElement.classList.add('lock');
+		},
 		data() {
 			return {
+				isPreloader: false,
+				isCategory: true,
 			}
 		},
 		mounted() {
@@ -117,6 +139,10 @@
 			this.getCategory()
 		},
 		methods: {
+			preloader() {
+				document.documentElement.classList.remove('lock');
+				this.isPreloader = true;
+			},
 			async getCategory() {
 				try {
 					let response = await axios.get('/api/categories/' + this.$route.params.id + '/name');
@@ -138,16 +164,18 @@
 							this.$store.commit("setParentId", response.data[response.data.length - 2].id)
 						}
 					} else {
-						this.$router.push({ name: 'categories.edit'});
+						this.isCategory = false;
 					}
 				} catch (error) {
-					this.$router.push({ name: 'categories.edit'});
+					this.isCategory = false;
 				}
+				this.preloader()
 			},
 		},
 		computed: {
 		},
 		components: {
+			'preloader': Preloader,
 			'categories-popup': CategoriesPopup
 		}
     }

@@ -13,7 +13,7 @@ class DestroyController extends Controller
 	public function __invoke($category)
 	{
 		try {
-			$result = Category::find($category);
+			$result = Category::withTrashed()->where('id', $category)->first();
 
 			if (!isset($result)) {
 				DB::rollBack();
@@ -30,12 +30,21 @@ class DestroyController extends Controller
 				return response()->json(['error' => 'Нельзя удалить категорию, пока у неё есть связанные характеристики!'], 400);
 			}
 
-			$result->delete();
+			if (is_null($result->deleted_at)) {
+				$result->delete();
+			} else {
+				$result->restore();
+			}
 
 			DB::commit();
 
+			$status = is_null($result->deleted_at) ? 1 : 0;
+			$message = is_null($result->deleted_at) ?
+						'Категория успешно востановленно!' :
+						'Категория успешно удалена!';
 			return response()->json([
-				'message' => 'Категория успешно удалена!'
+				'status' => $status,
+				'message' => $message
 			], 200);
 		} catch (QueryException $exception) {
 			DB::rollBack();

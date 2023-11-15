@@ -1,6 +1,6 @@
 <template>
 	<div class="block-form__item">
-		<div class="block__title">Создать новый адресс</div>
+		<div class="block__title">Создать новый адрес</div>
 		<form method="post" class="mrb-admin__form mrb-admin-form">
 			<div class="mrb-admin-form__item">
 				<label
@@ -29,7 +29,7 @@
 					for="title"
 					class="mrb-admin-form__label"
 					:class="{ '_error': isTitle }">
-					Адресс*:
+					Адрес*:
 					<template v-if="isTitle">
 						<span v-for="message in title_valid_message" :key="message">
 							{{ message + ' ' }}
@@ -42,7 +42,7 @@
 						id="title"
 						name="title"
 						:readonly="isReadOnly"
-						placeholder="Адресс..."
+						placeholder="Адрес..."
 					></textarea>
 				</div>
 			</div>
@@ -51,7 +51,7 @@
 					for="adress_href"
 					class="mrb-admin-form__label"
 					:class="{ '_error': isAdressHref }">
-					Ссылка на адресс*:
+					Ссылка на адрес*:
 					<template v-if="isAdressHref">
 						<span v-for="message in adress_href_valid_message" :key="message">
 							{{ message + ' ' }}
@@ -64,7 +64,7 @@
 						id="adress_href"
 						name="adress_href"
 						:readonly="isReadOnly"
-						placeholder="Ссылка на адресс..."
+						placeholder="Ссылка на адрес..."
 					></textarea>
 				</div>
 			</div>
@@ -81,7 +81,7 @@
 					}">
 
 					<span class="block-form-submit__title">Добавить</span>
-					<span class="block-form-submit__result">{{ resulMassage }}</span>
+					<span class="block-form-submit__result">{{ resultMessage }}</span>
 				</button>
 			</div>
 		</form>
@@ -112,7 +112,7 @@
 				result: false,
 				isErrorResult: false,
 
-				resulMassage: '',
+				resultMessage: '',
 			};
 		},
 		mounted() {
@@ -126,13 +126,18 @@
 					title: this.title,
 					href: this.adress_href
 				};
-				API.post(`/api/admin/app/adress`, data)
+				API.post(`/api/admin/app/adresses`, data)
 				.then( response => {
 					if (response && response.data) {
-						if (response.data.message) {
+						if (response.data.message && response.data.id) {
 							this.finishResult(response.data.message);
 							let getAdresses = this.$parent.adresses;
-							getAdresses.push(data)
+							getAdresses.push({
+								id: response.data.id,
+								map: this.map,
+								title: this.title,
+								href: this.adress_href
+							})
 							this.$parent.adresses = getAdresses;
 
 							this.map = ''
@@ -180,25 +185,16 @@
 				}
 
 				if (this.title.length === 0) {
-					let message = this.title_valid_message;
-					message.push('Введите название вашего местоположение!')
-
 					this.isTitle =  true
-					this.title_valid_message = message
+					this.title_valid_message.push('Введите название вашего местоположение!')
 				} else if (this.title.length > 255) {
-					let message = this.title_valid_message;
-					message.push('Название вашего местоположение должно мождержать менее 255 символов!')
-
 					this.isTitle =  true
-					this.title_valid_message = message
+					this.title_valid_message.push('Название вашего местоположение должно cодержать менее 255 символов!')
 				}
 
 				if (this.adress_href.length === 0) {
-					let message = this.adress_href_valid_message;
-					message.push('Введите ссылку на ваше местоположение!')
-
 					this.isAdressHref =  true
-					this.adress_href_valid_message = message
+					this.adress_href_valid_message.push('Введите ссылку на ваше местоположение!')
 				}
 
 				if (!this.isMap && !this.isTitle && !this.isAdressHref) {
@@ -209,7 +205,7 @@
 			},
 			finishResult(message, errorStatus = false) {
 				setTimeout(() => {
-					this.resulMassage = message
+					this.resultMessage = message
 					this.result = true
 					this.loading = false
 

@@ -18,9 +18,9 @@ class StoreController extends Controller
 
 			$data = $request->validated();
 
-			$searchhint = SearchHint::where('name', $data['name'])->first();
+			$searchhint = SearchHint::where('name', $data['name'])->get();
 
-			if (is_null($searchhint)) {
+			if (!isset($searchhint)) {
 				DB::rollBack();
 				return response()->json(['error' => 'Такой рекомендация уже сушествует!'], 400);
 			}

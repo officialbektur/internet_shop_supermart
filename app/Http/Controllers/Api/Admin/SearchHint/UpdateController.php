@@ -23,9 +23,9 @@ class UpdateController extends Controller
 
 			$searchhint = SearchHint::find($id);
 
-			if (!is_null($searchhint)) {
+			if (!isset($searchhint)) {
 				DB::rollBack();
-				return response()->json(['error' => 'Такой рекомендаций не сушествует!'], 404);
+				return response()->json(['error' => 'Такой рекомендация уже сушествует!'], 400);
 			}
 
 			$searchhint->update($data);

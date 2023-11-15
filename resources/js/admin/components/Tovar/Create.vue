@@ -334,7 +334,7 @@
 						}">
 
 						<span class="block-form-submit__title">Изменить</span>
-						<span class="block-form-submit__result">{{ $store.getters.resulMassage }}</span>
+						<span class="block-form-submit__result">{{ $store.getters.resultMessage }}</span>
 					</button>
 				</div>
 			</form>
@@ -540,68 +540,42 @@
 				this.tag_valid_message = []
 
 				if (this.title.toString().length < 3) {
-					let message = this.title_valid_message;
-					message.push('Не менее 3 символов!')
-
 					this.isTitle =  true
-					this.title_valid_message = message
+					this.title_valid_message.push('Не менее 3 символов!')
 				} else if (this.title.toString().length > 250) {
-					let message = this.title_valid_message;
-					message.push('Не более 250 символов!')
-
 					this.isTitle =  true
-					this.title_valid_message = message
+					this.title_valid_message.push('Не более 250 символов!')
 				}
 				if (!this.$store.getters.parent_id) {
-					let message = this.category_valid_message;
-					message.push('Выберите категорию!')
-
 					this.isCategory =  true
-					this.category_valid_message = message
+					this.category_valid_message.push('Выберите категорию!')
 				}
 				if (this.validSpecificationsValues()) {
-					let message = this.specification_valid_message;
-					message.push('Выберите дополнительные данные!')
-
 					this.isSpecification =  true
-					this.specification_valid_message = message
+					this.specification_valid_message.push('Выберите дополнительные данные!')
 				}
 				if (!this.isPriceOld) {
 					if (!this.price_now) {
-						let message = this.price_valid_message;
-						message.push('Заполните обезательное поле!')
-
 						this.isPrice = true
-						this.price_valid_message = message
+						this.price_valid_message.push('Заполните обезательное поле!')
 					} else if (this.price_now.toString().length > 11) {
-						let message = this.price_valid_message;
-						message.push('Не более 11 символов!')
-
 						this.isTitle =  true
-						this.price_valid_message = message
+						this.title_valid_message.push('Не более 11 символов!')
 					}
 				} else {
 					if (!this.price_old) {
-						let message = this.price_valid_message;
-						message.push('Заполните обезательное поле!')
-
 						this.isPrice = true
-						this.price_valid_message = message
+						this.price_valid_message.push('Заполните обезательное поле!')
 					} else if (this.price_old.toString().length > 11) {
-						let message = this.price_valid_message;
-						message.push('Не более 11 символов!')
-
-						this.isPrice =  true
-						this.price_valid_message = message
+						this.isTitle =  true
+						this.title_valid_message.push('Не более 11 символов!')
 					}
 				}
 				if (this.tags_values.length === 0) {
-					let message = this.tag_valid_message;
-					message.push('Выберите тег!')
-
 					this.isTag =  true
-					this.tag_valid_message = message
+					this.tag_valid_message.push('Выберите тег!')
 				}
+
 				if (!this.isTitle && !this.isCategory && !this.isSpecification && !this.isPrice && !this.isTag) {
 					this.storeTovar()
 				} else {

@@ -13,19 +13,28 @@ class DestroyController extends Controller
 	public function __invoke($id)
 	{
 		try {
-			$result = SearchHint::find($id);
+			$result = SearchHint::withTrashed()->where('id', $id)->first();
 
-			if (!is_null($result)) {
+			if (!isset($result)) {
 				DB::rollBack();
-				return response()->json(['error' => 'Такого рекомендации не существует!'], 404);
+				return response()->json(['error' => 'Такой рекомендации не существует!'], 404);
 			}
 
-			$result->delete();
+			if (is_null($result->deleted_at)) {
+				$result->delete();
+			} else {
+				$result->restore();
+			}
 
 			DB::commit();
 
+			$status = is_null($result->deleted_at) ? 1 : 0;
+			$message = is_null($result->deleted_at) ?
+						'Рекомендация успешно востановленно!' :
+						'Рекомендация успешно удалена!';
 			return response()->json([
-				'message' => 'Рекомендация успешно удалена!'
+				'status' => $status,
+				'message' => $message
 			], 200);
 		} catch (QueryException $exception) {
 			DB::rollBack();

@@ -1,7 +1,24 @@
 <template>
+	<preloader :class="{ '_hidde': isPreloader }"></preloader>
 	<div class="block">
-		<div class="block__title">Редактирование рекомендаций в поиске: <button @click="$store.dispatch('deleteSearchHint', $store.getters.searchhint.id)" type="button" class="_error">( удалить )</button></div>
-		<form method="POST" class="block__content block__form block-form">
+		<div class="block__header df">
+			<div class="block__title">
+				Редактирование рекомендаций в поиске:
+			</div>
+			<button
+				v-if="isSearchHints"
+				:disabled="$store.getters.isReadOnly"
+				@click.prevent="$store.dispatch('deleteSearchHint', $route.params.id)"
+				type="button"
+				class="mrb-button-delete"
+				:class="{ '_active': $store.getters.isDeleteSearchHint }">
+				<span class="mrb-button-delete__icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/></svg>
+				</span>
+				<div class="mrb-button-delete__agreement">?</div>
+			</button>
+		</div>
+		<form v-if="isSearchHints" method="POST" class="block__content block__form block-form">
 			<div class="block-form__items">
 				<div
 					class="block-form__item"
@@ -42,45 +59,60 @@
 								'_error': $store.getters.isErrorResult
 							}">
 						<span class="block-form-submit__title">Добавить</span>
-						<span class="block-form-submit__result">{{ $store.getters.resulMassage }}</span>
+						<span class="block-form-submit__result">{{ $store.getters.resultMessage }}</span>
 					</button>
 				</div>
 			</div>
 		</form>
+		<div v-else class="block__title text-center">
+			<span class="_error">Нету данных!</span>
+		</div>
 	</div>
 </template>
 
 <script>
-	import API from '@/admin/api';
+	import Preloader from './../includes/PreloaderComponent.vue';
+
     export default {
 		name: 'Create',
+		beforeCreate() {
+			document.documentElement.classList.add('lock');
+		},
 		data() {
 			return {
+				isPreloader: false,
+				isSearchHints: true,
 			}
 		},
 		mounted() {
 			this.$store.dispatch("zeroingSearchHint")
 			this.$store.dispatch("getSearchHints")
-			this.getTag()
+			this.getSearchHints()
 		},
 		methods: {
-			async getTag() {
+			preloader() {
+				document.documentElement.classList.remove('lock');
+				this.isPreloader = true;
+			},
+			async getSearchHints() {
 				try {
 					let response = await axios.get('/api/searchhints/' + this.$route.params.id);
 					if (response && response.data && response.data.id && response.data.name) {
 						this.$store.commit("setSearchhint", response.data);
 						this.$store.commit("setName", response.data.name)
 					} else {
-						this.$router.push({ name: 'searchhints.edit'});
+						this.isSearchHints = false;
 					}
 				} catch (error) {
-					this.$router.push({ name: 'searchhints.edit'});
+					this.isSearchHints = false;
 				}
+				this.preloader()
 			},
 		},
 		computed: {
 		},
 		components: {
+			'preloader': Preloader,
 		}
     }
 </script>

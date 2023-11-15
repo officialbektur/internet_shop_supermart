@@ -33,7 +33,4 @@ Route::group(['namespace' => 'App\Http\Controllers\Project'], function () {
 		Route::get('/', IndexController::class)->where('page', '.*');
 		Route::get('/{page}', IndexController::class)->where('page', '.*');
 	});
-	Route::group(['namespace' => 'About'], function () {
-		Route::get('/about', IndexController::class)->name('about');
-	});
 });

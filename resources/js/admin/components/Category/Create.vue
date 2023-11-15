@@ -70,7 +70,7 @@
 								'_error': $store.getters.isErrorResult
 							}">
 						<span class="block-form-submit__title">Добавить</span>
-						<span class="block-form-submit__result">{{ $store.getters.resulMassage }}</span>
+						<span class="block-form-submit__result">{{ $store.getters.resultMessage }}</span>
 					</button>
 				</div>
 				<div

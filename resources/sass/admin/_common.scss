@@ -13,12 +13,18 @@
 	font-weight: inherit;
 	line-height: inherit;
 }
+
 .p-0 {
 	padding: rem(0) rem(0);
 }
 .m-0 {
 	margin: rem(0) rem(0);
 }
+
+.w-100 {
+	width: 100%;
+}
+
 .dff {
 	display: flex;
 	justify-content: center;
@@ -47,6 +53,20 @@
 }
 .jcsa {
 	justify-content: space-around;
+}
+
+.cg-1 {
+	column-gap: rem(16);
+}
+
+.text-center {
+	text-align: center;
+}
+.text-start {
+	text-align: start;
+}
+.text-end {
+	text-align: end;
 }
 
 .a-hover-bgc {
@@ -918,8 +938,6 @@
 	}
 	// .block__form
 	&__form {
-		max-width: toRem(440);
-		width: 100%;
 	}
 	// .block-form
 	&-form {
@@ -1045,6 +1063,162 @@
 							width: 100%;
 							height: 100%;
 						}
+					}
+				}
+			}
+		}
+		// .block-form__evaluation
+		&__evaluation {
+			width: 100%;
+			height: 100%;
+
+			padding: rem(6);
+			@include adaptiveValue("padding", 6, 4, 0, 767.98);
+
+			box-shadow: $shadow;
+			border-radius: rem(16);
+			@include adaptiveValue("border-radius", 16, 8, 0, 767.98);
+
+			user-select: none;
+
+			margin-bottom: rem(22);
+		}
+		// .block-form-evaluation
+		&-evaluation {
+			// .block-form-evaluation__content
+			&__content {
+				position: relative;
+
+				width: 100%;
+				height: 100%;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			// .block-form-evaluation__item
+			&__item {
+				padding: rem(16) rem(0);
+				@include adaptiveValue("padding-top", 16, 10, 0, 767.98);
+				@include adaptiveValue("padding-bottom", 16, 10, 0, 767.98);
+
+				width: 100%;
+				height: 100%;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				color: $greyDark;
+				font-size: toRem(22);
+				font-weight: 700;
+				line-height: math.div(24, 22);
+
+				cursor: pointer;
+				-webkit-tap-highlight-color: $clickByTouchColor0;
+				transition: all 0.6s ease 0s;
+				html._pc &:hover {
+					color: $primary;
+				}
+				&._active {
+					color: $primary;
+				}
+			}
+			// .block-form-evaluation__check
+			&__check {
+				position: absolute;
+				left: 0;
+
+				width: calc(100% / 2);
+				height: 100%;
+
+				border-radius: rem(12);
+				@include adaptiveValue("border-radius", 12, 8, 0, 767.98);
+				box-shadow: $inner-shadow;
+
+				pointer-events: none;
+				-webkit-tap-highlight-color: $clickByTouchColor0;
+				transition: left 0.5s cubic-bezier(1, 1, 1, 1);
+			}
+		}
+		// .block-form__spollers
+		&__spollers {
+			width: 100%;
+
+			padding: toRem(20) toRem(12);
+			@include adaptiveValue("padding-top", 20, 12, 0, 767.98);
+			@include adaptiveValue("padding-bottom", 20, 12, 0, 767.98);
+			@include adaptiveValue("padding-left", 12, 10, 0, 767.98);
+			@include adaptiveValue("padding-right", 12, 10, 0, 767.98);
+
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			box-shadow: $inner-shadow;
+
+			border-radius: toRem(12);
+			@include adaptiveValue("border-radius", 12, 6, 0, 767.98);
+
+			cursor: pointer;
+
+			user-select: none;
+
+			transition: all 0.6s ease 0s;
+			&:active {
+				box-shadow: $shadow;
+			}
+		}
+		// .block-form-spollers
+		&-spollers {
+			// .block-form-spollers__title
+			&__title {
+				color: $primary;
+				font-size: toRem(20);
+				@include adaptiveValue("font-size", 20, 12, 0, 767.98);
+				line-height: 1;
+				font-weight: 700;
+
+				overflow: hidden;
+				text-overflow: ellipsis;
+
+				transition: all 0.6s ease 0s;
+			}
+			// .block-form-spollers__button
+			&__button {
+				padding: toRem(3);
+				@include adaptiveValue("padding", 3, 1, 0, 767.98);
+
+				width: toRem(24);
+				height: toRem(24);
+				@include adaptiveValue("width", 28, 14, 0, 767.98);
+				@include adaptiveValue("height", 28, 14, 0, 767.98);
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				fill: $primary;
+				z-index: 1;
+				transition: all 0.3s ease 0s;
+			}
+			// .block-form-spollers-button
+			&-button {
+				// .block-form-spollers-button__icon
+				&__icon {
+					width: 100%;
+					height: 100%;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					transform: rotate(180deg);
+					transition: all 0.6s ease 0s;
+					.block-form__spollers._show & {
+						transform: rotate(0deg);
+					}
+					& svg {
+						width: 100%;
+						height: 100%;
 					}
 				}
 			}
@@ -1546,3 +1720,97 @@
 		}
 	}
 }
+
+
+
+/* ===================================  Preloader  --Start--  =================================== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999999;
+    opacity: 1;
+    visibility: visible;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	transition: all 0.7s ease 0s;
+	&._hidde {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+/* ====================  Centering  ==================== */
+.preloader__content{
+    position: relative;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    flex-direction: column;
+}
+/* ====================  Icon downloads  ==================== */
+.preloader__downloads {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 80px;
+	height: 80px;
+	&_icon {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		animation: 1s linear infinite;
+		.preloader._hidde & {
+			animation: none;
+		}
+		&-first {
+			border-bottom: solid 3px #ff7473;
+			transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+			animation-name: preloaderDownloadIconFirst;
+		}
+		&-second {
+			border-right: solid 3px #ffc952;
+			   transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+			animation-name: preloaderDownloadIconSecond;
+		}
+		&-third {
+			border-top: solid 3px #47b8e0;
+			transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+			animation-name: preloaderDownloadIconThird;
+		}
+	}
+}
+/* ====================  preloaderDownloadIconFirst  --Start--  ==================== */
+@keyframes preloaderDownloadIconFirst {
+    0% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+	    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+}
+/* ====================  preloaderDownloadIconFirst  --End--  ==================== */
+/* ====================  preloaderDownloadIconSecond  --Start--  ==================== */
+@keyframes preloaderDownloadIconSecond {
+	0% {
+	    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+}
+/* ====================  preloaderDownloadIconSecond  --End--  ==================== */
+/* ====================  preloaderDownloadIconThird  --Start--  ==================== */
+@keyframes preloaderDownloadIconThird {
+    0% {
+		transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+		transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+}
+/* ====================  preloaderDownloadIconThird  --End--  ==================== */
+/* ===================================  Preloader  --End--  =================================== */

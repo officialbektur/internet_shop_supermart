@@ -13,7 +13,7 @@ class DestroyController extends Controller
 	public function __invoke($tag)
 	{
 		try {
-			$result = Tag::find($tag);
+			$result = Tag::withTrashed()->where('id', $tag)->first();
 
 			if (!isset($result)) {
 				DB::rollBack();
@@ -25,12 +25,21 @@ class DestroyController extends Controller
 				return response()->json(['error' => 'Нельзя удалить тег, пока у неё есть связанные товары'], 400);
 			}
 
-			$result->delete();
+			if (is_null($result->deleted_at)) {
+				$result->delete();
+			} else {
+				$result->restore();
+			}
 
 			DB::commit();
 
+			$status = is_null($result->deleted_at) ? 1 : 0;
+			$message = is_null($result->deleted_at) ?
+						'Тег успешно востановленно!' :
+						'Тег успешно удалена!';
 			return response()->json([
-				'message' => 'Тег успешно удалена!'
+				'status' => $status,
+				'message' => $message
 			], 200);
 		} catch (QueryException $exception) {
 			DB::rollBack();

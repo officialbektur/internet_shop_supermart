@@ -47,10 +47,28 @@ Route::group(['prefix' => 'admin', 'middleware' => 'api'], function () {
 			Route::group(['prefix' => 'logo', 'namespace' => 'Logo'], function ($router) {
 				Route::post('/', UpdateController::class);
 			});
-			Route::group(['prefix' => 'adress', 'namespace' => 'Adress'], function ($router) {
+			Route::group(['prefix' => 'adresses', 'namespace' => 'Adress'], function ($router) {
 				Route::post('/', StoreController::class);
 				Route::patch('/', UpdateController::class);
 				Route::delete('/{adress}', DestroyController::class);
+			});
+			Route::group(['prefix' => 'emails', 'namespace' => 'Email'], function ($router) {
+				Route::post('/', StoreController::class);
+				Route::patch('/', UpdateController::class);
+				Route::delete('/{email}', DestroyController::class);
+			});
+			Route::group(['prefix' => 'telephones', 'namespace' => 'Telephone'], function ($router) {
+				Route::post('/', StoreController::class);
+				Route::patch('/', UpdateController::class);
+				Route::delete('/{telephone}', DestroyController::class);
+			});
+			Route::group(['prefix' => 'socs', 'namespace' => 'Soc'], function ($router) {
+				Route::post('/', StoreController::class);
+				Route::patch('/', UpdateController::class);
+				Route::delete('/{soc}', DestroyController::class);
+			});
+			Route::group(['prefix' => 'plan_works', 'namespace' => 'PlanWork'], function ($router) {
+				Route::patch('/', UpdateController::class);
 			});
 		});
 		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'categories', 'namespace' => 'Category'], function () {
@@ -59,6 +77,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'api'], function () {
 			Route::delete('/{category}', DestroyController::class);
 		});
 		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'tags', 'namespace' => 'Tag'], function () {
+			Route::get('/', IndexController::class);
 			Route::post('/', StoreController::class);
 			Route::patch('/', UpdateController::class);
 			Route::delete('/{tag}', DestroyController::class);
@@ -76,6 +95,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'api'], function () {
 			Route::get('/{id}', LinkController::class);
 		});
 		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'searchhints', 'namespace' => 'SearchHint'], function ($router) {
+			Route::get('/', IndexController::class);
 			Route::post('/', StoreController::class);
 			Route::patch('/', UpdateController::class);
 			Route::delete('/{id}', DestroyController::class);
@@ -90,6 +110,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'api'], function () {
 		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'commentaries', 'namespace' => 'Commentary'], function ($router) {
 			Route::get('/', IndexController::class);
 			Route::delete('/{commentary}', DestroyController::class);
+		});
+		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'abouts', 'namespace' => 'About'], function ($router) {
+			Route::patch('/', UpdateController::class);
 		});
 	});
 });
@@ -135,7 +158,10 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api\Pr
 			Route::get('/searchhints/{id}', ShowController::class);
 		});
 	});
-	Route::group(['namespace' => 'App'], function ($router) {
-		Route::get('/app', IndexController::class);
+	Route::group(['prefix' => 'app', 'namespace' => 'App'], function ($router) {
+		Route::get('/', IndexController::class);
+	});
+	Route::group(['prefix' => 'abouts', 'namespace' => 'About'], function ($router) {
+		Route::get('/', IndexController::class);
 	});
 });

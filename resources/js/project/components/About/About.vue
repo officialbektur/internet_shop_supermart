@@ -5,7 +5,7 @@
 				О нас
 			</h2>
 			<div class="content__body mx-body">
-				Мы лутшие во всем!
+				{{ content }}
 			</div>
 		</div>
 	</section>
@@ -17,11 +17,22 @@
 		name: 'About',
 		data(){
 			return {
+				content: null
 			}
 		},
 		mounted() {
+			this.getAbout();
 		},
 		methods: {
+			async getAbout() {
+				axios.get(`/api/abouts`)
+				.then(res => {
+					if (res && res.data && res.data.content) {
+						this.content = res.data.content;
+					}
+				})
+				this.preloader();
+			},
 		},
 		updated() {
 		},

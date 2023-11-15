@@ -4,17 +4,17 @@ namespace App\Http\Controllers\Api\Project\App;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\Project\About\Adress;
-use App\Models\Project\About\Email;
-use App\Models\Project\About\Telephone;
-use App\Models\Project\About\PlanWork;
-use App\Models\Project\About\Soc;
+use App\Models\Project\App\Adress;
+use App\Models\Project\App\Email;
+use App\Models\Project\App\Telephone;
+use App\Models\Project\App\PlanWork;
+use App\Models\Project\App\Soc;
 
-use App\Http\Resources\Project\About\Adress\AdressResource;
-use App\Http\Resources\Project\About\Email\EmailResource;
-use App\Http\Resources\Project\About\Telephone\TelephoneResource;
-use App\Http\Resources\Project\About\PlanWork\PlanWorkResource;
-use App\Http\Resources\Project\About\Soc\SocResource;
+use App\Http\Resources\Project\App\Adress\AdressResource;
+use App\Http\Resources\Project\App\Email\EmailResource;
+use App\Http\Resources\Project\App\Telephone\TelephoneResource;
+use App\Http\Resources\Project\App\PlanWork\PlanWorkResource;
+use App\Http\Resources\Project\App\Soc\SocResource;
 
 class IndexController extends Controller
 {

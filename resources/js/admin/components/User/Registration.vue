@@ -118,7 +118,7 @@
 										'_error': isErrorResult
 									}">
 								<span class="block-form-submit__title">Зарегистрироваться</span>
-								<span class="block-form-submit__result">{{ resulMassage }}</span>
+								<span class="block-form-submit__result">{{ resultMessage }}</span>
 							</button>
 						</div>
 					</div>
@@ -152,7 +152,7 @@
 				result: false,
 				isErrorResult: false,
 
-				resulMassage: '',
+				resultMessage: '',
 			}
 		},
 		mounted() {
@@ -223,7 +223,7 @@
 			},
 			finishResult(message, errorStatus = false) {
 				setTimeout(() => {
-					this.resulMassage = message
+					this.resultMessage = message
 					this.result = true
 					this.loading = false;
 					if (errorStatus) {

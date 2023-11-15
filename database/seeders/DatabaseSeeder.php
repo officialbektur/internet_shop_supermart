@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
-use App\Models\Project\About\Adress;
-use App\Models\Project\About\Email;
-use App\Models\Project\About\PlanWork;
-use App\Models\Project\About\Soc;
-use App\Models\Project\About\Telephone;
+use App\Models\Project\App\Adress;
+use App\Models\Project\App\Email;
+use App\Models\Project\App\PlanWork;
+use App\Models\Project\App\Soc;
+use App\Models\Project\App\Telephone;
 use App\Models\Project\Category;
 use App\Models\Project\Tag;
 use App\Models\Project\Product;
@@ -19,6 +19,7 @@ use App\Models\Project\Media;
 use App\Models\Project\Commentary;
 use App\Models\Project\SearchHint;
 use App\Models\Project\Specification;
+use App\Models\Project\About;
 
 class DatabaseSeeder extends Seeder
 {
@@ -105,6 +106,7 @@ class DatabaseSeeder extends Seeder
 			Media::factory(100)->create();
 			SearchHint::factory(5)->create();
 			Commentary::factory(2200)->create();
+			About::factory(1)->create();
 
 			// \App\Models\User::factory()->create([
 			// 		'name' => 'Test User',
