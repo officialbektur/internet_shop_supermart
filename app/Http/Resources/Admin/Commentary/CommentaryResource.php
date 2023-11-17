@@ -10,7 +10,7 @@ use App\Models\Project\Media;
 
 use App\Http\Resources\NumberFormattingTrait;
 
-class IndexResource extends JsonResource
+class CommentaryResource extends JsonResource
 {
 	use NumberFormattingTrait;
 	/**

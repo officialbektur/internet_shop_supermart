@@ -10,11 +10,11 @@ use App\Models\Project\Tag;
 
 use App\Http\Resources\Admin\Tag\TagResource;
 
-class IndexController extends Controller
+class DeletesController extends Controller
 {
 	public function __invoke()
 	{
-		$tags = TagResource::collection(Tag::all());
+		$tags = TagResource::collection(Tag::onlyTrashed()->get());
 		return response()->json($tags);
 	}
 }

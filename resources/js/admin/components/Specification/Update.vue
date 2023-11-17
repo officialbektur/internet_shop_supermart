@@ -153,8 +153,9 @@
 					}
 				} catch (error) {
 					this.isSpecification = false;
+				} finally {
+					this.preloader()
 				}
-				this.preloader()
 			},
 		},
 		computed: {

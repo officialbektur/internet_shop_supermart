@@ -86,7 +86,6 @@
 		},
 		mounted() {
 			this.$store.dispatch("zeroingSearchHint")
-			this.$store.dispatch("getSearchHints")
 			this.getSearchHints()
 		},
 		methods: {
@@ -105,8 +104,9 @@
 					}
 				} catch (error) {
 					this.isSearchHints = false;
+				} finally {
+					this.preloader()
 				}
-				this.preloader()
 			},
 		},
 		computed: {

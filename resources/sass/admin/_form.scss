@@ -338,7 +338,16 @@
 				margin: rem(18) rem(0);
 				display: flex;
 				align-items: center;
-
+				&._sending label:after {
+					background-color: rgba(255, 255, 255, 0);
+					background-image: url("/public/storage/project/loading.gif");
+					background-size: rem(24);
+					background-position: center;
+					background-repeat: no-repeat;
+				}
+				&._sending input:checked~label:after {
+					background-color: rgba(255, 255, 255, 0);
+				}
 				// .mrb-admin-form-chekbox__input input
 				& input {
 					display: none;
@@ -351,7 +360,7 @@
 					// .mrb-admin-form-chekbox__input input:checked ~ label:after
 					&:checked~label:after {
 						margin-left: calc(100% - rem(24));
-						background: $greyLight-1;
+						background-color: $greyLight-1;
 					}
 				}
 

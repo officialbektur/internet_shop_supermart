@@ -72,23 +72,26 @@ Route::group(['prefix' => 'admin', 'middleware' => 'api'], function () {
 			});
 		});
 		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'categories', 'namespace' => 'Category'], function () {
+			Route::get('/deletes', DeletesController::class);
+			Route::post('/', StoreController::class);
+			Route::patch('/', UpdateController::class);
+			Route::delete('/{category}', DestroyController::class);
+		});
+		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'specifications', 'namespace' => 'Specification'], function () {
+			Route::get('/', IndexController::class);
+			Route::get('/deletes', DeletesController::class);
+			Route::get('/childrens', ChildrenController::class);
+			Route::get('/{id}', ShowController::class);
 			Route::post('/', StoreController::class);
 			Route::patch('/', UpdateController::class);
 			Route::delete('/{category}', DestroyController::class);
 		});
 		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'tags', 'namespace' => 'Tag'], function () {
 			Route::get('/', IndexController::class);
+			Route::get('/deletes', DeletesController::class);
 			Route::post('/', StoreController::class);
 			Route::patch('/', UpdateController::class);
 			Route::delete('/{tag}', DestroyController::class);
-		});
-		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'specifications', 'namespace' => 'Specification'], function () {
-			Route::get('/', IndexController::class);
-			Route::get('/childrens', ChildrenController::class);
-			Route::get('/{id}', ShowController::class);
-			Route::post('/', StoreController::class);
-			Route::patch('/', UpdateController::class);
-			Route::delete('/{category}', DestroyController::class);
 		});
 		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'category_specifications', 'namespace' => 'CategorySpecification'], function () {
 			Route::post('/', StoreController::class);

@@ -4,9 +4,7 @@
 			<h2 class="_title mx-body">
 				О нас
 			</h2>
-			<div class="content__body mx-body">
-				{{ content }}
-			</div>
+			<div class="content__body mx-body ql-editor" v-html="content"></div>
 		</div>
 	</section>
 </template>
@@ -25,13 +23,16 @@
 		},
 		methods: {
 			async getAbout() {
-				axios.get(`/api/abouts`)
-				.then(res => {
-					if (res && res.data && res.data.content) {
-						this.content = res.data.content;
+				try {
+					let response =  await axios.get('/api/abouts');
+					if (response && response.data && response.data.content) {
+						this.content = response.data.content;
+					} else {
+						this.content = 'Данных нет!';
 					}
-				})
-				this.preloader();
+				} catch (error) {
+					this.content = 'Данных нет!';
+				}
 			},
 		},
 		updated() {

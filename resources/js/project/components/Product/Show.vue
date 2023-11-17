@@ -21,12 +21,6 @@
 							<div ref="images" data-gallery class="swiper-wrapper">
 								<a v-for="(image, index) in product.media" :key="index" :data-src="image.src_max" class="swiper-slide moreinfo-tovar-info-image-sliderbig__slide moreinfo-tovar-info-image-sliderbig-slide">
 									<span class="moreinfo-tovar-info-image-sliderbig-slide__image">
-										<!-- <zoom-on-hover
-											:src="image.src_max"
-											loading="lazy"
-											:zoomFactor="1.5"
-											:alt="`${product.title}_${product.id}`"
-											></zoom-on-hover> -->
 										<img :src="image.src_max" :alt="`${product.title}_${product.id}`" />
 									</span>
 									<span class="moreinfo-tovar-info-image-sliderbig-slide__background">

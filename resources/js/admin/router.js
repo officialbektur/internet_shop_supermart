@@ -103,6 +103,11 @@ const router = createRouter({
 			name: 'categories.edit'
 		},
 		{
+			path: '/admin/categories/deletes',
+			component: () => import('./components/Category/Deletes.vue'),
+			name: 'categories.delete'
+		},
+		{
 			path: '/admin/categories/:id/update',
 			component: () => import('./components/Category/Update.vue'),
 			name: 'categories.update'
@@ -124,6 +129,11 @@ const router = createRouter({
 			path: '/admin/specifications/edit',
 			component: () => import('./components/Specification/Edit.vue'),
 			name: 'specifications.edit'
+		},
+		{
+			path: '/admin/specifications/deletes',
+			component: () => import('./components/Specification/Deletes.vue'),
+			name: 'specifications.delete'
 		},
 		{
 			path: '/admin/specifications/:id/update',
@@ -180,6 +190,11 @@ const router = createRouter({
 			path: '/admin/tags/:id/update',
 			component: () => import('./components/Tag/Update.vue'),
 			name: 'tags.update'
+		},
+		{
+			path: '/admin/tags/deletes',
+			component: () => import('./components/Tag/Deletes.vue'),
+			name: 'tags.delete'
 		},
 		{
 			path: '/admin/tags/create',

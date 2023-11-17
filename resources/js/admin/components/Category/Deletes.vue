@@ -1,6 +1,6 @@
 <template>
 	<div class="block">
-		<div class="block__title">Рекомендаций в поиске</div>
+		<div class="block__title">Данные</div>
 		<ul class="block__content">
 			<table class="block__table block-table">
 				<thead class="block-table__header block-table-header">
@@ -14,23 +14,20 @@
 						<th class="block-table-header__list block-table-header__delete">
 							Статус
 						</th>
-						<th class="block-table-header__list block-table-header__edit">
-							Изменить
-						</th>
 					</tr>
 				</thead>
 				<tbody class="block-table__body">
 					<tr
-						v-if="notSearchhints"
+						v-if="notDeleteLists"
 						class="block-table__tr">
-						<td colspan="4" class="block-table__notd">Нету товаров!</td>
+						<td colspan="4" class="block-table__notd">Нету данных!</td>
 					</tr>
-					<searchhint-component
-						v-if="searchhints.length > 0 && !notSearchhints"
-						v-for="(searchhint, index) in searchhints"
+					<deleteList-component
+						v-if="deleteLists.length > 0 && !notDeleteLists"
+						v-for="(deleteList, index) in deleteLists"
 						:index="index"
-						:searchhint="searchhint"
-						:key="index"></searchhint-component>
+						:deleteList="deleteList"
+						:key="index"></deleteList-component>
 				</tbody>
 			</table>
 		</ul>
@@ -40,32 +37,29 @@
 <script>
 	import API from '@/admin/api';
 
-	import * as flsFunctions from "@/admin/files/functions.js";
-
-	import SearchhintComponent from "./includes/Index/IndexComponent.vue";
+	import DeletesComponent from "../Category/includes/Deletes/IndexComponent.vue";
 
 	export default {
-		name: 'Index',
+		name: 'Deletes',
 		data() {
 			return {
-				searchhints: [],
-				notSearchhints: false
+				deleteLists: [],
+				notDeleteLists: false
 			}
 		},
 		mounted() {
-			this.$store.dispatch("zeroingSearchHint")
-			this.getSearchHints()
+			this.getDeletes()
 		},
 		updated() {
 		},
 		beforeDestroy() {
 		},
 		methods: {
-			async getSearchHints() {
+			async getDeletes() {
 				try {
-					let response = await API.get('/api/admin/searchhints');
+					let response = await API.get('/api/admin/categories/deletes');
 					if (response && response.data && response.data.length > 0) {
-						this.searchhints = response.data
+						this.delete_lists = response.data
 					}
 				} catch (error) {
 				}
@@ -74,7 +68,7 @@
 		computed: {
 		},
 		components: {
-			'searchhint-component': SearchhintComponent
+			'deletes-component': DeletesComponent
 		}
     }
 </script>

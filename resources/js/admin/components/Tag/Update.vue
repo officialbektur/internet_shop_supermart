@@ -104,8 +104,9 @@
 					}
 				} catch (error) {
 					this.isTag = false;
+				} finally {
+					this.preloader()
 				}
-				this.preloader()
 			},
 		},
 		computed: {

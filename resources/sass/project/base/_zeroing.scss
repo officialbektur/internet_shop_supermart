@@ -9,7 +9,7 @@
     box-sizing: border-box;
 }
 
-aside, nav, header, 
+aside, nav, header,
 aside, section, footer {
     display: block;
 }
@@ -36,11 +36,8 @@ button::-moz-focus-inner {
     padding: rem(0) rem(0);
     border: 0;
 }
-a {
-	color: inherit;
-}
 a, a:visited {
-  	text-decoration: none;
+	text-decoration: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 img {
@@ -48,10 +45,6 @@ img {
 	height: 100%;
 	object-fit: contain;
     vertical-align: top;
-}
-h1, h2, h3, h4, h5, h6 {
-    font-size: inherit;
-    font-weight: inherit;
 }
 /* ====================  If JavaScript is disabled  --Start--  ==================== */
 noscript {

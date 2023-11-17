@@ -129,8 +129,8 @@
 </template>
 
 <script>
-	import API from './../../../api';
-    export default {
+	import API from '@/admin/api';
+	export default {
 		name: 'Email',
 		data() {
 			return {

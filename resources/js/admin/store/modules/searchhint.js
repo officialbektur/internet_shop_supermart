@@ -5,7 +5,6 @@ import API from '@/admin/api';
 const state = {
 	isDeleteSearchHint: false,
 
-	searchhints: [],
 	searchhint: [],
 	searchhintTitle: '',
 }
@@ -13,7 +12,6 @@ const state = {
 const getters = {
 	isDeleteSearchHint: (state) => state.isDeleteSearchHint,
 
-	searchhints: (state) => state.searchhints,
 	searchhint: (state) => state.searchhint,
 	searchhintTitle: (state) => state.searchhintTitle,
 }
@@ -36,24 +34,11 @@ const actions = {
 		commit('setSearchhint', [])
 		commit('setSearchhintTitle', '')
 	},
-	async getSearchHints({ commit, getters, dispatch }) {
-		try {
-			let response = await API.get('/api/admin/searchhints');
-			if (response && response.data && response.data.length > 0) {
-				commit("setSearchhints", response.data)
-			}
-		} catch (error) {
-		}
-	},
 	updateSearchHint({ commit, getters, dispatch }) {
 		API.patch('/api/admin/searchhints', {id: getters.searchhint.id, name: getters.name.trim()})
 		.then( response => {
 			if (response && response.data) {
 				if (response.data.message) {
-					setTimeout(() => {
-						dispatch("getSearchHints")
-					}, 1400);
-
 					dispatch("finishResult", { message: response.data.message });
 				} else if (response.data.error) {
 					dispatch("finishResult", {
@@ -223,7 +208,7 @@ const actions = {
 					errorStatus: true,
 				});
 				setTimeout(() => {
-					router.push({ name: 'searchhints.edit'});
+					router.push({ name: 'searchhints.index'});
 				}, 1400);
 			}
 		} catch (error) {
@@ -268,9 +253,6 @@ const mutations = {
 
 	setSearchhint(state, searchhint) {
 		state.searchhint = searchhint
-	},
-	setSearchhints(state, searchhints) {
-		state.searchhints = searchhints
 	},
 	setSearchhintTitle(state, searchhintTitle) {
 		state.searchhintTitle = searchhintTitle

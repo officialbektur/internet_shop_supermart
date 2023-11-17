@@ -11,7 +11,7 @@ class IndexController extends Controller
 {
     public function __invoke()
 	{
-		$hints = HintResource::collection(SearchHint::latest('updated_at')->limit(5)->get());
+		$hints = HintResource::collection(SearchHint::orderBy('updated_at', 'asc')->get());
 		return response()->json($hints);
 	}
 }

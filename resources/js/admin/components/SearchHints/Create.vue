@@ -60,7 +60,6 @@
 		},
 		mounted() {
 			this.$store.dispatch("zeroingSearchHint")
-			this.$store.dispatch("getSearchHints")
 		},
 		methods: {
 		},

@@ -131,7 +131,7 @@
 </template>
 
 <script>
-	import API from './../../../api';
+	import API from '@/admin/api';
     export default {
 		name: 'Login',
 		data() {

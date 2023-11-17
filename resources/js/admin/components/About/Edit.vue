@@ -3,7 +3,7 @@
 	<div class="block">
 		<h2 class="block__title">Изменить о нас</h2>
 		<div class="page__content">
-			<form method="post" class="mrb-admin__form mrb-admin-form" enctype="multipart/form-data">
+			<form method="post" class="mrb-admin__form mrb-admin-form max-width-100">
 				<div class="mrb-admin-form__item">
 					<label
 						:for="'editorContent'"
@@ -27,7 +27,7 @@
 						></quill-editor>
 					</div>
 				</div>
-				<div class="mrb-admin-form__innerbutton">
+				<div class="mrb-admin-form__item mrb-admin-form__innerbutton">
 					<button
 						type="submit"
 						@click.prevent="sendAbout"

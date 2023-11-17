@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Admin\Specification;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Specification\UpdateRequest;
+use App\Http\Requests\Project\Specification\UpdateRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
@@ -20,7 +20,7 @@ class UpdateController extends Controller
 
 			$id = $data['id'];
 			unset($data['id']);
-			
+
 			if ($id == $data['parent_id']) {
 				// Если попытка создать категорию внутри самой себя, откатываем транзакцию и возвращаем ошибку.
 				DB::rollBack();

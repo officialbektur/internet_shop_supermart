@@ -48,12 +48,15 @@
 				try {
 					let response = await API.get('/api/admin/category_specifications/' + this.$route.params.id);
 					if (response && response.data && response.data.length > 0) {
+						this.$store.commit("setLazyLoading", false)
 						this.specifications = response.data;
 					} else {
-						this.$router.push({ name: 'categoryspecifications.index'});
+						this.$store.commit("setLazyLoading", false)
+						this.$store.commit("setIsSpecifications", false)
 					}
 				} catch (error) {
-					this.$router.push({ name: 'categoryspecifications.index'});
+					this.$store.commit("setLazyLoading", false)
+					this.$store.commit("setIsSpecifications", false)
 				}
 			},
 			addClickListener() {

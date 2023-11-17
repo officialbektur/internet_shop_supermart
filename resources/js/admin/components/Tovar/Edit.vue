@@ -361,7 +361,7 @@
 						></quill-editor>
 					</div>
 				</div>
-				<div class="mrb-admin-form__innerbutton">
+				<div class="mrb-admin-form__item mrb-admin-form__innerbutton">
 					<button
 						type="submit"
 						@click.prevent="sendTovar"
@@ -517,8 +517,9 @@
 					}
 				} catch (error) {
 					this.isProduct = false
+				} finally {
+					this.preloader();
 				}
-				this.preloader();
 			},
 			async getProductDesc() {
 				axios.get(`/api/products/${this.$route.params.id}/description`)
@@ -657,16 +658,15 @@
 				try {
 					let response = await API.get('/api/admin/category_specifications/' + id);
 					if (response && response.data) {
-						this.isSpecifications = false;
 						let data = this.getReturnSpecification(response.data)
 						this.specifications = data;
 					} else {
-						this.isSpecifications = false;
 						this.specifications = [];
 					}
 				} catch (error) {
-					this.isSpecifications = false;
 					this.specifications = [];
+				} finally {
+					this.isSpecifications = false;
 				}
 			},
 			getImages() {

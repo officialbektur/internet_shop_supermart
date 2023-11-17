@@ -6,16 +6,15 @@ use App\Http\Controllers\Api\Project\Specification\BaseController;
 use App\Models\Project\Specification;
 use Illuminate\Http\Request;
 
-class IndexController extends BaseController {
+class DeletesController extends BaseController {
 	public function __invoke()
 	{
-		$rootSpecifications = Specification::where('parent_id', 0)->get();
+		$rootSpecifications = Specification::onlyTrashed()->get();
 
 		$formattedSpecifications = [];
 
 		foreach ($rootSpecifications as $specification) {
-			$formattedSpecification = $this->formatSpecifications($specification);
-			$formattedSpecifications[] = $formattedSpecification;
+			$formattedSpecification = $this->formatSpecificationHierarchy($specification);
 		}
 
 		return response()->json($formattedSpecifications);

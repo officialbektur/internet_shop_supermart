@@ -19,6 +19,7 @@ class DestroyController extends Controller
 				DB::rollBack();
 				return response()->json(['error' => 'Такого товара не существует'], 404);
 			}
+
 			if (is_null($result->deleted_at)) {
 				$result->delete();
 			} else {

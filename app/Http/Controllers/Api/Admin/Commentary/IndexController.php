@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Project\Commentary;
 
-use App\Http\Resources\Admin\Commentary\IndexResource;
+use App\Http\Resources\Admin\Commentary\CommentaryResource;
 use App\Http\Filters\AdminCommentaryFilter;
 
 class IndexController extends Controller {
@@ -19,7 +19,7 @@ class IndexController extends Controller {
 		$fillter = app()->make(AdminCommentaryFilter::class, ['queryParams' => array_filter($data)]);
 
 		$commentaries = Commentary::withTrashed()->filter($fillter)->paginate(20);
-		$result = IndexResource::collection($commentaries);
+		$result = CommentaryResource::collection($commentaries);
 
 		return response()->json($result);
 	}

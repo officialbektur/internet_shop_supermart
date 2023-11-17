@@ -1,5 +1,5 @@
 <template>
-	<tr v-if="products.length > 0" v-for="(product, index) in products" :key="index" class="product-block-trash__block">
+	<tr v-if="products && products.length > 0" v-for="(product, index) in products" :key="index" class="product-block-trash__block">
 		<td class="product-block-trash__column product-block-trash__columntitle">
 			<router-link :to="{ name: 'show', params: {id: product.id} }" class="product-block-trash__title product-block-trash-title">
 				<div class="product-block-trash-title__image product-block-trash-title-image">

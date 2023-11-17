@@ -321,7 +321,7 @@
 						></quill-editor>
 					</div>
 				</div>
-				<div class="mrb-admin-form__innerbutton">
+				<div class="mrb-admin-form__item mrb-admin-form__innerbutton">
 					<button
 						type="submit"
 						@click.prevent="sendTovar"
@@ -589,17 +589,16 @@
 				try {
 					let response = await API.get('/api/admin/category_specifications/' + id);
 					if (response && response.data && response.data.length > 0) {
-						this.isSpecifications = false;
 						let data = response.data;
 
 						this.specifications = data;
 					} else {
-						this.isSpecifications = false;
 						this.specifications = [];
 					}
 				} catch (error) {
-					this.isSpecifications = false;
 					this.specifications = [];
+				} finally {
+					this.isSpecifications = false;
 				}
 			},
 			getImages() {
