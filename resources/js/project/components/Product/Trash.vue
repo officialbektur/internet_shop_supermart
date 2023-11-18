@@ -37,7 +37,7 @@
 					<tr v-if="$store.getters.isMessage" class="product-block-trash__block">
 						<td colspan="4" class="product-block-trash__nolist">{{ $store.getters.message }}</td>
 					</tr>
-					<product-trash></product-trash>
+					<product-trash :products="products"></product-trash>
 				</tbody>
 			</table>
 			<loading-block></loading-block>
@@ -73,7 +73,6 @@
 			},
 		},
 		updated() {
-			this.$store.dispatch('update');
 		},
 		computed: {
 			products() {

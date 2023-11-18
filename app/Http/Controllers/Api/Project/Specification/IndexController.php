@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\Project\Specification;
 
 use App\Http\Controllers\Api\Project\Specification\BaseController;
-
 use Illuminate\Http\Request;
 
 use App\Models\Project\Specification;

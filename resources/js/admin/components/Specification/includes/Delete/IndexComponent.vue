@@ -17,7 +17,7 @@
 						:class="{ '_sending': isSending }">
 						<input
 							:disabled="isReadOnly"
-							@click="deletedeleteList(deleteList.id, index)"
+							@click.prevent="deletedeleteList(deleteList.id, index)"
 							:id="'delete_' + index"
 							:checked="deleteList.status == 1"
 							type="checkbox"
@@ -58,7 +58,7 @@
 				this.isSending = true;
 
 				try {
-					const response = await API.delete(`/api/admin/deleteLists/${id}`);
+					const response = await API.delete(`/api/admin/specifications/${id}`);
 					if (response && response.data && typeof response.data.status == 'number') {
 						this.$parent.deleteLists[index].status = response.data.status;
 					}

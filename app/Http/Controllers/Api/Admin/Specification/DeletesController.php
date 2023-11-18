@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers\Api\Admin\Specification;
 
-use App\Http\Controllers\Api\Project\Specification\BaseController;
+use App\Http\Controllers\Controller;
 use App\Models\Project\Specification;
 use Illuminate\Http\Request;
+use App\Http\Resources\Project\Specification\SpecificationResource;
 
-class DeletesController extends BaseController {
+class DeletesController extends Controller {
 	public function __invoke()
 	{
-		$rootSpecifications = Specification::onlyTrashed()->get();
+		$specifications = Specification::onlyTrashed()->get();
+		$result = SpecificationResource::collection($specifications);
 
-		$formattedSpecifications = [];
-
-		foreach ($rootSpecifications as $specification) {
-			$formattedSpecification = $this->formatSpecificationHierarchy($specification);
-		}
-
-		return response()->json($formattedSpecifications);
+		return response()->json($result);
 	}
 }

@@ -4,12 +4,20 @@
 			<router-link :to="{ name: 'show', params: {id: product.id} }" class="product-block-trash__title product-block-trash-title">
 				<div class="product-block-trash-title__image product-block-trash-title-image">
 					<div class="product-block-trash-title-image__img">
-						<img :data-src="product.image" src="/storage/project/loading.gif" @error="$store.dispatch('handleImageError', $event)" :alt="`${product.title}_${product.id}`">
+						<VueLazyload :dataSrc="product.image" :src="'/storage/project/loading.gif'" :alt="`${product.title}_${product.id}`"></VueLazyload>
 					</div>
 				</div>
 				<div class="product-block-trash-title__infotext product-block-trash-titleinfotext">
-					<div class="product-block-trash-title-infotext__category">
+					<!-- <div class="product-block-trash-title-infotext__category">
 						Категория<template v-for="category in Array.isArray(product.categories) ? product.categories : []"> > {{ category.name }}</template>
+					</div> -->
+					<div class="product-block-trash-title-infotext__category">
+						Категория
+						<template v-if="Array.isArray(product.categories)">
+							<template v-for="category in product.categories">
+								> {{ category.name }}
+							</template>
+						</template>
 					</div>
 					<div class="product-block-trash-title-infotext__title">
 						{{ product.title }}
@@ -51,7 +59,8 @@
 </template>
 
 <script>
-    export default {
+	import VueLazyload from '@/project/plugins/VueLazyload/VueLazyload.vue';
+	export default {
 		name: 'ProductTrash',
 		props: {
 			products: Object
@@ -101,11 +110,9 @@
 			},
 		},
 		computed: {
-			products() {
-				return this.$store.getters.products;
-			},
 		},
 		components: {
+			'VueLazyload': VueLazyload
 		}
     }
 </script>

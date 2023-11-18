@@ -1,6 +1,6 @@
 <template>
 	<div class="block">
-		<div class="block__title">Данные</div>
+		<div class="block__title">Удаленные теги</div>
 		<ul class="block__content">
 			<table class="block__table block-table">
 				<thead class="block-table__header block-table-header">
@@ -18,18 +18,25 @@
 				</thead>
 				<tbody class="block-table__body">
 					<tr
-						v-if="notDeleteLists"
+						v-if="!lazyLoading && notDeleteLists"
 						class="block-table__tr">
 						<td colspan="4" class="block-table__notd">Нету данных!</td>
 					</tr>
-					<deleteList-component
+					<delete-component
 						v-if="deleteLists.length > 0 && !notDeleteLists"
 						v-for="(deleteList, index) in deleteLists"
 						:index="index"
 						:deleteList="deleteList"
-						:key="index"></deleteList-component>
+						:key="index"></delete-component>
 				</tbody>
 			</table>
+			<div class="more__loading more-loading" :class="{ '_show': lazyLoading && !notDeleteLists }">
+				<div class="more-loading__content">
+					<div class="more-loading__icon">
+						<img src="/storage/project/loading.gif" alt="loading">
+					</div>
+				</div>
+			</div>
 		</ul>
 	</div>
 </template>
@@ -37,14 +44,15 @@
 <script>
 	import API from '@/admin/api';
 
-	import DeletesComponent from "../Category/includes/Deletes/IndexComponent.vue";
+	import DeleteComponent from "./includes/Delete/IndexComponent.vue";
 
 	export default {
 		name: 'Deletes',
 		data() {
 			return {
 				deleteLists: [],
-				notDeleteLists: false
+				lazyLoading: true,
+				notDeleteLists: false,
 			}
 		},
 		mounted() {
@@ -57,18 +65,24 @@
 		methods: {
 			async getDeletes() {
 				try {
-					let response = await API.get('/api/admin/searchhints');
+					let response = await API.get('/api/admin/tags/deletes');
 					if (response && response.data && response.data.length > 0) {
-						this.delete_lists = response.data
+						this.lazyLoading = false
+						this.deleteLists = response.data
+					} else {
+						this.lazyLoading = false
+						this.notDeleteLists = true
 					}
 				} catch (error) {
+					this.lazyLoading = false
+					this.notDeleteLists = true
 				}
 			},
 		},
 		computed: {
 		},
 		components: {
-			'deletes-component': DeletesComponent
+			'delete-component': DeleteComponent
 		}
     }
 </script>

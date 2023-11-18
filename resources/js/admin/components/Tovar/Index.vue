@@ -274,7 +274,6 @@
 			}
 		},
 		updated() {
-			this.$store.dispatch("lazyMedia")
 		},
 		components: {
 			'tovar-component': TovarComponent

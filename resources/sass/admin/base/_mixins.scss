@@ -71,9 +71,14 @@
 	$widthToMedia: em($widthTo);
 
 	// Получение значения свойства
-	$propertyValue: calc(#{toRem($minSize)} + #{$addSize} * (100vw - #{toRem($widthTo)}) / #{math.div($widthFrom, 16) - math.div($widthTo, 16)});
-	@media (min-width: $widthToMedia) and (max-width: $widthFromMedia) {
+	$propertyValue: calc(#{rem($minSize)} + #{$addSize} * (100vw - #{rem($widthTo)}) / #{math.div($widthFrom, 16) - math.div($widthTo, 16)});
+	@media (max-width: $widthFromMedia) {
 		#{$property}: $propertyValue;
+	}
+	@if $widthFrom == $containerWidth or $widthFrom == $maxWidth or $keepSize == 1 or $keepSize == 2 {
+		@media (min-width: $widthFromMedia) {
+			#{$property}: rem($startSize);
+		}
 	}
 }
 

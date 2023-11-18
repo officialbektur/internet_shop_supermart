@@ -90,7 +90,7 @@
 						<div
 							class="block-form__item">
 							<div class="user-form__text">
-								Забыли пароль? <router-link :to="{ name: 'users.resetpassword' }" class="user-form__link">Востановить</router-link>
+								Забыли пароль? <a href @click.prevent="back()" class="user-form__link">Востановить</a>
 							</div>
 						</div>
 					</div>
@@ -103,7 +103,7 @@
 <script>
 	import API from '@/admin/api';
 	export default {
-		name: 'Registration',
+		name: 'Login',
 		data() {
 			return {
 				email: '',
@@ -126,7 +126,6 @@
 			}
 		},
 		mounted() {
-			this.$store.dispatch('getScanLogCount');
 		},
 		methods: {
 			login() {
@@ -139,7 +138,7 @@
 						localStorage.setItem("access_token", response.data.access_token);
 						this.finishResult(response.data.message);
 						setTimeout(() => {
-							this.$router.push({ name: 'index' });
+							this.$store.commit("setIsVerify", true)
 						}, 1200);
 					} else {
 						this.finishResult('Непредвиденная ошибка', true);
@@ -213,6 +212,9 @@
 			showPassword() {
 				return this.show_password ? this.show_password = false : this.show_password = true
 			},
+			back() {
+				this.$store.commit('setIsResetPassword', true)
+			}
 		},
 		computed: {
 		},

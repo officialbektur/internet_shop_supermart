@@ -19,11 +19,11 @@ class TrashResource extends JsonResource
 
 		if (Str::startsWith($srcMin, 'http://') || Str::startsWith($srcMin, 'https://')) {
 			return [
-				$srcMin,
+				$srcMin
 			];
 		} else {
 			return [
-				asset('storage/project/product/src_min/' . $srcMin),
+				asset('storage/project/product/src_min/' . $srcMin)
 			];
 		}
 	}

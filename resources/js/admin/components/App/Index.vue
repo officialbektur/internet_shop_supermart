@@ -1,15 +1,17 @@
 <template>
 	<preloader :class="{ '_hidde': isPreloader }"></preloader>
 	<div class="block">
-		<h2 class="block__title">Приложение</h2>
+		<div class="block__averagecontainer">
+			<h2 class="block__title">Приложение</h2>
 
-		<div class="page__content admin-app">
-			<logo-component></logo-component>
-			<adress-component></adress-component>
-			<email-component></email-component>
-			<telephone-component></telephone-component>
-			<soc-component></soc-component>
-			<plan-work-component></plan-work-component>
+			<div class="page__content admin-app">
+				<logo-component></logo-component>
+				<adress-component></adress-component>
+				<email-component></email-component>
+				<telephone-component></telephone-component>
+				<soc-component></soc-component>
+				<plan-work-component></plan-work-component>
+			</div>
 		</div>
 	</div>
 </template>
@@ -18,7 +20,7 @@
 	import API from '@/admin/api';
 	import * as flsFunctions from "@/admin/files/functions.js";
 
-	import Preloader from './../includes/PreloaderComponent.vue';
+	import Preloader from '@/admin/plugins/Preloader/Preloader.vue';
 
 	import LogoComponent from "./includes/logo/IndexComponent.vue";
 	import AdressComponent from "./includes/adress/IndexComponent.vue";

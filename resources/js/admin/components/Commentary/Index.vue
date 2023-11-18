@@ -268,9 +268,6 @@
 				this.getCommentaries();
 			}
 		},
-		updated() {
-			this.$store.dispatch("lazyMedia")
-		},
 		components: {
 			'commentary-component': CommentaryComponent
 		},

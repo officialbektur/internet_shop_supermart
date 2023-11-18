@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'api'], function () {
 		Route::post('refresh', 'AuthController@refresh');
 		Route::group(['middleware' => 'jwt.auth'], function ($router) {
 			Route::post('me', 'AuthController@me');
+			Route::post('status', 'AuthController@status');
 		});
 	});
 

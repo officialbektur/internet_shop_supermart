@@ -120,7 +120,7 @@
 </template>
 
 <script>
-	import Preloader from './../includes/PreloaderComponent.vue';
+	import Preloader from '@/admin/plugins/Preloader/Preloader.vue';
 
 	import CategoriesPopup from './../Popup/CategoryPopup.vue';
     export default {

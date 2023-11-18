@@ -7,55 +7,77 @@
 			<div class="content__body">
 				<div class="moreinfo-tovar__info moreinfo-tovar-info">
 					<div class="moreinfo-tovar-info__image moreinfo-tovar-info-image">
-						<div class="moreinfo-tovar-info-image__sliderbig moreinfo-tovar-info-image-sliderbig">
-							<div v-if="product.discount == 1 || product.hit == 1" class="moreinfo-tovar-info-image-sliderbig__sticker moreinfo-tovar-info-image-sliderbig-sticker">
-								<div class="moreinfo-tovar-info-image-sliderbig-sticker__content">
-									<div v-if="product.discount == 1" class="moreinfo-tovar-info-image-sliderbig-sticker__discount">
-										Скидка
-									</div>
-									<div v-if="product.hit == 1" class="moreinfo-tovar-info-image-sliderbig-sticker__hit">
-										Хит
+						<swiper
+							:modules="modules"
+							:slides-per-view="'auto'"
+							:speed="400"
+							:thumbs="{ swiper: thumbsSwiper }"
+							:navigation="{ nextEl: '.moreinfo-tovar-info-image-sliderbig-pagination__next', prevEl: '.moreinfo-tovar-info-image-sliderbig-pagination__prev' }"
+							class="moreinfo-tovar-info-image__sliderbig moreinfo-tovar-info-image-sliderbig">
+							<template v-slot:container-start>
+								<div v-if="product.discount == 1 || product.hit == 1" class="moreinfo-tovar-info-image-sliderbig__sticker moreinfo-tovar-info-image-sliderbig-sticker">
+									<div class="moreinfo-tovar-info-image-sliderbig-sticker__content">
+										<div v-if="product.discount == 1" class="moreinfo-tovar-info-image-sliderbig-sticker__discount">
+											Скидка
+										</div>
+										<div v-if="product.hit == 1" class="moreinfo-tovar-info-image-sliderbig-sticker__hit">
+											Хит
+										</div>
 									</div>
 								</div>
-							</div>
-							<div ref="images" data-gallery class="swiper-wrapper">
-								<a v-for="(image, index) in product.media" :key="index" :data-src="image.src_max" class="swiper-slide moreinfo-tovar-info-image-sliderbig__slide moreinfo-tovar-info-image-sliderbig-slide">
+							</template>
+							<template v-slot:wrapper-start>
+								<a v-for="(image, index) in product.media" :key="index" :image="image" class="swiper-slide moreinfo-tovar-info-image-sliderbig__slide moreinfo-tovar-info-image-sliderbig-slide">
 									<span class="moreinfo-tovar-info-image-sliderbig-slide__image">
-										<img :src="image.src_max" :alt="`${product.title}_${product.id}`" />
+										<VueMagnify :src="`${image.src_max}`" :alt="`${product.title}_${product.id}`"></VueMagnify>
 									</span>
 									<span class="moreinfo-tovar-info-image-sliderbig-slide__background">
 										<img :src="image.src_max"/>
 									</span>
 								</a>
-							</div>
-							<button type="button" class="moreinfo-tovar-info-image-sliderbig-pagination__next moreinfo-tovar-info-image-sliderbig-pagination-next">
-								<span class="moreinfo-tovar-info-image-sliderbig-pagination-next__icon">
-									<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
-								</span>
-							</button>
-							<button type="button" class="moreinfo-tovar-info-image-sliderbig-pagination__prev">
-								<span class="moreinfo-tovar-info-image-sliderbig-pagination-prev__icon">
-									<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
-								</span>
-							</button>
-						</div>
-						<div class="moreinfo-tovar-info-image__pagination moreinfo-tovar-info-image-pagination">
-							<div class="swiper-wrapper">
+							</template>
+							<template v-slot:container-end>
+								<button type="button" class="moreinfo-tovar-info-image-sliderbig-pagination__next moreinfo-tovar-info-image-sliderbig-pagination-next">
+									<span class="moreinfo-tovar-info-image-sliderbig-pagination-next__icon">
+										<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+									</span>
+								</button>
+								<button type="button" class="moreinfo-tovar-info-image-sliderbig-pagination__prev moreinfo-tovar-info-image-sliderbig-pagination-prev">
+									<span class="moreinfo-tovar-info-image-sliderbig-pagination-prev__icon">
+										<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+									</span>
+								</button>
+							</template>
+						</swiper>
+						<swiper
+							@swiper="setThumbsSwiper"
+							:modules="modules"
+							:slides-per-view="'auto'"
+							:space-between="3"
+							:speed="400"
+							:mousewheel="true"
+							:freeMode="true"
+							:watchSlidesProgress="true"
+							:navigation="{ nextEl: '.moreinfo-tovar-info-image-pagination__next', prevEl: '.moreinfo-tovar-info-image-pagination__prev' }"
+							class="moreinfo-tovar-info-image__pagination moreinfo-tovar-info-image-pagination">
+							<template v-slot:wrapper-start>
 								<div v-for="(image, index) in product.media" :key="index" class="swiper-slide">
 									<img :src="image.src_min" :alt="`${product.title}_${product.id}`" />
 								</div>
-							</div>
-							<button type="button" class="moreinfo-tovar-info-image-pagination__next moreinfo-tovar-info-image-pagination-next">
-								<span class="moreinfo-tovar-info-image-pagination-next__icon">
-									<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
-								</span>
-							</button>
-							<button type="button" class="moreinfo-tovar-info-image-pagination__prev">
-								<span class="moreinfo-tovar-info-image-pagination-prev__icon">
-									<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
-								</span>
-							</button>
-						</div>
+							</template>
+							<template v-slot:container-end>
+								<button type="button" class="moreinfo-tovar-info-image-pagination__next moreinfo-tovar-info-image-pagination-next">
+									<span class="moreinfo-tovar-info-image-pagination-next__icon">
+										<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+									</span>
+								</button>
+								<button type="button" class="moreinfo-tovar-info-image-pagination__prev moreinfo-tovar-info-image-pagination-prev">
+									<span class="moreinfo-tovar-info-image-pagination-prev__icon">
+										<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+									</span>
+								</button>
+							</template>
+						</swiper>
 					</div>
 					<div class="moreinfo-tovar-info__textinfo moreinfo-tovar-info-textinfo">
 						<ul class="moreinfo-tovar-info-textinfo__categories moreinfo-tovar-info-textinfo-categories">
@@ -117,22 +139,30 @@
 						</div>
 						<div class="moreinfo-tovar-info-textinfo__buttons">
 							<div class="moreinfo-tovar-info-textinfo__btnfavorite moreinfo-tovar-info-textinfo-btnfavorite">
-								<button type="button" @click="$store.dispatch('setSaveTovarFavorite', product.id)" class="moreinfo-tovar-info-textinfo-btnfavorite__button moreinfo-tovar-info-textinfo-btnfavorite-button" :class="{ '_active': $store.getters.saveTovarFavorites.includes(product.id) }">
+								<button
+									type="button"
+									@click="$store.dispatch('setSaveTovarFavorite', product.id)"
+									class="moreinfo-tovar-info-textinfo-btnfavorite__button moreinfo-tovar-info-textinfo-btnfavorite-button"
+									:class="{ '_active': $store.getters.saveTovarFavorites.includes(product.id) }">
 									<span class="moreinfo-tovar-info-textinfo-btnfavorite-button__icon">
 										<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M47.6 300.4l180.7 168.7c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9l180.7-168.7c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141-45.6-7.6-92 7.3-124.6 39.9l-12 12-12-12c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
 									</span>
 									<span class="moreinfo-tovar-info-textinfo-btnfavorite-button__title">
-										В избрранные
+										{{ $store.getters.saveTovarFavorites.includes(product.id) ? 'В избрранном' : 'В избрранные' }}
 									</span>
 								</button>
 							</div>
 							<div class="moreinfo-tovar-info-textinfo__btnbasket moreinfo-tovar-info-textinfo-btnbasket">
-								<button type="button" @click="$store.dispatch('addSaveTovarTrashToggle', product.id)" class="moreinfo-tovar-info-textinfo-btnbasket__button moreinfo-tovar-info-textinfo-btnbasket-button" :class="{ '_active': $store.getters.saveTovarTrashIds.includes(product.id) }">
+								<button
+									type="button"
+									@click="$store.dispatch('addSaveTovarTrashToggle', product.id)"
+									class="moreinfo-tovar-info-textinfo-btnbasket__button moreinfo-tovar-info-textinfo-btnbasket-button"
+									:class="{ '_active': $store.getters.saveTovarTrashIds.includes(product.id) }">
 									<span class="moreinfo-tovar-info-textinfo-btnbasket-button__icon">
 										<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64s14.3 32 32 32h384c17.7 0 32-14.3 32-32s-14.3-32-32-32h-96l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32l21.2 339c1.6 25.3 22.6 45 47.9 45h245.8c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
 									</span>
 									<span class="moreinfo-tovar-info-textinfo-btnbasket-button__title">
-										В корзину
+										{{ $store.getters.saveTovarTrashIds.includes(product.id) ? 'В корзине' : 'В корзину' }}
 									</span>
 								</button>
 							</div>
@@ -213,7 +243,7 @@
 				<div class="moreinfo-tovar__content">
 					<nav class="moreinfo-tovar__header moreinfo-tovar-navigation">
 						<button type="button" data-goto-header data-goto=".moreinfo-tovar-body__specifications" class="moreinfo-tovar-navigation__link">Характеристика</button>
-						<button v-if="description && description.info" type="button" data-goto-header data-goto=".moreinfo-tovar-body__description" class="moreinfo-tovar-navigation__link">Описание</button>
+						<button v-if="description" type="button" data-goto-header data-goto=".moreinfo-tovar-body__description" class="moreinfo-tovar-navigation__link">Описание</button>
 						<button type="button" data-goto-header data-goto=".moreinfo-tovar-body-reviews__form" href class="moreinfo-tovar-navigation__link">Написать отзыв</button>
 						<button type="button" data-goto-header data-goto=".moreinfo-tovar-body-reviews__commentary" href class="moreinfo-tovar-navigation__link">Отзывы</button>
 					</nav>
@@ -244,17 +274,43 @@
 </template>
 
 <script>
+	import { FreeMode, Navigation, Mousewheel, Thumbs } from 'swiper/modules';
+	import { Swiper } from 'swiper/vue';
+
+	import VueMagnify from '@/project/plugins/VueMagnify/VueMagnify.vue';
+
+	import { ref } from 'vue';
+
 	import axios from 'axios';
 	import { popup } from '@/project/libs/popup.js';
 	import RecBlock from "./../includes/Block/RecBlock.vue";
 	import HistoriesBlock from "./../includes/Block/HistoriesBlock.vue";
 	import CommentaryPopup from "./../includes/Popup/CommentaryPopup.vue";
 	import Commentary from "./../includes/Commentary/Commentary.vue";
-	import { initSliders } from "@/project/files/sliders.js";
-	// import VueMagnifier from '@websitebeaver/vue-magnifier'
-	import { magnify } from "@/project/libs/magnify.js";
+
 	export default {
 		name: 'Show',
+		components: {
+			"commentary": Commentary,
+			"histories-block": HistoriesBlock,
+			"rec-block": RecBlock,
+			"commentary-popup": CommentaryPopup,
+			'swiper': Swiper,
+			'VueMagnify': VueMagnify
+		},
+		setup() {
+			const thumbsSwiper = ref(null);
+
+			const setThumbsSwiper = (swiper) => {
+				thumbsSwiper.value = swiper;
+			};
+
+			return {
+				thumbsSwiper,
+				setThumbsSwiper,
+				modules: [FreeMode, Navigation, Mousewheel, Thumbs],
+			};
+		},
 		data(){
 			return {
 				product: [],
@@ -301,65 +357,10 @@
 					}
 				})
 			},
-			magnify() {
-				if (this.$refs[`images`].querySelector(".moreinfo-tovar-info-image-sliderbig-slide__image>img") && document.documentElement.classList.contains("_pc")) {
-					let zoom = 1.3;
-					let imageItems = this.$refs[`images`].querySelectorAll(".moreinfo-tovar-info-image-sliderbig-slide__image>img");
-					for (var index = 0; index < imageItems.length; index++) {
-						let imageItem = imageItems[index];
-
-						let glass = document.createElement("DIV");
-						glass.setAttribute("class", "img-magnifier-glass");
-						imageItem.parentElement.insertBefore(glass, imageItem);
-						glass.style.backgroundImage = "url('" + imageItem.src + "')";
-						glass.style.backgroundRepeat = "no-repeat";
-						glass.style.backgroundSize = imageItem.width * zoom + "px " + imageItem.height * zoom + "px";
-
-						let bw = 3;
-						let w = glass.offsetWidth / 2;
-						let h = glass.offsetHeight / 2;
-
-						glass.addEventListener("mousemove", moveMagnifier);
-						imageItem.addEventListener("mousemove", moveMagnifier);
-						glass.addEventListener("mouseout", mouseOutImg);
-
-						function moveMagnifier(e) {
-							var pos, x, y;
-							e.preventDefault();
-							pos = getCursorPos(e);
-							x = pos.x;
-							y = pos.y;
-							if (x > imageItem.width - w / zoom) x = imageItem.width - w / zoom;
-							if (x < w / zoom) x = w / zoom;
-							if (y > imageItem.height - h / zoom) y = imageItem.height - h / zoom;
-							if (y < h / zoom) y = h / zoom;
-							glass.classList.add("_cursor");
-							glass.style.left = x - w + "px";
-							glass.style.top = y - h + "px";
-							glass.style.backgroundPosition = "-" + (x * zoom - w + bw) + "px -" + (y * zoom - h + bw) + "px";
-						}
-						function getCursorPos(e) {
-							var a, x = 0, y = 0;
-							e = e || window.event;
-							a = imageItem.getBoundingClientRect();
-							x = e.pageX - a.left;
-							y = e.pageY - a.top;
-							x -= window.pageXOffset;
-							y -= window.pageYOffset;
-							return { x, y };
-						}
-						function mouseOutImg() {
-							glass.classList.remove("_cursor");
-						}
-					}
-				}
-			}
 		},
 		updated() {
 			if (this.statusUpdate) {
-				initSliders();
 				this.statusUpdate = false;
-				this.magnify();
 			}
 		},
 		computed: {
@@ -367,12 +368,5 @@
 				return this.$store.getters.commentariesCount;
 			},
 		},
-		components: {
-			"commentary": Commentary,
-			// "zoom-on-hover": VueMagnifier,
-			"histories-block": HistoriesBlock,
-			"rec-block": RecBlock,
-			"commentary-popup": CommentaryPopup
-		}
 	}
 </script>

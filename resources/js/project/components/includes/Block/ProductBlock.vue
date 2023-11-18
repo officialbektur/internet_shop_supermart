@@ -15,7 +15,7 @@
 				<div class="product-block-image__items">
 					<div v-for="(image, index) in product.images" :key="index" class="product-block-image__item product-block-image-item">
 						<div class="product-block-image-item__img">
-							<img :data-src="image.src_average" src="/storage/project/loading.gif" @error="$store.dispatch('handleImageError', $event)" :alt="`${product.title}_${product.id}`">
+							<VueLazyload :dataSrc="image.src_average" :src="'/storage/project/loading.gif'" :alt="`${product.title}_${product.id}_${index}`"></VueLazyload>
 							<div v-if="product.images.length - (index + 1) == 0 && product.images_count - (index + 1) > 0" class="product-block-image-item__infoimagetext product-block-image-item-infoimagetext">
 								<div class="product-block-image-item-infoimagetext__icon">
 									<svg viewBox="0 0 315 315" xmlns="http://www.w3.org/2000/svg"><path d="M307.5 53.5H81V41a7.5 7.5 0 00-7.5-7.5h-36A7.5 7.5 0 0030 41v12.5H7.5A7.5 7.5 0 000 61v213a7.5 7.5 0 007.5 7.5h300a7.5 7.5 0 007.5-7.5V61a7.5 7.5 0 00-7.5-7.5zM45 48.5h21v5H45v-5zm255 218H15v-198h285v198z"/><path d="M157.5 228.5c36.117 0 65.5-29.383 65.5-65.5s-29.383-65.5-65.5-65.5S92 126.883 92 163s29.383 65.5 65.5 65.5zm0-116c27.846 0 50.5 22.654 50.5 50.5s-22.654 50.5-50.5 50.5S107 190.846 107 163s22.654-50.5 50.5-50.5z"/><path d="M157.5 203.5c22.332 0 40.5-18.169 40.5-40.5s-18.168-40.5-40.5-40.5S117 140.669 117 163s18.168 40.5 40.5 40.5zm0-66c14.061 0 25.5 11.439 25.5 25.5s-11.439 25.5-25.5 25.5S132 177.061 132 163s11.439-25.5 25.5-25.5zm88-7h32a7.5 7.5 0 007.5-7.5V91a7.5 7.5 0 00-7.5-7.5h-32A7.5 7.5 0 00238 91v32a7.5 7.5 0 007.5 7.5zm7.5-32h17v17h-17v-17zm-214.5 132h29A7.5 7.5 0 0075 223a7.5 7.5 0 00-7.5-7.5h-29A7.5 7.5 0 0031 223a7.5 7.5 0 007.5 7.5zm0 21h29A7.5 7.5 0 0075 244a7.5 7.5 0 00-7.5-7.5h-29A7.5 7.5 0 0031 244a7.5 7.5 0 007.5 7.5z"/></svg>
@@ -36,8 +36,16 @@
 			</div>
 		</router-link>
 		<div class="product-block__info product-block-info">
-			<router-link :to="{ name: 'categories', params: {id: product.categories[product.categories.length - 1].id} }" class="product-block-info__catigory">
+			<!-- <router-link :to="{ name: 'categories', params: {id: product.categories[product.categories.length - 1].id} }" class="product-block-info__catigory">
 				Категория<template v-for="category in Array.isArray(product.categories) ? product.categories : []">>{{ category.name }}</template>
+			</router-link> -->
+			<router-link :to="{ name: 'categories', params: {id: product.categories[product.categories.length - 1].id} }" class="product-block-info__catigory">
+				Категория
+				<template v-if="Array.isArray(product.categories)">
+					<template v-for="category in product.categories">
+						> {{ category.name }}
+					</template>
+				</template>
 			</router-link>
 			<router-link :to="{ name: 'show', params: {id: product.id} }" class="product-block-info__title">
 				{{ product.title }}
@@ -92,20 +100,28 @@
 				</router-link>
 			</div>
 			<div class="product-block-info__buttons product-block-info-buttons">
-				<button type="button" @click="$store.dispatch('setSaveTovarFavorite', product.id)" class="product-block-info-buttons__btn product-block-info-buttons__favorite product-block-info-buttons-favorite" :class="{ '_active': $store.getters.saveTovarFavorites.includes(product.id) }">
+				<button
+					type="button"
+					@click="$store.dispatch('setSaveTovarFavorite', product.id)"
+					class="product-block-info-buttons__btn product-block-info-buttons__favorite product-block-info-buttons-favorite"
+					:class="{ '_active': $store.getters.saveTovarFavorites.includes(product.id) }">
 					<span class="product-block-info-buttons-favorite__icon">
 						<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M47.6 300.4l180.7 168.7c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9l180.7-168.7c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141-45.6-7.6-92 7.3-124.6 39.9l-12 12-12-12c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
 					</span>
 					<span class="product-block-info-buttons-favorite__title">
-						В избранные
+						{{ $store.getters.saveTovarFavorites.includes(product.id) ? 'В избранном': 'В избранные' }}
 					</span>
 				</button>
-				<button type="button" @click="$store.dispatch('addSaveTovarTrashToggle', product.id)" class="product-block-info-buttons__btn product-block-info-buttons__basket  product-block-info-buttons-basket" :class="{ '_active': $store.getters.saveTovarTrashIds.includes(product.id) }">
+				<button
+					type="button"
+					@click="$store.dispatch('addSaveTovarTrashToggle', product.id)"
+					class="product-block-info-buttons__btn product-block-info-buttons__basket  product-block-info-buttons-basket"
+					:class="{ '_active': $store.getters.saveTovarTrashIds.includes(product.id) }">
 					<span class="product-block-info-buttons-basket__icon">
 						<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64s14.3 32 32 32h384c17.7 0 32-14.3 32-32s-14.3-32-32-32h-96l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32l21.2 339c1.6 25.3 22.6 45 47.9 45h245.8c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
 					</span>
 					<span class="product-block-info-buttons-basket__title">
-						В корзину
+						{{ $store.getters.saveTovarTrashIds.includes(product.id) ? 'В корзине': 'В корзину' }}
 					</span>
 				</button>
 			</div>
@@ -124,6 +140,8 @@
 </template>
 
 <script>
+	import VueLazyload from '@/project/plugins/VueLazyload/VueLazyload.vue';
+
 	export default {
 		name: 'ProductBlock',
 		props: {
@@ -140,6 +158,7 @@
 		computed: {
 		},
 		components: {
+			'VueLazyload': VueLazyload
 		},
 	}
 </script>

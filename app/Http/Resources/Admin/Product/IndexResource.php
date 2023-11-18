@@ -42,7 +42,7 @@ class IndexResource extends JsonResource
 			"title" => $this->title,
 			"image" => isset($media[$this->id])
 							? new \App\Http\Resources\Project\Media\TrashResource($media[$this->id][0])
-							: asset('storage/project/product/default/default.png'),
+							: [asset('storage/project/product/default/default.png')],
 			"price_old" => $this->price_old,
 			"price_now" => $this->price_now,
 			"categories" => $categoryHierarchy,

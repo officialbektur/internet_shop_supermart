@@ -1035,6 +1035,7 @@
 				&__button {
 					padding: rem(4) rem(0);
 					width: 100%;
+
 					color: #3a3a3a;
 					font-size: rem(20);
 					@include adaptiveValue("font-size", 20, 16, 991.98);
@@ -1042,9 +1043,11 @@
 					@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
 					@include adaptiveValue("font-size", 20, 18, 0, 479.98);
 					font-weight: 400;
+
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
+
 					overflow: hidden;
 					@media (max-width: $mobile) {
 						color: $colorWhite;
@@ -1061,6 +1064,11 @@
 						height: 100%;
 						overflow: hidden;
 						text-overflow: ellipsis;
+
+						font-size: inherit;
+						color: inherit;
+						line-height: inherit;
+						font-weight: inherit;
 					}
 
 					// .header-footer-menu-sublist-button__icon
@@ -1145,6 +1153,7 @@
 					& .header-footer-menu__list {
 						padding: rem(12) rem(12);
 						width: 100%;
+						
 						color: #3a3a3a;
 						font-size: rem(20);
 						@include adaptiveValue("font-size", 20, 16, 991.98);
@@ -1187,8 +1196,8 @@
 
 		// .header-footer-slider
 		&-slider {
-			// .header-footer-slider__lists
-			&__lists {
+			// .header-footer-slider .swiper-wrapper
+			& .swiper-wrapper {
 				display: flex;
 				flex-wrap: nowrap;
 			}

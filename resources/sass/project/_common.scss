@@ -1,3 +1,42 @@
+/* ===================================  Progress Bar  --Start--  =================================== */
+.progress-bar {
+	// position: fixed;
+	// top: 0;
+	// left: 0;
+
+	// z-index: 100;
+
+	// width: 100%;
+	// height: 4px;
+
+	// background-color: rgba($color: #ffffff, $alpha: 0.2);
+	// .progress-bar__result
+	&__result {
+		background: linear-gradient(45deg, #e6fb04, #ff6600, #00ff66, #00ffff, #ff00ff, #ff0099, #6e0dd0, #ff3300, #099fff);
+		background-size: 400%;
+
+		border-top-right-radius: 2px;
+		border-bottom-right-radius: 2px;
+
+		animation: animProgressBar 20s linear infinite;
+		transition: all 0.6s ease 0s;
+		@keyframes animProgressBar {
+			0% {
+				background-position: 0 0;
+			}
+
+			50% {
+				background-position: 400% 0%;
+			}
+
+			100% {
+				background-position: 0 0;
+			}
+		}
+	}
+}
+/* ===================================  Progress Bar  --End--  =================================== */
+
 ._title {
 	color: #363636;
 	font-size: rem(30);
@@ -16,6 +55,10 @@
 	}
 	// .title-categories__link
 	&__link {
+		font-size: inherit;
+		color: inherit;
+		line-height: inherit;
+		font-weight: inherit;
 	}
 }
 ._error {
@@ -996,107 +1039,111 @@
 						}
 					}
 				}
-				// .moreinfo-tovar-info-image-sliderbig-pagination__next
-				&-pagination__next {
-					position: absolute;
-					top: rem(0);
-					left: rem(0);
-					height: 100%;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					z-index: 1;
-					cursor: pointer;
-					transition: all 0.46s ease 0s;
-					@media (max-width: $mobile) {
-						display: none;
-					}
-					html._pc &:hover {
-						background-color: rgba($color: #000000, $alpha: 0.3);
-						box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.2),
-									rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.2),
-									rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.2),
-									rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.2);
-					}
-					&.swiper-button-disabled {
-						opacity: 0;
-						visibility: hidden;
-					}
-				}
-				// .moreinfo-tovar-info-image-sliderbig-pagination__next
-				&-pagination-next {
-					// .moreinfo-tovar-info-image-sliderbig-pagination-next__icon
-					&__icon {
-						margin: rem(4) rem(4);
-						@include adaptiveValue("padding", 8, 6, 767.98);
+				// .moreinfo-tovar-info-image-sliderbig-pagination
+				&-pagination {
+					// .moreinfo-tovar-info-image-sliderbig-pagination__next
+					&__next {
+						position: absolute;
+						top: rem(0);
+						right: rem(0);
+						height: 100%;
 						display: flex;
 						justify-content: center;
 						align-items: center;
-						background-color: rgba(114, 114, 114, 0.3);
-						border-radius: rem(30);
+						z-index: 1;
+						cursor: pointer;
+						transform: rotate(180deg);
 						transition: all 0.46s ease 0s;
-						html._pc &:hover {
-							background-color: rgba(114, 114, 114, 0.5);
+						@media (max-width: $mobile) {
+							display: none;
 						}
-						// .moreinfo-tovar-info-image-sliderbig-pagination-next__icon svg
-						& svg {
-							@include adaptiveValue("width", 22, 18, 767.98);
-							@include adaptiveValue("height", 22, 18, 767.98);
-							& * {
-								fill: #ffffff;
+						html._pc &:hover {
+							background-color: rgba($color: #000000, $alpha: 0.3);
+							box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.2),
+										rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.2),
+										rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.2),
+										rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.2);
+						}
+						&.swiper-button-disabled {
+							opacity: 0;
+							visibility: hidden;
+						}
+					}
+					// .moreinfo-tovar-info-image-sliderbig-pagination__next
+					&-next {
+						// .moreinfo-tovar-info-image-sliderbig-pagination-next__icon
+						&__icon {
+							margin: rem(4) rem(4);
+							@include adaptiveValue("padding", 8, 6, 767.98);
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							background-color: rgba(114, 114, 114, 0.3);
+							border-radius: rem(30);
+							transition: all 0.46s ease 0s;
+							html._pc &:hover {
+								background-color: rgba(114, 114, 114, 0.5);
+							}
+							// .moreinfo-tovar-info-image-sliderbig-pagination-next__icon svg
+							& svg {
+								@include adaptiveValue("width", 22, 18, 767.98);
+								@include adaptiveValue("height", 22, 18, 767.98);
+								& * {
+									fill: #ffffff;
+								}
 							}
 						}
 					}
-				}
-				// .moreinfo-tovar-info-image-sliderbig-pagination__prev
-				&-pagination__prev {
-					position: absolute;
-					top: rem(0);
-					right: rem(0);
-					height: 100%;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					transform: rotate(180deg);
-					z-index: 1;
-					cursor: pointer;
-					transition: all 0.46s ease 0s;
-					@media (max-width: $mobile) {
-						display: none;
-					}
-					html._pc &:hover {
-						background-color: rgba($color: #000000, $alpha: 0.3);
-						box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.2),
-									rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.2),
-									rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.2),
-									rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.2);
-					}
-					&.swiper-button-disabled {
-						opacity: 0;
-						visibility: hidden;
-					}
-				}
-				// .moreinfo-tovar-info-image-sliderbig-pagination__prev
-				&-pagination-prev {
-					// .moreinfo-tovar-info-image-sliderbig-pagination-prev__icon
-					&__icon {
-						margin: rem(4) rem(4);
-						@include adaptiveValue("padding", 8, 6, 767.98);
+					// .moreinfo-tovar-info-image-sliderbig-pagination__prev
+					&__prev {
+						position: absolute;
+						top: rem(0);
+						left: rem(0);
+						height: 100%;
 						display: flex;
 						justify-content: center;
 						align-items: center;
-						background-color: rgba(114, 114, 114, 0.3);
-						border-radius: rem(30);
+						z-index: 1;
+						cursor: pointer;
+						transform: rotate(0deg);
 						transition: all 0.46s ease 0s;
-						html._pc &:hover {
-							background-color: rgba(114, 114, 114, 0.5);
+						@media (max-width: $mobile) {
+							display: none;
 						}
-						// .moreinfo-tovar-info-image-sliderbig-pagination-prev__icon svg
-						& svg {
-							@include adaptiveValue("width", 22, 18, 767.98);
-							@include adaptiveValue("height", 22, 18, 767.98);
-							& * {
-								fill: #ffffff;
+						html._pc &:hover {
+							background-color: rgba($color: #000000, $alpha: 0.3);
+							box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.2),
+										rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.2),
+										rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.2),
+										rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.2);
+						}
+						&.swiper-button-disabled {
+							opacity: 0;
+							visibility: hidden;
+						}
+					}
+					// .moreinfo-tovar-info-image-sliderbig-pagination-prev
+					&-prev {
+						// .moreinfo-tovar-info-image-sliderbig-pagination-prev__icon
+						&__icon {
+							margin: rem(4) rem(4);
+							@include adaptiveValue("padding", 8, 6, 767.98);
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							background-color: rgba(114, 114, 114, 0.3);
+							border-radius: rem(30);
+							transition: all 0.46s ease 0s;
+							html._pc &:hover {
+								background-color: rgba(114, 114, 114, 0.5);
+							}
+							// .moreinfo-tovar-info-image-sliderbig-pagination-prev__icon svg
+							& svg {
+								@include adaptiveValue("width", 22, 18, 767.98);
+								@include adaptiveValue("height", 22, 18, 767.98);
+								& * {
+									fill: #ffffff;
+								}
 							}
 						}
 					}
@@ -1144,7 +1191,7 @@
 				&__next {
 					position: absolute;
 					top: rem(0);
-					left: rem(0);
+					right: rem(0);
 					height: 100%;
 					display: flex;
 					justify-content: center;
@@ -1156,6 +1203,7 @@
 								rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.6);
 					z-index: 1;
 					cursor: pointer;
+					transform: rotate(180deg);
 					transition: all 0.46s ease 0s;
 					html._pc &:hover {
 						box-shadow: rem(0) rem(0) rem(9) rgba($color: #000000, $alpha: 0.6),
@@ -1200,12 +1248,11 @@
 				&__prev {
 					position: absolute;
 					top: rem(0);
-					right: rem(0);
+					left: rem(0);
 					height: 100%;
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					transform: rotate(180deg);
 					background-color: rgba($color: #000000, $alpha: 0.7);
 					box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.6),
 								rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.6),
@@ -1213,6 +1260,7 @@
 								rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.6);
 					z-index: 1;
 					cursor: pointer;
+					transform: rotate(0deg);
 					transition: all 0.46s ease 0s;
 					html._pc &:hover {
 						box-shadow: rem(0) rem(0) rem(9) rgba($color: #000000, $alpha: 0.6),
@@ -1225,7 +1273,7 @@
 						visibility: hidden;
 					}
 				}
-				// .moreinfo-tovar-info-image-pagination__prev
+				// .moreinfo-tovar-info-image-pagination-prev
 				&-prev {
 					// .moreinfo-tovar-info-image-pagination-prev__icon
 					&__icon {
@@ -1561,7 +1609,8 @@
 						background-color: #018aff;
 					}
 					&._active {
-						background-color: #018aff;
+						// background-color: #018aff;
+						background-color: $colorRed;
 					}
 				}
 				// .moreinfo-tovar-info-textinfo-btnfavorite-button
@@ -1625,7 +1674,8 @@
 						background-color: #018aff;
 					}
 					&._active {
-						background-color: #018aff;
+						// background-color: #018aff;
+						background-color: $colorRed;
 					}
 				}
 				// .moreinfo-tovar-info-textinfo-btnbasket-button
@@ -2627,12 +2677,8 @@
 			}
 		}
 	}
-	// .moreinfo-tovar__alsorecommend
-	&__alsorecommend {
-		margin-top: rem(16);
-	}
-	// .moreinfo-tovar__history
-	&__history {
+	// .moreinfo-tovar__dp
+	&__dp {
 		margin-top: rem(16);
 	}
 }
@@ -2654,113 +2700,117 @@
 		@include adaptiveValue("flex-basis", 256, 176, 0, 767.98);
 		overflow: hidden;
 	}
-	// .product-block-slids-pagination__next
-	&-pagination__next {
-		position: absolute;
-		top: rem(0);
-		left: rem(0);
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		z-index: 1;
-		cursor: pointer;
-		transition: all 0.46s ease 0s;
-		html._pc &:hover {
-			background-color: rgba($color: #000000, $alpha: 0.3);
-			box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.2),
-						rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.2),
-						rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.2),
-						rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.2);
-		}
-		&.swiper-button-disabled {
-			opacity: 0;
-			visibility: hidden;
-			pointer-events: none;
-		}
-	}
-	// .product-block-slids-pagination__next
-	&-pagination-next {
-		// .product-block-slids-pagination-next__icon
-		&__icon {
-			margin: rem(4) rem(4);
-			padding: rem(10);
-			@include adaptiveValue("padding", 10, 8, 767.98);
-			@include adaptiveValue("padding", 10, 8, 0, 767.98);
+	// .product-block-slids-pagination
+	&-pagination {
+		// .product-block-slids-pagination__next
+		&__next {
+			position: absolute;
+			top: rem(0);
+			left: rem(0);
+			height: 100%;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			background-color: rgba(114, 114, 114, 0.3);
-			border-radius: rem(30);
+			z-index: 1;
+			cursor: pointer;
+			transform: rotate(0deg);
 			transition: all 0.46s ease 0s;
 			html._pc &:hover {
-				background-color: rgba(114, 114, 114, 0.5);
+				background-color: rgba($color: #000000, $alpha: 0.3);
+				box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.2),
+							rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.2),
+							rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.2),
+							rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.2);
 			}
-			// .product-block-slids-pagination-next__icon svg
-			& svg {
-				@include adaptiveValue("width", 22, 18);
-				@include adaptiveValue("height", 22, 18);
-				& * {
-					fill: #ffffff;
+			&.swiper-button-disabled {
+				opacity: 0;
+				visibility: hidden;
+				pointer-events: none;
+			}
+		}
+		// .product-block-slids-pagination-next
+		&-next {
+			// .product-block-slids-pagination-next__icon
+			&__icon {
+				margin: rem(4) rem(4);
+				padding: rem(10);
+				@include adaptiveValue("padding", 10, 8, 767.98);
+				@include adaptiveValue("padding", 10, 8, 0, 767.98);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: rgba(114, 114, 114, 0.3);
+				border-radius: rem(30);
+				transition: all 0.46s ease 0s;
+				html._pc &:hover {
+					background-color: rgba(114, 114, 114, 0.5);
+				}
+				// .product-block-slids-pagination-next__icon svg
+				& svg {
+					@include adaptiveValue("width", 22, 18);
+					@include adaptiveValue("height", 22, 18);
+					& * {
+						fill: #ffffff;
+					}
+				}
+			}
+		}
+		// .product-block-slids-pagination__prev
+		&__prev {
+			position: absolute;
+			top: rem(0);
+			right: rem(0);
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 1;
+			cursor: pointer;
+			transform: rotate(180deg);
+			transition: all 0.46s ease 0s;
+			html._pc &:hover {
+				background-color: rgba($color: #000000, $alpha: 0.3);
+				box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.2),
+							rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.2),
+							rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.2),
+							rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.2);
+			}
+			&.swiper-button-disabled {
+				opacity: 0;
+				visibility: hidden;
+				pointer-events: none;
+			}
+		}
+		// .product-block-slids-pagination-prev
+		&-prev {
+			// .product-block-slids-pagination-prev__icon
+			&__icon {
+				margin: rem(4) rem(4);
+				padding: rem(10);
+				@include adaptiveValue("padding", 10, 8, 767.98);
+				@include adaptiveValue("padding", 10, 8, 0, 767.98);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: rgba(114, 114, 114, 0.3);
+				border-radius: rem(30);
+				transition: all 0.46s ease 0s;
+				html._pc &:hover {
+					background-color: rgba(114, 114, 114, 0.5);
+				}
+				// .product-block-slids-pagination-prev__icon svg
+				& svg {
+					@include adaptiveValue("width", 22, 18);
+					@include adaptiveValue("height", 22, 18);
+					& * {
+						fill: #ffffff;
+					}
 				}
 			}
 		}
 	}
-	// .product-block-slids-pagination__prev
-	&-pagination__prev {
-		position: absolute;
-		top: rem(0);
-		right: rem(0);
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		transform: rotate(180deg);
-		z-index: 1;
-		cursor: pointer;
-		transition: all 0.46s ease 0s;
-		html._pc &:hover {
-			background-color: rgba($color: #000000, $alpha: 0.3);
-			box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.2),
-						rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.2),
-						rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.2),
-						rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.2);
-		}
-		&.swiper-button-disabled {
-			opacity: 0;
-			visibility: hidden;
-			pointer-events: none;
-		}
-	}
-	// .product-block-slids-pagination__prev
-	&-pagination-prev {
-		// .product-block-slids-pagination-prev__icon
-		&__icon {
-			margin: rem(4) rem(4);
-			padding: rem(10);
-			@include adaptiveValue("padding", 10, 8, 767.98);
-			@include adaptiveValue("padding", 10, 8, 0, 767.98);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			background-color: rgba(114, 114, 114, 0.3);
-			border-radius: rem(30);
-			transition: all 0.46s ease 0s;
-			html._pc &:hover {
-				background-color: rgba(114, 114, 114, 0.5);
-			}
-			// .product-block-slids-pagination-prev__icon svg
-			& svg {
-				@include adaptiveValue("width", 22, 18);
-				@include adaptiveValue("height", 22, 18);
-				& * {
-					fill: #ffffff;
-				}
-			}
-		}
-	}
-	// .product-block-slids__historyinnerlink
-	&__historyinnerlink {
+	// .product-block-slids__dpinnerlink
+	&__dpinnerlink {
 		padding: rem(0) rem(22);
 		width: 100%;
 		height: 100%;
@@ -2768,8 +2818,8 @@
 		justify-content: center;
 		align-items: center;
 	}
-	// .product-block-slids__historylink
-	&__historylink {
+	// .product-block-slids__dplink
+	&__dplink {
 		padding: rem(16) rem(12);
 		@include adaptiveValue("padding-top", 16, 12);
 		@include adaptiveValue("padding-bottom", 16, 12);
@@ -2785,8 +2835,8 @@
 		border-radius: rem(20);
 		background-color: #00b9ff;
 		transition: all 0.46s ease 0s;
-		animation: productblockslids__historylink 3s infinite both;
-		@keyframes productblockslids__historylink {
+		animation: productblockslids__dplink 3s infinite both;
+		@keyframes productblockslids__dplink {
 			0% {
 				box-shadow: rem(0) rem(0) rem(4) #00b9ff,
 							rem(0) rem(0) rem(8) #00b9ff,
@@ -2810,19 +2860,19 @@
 			}
 		}
 	}
-	// .product-block-slids-historylink
-	&-historylink {
-		// .product-block-slids-historylink__title
+	// .product-block-slids-dplink
+	&-dplink {
+		// .product-block-slids-dplink__title
 		&__title {
 		}
-		// .product-block-slids-historylink__icon
+		// .product-block-slids-dplink__icon
 		&__icon {
 			margin-left: em(4);
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			animation: productblockslidshistorylink__icon 3s infinite both;
-			@keyframes productblockslidshistorylink__icon {
+			animation: productblockslidsdplink__icon 3s infinite both;
+			@keyframes productblockslidsdplink__icon {
 				0% {
 					transform: translateX(rem(0));
 					animation-timing-function: ease-in;

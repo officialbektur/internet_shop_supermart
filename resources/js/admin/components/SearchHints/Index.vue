@@ -21,7 +21,7 @@
 				</thead>
 				<tbody class="block-table__body">
 					<tr
-						v-if="notSearchhints"
+						v-if="!lazyLoading && notSearchhints"
 						class="block-table__tr">
 						<td colspan="4" class="block-table__notd">Нету товаров!</td>
 					</tr>
@@ -33,6 +33,13 @@
 						:key="index"></searchhint-component>
 				</tbody>
 			</table>
+			<div class="more__loading more-loading" :class="{ '_show': lazyLoading && !notSearchhints }">
+				<div class="more-loading__content">
+					<div class="more-loading__icon">
+						<img src="/storage/project/loading.gif" alt="loading">
+					</div>
+				</div>
+			</div>
 		</ul>
 	</div>
 </template>
@@ -49,6 +56,7 @@
 		data() {
 			return {
 				searchhints: [],
+				lazyLoading: true,
 				notSearchhints: false
 			}
 		},
@@ -65,9 +73,15 @@
 				try {
 					let response = await API.get('/api/admin/searchhints');
 					if (response && response.data && response.data.length > 0) {
+						this.lazyLoading = false
 						this.searchhints = response.data
+					} else {
+						this.lazyLoading = false
+						this.notSearchhints = true
 					}
 				} catch (error) {
+					this.lazyLoading = false
+					this.notSearchhints = true
 				}
 			},
 		},

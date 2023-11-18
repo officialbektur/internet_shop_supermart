@@ -183,7 +183,9 @@ export function windowOnScroll() {
 		let activeWhenScroll = document.querySelector('[data-active-scroll]');
 		let activeWhenScrollGet = activeWhenScroll.getAttribute("data-active-scroll");
 		window.onscroll = function () {
-			if (window.pageYOffset > activeWhenScrollGet) {
+			if(window.pageYOffset >= document.querySelector(".wrapper").clientHeight - activeWhenScrollGet - screen.height) {
+				activeWhenScroll.classList.remove("_active");
+			} else if (window.pageYOffset > activeWhenScrollGet) {
 				activeWhenScroll.classList.add("_active");
 			} else {
 				activeWhenScroll.classList.remove("_active");

@@ -17,7 +17,7 @@
 						:class="{ '_sending': isSending }">
 						<input
 							:disabled="isReadOnly"
-							@click="deleteSearchhint(searchhint.id, index)"
+							@click.prevent="deleteSearchhint(searchhint.id, index)"
 							:id="'delete_' + index"
 							:checked="searchhint.status == 1"
 							type="checkbox"

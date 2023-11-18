@@ -156,7 +156,6 @@
 			}
 		},
 		mounted() {
-			this.$store.dispatch('getScanLogCount');
 		},
 		methods: {
 			registeration() {
@@ -170,7 +169,7 @@
 						localStorage.setItem("access_token", response.data.access_token)
 						this.finishResult(response.data.message)
 						setTimeout(() => {
-							this.$router.push({ name: 'index' });
+							this.$store.commit("setIsVerify", true)
 						}, 1200);
 					} else {
 						this.finishResult('Непредвиденная ошибка', true);

@@ -1,386 +1,413 @@
 <template>
 	<preloader :class="{ '_hidde': isPreloader }"></preloader>
 	<div class="block">
-		<h2 class="block__title">Изменить товар</h2>
-		<div v-if="isProduct" class="page__content">
-			<form method="post" class="mrb-admin__form mrb-admin-form" enctype="multipart/form-data">
-				<div class="mrb-admin-form__item">
-					<div class="mrb-admin-form__labelinner">
-						<label class="mrb-admin-form__label">
-							Выберите изображение:
-						</label>
-						<button
-							:disabled="$store.getters.isReadOnly"
-							@click.prevent="resetImageInputs"
-							type="button"
-							data-admin-image-button-reset
-							class="mrb-admin-form__label mrb-admin-form__label_resetimages">
-							Очистить все медиа.
-						</button>
-					</div>
-					<div
-						ref="draganandgrop"
-						data-draganandgrop-style="1"
-						class="mrb-admin-form__media mrb-admin-form-media">
-						<div
-							v-for="(image, index) in imagesCount"
-							:key="index"
-							data-draganandgrop-cell
-							class="mrb-admin-form-media__block mrb-admin-form-media-block">
-							<div
-								data-draganandgrop-card
-								draggable="true"
-								class="mrb-admin-form-media__content"
-								:class="{ '_active': product && product.media_count > 0 && product.media[index] }">
-								<input
-									@change="handleFileChange($event)"
-									:ref="`inputImages${index}`"
-									:disabled="$store.getters.isReadOnly"
-									accept=".jpg, .png, .jpeg, .webp" type="file"
-									name="images[]"
-									multiple
-									:data-image-value="product && product.media_count > 0 && product.media[index] ? product.media[index]['id'] : ''"
-									class="mrb-admin-form-media-block__input">
-								<div class="mrb-admin-form-media-block__preview">
-									<img
-										v-if="product && product.media_count > 0 && product.media[index]"
-										:src="product.media[index]['src_average']"
-										:alt="product.media[index]['src_average']">
-								</div>
-								<button
-									:disabled="$store.getters.isReadOnly"
-									@click.prevent="resetImageInput(index)"
-									type="button"
-									class="mrb-admin-form-media-block__close">
-									<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99h144v-144C192 62.32 206.33 48 224 48s32 14.32 32 32.01v144h144c17.7-.01 32 14.29 32 31.99z"/></svg>
-								</button>
-								<div class="mrb-admin-form-media-block__hello mrb-admin-form-media-block-hello">
-									<div class="mrb-admin-form-media-block-hello__icon">
-										<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M30 6l3.66 4H40c2.2 0 4 1.8 4 4v24c0 2.2-1.8 4-4 4H8c-2.2 0-4-1.8-4-4V14c0-2.2 1.8-4 4-4h6.34L18 6h12zm-6 13.6a6.4 6.4 0 100 12.8 6.4 6.4 0 000-12.8zM24 36c-5.52 0-10-4.48-10-10s4.48-10 10-10 10 4.48 10 10-4.48 10-10 10z"/></svg>
-									</div>
-									<div class="mrb-admin-form-media-block-hello__title">
-										Добавьте фото
-									</div>
-								</div>
-								<button
-									:disabled="$store.getters.isReadOnly"
-									@click.prevent="addBossBlock(index)"
-									type="button"
-									class="mrb-admin-form-media-block__buttonlvl">
-									Сделать Главным
-								</button>
-							</div>
-							<div v-if="index == 0" class="mrb-admin-form-media-block__bosstitle">Главная</div>
-						</div>
-					</div>
-				</div>
-				<div class="mrb-admin-form__item">
-					<label
-						for="title"
-						class="mrb-admin-form__label"
-						:class="{ '_error': isTitle }">
-						Название*:
-						<template
-							v-if="isTitle">
-							<span
-								v-for="message in title_valid_message"
-								:key="message">
-								{{ message + ' ' }}
-							</span>
-						</template>
-					</label>
-					<div class="mrb-admin-form__input">
-						<textarea
-							v-model="title"
-							id="title"
-							name="title"
-							:readonly="$store.getters.isReadOnly"
-							placeholder="Название..."
-						></textarea>
-					</div>
-				</div>
-				<div class="mrb-admin-form__item">
-					<div class="mrb-admin-form__labelinner">
-						<label
-							class="mrb-admin-form__label"
-							:class="{ '_error': isCategory }">
-							Категория*:
-							<template
-								v-if="isCategory">
-								<span
-									v-for="message in category_valid_message"
-									:key="message">
-									{{ message + ' ' }}
-								</span>
-							</template>
-						</label>
-					</div>
-					<a
-						href
-						:data-popup="$store.getters.isReadOnly ? $store.getters.isReadOnly : '#categories_tovar__popup'"
-						class="block-form-item__select block-form-item-select"
-						:class="{ '_show': $store.getters.categoryTitle.toString().length > 0 }">
-						<div class="block-form-item-select__title">{{ $store.getters.categoryTitle.toString().length > 0 ? $store.getters.categoryTitle : 'Выберите категорию' }}</div>
-						<div class="block-form-item-select__button block-form-item-select-button">
-							<div class="block-form-item-select-button__icon">
-								<svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M352 352c-8.188 0-16.38-3.125-22.62-9.375L192 205.3 54.6 342.7c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25-6.2 6.2-14.4 9.3-22.6 9.3z"/></svg>
-							</div>
+		<div class="block__averagecontainer">
+			<h2 class="block__title">Изменить товар</h2>
+			<div v-if="isProduct" class="page__content">
+				<form method="post" class="mrb-admin__form mrb-admin-form" enctype="multipart/form-data">
+					<div class="mrb-admin-form__item">
+						<div class="mrb-admin-form__labelinner">
+							<label class="mrb-admin-form__label">
+								Выберите изображение:
+							</label>
 							<button
 								:disabled="$store.getters.isReadOnly"
-								@click.prevent="$store.dispatch('clearCategory')"
+								@click.prevent="resetImageInputs"
 								type="button"
-								class="block-form-item-select-button__clear a-hover-bgc">
-								<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99h144v-144C192 62.32 206.33 48 224 48s32 14.32 32 32.01v144h144c17.7-.01 32 14.29 32 31.99z"/></svg>
+								data-admin-image-button-reset
+								class="mrb-admin-form__label mrb-admin-form__label_resetimages">
+								Очистить все медиа.
 							</button>
 						</div>
-					</a>
-					<categories-popup></categories-popup>
-				</div>
-				<div class="mrb-admin-form__item">
-					<label
-						for="title"
-						class="mrb-admin-form__label"
-						:class="{ '_error': isSpecification }">
-						Дополнительные данные*:
-						<template
-							v-if="isSpecification">
-							<span
-								v-for="message in specification_valid_message"
-								:key="message">
-								{{ message + ' ' }}
-							</span>
-						</template>
-					</label>
-					<div class="mrb-admin-form__specification mrb-admin-form-specification">
-						<template
-							v-if="parent_id !== null">
-							<template
-								v-if="!isSpecifications">
+						<div
+							ref="draganandgrop"
+							data-draganandgrop-style="1"
+							class="mrb-admin-form__media mrb-admin-form-media">
+							<div
+								v-for="(image, index) in imagesCount"
+								:key="index"
+								data-draganandgrop-cell
+								class="mrb-admin-form-media__block mrb-admin-form-media-block">
 								<div
-									v-if="specifications.length > 0"
-									v-for="(specification, index) in specifications"
-									:key="index"
-									class="mrb-admin-form-specification__item">
-									<label
-										:for="'specification_' + index"
-										class="mrb-admin-form-specification__name mrb-admin-form__label">
-										> {{ specification.name }}:
-									</label>
-									<div class="mrb-admin-form-specification__select">
-										<multiselect
-											v-model="specification.specification_value"
-											placeholder="Выберите данные..."
-											label="name"
-											track-by="id"
-											:id="'specification_' + index"
-											:options="specification.children"
-											:multiple="false"
-											:taggable="false"
-											selectLabel="Выбрать данные"
-											selectedLabel="Выбрано"
-											deselectLabel="Убрать данные"
-										></multiselect>
+									data-draganandgrop-card
+									draggable="true"
+									class="mrb-admin-form-media__content"
+									:class="{ '_active': product && product.media_count > 0 && product.media[index] }">
+									<input
+										@change="handleFileChange($event)"
+										:ref="`inputImages${index}`"
+										:readonly="$store.getters.isReadOnly"
+										:disabled="$store.getters.isReadOnly"
+										accept=".jpg, .png, .jpeg, .webp" type="file"
+										name="images[]"
+										multiple
+										:data-image-value="product && product.media_count > 0 && product.media[index] ? product.media[index]['id'] : ''"
+										class="mrb-admin-form-media-block__input">
+									<div class="mrb-admin-form-media-block__preview">
+										<img
+											v-if="product && product.media_count > 0 && product.media[index]"
+											:src="product.media[index]['src_average']"
+											:alt="product.media[index]['src_average']">
 									</div>
+									<button
+										:disabled="$store.getters.isReadOnly"
+										@click.prevent="resetImageInput(index)"
+										type="button"
+										class="mrb-admin-form-media-block__close">
+										<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99h144v-144C192 62.32 206.33 48 224 48s32 14.32 32 32.01v144h144c17.7-.01 32 14.29 32 31.99z"/></svg>
+									</button>
+									<div class="mrb-admin-form-media-block__hello mrb-admin-form-media-block-hello">
+										<div class="mrb-admin-form-media-block-hello__icon">
+											<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M30 6l3.66 4H40c2.2 0 4 1.8 4 4v24c0 2.2-1.8 4-4 4H8c-2.2 0-4-1.8-4-4V14c0-2.2 1.8-4 4-4h6.34L18 6h12zm-6 13.6a6.4 6.4 0 100 12.8 6.4 6.4 0 000-12.8zM24 36c-5.52 0-10-4.48-10-10s4.48-10 10-10 10 4.48 10 10-4.48 10-10 10z"/></svg>
+										</div>
+										<div class="mrb-admin-form-media-block-hello__title">
+											Добавьте фото
+										</div>
+									</div>
+									<button
+										:disabled="$store.getters.isReadOnly"
+										@click.prevent="addBossBlock(index)"
+										type="button"
+										class="mrb-admin-form-media-block__buttonlvl">
+										Сделать Главным
+									</button>
 								</div>
-								<div v-else class="mrb-admin-form-specification__item _error">
-									Нету свзязанных характеристик
-								</div>
-							</template>
-							<div v-else class="mrb-admin-form-specification__item _loading"></div>
-						</template>
-						<div v-else class="mrb-admin-form-specification__item _error">
-							Выберите категорию
-						</div>
-					</div>
-				</div>
-				<div class="mrb-admin-form__item">
-					<div class="mrb-admin-form__labelinner">
-						<label for="price"
-							class="mrb-admin-form__label"
-							:class="{ '_error': isPrice }">
-							Цена*:
-							<template v-if="isPrice">
-								<span v-for="message in price_valid_message" :key="message">
-									{{ message + ' ' }}
-								</span>
-							</template>
-						</label>
-						<label
-							@click.prevent="priceChange"
-							for="pricedp"
-							class="mrb-admin-form__label mrb-admin-form__label_dp"
-							:class="{ '_error': isPriceOld }">
-							{{ isPriceOld ? '(-) Скрыть прежнюю цену' : '(+) Добавить прежнюю цену' }}
-						</label>
-					</div>
-					<div v-if="!isPriceOld" class="mrb-admin-form__input">
-						<input v-model="price_now" autocomplete="off" type="text" name="price" id="price" placeholder="Цена...">
-					</div>
-					<div v-else class="mrb-admin-form__price mrb-admin-form-price">
-						<div class="mrb-admin-form-price__warning">
-							«<span>Внимание!</span> Если вы закроете данную вкладку, то введеные вами данные не будут добавлены в базу данных!»
-						</div>
-						<div class="mrb-admin-form-price__old mrb-admin-form-price-old">
-							<label
-								for="priceold"
-								class="mrb-admin-form-price-old__label">Прощлая цена:</label>
-							<div class="mrb-admin-form-price-old__input">
-								<input
-									v-model="price_old"
-									autocomplete="off"
-									type="text"
-									name="price"
-									id="priceold"
-									placeholder="Прощлая цена...">
-							</div>
-						</div>
-						<div class="mrb-admin-form-price__now mrb-admin-form-price-now">
-							<label
-								for="pricenow"
-								class="mrb-admin-form-price-now__label">Новая цена:</label>
-							<div class="mrb-admin-form-price-now__input">
-								<input
-									v-model="price_now"
-									autocomplete="off"
-									type="text"
-									name="price"
-									id="pricenow"
-									placeholder="Новая цена...">
+								<div v-if="index == 0" class="mrb-admin-form-media-block__bosstitle">Главная</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="mrb-admin-form__item">
-					<div class="mrb-admin-form__labelinner">
+					<div class="mrb-admin-form__item">
 						<label
-							:for="'tags'"
+							for="title"
 							class="mrb-admin-form__label"
-							:class="{ '_error': isTag }">
-							Теги*:
+							:class="{ '_error': isTitle }">
+							Название*:
 							<template
-								v-if="isTag">
+								v-if="isTitle">
 								<span
-									v-for="message in tag_valid_message"
+									v-for="message in title_valid_message"
 									:key="message">
 									{{ message + ' ' }}
 								</span>
 							</template>
 						</label>
-					</div>
-					<multiselect
-						v-model="tags_values"
-						tag-placeholder="Создать новый тег"
-						placeholder="Найти или создать тег..."
-						label="name"
-						track-by="id"
-						:id="'tags'"
-						:options="tags"
-						:multiple="true"
-						:taggable="true"
-						selectLabel="Выбрать тег"
-						selectedLabel="Выбрано"
-						deselectLabel="Убрать тег"
-						@tag="addTag"
-					></multiselect>
-				</div>
-				<div class="mrb-admin-form__item">
-					<div class="mrb-admin-form__chekbox mrb-admin-form-chekbox">
-						<label for="hit" class="mrb-admin-form-chekbox__title">Оно хит продажи ?</label>
-						<div class="mrb-admin-form-chekbox__input">
-							<input
-								v-model="hit"
-								id="hit"
-								type="checkbox"
-								name="hit">
-							<label for="hit"></label>
-							<div class="mrb-admin-form-chekbox__status mrb-admin-form-chekbox-status">
-								<div class="mrb-admin-form-chekbox-status__not">Нет</div>
-								<div class="mrb-admin-form-chekbox-status__yes">Да</div>
-							</div>
+						<div class="mrb-admin-form__input">
+							<textarea
+								v-model="title"
+								:readonly="$store.getters.isReadOnly"
+								:disabled="$store.getters.isReadOnly"
+								id="title"
+								name="title"
+								placeholder="Название..."
+							></textarea>
 						</div>
 					</div>
-				</div>
-				<div class="mrb-admin-form__item">
-					<div class="mrb-admin-form__radio mrb-admin-form-radio">
-						<div class="mrb-admin-form-radio__title">Статус товара:</div>
-						<div class="mrb-admin-form-radio__items">
-							<div class="mrb-admin-form-radio__item mrb-admin-form-radio-item">
-								<div class="mrb-admin-form-radio-item__innerinput">
-									<input
-										v-model="status"
-										type="radio"
-										value="1"
-										id="status_2"
-										checked
-										name="status"
-										class="mrb-admin-form-radio-item__input">
-									<div class="mrb-admin-form-radio-item__button"></div>
-									<label class="mrb-admin-form-radio-item__label" for="status_2">Активный</label>
-								</div>
-							</div>
-							<div class="mrb-admin-form-radio__item mrb-admin-form-radio-item">
-								<div class="mrb-admin-form-radio-item__innerinput">
-									<input
-										v-model="status"
-										type="radio"
-										value="0"
-										id="radio2"
-										name="status"
-										class="mrb-admin-form-radio-item__input">
-									<div class="mrb-admin-form-radio-item__button"></div>
-									<label class="mrb-admin-form-radio-item__label" for="radio2">Ожидание</label>
-								</div>
-							</div>
+					<div class="mrb-admin-form__item">
+						<div class="mrb-admin-form__labelinner">
+							<label
+								class="mrb-admin-form__label"
+								:class="{ '_error': isCategory }">
+								Категория*:
+								<template
+									v-if="isCategory">
+									<span
+										v-for="message in category_valid_message"
+										:key="message">
+										{{ message + ' ' }}
+									</span>
+								</template>
+							</label>
 						</div>
+						<a
+							href
+							:data-popup="$store.getters.isReadOnly ? $store.getters.isReadOnly : '#categories_tovar__popup'"
+							class="block-form-item__select block-form-item-select"
+							:class="{ '_show': $store.getters.categoryTitle.toString().length > 0 }">
+							<div class="block-form-item-select__title">{{ $store.getters.categoryTitle.toString().length > 0 ? $store.getters.categoryTitle : 'Выберите категорию' }}</div>
+							<div class="block-form-item-select__button block-form-item-select-button">
+								<div class="block-form-item-select-button__icon">
+									<svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M352 352c-8.188 0-16.38-3.125-22.62-9.375L192 205.3 54.6 342.7c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25-6.2 6.2-14.4 9.3-22.6 9.3z"/></svg>
+								</div>
+								<button
+									:disabled="$store.getters.isReadOnly"
+									@click.prevent="$store.dispatch('clearCategory')"
+									type="button"
+									class="block-form-item-select-button__clear a-hover-bgc">
+									<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99h144v-144C192 62.32 206.33 48 224 48s32 14.32 32 32.01v144h144c17.7-.01 32 14.29 32 31.99z"/></svg>
+								</button>
+							</div>
+						</a>
+						<categories-popup></categories-popup>
 					</div>
-				</div>
-				<div class="mrb-admin-form__item">
-					<div class="mrb-admin-form__labelinner">
+					<div class="mrb-admin-form__item">
 						<label
-							:for="'editorContent'"
-							class="mrb-admin-form__label">
-							Дополнительные данные:
+							for="title"
+							class="mrb-admin-form__label"
+							:class="{ '_error': isSpecification }">
+							Дополнительные данные*:
+							<template
+								v-if="isSpecification">
+								<span
+									v-for="message in specification_valid_message"
+									:key="message">
+									{{ message + ' ' }}
+								</span>
+							</template>
 						</label>
-						<button
+						<div class="mrb-admin-form__specification mrb-admin-form-specification">
+							<template
+								v-if="parent_id !== null">
+								<template
+									v-if="!isSpecifications">
+									<div
+										v-if="specifications.length > 0"
+										v-for="(specification, index) in specifications"
+										:key="index"
+										class="mrb-admin-form-specification__item">
+										<label
+											:for="'specification_' + index"
+											class="mrb-admin-form-specification__name mrb-admin-form__label">
+											> {{ specification.name }}:
+										</label>
+										<div class="mrb-admin-form-specification__select">
+											<multiselect
+												v-model="specification.specification_value"
+												:readonly="$store.getters.isReadOnly"
+												:disabled="$store.getters.isReadOnly"
+												placeholder="Выберите данные..."
+												label="name"
+												track-by="id"
+												:id="'specification_' + index"
+												:options="specification.children"
+												:multiple="false"
+												:taggable="false"
+												selectLabel="Выбрать данные"
+												selectedLabel="Выбрано"
+												deselectLabel="Убрать данные"
+											></multiselect>
+										</div>
+									</div>
+									<div v-else class="mrb-admin-form-specification__item _error">
+										Нету свзязанных характеристик
+									</div>
+								</template>
+								<div v-else class="mrb-admin-form-specification__item _loading"></div>
+							</template>
+							<div v-else class="mrb-admin-form-specification__item _error">
+								Выберите категорию
+							</div>
+						</div>
+					</div>
+					<div class="mrb-admin-form__item">
+						<div class="mrb-admin-form__labelinner">
+							<label for="price"
+								class="mrb-admin-form__label"
+								:class="{ '_error': isPrice }">
+								Цена*:
+								<template v-if="isPrice">
+									<span v-for="message in price_valid_message" :key="message">
+										{{ message + ' ' }}
+									</span>
+								</template>
+							</label>
+							<label
+								:disabled="$store.getters.isReadOnly"
+								@click.prevent="priceChange"
+								for="pricedp"
+								class="mrb-admin-form__label mrb-admin-form__label_dp"
+								:class="{ '_error': isPriceOld }">
+								{{ isPriceOld ? '(-) Скрыть прежнюю цену' : '(+) Добавить прежнюю цену' }}
+							</label>
+						</div>
+						<div v-if="!isPriceOld" class="mrb-admin-form__input">
+							<input
+								v-model="price_now"
+								:readonly="$store.getters.isReadOnly"
+								:disabled="$store.getters.isReadOnly"
+								autocomplete="off"
+								type="text"
+								name="price"
+								id="price"
+								placeholder="Цена...">
+						</div>
+						<div v-else class="mrb-admin-form__price mrb-admin-form-price">
+							<div class="mrb-admin-form-price__warning">
+								«<span>Внимание!</span> Если вы закроете данную вкладку, то введеные вами данные не будут добавлены в базу данных!»
+							</div>
+							<div class="mrb-admin-form-price__old mrb-admin-form-price-old">
+								<label
+									for="priceold"
+									class="mrb-admin-form-price-old__label">Прощлая цена:</label>
+								<div class="mrb-admin-form-price-old__input">
+									<input
+										v-model="price_old"
+										:readonly="$store.getters.isReadOnly"
+										:disabled="$store.getters.isReadOnly"
+										autocomplete="off"
+										type="text"
+										name="price"
+										id="priceold"
+										placeholder="Прощлая цена...">
+								</div>
+							</div>
+							<div class="mrb-admin-form-price__now mrb-admin-form-price-now">
+								<label
+									for="pricenow"
+									class="mrb-admin-form-price-now__label">Новая цена:</label>
+								<div class="mrb-admin-form-price-now__input">
+									<input
+										v-model="price_now"
+										:readonly="$store.getters.isReadOnly"
+										:disabled="$store.getters.isReadOnly"
+										autocomplete="off"
+										type="text"
+										name="price"
+										id="pricenow"
+										placeholder="Новая цена...">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mrb-admin-form__item">
+						<div class="mrb-admin-form__labelinner">
+							<label
+								:for="'tags'"
+								class="mrb-admin-form__label"
+								:class="{ '_error': isTag }">
+								Теги*:
+								<template
+									v-if="isTag">
+									<span
+										v-for="message in tag_valid_message"
+										:key="message">
+										{{ message + ' ' }}
+									</span>
+								</template>
+							</label>
+						</div>
+						<multiselect
+							v-model="tags_values"
+							:readonly="$store.getters.isReadOnly"
 							:disabled="$store.getters.isReadOnly"
-							@click.prevent="addDescription"
-							type="button"
-							data-admin-image-button-reset
-							class="mrb-admin-form__label mrb-admin-form__label_resetimages">
-							{{ isDescription ? 'Скрыть описание' : 'Добавить описание' }}
+							tag-placeholder="Создать новый тег"
+							placeholder="Найти или создать тег..."
+							label="name"
+							track-by="id"
+							:id="'tags'"
+							:options="tags"
+							:multiple="true"
+							:taggable="true"
+							selectLabel="Выбрать тег"
+							selectedLabel="Выбрано"
+							deselectLabel="Убрать тег"
+							@tag="addTag"
+						></multiselect>
+					</div>
+					<div class="mrb-admin-form__item">
+						<div class="mrb-admin-form__chekbox mrb-admin-form-chekbox">
+							<label for="hit" class="mrb-admin-form-chekbox__title">Оно хит продажи ?</label>
+							<div class="mrb-admin-form-chekbox__input">
+								<input
+									v-model="hit"
+									:readonly="$store.getters.isReadOnly"
+									:disabled="$store.getters.isReadOnly"
+									id="hit"
+									type="checkbox"
+									name="hit">
+								<label for="hit"></label>
+								<div class="mrb-admin-form-chekbox__status mrb-admin-form-chekbox-status">
+									<div class="mrb-admin-form-chekbox-status__not">Нет</div>
+									<div class="mrb-admin-form-chekbox-status__yes">Да</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mrb-admin-form__item">
+						<div class="mrb-admin-form__radio mrb-admin-form-radio">
+							<div class="mrb-admin-form-radio__title">Статус товара:</div>
+							<div class="mrb-admin-form-radio__items">
+								<div class="mrb-admin-form-radio__item mrb-admin-form-radio-item">
+									<div class="mrb-admin-form-radio-item__innerinput">
+										<input
+											v-model="status"
+											:readonly="$store.getters.isReadOnly"
+											:disabled="$store.getters.isReadOnly"
+											type="radio"
+											value="1"
+											id="status_2"
+											checked
+											name="status"
+											class="mrb-admin-form-radio-item__input">
+										<div class="mrb-admin-form-radio-item__button"></div>
+										<label class="mrb-admin-form-radio-item__label" for="status_2">Активный</label>
+									</div>
+								</div>
+								<div class="mrb-admin-form-radio__item mrb-admin-form-radio-item">
+									<div class="mrb-admin-form-radio-item__innerinput">
+										<input
+											v-model="status"
+											:readonly="$store.getters.isReadOnly"
+											:disabled="$store.getters.isReadOnly"
+											type="radio"
+											value="0"
+											id="radio2"
+											name="status"
+											class="mrb-admin-form-radio-item__input">
+										<div class="mrb-admin-form-radio-item__button"></div>
+										<label class="mrb-admin-form-radio-item__label" for="radio2">Ожидание</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mrb-admin-form__item">
+						<div class="mrb-admin-form__labelinner">
+							<label
+								:for="'editorContent'"
+								class="mrb-admin-form__label">
+								Дополнительные данные:
+							</label>
+							<button
+								:disabled="$store.getters.isReadOnly"
+								@click.prevent="addDescription"
+								type="button"
+								data-admin-image-button-reset
+								class="mrb-admin-form__label mrb-admin-form__label_resetimages">
+								{{ isDescription ? 'Скрыть описание' : 'Добавить описание' }}
+							</button>
+						</div>
+						<div v-show="isDescription" class="mrb-admin-form__description mrb-admin-form-description">
+							<quill-editor
+								v-model:content="editorContent"
+								:readOnly="$store.getters.isReadOnly"
+								:content="'String'"
+								:contentType="'html'"
+								:options="editorOptions"
+								:id="'editorContent'"
+							></quill-editor>
+						</div>
+					</div>
+					<div class="mrb-admin-form__item mrb-admin-form__innerbutton">
+						<button
+							type="submit"
+							@click.prevent="sendTovar"
+							:disabled="$store.getters.isReadOnly"
+							class="block-form__button block-form__submit block-form-submit"
+							:class="{
+								'_loading': $store.getters.loading,
+								'_sending': $store.getters.result,
+								'_error':  $store.getters.isErrorResult
+							}">
+
+							<span class="block-form-submit__title">Изменить</span>
+							<span class="block-form-submit__result">{{ $store.getters.resultMessage }}</span>
 						</button>
 					</div>
-					<div v-show="isDescription" class="mrb-admin-form__description mrb-admin-form-description">
-						<quill-editor
-							v-model:content="editorContent"
-							:content="'String'"
-							:contentType="'html'"
-							:options="editorOptions"
-							:id="'editorContent'"
-							:disabled="$store.getters.isReadOnly"
-						></quill-editor>
-					</div>
-				</div>
-				<div class="mrb-admin-form__item mrb-admin-form__innerbutton">
-					<button
-						type="submit"
-						@click.prevent="sendTovar"
-						:disabled="$store.getters.isReadOnly"
-						class="block-form__button block-form__submit block-form-submit"
-						:class="{
-							'_loading': $store.getters.loading,
-							'_sending': $store.getters.result,
-							'_error':  $store.getters.isErrorResult
-						}">
-
-						<span class="block-form-submit__title">Изменить</span>
-						<span class="block-form-submit__result">{{ $store.getters.resultMessage }}</span>
-					</button>
-				</div>
-			</form>
-		</div>
-		<div v-else class="block__title text-center">
-			<span class="_error">Нету данных!</span>
+				</form>
+			</div>
+			<div v-else class="block__title text-center">
+				<span class="_error">Нету данных!</span>
+			</div>
 		</div>
 	</div>
 </template>
@@ -388,7 +415,7 @@
 	import { QuillEditor } from '@vueup/vue-quill'
 
 
-	import Preloader from './../includes/PreloaderComponent.vue';
+	import Preloader from '@/admin/plugins/Preloader/Preloader.vue';
 
 	import Multiselect from 'vue-multiselect';
 

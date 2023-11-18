@@ -1,4 +1,3 @@
-import lazyMedia from "./../../files/scroll/lazyload.js";
 const state = {
 	colstartblockproducts: 20,
 
@@ -61,9 +60,6 @@ const getters = {
 }
 
 const actions = {
-	update({ commit }) {
-		lazyMedia.update();
-	},
 	zeroingProducts({ commit, getters, dispatch }){
 		commit('setIsMessage', false);
 		commit('setProducts', []);
@@ -238,9 +234,6 @@ const actions = {
 		products = products.filter(item => typeof item.id === 'number' && typeof item.col === 'number');
 		localStorage.setItem(getters.localStorageTrash, JSON.stringify(products));
 		dispatch("getLocalStorageTrash")
-	},
-	handleImageError({}, event) {
-		event.target.src = `/storage/project/loading.gif`;
 	},
 	getLocalStorageHistory({ commit, getters }) {
 		let data = JSON.parse(localStorage.getItem(getters.localStorageHistory));

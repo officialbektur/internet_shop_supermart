@@ -2,14 +2,14 @@
 	<section class="user">
 		<div class="user__body">
 			<div class="user__header user-header">
-				<router-link :to="{ name: 'users.login'}" class="user-header-button__back user-header-button-back a-hover-bgc">
+				<button @click.prevent="$store.commit('setIsResetPassword', false)" type="button" class="user-header-button__back user-header-button-back a-hover-bgc">
 					<span class="user-header-button-back__icon">
 						<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke="none" d="M0 0h24v24H0z"/><path d="M14 8V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h7a2 2 0 002-2v-2"/><path d="M20 12H7l3-3m0 6l-3-3"/></svg>
 					</span>
 					<span class="user-header-button-back__title">
 						Выйти
 					</span>
-				</router-link>
+				</button>
 				<div class="user-header__title">
 					Сброс пароля
 				</div>
@@ -84,7 +84,6 @@
 			}
 		},
 		mounted() {
-			this.$store.dispatch('getScanLogCount', false);
 		},
 		methods: {
 			reset() {
@@ -95,7 +94,7 @@
 					if (response && response.data && response.data.message) {
 						this.finishResult(response.data.message);
 						setTimeout(() => {
-							this.$router.push({ name: 'users.login'})
+							this.$store.commit("setIsResetPassword", false)
 						}, 1200);
 					}
 				})

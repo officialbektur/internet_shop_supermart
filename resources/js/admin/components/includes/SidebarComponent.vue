@@ -6,7 +6,7 @@
 				<path d="M0 4.875C0 3.97617 0.89375 3.25 2 3.25H26C27.1063 3.25 28 3.97617 28 4.875C28 5.77383 27.1063 6.5 26 6.5H2C0.89375 6.5 0 5.77383 0 4.875ZM0 13C0 12.1012 0.89375 11.375 2 11.375H26C27.1063 11.375 28 12.1012 28 13C28 13.8988 27.1063 14.625 26 14.625H2C0.89375 14.625 0 13.8988 0 13ZM28 21.125C28 22.0238 27.1063 22.75 26 22.75H2C0.89375 22.75 0 22.0238 0 21.125C0 20.2262 0.89375 19.5 2 19.5H26C27.1063 19.5 28 20.2262 28 21.125Z"/>
 			</svg>
 		</button>
-		<router-link :to="{ name: 'users.login'}" class="sidebar__logo">
+		<router-link :to="{ name: 'index'}" class="sidebar__logo">
 			AdminPanel
 		</router-link>
 	</div>
@@ -38,7 +38,7 @@
 							</router-link>
 						</li>
 						<li class="sidebar__list sidebar-list a-hover-bgc _exit">
-							<a href class="sidebar__btn sidebar-list__link" @click.prevent="$parent.logout">
+							<a href class="sidebar__btn sidebar-list__link" @click.prevent="$store.dispatch('logout')">
 								<span class="sidebar__icon sidebar-list__icon button-hover-bgc">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
 								</span>
@@ -236,7 +236,7 @@
 							</router-link>
 						</li>
 						<li class="sidebar__list sidebar-list a-hover-bgc">
-							<router-link :to="{ name: 'categories.delete'}" class="sidebar__btn sidebar-list__link">
+							<router-link :to="{ name: 'specifications.delete'}" class="sidebar__btn sidebar-list__link">
 								<span class="sidebar__icon sidebar-list__icon button-hover-bgc">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/></svg>
 								</span>
@@ -328,7 +328,7 @@
 							</router-link>
 						</li>
 						<li class="sidebar__list sidebar-list a-hover-bgc">
-							<router-link :to="{ name: 'categories.delete'}" class="sidebar__btn sidebar-list__link">
+							<router-link :to="{ name: 'tags.delete'}" class="sidebar__btn sidebar-list__link">
 								<span class="sidebar__icon sidebar-list__icon button-hover-bgc">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/></svg>
 								</span>

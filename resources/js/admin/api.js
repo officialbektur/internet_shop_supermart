@@ -1,13 +1,11 @@
 import axios from 'axios';
+import store from './store/index.js';
 import router from './router';
 
 const api = axios.create();
 api.interceptors.request.use(config => {
-	if (localStorage.getItem('access_token') && localStorage.getItem('access_token') !== 'undefined' && localStorage.getItem('access_token').length > 0) {
+	if (localStorage.getItem('access_token') && localStorage.getItem('access_token').length > 0) {
 		config.headers.authorization = `Bearer ${localStorage.getItem('access_token')}`;
-	} else {
-		localStorage.removeItem('access_token');
-		router.push({ name: 'users.login' });
 	}
 	return config;
 }, error => {
@@ -17,7 +15,7 @@ api.interceptors.request.use(config => {
 api.interceptors.response.use(response => {
 	return response;
 }, error => {
-	if (localStorage.getItem('access_token') && typeof localStorage.getItem('access_token') !== 'undefined' && localStorage.getItem('access_token').length > 0) {
+	if (localStorage.getItem('access_token') && localStorage.getItem('access_token').length > 0) {
 		if ('Token has expired' === error.response.data.message) {
 			return axios.post('/api/admin/auth/refresh', {}, {
 				headers: {
@@ -30,18 +28,18 @@ api.interceptors.response.use(response => {
 				return api.request(error.config);
 			})
 			.catch(err => {
-				localStorage.removeItem('access_token');
+				store.dispatch("zeroingLog")
 				return Promise.reject(err);
 			});
 		}
 	} else {
-		localStorage.removeItem('access_token');
-		router.push({ name: 'users.login' });
+		store.dispatch("zeroingLog")
+		return Promise.reject(error);
 	}
 
 	if (error.response.status === 401) {
-		localStorage.removeItem('access_token');
-		router.push({ name: 'users.login' });
+		store.dispatch("zeroingLog")
+		return Promise.reject(error);
 	}
 
 	return Promise.reject(error);

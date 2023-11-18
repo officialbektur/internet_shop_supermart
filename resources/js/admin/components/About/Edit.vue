@@ -51,7 +51,7 @@
 	import { QuillEditor } from '@vueup/vue-quill'
 
 
-	import Preloader from './../includes/PreloaderComponent.vue';
+	import Preloader from '@/admin/plugins/Preloader/Preloader.vue';
 
 	import API from '@/admin/api';
 
@@ -98,17 +98,19 @@
 				this.isPreloader = true;
 			},
 			async getAbout() {
-				axios.get(`/api/abouts`)
-				.then(res => {
-					if (res && res.data && res.data.content) {
-						this.editorContent = res.data.content;
+				try {
+					let response = await axios.get('/api/abouts');
+					if (response && response.data && response.data.content) {
+						this.editorContent = response.data.content;
 					}
-				})
-				this.preloader();
+				} catch (error) {
+				} finally {
+					this.preloader();
+				}
 			},
-			updateAbout() {
-				API.patch(`/api/admin/abouts`, { content: this.editorContent })
-				.then( response => {
+			async updateAbout() {
+				try {
+					let response = await API.patch('/api/admin/abouts', { content: this.editorContent });
 					if (response && response.data) {
 						if (response.data.message) {
 							this.$store.dispatch("finishResult", { message: response.data.message });
@@ -129,8 +131,7 @@
 							errorStatus: true,
 						});
 					}
-				})
-				.catch( error => {
+				} catch (error) {
 					if (error.response && error.response.data && error.response.data.error) {
 						this.$store.dispatch("finishResult", {
 							message: error.response.data.error,
@@ -147,7 +148,9 @@
 							errorStatus: true,
 						});
 					}
-				});
+				} finally {
+					this.preloader();
+				}
 			},
 			sendAbout() {
 				this.$store.commit("setIsReadOnly", true)

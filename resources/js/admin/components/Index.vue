@@ -1,59 +1,77 @@
 <template>
-	<sidebar-component v-if="accessToken"></sidebar-component>
-	<main class="page" :class="{ 'margin-left-sidebar': accessToken , 'df fdc aic': !accessToken}">
-		<router-view :key="$route.fullPath"></router-view>
-	</main>
+	<div v-if="!$store.getters.isPreloader" class="loading-lazy"></div>
+	<template v-else>
+		<vue-progress-bar class="progress-bar__result"></vue-progress-bar>
+
+		<template v-if="$store.getters.isVerify">
+			<sidebar-component></sidebar-component>
+			<main class="page">
+				<router-view :key="$route.fullPath"></router-view>
+			</main>
+		</template>
+		<template v-else>
+			<main class="page" :class="{ 'margin-left-sidebar': $store.getters.isVerify , 'df fdc aic': !$store.getters.isVerify}">
+				<template v-if="$store.getters.isVerifyLog">
+					<reset-component v-if="$store.getters.isResetPassword"></reset-component>
+					<login-component v-else></login-component>
+				</template>
+				<registration-component v-else></registration-component>
+			</main>
+		</template>
+	</template>
 </template>
 
 <script>
-import API from '@/admin/api';
-import SidebarComponent from './includes/SidebarComponent.vue';
-import { popup } from '@/Admin/libs/popup.js';
-export default {
-	name: 'Index',
-	data() {
-		return {
-			accessToken: null
-		};
-	},
-	mounted() {
-		this.getAccessToken()
-		this.scan();
-		popup;
-	},
-	updated() {
-		this.getAccessToken()
-	},
-	methods: {
-		scan() {
-			API.post("/api/admin/auth/me")
-			.then( res => {
-				if (res && res.data && res.data.id) {
-					this.accessToken = localStorage.getItem("access_token");
-				} else {
-					localStorage.removeItem("access_token")
-					this.$router.push({ name: 'users.login'})
-				}
-			})
+	import LoginComponent from './User/Login.vue';
+	import RegistrationComponent from './User/Registration.vue';
+	import ResetPasswordComponent from './User/ResetPassword.vue';
+
+	import SidebarComponent from './includes/SidebarComponent.vue';
+	import { popup } from '@/Admin/libs/popup.js';
+
+	export default {
+		name: 'Index',
+		beforeCreate() {
+			document.documentElement.classList.add('lock');
 		},
-		getAccessToken() {
-			this.accessToken = localStorage.getItem("access_token");
+		data() {
+			return {
+			};
 		},
-		async logout() {
-			try {
-				await API.post("/api/admin/auth/logout");
-			} finally {
-				localStorage.removeItem('access_token');
-				this.accessToken = null;
-				this.$router.push({ name: 'users.login' });
+		mounted() {
+			if (!localStorage.getItem('access_token') || localStorage.getItem('access_token').length == 0) {
+				this.$store.dispatch("preloader")
 			}
+			this.$Progress.finish();
+			this.$store.dispatch("scan")
+			popup;
+		},
+		created() {
+			this.$Progress.start();
+			this.$router.beforeEach((to, from, next) => {
+				if (to.meta.progress !== undefined) {
+					let meta = to.meta.progress;
+					this.$Progress.parseMeta(meta);
+				}
+				this.$Progress.start();
+				next();
+			});
+			this.$router.afterEach((to, from) => {
+				this.$Progress.finish();
+			});
+		},
+		methods: {
+		},
+		computed: {
+		},
+		components: {
+			'login-component': LoginComponent,
+			'reset-component': ResetPasswordComponent,
+			'registration-component': RegistrationComponent,
+			'sidebar-component': SidebarComponent,
 		}
-	},
-	components: {
-		'sidebar-component': SidebarComponent
-	}
-};
+	};
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 </style>

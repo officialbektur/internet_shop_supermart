@@ -2,6 +2,10 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const app = createApp({});
+
+import store from './store/index.js';
+
+
 const router = createRouter({
 	history: createWebHistory(),
 	routes: [
@@ -60,12 +64,24 @@ const router = createRouter({
 			component: () => import('./components/Product/Show.vue'),
 			name: 'show'
 		},
-		{
-			path: '/:catchAll(.*)',
-			component: () => import('./components/404/404.vue'),
-			name: '404'
-		}
+		// {
+		// 	path: '/:catchAll(.*)',
+		// 	component: () => import('./components/404/404.vue'),
+		// 	name: '404'
+		// }
 	]
 });
+
+
+// router.beforeEach((to, from, next) => {
+
+// 	store.dispatch('startProgress');
+
+// 	next();
+// });
+
+// router.afterEach(() => {
+// 	store.dispatch('endProgress');
+// })
 
 export default router;

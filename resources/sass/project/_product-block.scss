@@ -769,16 +769,19 @@
 				background-color: #00b9ff;
 				transition: all 0.4s ease 0s;
 				&._active {
-					box-shadow: rem(0) rem(0) rem(5) rgba($color: #00b9ff, $alpha: 0.6),
-								rem(0) rem(0) rem(8) rgba($color: #00b9ff, $alpha: 0.6),
-								rem(0) rem(0) rem(14) rgba($color: #00b9ff, $alpha: 0.6),
-								rem(0) rem(0) rem(20) rgba($color: #00b9ff, $alpha: 0.6);
+					background-color: $colorRed;
 				}
 				html._pc &:hover {
 					box-shadow: rem(0) rem(0) rem(5) rgba($color: #00b9ff, $alpha: 0.6),
 								rem(0) rem(0) rem(8) rgba($color: #00b9ff, $alpha: 0.6),
 								rem(0) rem(0) rem(14) rgba($color: #00b9ff, $alpha: 0.6),
 								rem(0) rem(0) rem(20) rgba($color: #00b9ff, $alpha: 0.6);
+				}
+				html._pc &._active:hover {
+					box-shadow: rem(0) rem(0) rem(5) rgba($color: $colorRed, $alpha: 0.6),
+								rem(0) rem(0) rem(8) rgba($color: $colorRed, $alpha: 0.6),
+								rem(0) rem(0) rem(14) rgba($color: $colorRed, $alpha: 0.6),
+								rem(0) rem(0) rem(20) rgba($color: $colorRed, $alpha: 0.6);
 				}
 			}
 			// .product-block-info-buttons-favorite
@@ -822,16 +825,19 @@
 				background-color: #000000;
 				transition: all 0.4s ease 0s;
 				&._active {
-					box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.6),
-								rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.6),
-								rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.6),
-								rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.6);
+					background-color: $colorRed;
 				}
 				html._pc &:hover {
 					box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.6),
 								rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.6),
 								rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.6),
 								rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.6);
+				}
+				html._pc &._active:hover {
+					box-shadow: rem(0) rem(0) rem(5) rgba($color: $colorRed, $alpha: 0.6),
+								rem(0) rem(0) rem(8) rgba($color: $colorRed, $alpha: 0.6),
+								rem(0) rem(0) rem(14) rgba($color: $colorRed, $alpha: 0.6),
+								rem(0) rem(0) rem(20) rgba($color: $colorRed, $alpha: 0.6);
 				}
 			}
 			// .product-block-info-buttons-basket

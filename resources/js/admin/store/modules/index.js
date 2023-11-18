@@ -1,5 +1,4 @@
 import axios from 'axios';
-import lazyMedia from "./../../files/scroll/lazyload.js";
 const state = {
 	app: null,
 	accessToken: null,
@@ -16,12 +15,6 @@ const getters = {
 
 
 const actions = {
-	lazyMedia({ commit }) {
-		lazyMedia.update();
-	},
-	handleImageError({}, event) {
-		event.target.src = `/storage/project/loading.gif`;
-	},
 	async getApp({ commit, getters, dispatch }){
 		axios.get('/api/index')
 		.then( res => {

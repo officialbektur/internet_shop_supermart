@@ -112,7 +112,7 @@
 <script>
 	import API from '@/admin/api';
 
-	import Preloader from './../includes/PreloaderComponent.vue';
+	import Preloader from '@/admin/plugins/Preloader/Preloader.vue';
 
 	import SpecificationsPopup from './../Popup/SpecificationPopup.vue';
 	export default {

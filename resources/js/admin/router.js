@@ -1,6 +1,10 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
-import API from '@/admin/api'; // Подключите ваш модуль API здесь
+
+import API from '@/admin/api';
+
+import store from './store/index.js';
+
 
 const app = createApp({});
 const router = createRouter({
@@ -8,26 +12,26 @@ const router = createRouter({
 	routes: [
 
 		/* ===================================  User Login  --Start--  =================================== */
-		{
-			path: '/admin/login',
-			component: () => import('./components/User/Login.vue'),
-			name: 'users.login'
-		},
+		// {
+		// 	path: '/admin/login',
+		// 	component: () => import('./components/User/Login.vue'),
+		// 	name: 'users.login'
+		// },
 		/* ===================================  User Login  --End--  =================================== */
 
 
 
 		/* ===================================  User Registration --Start--  =================================== */
-		{
-			path: '/admin/registration',
-			component: () => import('./components/User/Registration.vue'),
-			name: 'users.registration'
-		},
-		{
-			path: '/admin/resetpassword',
-			component: () => import('./components/User/ResetPassword.vue'),
-			name: 'users.resetpassword'
-		},
+		// {
+		// 	path: '/admin/registration',
+		// 	component: () => import('./components/User/Registration.vue'),
+		// 	name: 'users.registration'
+		// },
+		// {
+		// 	path: '/admin/resetpassword',
+		// 	component: () => import('./components/User/ResetPassword.vue'),
+		// 	name: 'users.resetpassword'
+		// },
 		/* ===================================  User Registration --End--  =================================== */
 
 
@@ -243,18 +247,11 @@ router.beforeEach((to, from, next) => {
 	const accessToken = localStorage.getItem('access_token');
 
 	if (!accessToken) {
-		if (to.name === 'users.registration') {
-			API.post('/api/admin/users/count')
-			.then( res => {
-				if (res.data.status > 0) {
-					return next({ name: 'users.login' });
-				}
-			})
-		} else if (to.name !== 'users.login' && to.name !== 'users.resetpassword') {
-			return next({ name: 'users.login' });
-		}
-	} else if (['users.login', 'users.registration', 'users.resetpassword'].includes(to.name)) {
-		return next({ name: 'index' });
+		localStorage.removeItem('access_token');
+		store.commit("setIsVerify", false)
+		store.commit("setIsPreloader", false)
+		store.dispatch("getScanLogCount")
+		document.documentElement.classList.add('lock');
 	}
 
 	next();

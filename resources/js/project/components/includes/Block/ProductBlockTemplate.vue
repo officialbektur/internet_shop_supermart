@@ -17,7 +17,6 @@
 		methods: {
 		},
 		updated() {
-			this.$store.dispatch('update');
 		},
 		computed: {
 			products() {

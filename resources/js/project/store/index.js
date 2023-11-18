@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import { createStore } from "vuex";
+
 import App from '././modules/app.js';
 import Products from './modules/product.js';
 import Header from './modules/header.js';

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Admin\Specification;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Project\Specification\UpdateRequest;
+use App\Http\Requests\Admin\Specification\UpdateRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;

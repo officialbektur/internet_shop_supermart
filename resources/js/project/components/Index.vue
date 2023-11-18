@@ -1,4 +1,6 @@
 <template>
+	<vue-progress-bar class="progress-bar__result"></vue-progress-bar>
+
 	<header-component></header-component>
 	<main class="page">
 		<router-view :key="$route.fullPath"></router-view>
@@ -6,13 +8,13 @@
 	<sidbar-component></sidbar-component>
 	<footer-component></footer-component>
 	<popup-address-component></popup-address-component>
+	
 </template>
 
 <script>
 import axios from 'axios';
 import { popup } from '@/project/libs/popup.js';
 import * as flsFunctions from "@/project/files/functions.js";
-import { initSliders } from "@/project/files/sliders.js";
 
 import HeaderComponent from './includes/Header/HeaderComponent.vue';
 import SidbarComponent from './includes/Sidbar/SidbarComponent.vue';
@@ -29,14 +31,27 @@ export default {
 	computed: {
 	},
 	mounted() {
+		this.$Progress.finish();
 		this.$store.dispatch("getApp");
-		initSliders();
 		this.$store.dispatch('initCountSaveTovars')
 		this.$store.dispatch('scanLocalStorageSearch');
 		popup;
 	},
+	created() {
+		this.$Progress.start();
+		this.$router.beforeEach((to, from, next) => {
+			if (to.meta.progress !== undefined) {
+				let meta = to.meta.progress;
+				this.$Progress.parseMeta(meta);
+			}
+			this.$Progress.start();
+			next();
+		});
+		this.$router.afterEach((to, from) => {
+			this.$Progress.finish();
+		});
+	},
 	updated() {
-		initSliders();
 		if (!this.clickListenerAdded) {
 			this.addClickListener();
 			this.clickListenerAdded = true;

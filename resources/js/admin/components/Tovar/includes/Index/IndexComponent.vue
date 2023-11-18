@@ -8,12 +8,17 @@
 			<div class="block-table__title block-table-title">
 				<div class="block-table-title__image block-table-title-image">
 					<div class="block-table-title-image__img">
-						<img :data-src="product.image" src="/storage/project/loading.gif" @error="$store.dispatch('handleImageError', $event)" :alt="`${product.title}_${product.id}`">
+						<VueLazyload :dataSrc="product.image" :src="'/storage/project/loading.gif'" :alt="`${product.title}_${product.id}`"></VueLazyload>
 					</div>
 				</div>
 				<div class="block-table-title__infotext block-table-titleinfotext">
 					<div class="block-table-title-infotext__category">
-						Категория<template v-for="category in Array.isArray(product.categories) ? product.categories : []"> > {{ category.name }}</template>
+						Категория
+						<template v-if="Array.isArray(product.categories)">
+							<template v-for="category in product.categories">
+								> {{ category.name }}
+							</template>
+						</template>
 					</div>
 					<div class="block-table-title-infotext__title">
 						{{ product.title }}
@@ -65,6 +70,9 @@
 
 <script>
 	import API from '@/admin/api';
+
+	import VueLazyload from '@/admin/plugins/VueLazyload/VueLazyload.vue';
+
 	export default {
 		name: 'IndexComponent',
 		props: {
@@ -103,6 +111,7 @@
 		computed: {
 		},
 		components: {
+			'VueLazyload': VueLazyload
 		},
 	}
 </script>

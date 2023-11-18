@@ -34,7 +34,7 @@
 						:class="{ '_sending': isSending }">
 						<input
 							:disabled="isReadOnly"
-							@click="deleteCommentary(commentary.id, index)"
+							@click.prevent="deleteCommentary(commentary.id, index)"
 							:id="'delete_' + index"
 							:checked="commentary.status == 1"
 							type="checkbox"

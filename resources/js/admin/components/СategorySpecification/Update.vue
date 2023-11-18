@@ -48,7 +48,7 @@
 
 	import * as flsFunctions from "@/admin/files/functions.js";
 
-	import Preloader from './../includes/PreloaderComponent.vue';
+	import Preloader from '@/admin/plugins/Preloader/Preloader.vue';
 
 	import Specification from "./includes/Specifications/Specifications.vue";
 

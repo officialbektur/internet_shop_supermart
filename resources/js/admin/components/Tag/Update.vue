@@ -71,7 +71,7 @@
 </template>
 
 <script>
-	import Preloader from './../includes/PreloaderComponent.vue';
+	import Preloader from '@/admin/plugins/Preloader/Preloader.vue';
     export default {
 		name: 'Create',
 		beforeCreate() {
