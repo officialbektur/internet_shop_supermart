@@ -36,8 +36,6 @@ class RecController extends BaseController {
 
 		$productsResource = IndexResource::collection($products);
 
-		return response()->json([
-			'data' => $productsResource,
-		]);
+		return response()->json($productsResource);
 	}
 }
