@@ -1,0 +1,9 @@
+server_test
+ssh root@85.193.91.135
+hJTFB4+nLex_iw
+
+
+
+server_runner
+ssh root@83.222.8.83
+m+3mUCaL5thXD+

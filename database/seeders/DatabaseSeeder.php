@@ -54,8 +54,8 @@ class DatabaseSeeder extends Seeder
 				$category->specifications()->attach($specificationIds);
 			}
 
-			$products = Product::factory(2000)->create();
-			$tags = Tag::factory(2000)->create();
+			$products = Product::factory(1000)->create();
+			$tags = Tag::factory(1000)->create();
 			$products = Product::all();
 			$specifications = Specification::with('parentRecursive')->get();
 
@@ -102,10 +102,10 @@ class DatabaseSeeder extends Seeder
 
 				$product->specifications()->attach($specificationIds);
 			}
-			Description::factory(2000)->create();
-			Media::factory(2000)->create();
+			Description::factory(1000)->create();
+			Media::factory(1000)->create();
 			SearchHint::factory(5)->create();
-			Commentary::factory(4600)->create();
+			Commentary::factory(1000)->create();
 			About::factory(1)->create();
 
 			// \App\Models\User::factory()->create([
