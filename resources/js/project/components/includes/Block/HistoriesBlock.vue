@@ -85,8 +85,8 @@
 					let response = await axios.post('/api/products/histories', {
 						productIds: this.$store.getters.ids.splice(-12)
 					});
-					if (response && response.data && response.data.length > 0) {
-						this.products = response.data;
+					if (response && response.data && response.data.data && response.data.data.length > 0) {
+						this.products = response.data.data;
 					} else {
 					}
 				} catch (error) {
