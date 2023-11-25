@@ -27,7 +27,7 @@
 	import ResetPasswordComponent from './User/ResetPassword.vue';
 
 	import SidebarComponent from './includes/SidebarComponent.vue';
-	import { popup } from '@/Admin/libs/popup.js';
+	import { popup } from '@/admin/libs/popup.js';
 
 	export default {
 		name: 'Index',
