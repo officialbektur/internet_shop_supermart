@@ -65,7 +65,7 @@ const router = createRouter({
 			name: 'show'
 		},
 		{
-			path: '/:catchAll(.*)',
+			path: '/',
 			component: () => import('./components/404/404.vue'),
 			name: '404'
 		}

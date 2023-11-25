@@ -1,10 +1,11 @@
 <template>
 	<section class="content">
 		<div class="content__container">
-			<div class="content__body">
-				<div class="content__infotext">
-					404
-				</div>
+			<h2 class="_title mx-body">
+				Ошибка 404
+			</h2>
+			<div class="content__body mx-body">
+				404 Page Not
 			</div>
 		</div>
 	</section>

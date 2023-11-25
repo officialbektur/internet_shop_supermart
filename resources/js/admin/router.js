@@ -235,7 +235,7 @@ const router = createRouter({
 
 		/* ===================================  404  --Start--  =================================== */
 		{
-			path: '/:catchAll(.*)',
+			path: '/',
 			component: () => import('./components/Setting/Index.vue'),
 			name: '404'
 		}
