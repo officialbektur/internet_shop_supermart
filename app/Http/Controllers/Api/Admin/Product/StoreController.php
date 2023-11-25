@@ -72,7 +72,7 @@ class StoreController extends Controller
 					// Сохранение src_max с использованием Storage::disk
 					$srcMaxName = $uniqueName . '(1280x800)' . '.' . $imageData->getClientOriginalExtension();
 					$srcMaxPath = $rootPath . '/src_max/' . $srcMaxName;
-					Storage::disk('public')->put($srcMaxPath, $image->stream(100));
+					Storage::disk('public')->put($srcMaxPath, $image->stream());
 
 					// Изменение размера для src_average
 					$image->resize(202, 250, function ($constraint) {
@@ -83,7 +83,7 @@ class StoreController extends Controller
 					// Сохранение src_average с использованием Storage::disk
 					$srcAverageName = $uniqueName . '(190x235)' . '.' . $imageData->getClientOriginalExtension();
 					$srcAveragePath = $rootPath . '/src_average/' . $srcAverageName;
-					Storage::disk('public')->put($srcAveragePath, $image->stream(100));
+					Storage::disk('public')->put($srcAveragePath, $image->stream());
 
 					// Изменение размера для src_min
 					$image->resize(80, 100, function ($constraint) {
@@ -94,7 +94,7 @@ class StoreController extends Controller
 					// Сохранение src_min с использованием Storage::disk
 					$srcMinName = $uniqueName . '(70x85)' . '.' . $imageData->getClientOriginalExtension();
 					$srcMinPath = $rootPath . '/src_min/' . $srcMinName;
-					Storage::disk('public')->put($srcMinPath, $image->stream(100));
+					Storage::disk('public')->put($srcMinPath, $image->stream());
 
 					$updatedTimestamp = now()->addSeconds($key);
 
