@@ -5,12 +5,12 @@
 
 		<template v-if="$store.getters.isVerify">
 			<sidebar-component></sidebar-component>
-			<main class="page">
+			<main class="page" :class="{ 'margin-left-sidebar': $store.getters.isVerify}">
 				<router-view :key="$route.fullPath"></router-view>
 			</main>
 		</template>
 		<template v-else>
-			<main class="page" :class="{ 'margin-left-sidebar': $store.getters.isVerify , 'df fdc aic': !$store.getters.isVerify}">
+			<main class="page" :class="{ 'df fdc aic': !$store.getters.isVerify }">
 				<template v-if="$store.getters.isVerifyLog">
 					<reset-component v-if="$store.getters.isResetPassword"></reset-component>
 					<login-component v-else></login-component>

@@ -11,7 +11,6 @@
 				<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99h144v-144C192 62.32 206.33 48 224 48s32 14.32 32 32.01v144h144c17.7-.01 32 14.29 32 31.99z"/></svg>
 			</span>
 		</div>
-		<input type="hidden" name="catygory" class="bkt-catygory-product-id">
 		<div class="bkt-catygory__menu bkt-catygory-menu">
 			<div class="bkt-catygory-menu__header bkt-catygory-menu-header">
 				<button @click="$store.dispatch('closeCategories')" type="button" class="bkt-catygory-menu-header__back bkt-catygory-menu-header-back a-hover-bgc">
@@ -28,7 +27,10 @@
 					</span>
 				</button>
 			</div>
-			<div class="bkt-catygory-menu__main bkt-catygory-menu-main">
+			<div
+				ref="data-category-menu"
+				class="bkt-catygory-menu__main bkt-catygory-menu-main"
+				data-category-menu>
 				<template v-if="$store.getters.categories.length > 0">
 					<categories v-for="category in $store.getters.categories" :category="category" :key="category"></categories>
 				</template>
@@ -63,7 +65,7 @@
 		components: {
 			'categories': Categories,
 		},
-    }
+	}
 </script>
 
 <style scoped>

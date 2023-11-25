@@ -1,3 +1,45 @@
+.w-100 {
+	width: 100%;
+}
+.max-width-100 {
+	max-width: 100%;
+}
+.dff {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.df {
+	display: flex;
+}
+.fdc {
+	flex-direction: column;
+}
+.aic {
+	align-items: center;
+}
+.jcfs {
+	justify-content: flex-start;
+}
+.jcfe {
+	justify-content: flex-end;
+}
+.jcc {
+	justify-content: center;
+}
+.jcsb {
+	justify-content: space-between;
+}
+.jcsa {
+	justify-content: space-around;
+}
+.flex-wrap-wrap {
+	flex-wrap: wrap;
+}
+.flex-wrap-nowrap {
+	flex-wrap: nowrap;
+}
+
 /* ===================================  Progress Bar  --Start--  =================================== */
 .progress-bar {
 	// position: fixed;
@@ -55,8 +97,8 @@
 	}
 	// .title-categories__link
 	&__link {
-		font-size: inherit;
 		color: inherit;
+		font-size: inherit;
 		line-height: inherit;
 		font-weight: inherit;
 	}
@@ -73,20 +115,20 @@
 	line-height: math.div(32, 28);
 }
 .mx-body {
-	margin: rem(12) rem(8);
-	@include adaptiveValue("margin-top", 12, 8, 991.98);
-	@include adaptiveValue("margin-top", 8, 6, 767.98, 991.98);
-	@include adaptiveValue("margin-top", 8, 6, 479.98, 767.98);
-	@include adaptiveValue("margin-bottom", 12, 8, 991.98);
-	@include adaptiveValue("margin-bottom", 8, 6, 767.98, 991.98);
-	@include adaptiveValue("margin-bottom", 8, 6, 479.98, 767.98);
-	@include adaptiveValue("margin-left", 8, 4, 991.98);
-	@include adaptiveValue("margin-left", 6, 1, 479.98, 767.98);
-	@include adaptiveValue("margin-right", 8, 4, 991.98);
-	@include adaptiveValue("margin-right", 6, 1, 479.98, 767.98);
+	padding: rem(12) rem(8);
+	@include adaptiveValue("padding-top", 12, 8, 991.98);
+	@include adaptiveValue("padding-top", 8, 6, 767.98, 991.98);
+	@include adaptiveValue("padding-top", 8, 6, 479.98, 767.98);
+	@include adaptiveValue("padding-bottom", 12, 8, 991.98);
+	@include adaptiveValue("padding-bottom", 8, 6, 767.98, 991.98);
+	@include adaptiveValue("padding-bottom", 8, 6, 479.98, 767.98);
+	@include adaptiveValue("padding-left", 8, 4, 991.98);
+	@include adaptiveValue("padding-left", 6, 1, 479.98, 767.98);
+	@include adaptiveValue("padding-right", 8, 4, 991.98);
+	@include adaptiveValue("padding-right", 6, 1, 479.98, 767.98);
 	width: 100%;
 	@media (max-width: $mobileSmall) {
-		margin: rem(4) rem(0);
+		padding: rem(4) rem(0);
 	}
 }
 .content-header {
@@ -152,13 +194,18 @@
 	position: relative;
 	&::before {
 		content:'';
+
 		position: absolute;
 		top: 0;
 		left: 0;
+
 		width: 100%;
 		height: 100%;
+
 		border-radius: rem(5);
+
 		pointer-events: none;
+
 		transition: background-color 0.46s ease 0s;
 	}
 	html._pc &:hover {
@@ -352,15 +399,19 @@
 				@include adaptiveValue("padding-top", 16, 12, 991.98);
 				@include adaptiveValue("padding-bottom", 16, 12, 991.98);
 				width: 100%;
+
 				color: #222222;
 				font-size: rem(16);
 				@include adaptiveValue("font-size", 16, 12, 991.98);
 				@include adaptiveValue("font-size", 12, 10, 767.98, 991.98);
 				@include adaptiveValue("font-size", 16, 12, 0, 767.98);
 				font-weight: 700;
+
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				column-gap: rem(8);
+
 				border-radius: rem(6);
 				background-color: $colorWhite;
 				@media (max-width: $tablet) and (min-width: $mobile){
@@ -377,6 +428,7 @@
 					color: inherit;
 					font-size: inherit;
 					font-weight: inherit;
+					line-height: inherit;
 				}
 				// .header-top-search-filter-menu-item-sorting-select-button__icon
 				&__icon {
@@ -429,6 +481,7 @@
 				&__list {
 					position: relative;
 					padding: rem(14) rem(8);
+
 					color: #222222;
 					font-size: rem(16);
 					@include adaptiveValue("font-size", 16, 12, 991.98);
@@ -436,12 +489,23 @@
 					@include adaptiveValue("font-size", 16, 12, 0, 767.98);
 					font-weight: 700;
 					border-radius: rem(6);
+
 					display: flex;
 					justify-content: flex-start;
 					align-items: center;
+
+                    text-align: start;
+
+                    z-index: 1;
+
 					&._active {
-						background-color: rgba($color: #000000, $alpha: 0.4);
+                        color: $colorWhite;
+						background-color: #00a1ff;
 					}
+
+                    & * {
+                        pointer-events: none;
+                    }
 				}
 			}
 		}
@@ -465,6 +529,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		column-gap: rem(6);
 
 		border-radius: rem(6);
 		background-color: #fff;
@@ -714,6 +779,9 @@
 					@media (max-width: $tablet) and (min-width: $mobile) {
 						padding: rem(10) rem(12);
 					}
+                    & * {
+                        pointer-events: none;
+                    }
 				}
 				// .bkt-catygory-menu-main-defaultlist-button
 				&-button {
@@ -743,10 +811,13 @@
 					display: flex;
 					justify-content: flex-start;
 					transition: all 0.56s ease 0s;
-					&._catygoryActive {
+					&._show {
 						color: $colorWhite;
 						background-color: #00a1ff;
 					}
+                    & * {
+                        pointer-events: none;
+                    }
 				}
 				// .bkt-catygory-menu-main-list-button
 				&-button {
@@ -777,10 +848,13 @@
 					justify-content: space-between;
 					align-items: center;
 					transition: all 0.56s ease 0s;
-					&._catygoryActive {
+					&._show {
 						color: $colorWhite;
 						background-color: #00a1ff;
 					}
+                    & * {
+                        pointer-events: none;
+                    }
 				}
 				// .bkt-catygory-menu-main-sublist-button
 				&-button {
@@ -796,19 +870,22 @@
 						& svg {
 							width: rem(20);
 							height: rem(20);
+
 							@include adaptiveValue("width", 20, 14, 767.98);
 							@include adaptiveValue("width", 16, 12, 0, 767.98);
 							@include adaptiveValue("height", 20, 14, 767.98);
 							@include adaptiveValue("height", 16, 12, 0, 767.98);
+
 							transform: rotate(90deg);
+
 							transition: all 0.56s ease 0s;
-							.bkt-catygory-menu-main-sublist__button._active & {
+							.bkt-catygory-menu-main-sublist__button._show & {
 								transform: rotate(0deg);
 							}
 							& * {
 								fill: #222222;
 								transition: all 0.56s ease 0s;
-								.bkt-catygory-menu-main-sublist__button._catygoryActive & {
+								.bkt-catygory-menu-main-sublist__button._show & {
 									fill: $colorWhite;
 								}
 							}
@@ -819,6 +896,7 @@
 				&__menulist {
 					padding: rem(0) rem(8);
 					width: 100%;
+					background-color: rgba($color: #00b9ff, $alpha: 0.15);
 				}
 				// .bkt-catygory-menu-main-sublist-menulist
 				&-menulist {
@@ -968,42 +1046,32 @@
 					// .moreinfo-tovar-info-image-sliderbig-slide__image
 					&__image {
 						position: relative;
+
 						width: 100%;
 						height: 100%;
+
 						display: flex;
 						& .img-magnifier-glass {
-							position: absolute;
-							width: rem(120);
-							height: rem(120);
-							border: solid rem(2) #00b9ff;
-							cursor: none;
-							opacity: 0;
-							html._pc &._cursor {
-								opacity: 1;
-							}
-						}
-						.vue-magnifier__magnifier {
-							position:relative;
-							display:inline-block;
-							line-height:0
-						}
-						.vue-magnifier__magnifying-glass {
-							position: absolute;
-							z-index:1;
+							display: none;
 
-							width: rem(100);
-							height: rem(100);
-							border: solid rem(2) #00b9ff;
-							cursor: none;
-							opacity:0;
-							pointer-events: none;
-							transition: opacity .3s;
-						}
-						.vue-magnifier__magnifying-glass.vue-magnifier__circle {
-							// border-radius:50%
-						}
-						.vue-magnifier__magnifying-glass.vue-magnifier__visible{
-							opacity:1
+							@media (min-width: $mobile) {
+								display: block;
+
+								position: absolute;
+
+								width: rem(120);
+								height: rem(120);
+
+								border: solid rem(2) #00b9ff;
+
+								cursor: none;
+
+								opacity: 0;
+
+								html._pc &._cursor {
+									opacity: 1;
+								}
+							}
 						}
 						* {
 							width: 100%;
@@ -1019,7 +1087,7 @@
 						height: 100%;
 						transform: scale(1.2);
 						filter: blur(rem(4));
-						opacity: 0.6;
+						opacity: 0.8;
 						z-index: -1;
 						&:before {
 							content: "";
@@ -1028,9 +1096,6 @@
 							left: 0;
 							width: 100%;
 							height: 100%;
-						}
-						& img {
-							object-fit: cover;
 						}
 						* {
 							width: 100%;
@@ -1164,8 +1229,13 @@
 					// margin: rem(5) rem(10);
 					width: rem(68);
 					@include adaptiveValue("width", 76, 68, 0, 767.98);
-					cursor: pointer;
+
 					border: solid rem(2) transparent;
+
+					cursor: pointer;
+
+					overflow: hidden;
+
 					transition: all 0.46s ease 0s;
 					// &:first-child {
 					// 	margin-left: rem(0);
@@ -1772,6 +1842,12 @@
 				@include adaptiveValue("font-size", 16, 14, 767.98);
 				@include adaptiveValue("font-size", 16, 14, 0, 767.98);
 
+				& a {
+					color: inherit;
+					font-size: inherit;
+					font-weight: inherit;
+					line-height: inherit;
+				}
 			}
 			// .moreinfo-tovar-info-textinfo__share
 			&__share {
@@ -2037,9 +2113,10 @@
 				line-height: math.div(16, 20);
 				font-weight: 700;
 				& * {
+					color: inherit;
 					font-size: inherit;
-					line-height: inherit;
 					font-weight: inherit;
+					line-height: inherit;
 				}
 			}
 			// .moreinfo-tovar-body-specifications-list
@@ -2941,5 +3018,129 @@
 			width: rem(20);
 			height: rem(20);
 		}
+	}
+}
+/* ===================================  Preloader  --Start--  =================================== */
+.preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 99;
+	opacity: 1;
+	visibility: visible;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	transition: all 0.7s ease 0s;
+	&._hidde {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+/* ====================  Centering  ==================== */
+.preloader__content{
+	position: relative;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+/* ====================  Icon downloads  ==================== */
+.preloader__downloads {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 80px;
+	height: 80px;
+	&_icon {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		animation: 1s linear infinite;
+		.preloader._hidde & {
+			animation: none;
+		}
+		&-first {
+			border-bottom: solid 3px #ff7473;
+			transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+			animation-name: preloaderDownloadIconFirst;
+		}
+		&-second {
+			border-right: solid 3px #ffc952;
+			   transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+			animation-name: preloaderDownloadIconSecond;
+		}
+		&-third {
+			border-top: solid 3px #47b8e0;
+			transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+			animation-name: preloaderDownloadIconThird;
+		}
+	}
+}
+/* ====================  preloaderDownloadIconFirst  --Start--  ==================== */
+@keyframes preloaderDownloadIconFirst {
+	0% {
+		transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+	}
+	100% {
+		transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+	}
+}
+/* ====================  preloaderDownloadIconFirst  --End--  ==================== */
+/* ====================  preloaderDownloadIconSecond  --Start--  ==================== */
+@keyframes preloaderDownloadIconSecond {
+	0% {
+		transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+	}
+	100% {
+		transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+	}
+}
+/* ====================  preloaderDownloadIconSecond  --End--  ==================== */
+/* ====================  preloaderDownloadIconThird  --Start--  ==================== */
+@keyframes preloaderDownloadIconThird {
+	0% {
+		transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+	}
+	100% {
+		transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+	}
+}
+/* ====================  preloaderDownloadIconThird  --End--  ==================== */
+/* ===================================  Preloader  --End--  =================================== */
+
+
+
+.noproduct {
+	margin: rem(36) rem(0);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: rem(12);
+	// .noproduct__icon
+	&__icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		& svg {
+			fill: $colorRed;
+			width: rem(120);
+			height: rem(120);
+		}
+	}
+	// .noproduct__title
+	&__title {
+		color: $colorRed;
+		font-size: rem(18);
+		@include adaptiveValue("font-size", 18, 14, 991.98);
+		@include adaptiveValue("font-size", 14, 10, 767.98, 991.98);
+		@include adaptiveValue("font-size", 18, 12, 0, 767.98);
+		font-weight: 700;
+		text-align: center;
 	}
 }

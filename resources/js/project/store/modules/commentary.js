@@ -1,5 +1,9 @@
+import axios from 'axios';
 const state = {
 	commentariesCount: 0,
+
+	cancelTokenSourceCommentaries: null,
+
 	apiSrcCommentaries: null,
 	commentaries: [],
 	countCommentaryTovars: 0,
@@ -9,6 +13,7 @@ const state = {
 
 const getters = {
 	commentariesCount: (state) => state.commentariesCount,
+	cancelTokenSourceCommentaries: (state) => state.cancelTokenSourceCommentaries,
 	apiSrcCommentaries: (state) => state.apiSrcCommentaries,
 	pageCommentaries: (state) => state.pageCommentaries,
 	commentaries: (state) => state.commentaries,
@@ -23,7 +28,14 @@ const actions = {
 	zeroingCommentaries({ commit, getters, dispatch }){
 		commit('setIsMessage', false);
 		commit('setCommentaries', []);
+		if (getters.cancelTokenSourceCommentaries) {
+			getters.cancelTokenSourceCommentaries.cancel('Запрос был отменен пользователем');
+		}
+		const newCancelTokenSource = axios.CancelToken.source();
+		commit('setСancelTokenSourceCommentaries', newCancelTokenSource);
+
 		commit('setIsLoading', true);
+
 		commit('setPageCommentaries', 0);
 	},
 	initializeCommentaries({ commit, getters, dispatch }) {
@@ -35,7 +47,9 @@ const actions = {
 	async getCommentaries({ commit, getters, dispatch }) {
 		commit('setPageCommentaries', getters.pageCommentaries + 1)
 		try {
-			let response = await axios.get('/api/' + getters.apiSrcCommentaries + '?page=' + getters.pageCommentaries);
+			let response = await axios.get('/api/' + getters.apiSrcCommentaries + '?page=' + getters.pageCommentaries, {
+				cancelToken: getters.cancelTokenSourceCommentaries.token,
+			});
 			if (response && response.data && response.data.length > 0) {
 				if (getters.pageCommentaries == 1) {
 					commit("setCommentaries", []);
@@ -66,6 +80,9 @@ const actions = {
 const mutations = {
 	setCommentariesCount(state, commentariesCount) {
 		state.commentariesCount = commentariesCount
+	},
+	setСancelTokenSourceCommentaries(state, cancelTokenSourceCommentaries) {
+		state.cancelTokenSourceCommentaries = cancelTokenSourceCommentaries
 	},
 	setApiSrcCommentaries(state, apiSrcCommentaries) {
 		state.apiSrcCommentaries = apiSrcCommentaries

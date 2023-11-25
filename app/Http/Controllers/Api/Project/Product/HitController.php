@@ -15,6 +15,12 @@ class HitController extends Controller {
 	{
 		$products = Product::where('hit', 1)->paginate(20);
 		$productsResource = IndexResource::collection($products);
-		return response()->json($productsResource);
+
+		$totalCount = $products->total();
+
+		return response()->json([
+			'data' => $productsResource,
+			'total' => $totalCount,
+		]);
 	}
 }

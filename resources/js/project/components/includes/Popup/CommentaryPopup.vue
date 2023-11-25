@@ -15,7 +15,7 @@
 				</div>
 				<div class="popup__main">
 					<commentary-block></commentary-block>
-					<div ref="targetElement" @click="$store.dispatch('loadMoreButtonCommentaries')" class="more__loading more-loading" :class="{ '_show': isLoading }">
+					<div ref="moreLoadingCommentaries" @click="$store.dispatch('loadMoreButtonCommentaries')" class="more__loading more-loading" :class="{ '_show': isLoading }">
 						<div class="more-loading__content">
 							<div class="more-loading__icon">
 								<img src="/storage/project/loading.gif" alt="loading">
@@ -46,24 +46,23 @@
 		},
 		setup() {
 			const store = useStore();
-			const targetElement = ref(null);
+			const moreLoadingCommentaries = ref(null);
 
 			// Создаем Intersection Observer
 			const observer = new IntersectionObserver((entries) => {
 				// Если элемент становится видимым, вызываем функцию
 				if (entries[0].isIntersecting && store.getters.isLoading) {
-					store.dispatch('getProducts');
+					store.dispatch('initializeCommentaries');
 				}
 			});
-
 			watchEffect(() => {
 				// Начинаем наблюдение за элементом, когда компонент монтируется
-				if (targetElement.value) {
-					observer.observe(targetElement.value);
+				if (moreLoadingCommentaries.value) {
+					observer.observe(moreLoadingCommentaries.value);
 				}
 			});
 
-			return { targetElement };
+			return { moreLoadingCommentaries };
 		},
 		data(){
 			return {

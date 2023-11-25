@@ -26,8 +26,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin'],
 	Route::get('/{page}', IndexController::class)->where('page', '.*');
 });
 
-
-
 Route::group(['namespace' => 'App\Http\Controllers\Project'], function () {
 	Route::group(['namespace' => 'Product'], function () {
 		Route::get('/', IndexController::class)->where('page', '.*');

@@ -20,6 +20,12 @@ class FavoriteController extends Controller {
 		$products = Product::whereIn('id', $data['productIds'])->paginate(20);
 		$productsResource = IndexResource::collection($products);
 
-		return response()->json($productsResource);
+
+		$totalCount = $products->total();
+
+		return response()->json([
+			'data' => $productsResource,
+			'total' => $totalCount,
+		]);
 	}
 }

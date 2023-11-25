@@ -1,10 +1,17 @@
 <template>
-	<router-link v-if="!category.children" :to="{ name: 'categories', params: { id: category.id } }" class="header-footer-menu__list a-hover-bgc">
+	<router-link
+		v-if="!category.children"
+		:to="{ name: 'search', query: { category_id: category.id } }"
+		@click.prevent="$store.dispatch('zeroingHref', { name: 'setCategoryId' , value: category.id })"
+		class="header-footer-menu__list a-hover-bgc">
 		{{ category.name }}
 	</router-link>
 	<div v-else class="header-footer-menu__sublist header-footer-menu-sublist">
 		<div class="header-footer-menu-sublist__button header-footer-menu-sublist-button a-hover-bgc">
-			<router-link :to="{ name: 'categories', params: { id: category.id } }" class="header-footer-menu-sublist-button__title">
+			<router-link
+				:to="{ name: 'search', query: { category_id: category.id } }"
+				@click.prevent="$store.dispatch('zeroingHref', { name: 'setCategoryId' , value: category.id })"
+				class="header-footer-menu-sublist-button__title">
 				{{ category.name }}
 			</router-link>
 			<span class="header-footer-menu-sublist-button__icon">

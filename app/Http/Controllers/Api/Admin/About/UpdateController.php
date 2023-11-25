@@ -38,7 +38,6 @@ class UpdateController extends Controller
 		} catch (QueryException $exception) {
 			DB::rollBack();
 
-			return response()->json(['error' => $exception->getMessage()], 500);
 			return response()->json(['error' => 'Ошибка со стороны БД'], 500);
 		} catch (\Exception $exception) {
 			DB::rollBack();

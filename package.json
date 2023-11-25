@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "@aacassandra/vue3-progressbar": "^1.0.3",
+        "@fancyapps/ui": "^5.0.28",
         "@vueup/vue-quill": "^1.2.0",
         "Swiper": "npm:swiper@^10.3.0",
         "telescope": "^0.2.0",

@@ -1,5 +1,5 @@
 <template>
-	<div ref="targetElement" @click="$store.dispatch('loadMoreButton')" class="more__loading more-loading" :class="{ '_show': isLoading }">
+	<div ref="moreLoading" @click="$store.dispatch('loadMoreButton')" class="more__loading more-loading" :class="{ '_show': isLoading }">
 		<div class="more-loading__content">
 			<div class="more-loading__icon">
 				<img src="/storage/project/loading.gif" alt="loading">
@@ -20,24 +20,24 @@ export default {
 	},
 	setup() {
 		const store = useStore();
-		const targetElement = ref(null);
+		const moreLoading = ref(null);
 
 		// Создаем Intersection Observer
 		const observer = new IntersectionObserver((entries) => {
 			// Если элемент становится видимым, вызываем функцию
 			if (entries[0].isIntersecting && store.getters.isLoading) {
-				store.dispatch('getProducts');
+				store.dispatch('initializeProducts');
 			}
 		});
 
 		watchEffect(() => {
 			// Начинаем наблюдение за элементом, когда компонент монтируется
-			if (targetElement.value) {
-				observer.observe(targetElement.value);
+			if (moreLoading.value) {
+				observer.observe(moreLoading.value);
 			}
 		});
 
-    	return { targetElement };
+    	return { moreLoading };
   	},
 	data() {
 		return {

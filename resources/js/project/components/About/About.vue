@@ -1,4 +1,5 @@
 <template>
+	<preloader rgba="rgba(0, 0, 0, 0.95)" :class="{ '_hidde': isPreloader }"></preloader>
 	<section class="content">
 		<div class="content__container">
 			<h2 class="_title mx-body">
@@ -10,11 +11,16 @@
 </template>
 
 <script>
+	import Preloader from '@/project/plugins/Preloader/Preloader.vue';
 
 	export default {
 		name: 'About',
+		beforeCreate() {
+			document.documentElement.classList.add('lock');
+		},
 		data(){
 			return {
+				isPreloader: false,
 				content: null
 			}
 		},
@@ -32,7 +38,13 @@
 					}
 				} catch (error) {
 					this.content = 'Данных нет!';
+				} finally {
+					this.preloader();
 				}
+			},
+			preloader() {
+				document.documentElement.classList.remove('lock');
+				this.isPreloader = true;
 			},
 		},
 		updated() {
@@ -40,6 +52,7 @@
 		computed: {
 		},
 		components: {
+			'preloader': Preloader,
 		}
     }
 </script>

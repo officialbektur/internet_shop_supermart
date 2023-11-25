@@ -96,7 +96,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'api'], function () {
 		});
 		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'category_specifications', 'namespace' => 'CategorySpecification'], function () {
 			Route::post('/', StoreController::class);
-			Route::get('/{id}', LinkController::class);
 		});
 		Route::group(['middleware' => 'jwt.auth', 'prefix' => 'searchhints', 'namespace' => 'SearchHint'], function ($router) {
 			Route::get('/', IndexController::class);
@@ -161,6 +160,9 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api\Pr
 			Route::get('/searchhints', IndexController::class);
 			Route::get('/searchhints/{id}', ShowController::class);
 		});
+	});
+	Route::group(['prefix' => 'category_specifications', 'namespace' => 'CategorySpecification'], function () {
+		Route::get('/{id}', LinkController::class);
 	});
 	Route::group(['prefix' => 'app', 'namespace' => 'App'], function ($router) {
 		Route::get('/', IndexController::class);

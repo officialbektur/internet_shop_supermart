@@ -1,4 +1,5 @@
 <template>
+	<preloader rgba="rgba(0, 0, 0, 0.95)" :class="{ '_hidde': isPreloader }"></preloader>
 	<section v-if="product" class="content">
 		<div class="content__container">
 			<h2 class="_title mx-body">
@@ -7,48 +8,58 @@
 			<div class="content__body">
 				<div class="moreinfo-tovar__info moreinfo-tovar-info">
 					<div class="moreinfo-tovar-info__image moreinfo-tovar-info-image">
-						<swiper
-							:modules="modules"
-							:slides-per-view="'auto'"
-							:speed="400"
-							:thumbs="{ swiper: thumbsSwiper }"
-							:navigation="{ nextEl: '.moreinfo-tovar-info-image-sliderbig-pagination__next', prevEl: '.moreinfo-tovar-info-image-sliderbig-pagination__prev' }"
-							class="moreinfo-tovar-info-image__sliderbig moreinfo-tovar-info-image-sliderbig">
-							<template v-slot:container-start>
-								<div v-if="product.discount == 1 || product.hit == 1" class="moreinfo-tovar-info-image-sliderbig__sticker moreinfo-tovar-info-image-sliderbig-sticker">
-									<div class="moreinfo-tovar-info-image-sliderbig-sticker__content">
-										<div v-if="product.discount == 1" class="moreinfo-tovar-info-image-sliderbig-sticker__discount">
-											Скидка
-										</div>
-										<div v-if="product.hit == 1" class="moreinfo-tovar-info-image-sliderbig-sticker__hit">
-											Хит
+						<Fancybox
+							class="w-100 h-100">
+							<swiper
+								:modules="modules"
+								:slides-per-view="'auto'"
+								:speed="400"
+								:thumbs="{ swiper: thumbsSwiper }"
+								:navigation="{ nextEl: '.moreinfo-tovar-info-image-sliderbig-pagination__next', prevEl: '.moreinfo-tovar-info-image-sliderbig-pagination__prev' }"
+								class="moreinfo-tovar-info-image__sliderbig moreinfo-tovar-info-image-sliderbig">
+								<template v-slot:container-start>
+									<div v-if="product.discount == 1 || product.hit == 1" class="moreinfo-tovar-info-image-sliderbig__sticker moreinfo-tovar-info-image-sliderbig-sticker">
+										<div class="moreinfo-tovar-info-image-sliderbig-sticker__content">
+											<div v-if="product.discount == 1" class="moreinfo-tovar-info-image-sliderbig-sticker__discount">
+												Скидка
+											</div>
+											<div v-if="product.hit == 1" class="moreinfo-tovar-info-image-sliderbig-sticker__hit">
+												Хит
+											</div>
 										</div>
 									</div>
-								</div>
-							</template>
-							<template v-slot:wrapper-start>
-								<a v-for="(image, index) in product.media" :key="index" :image="image" class="swiper-slide moreinfo-tovar-info-image-sliderbig__slide moreinfo-tovar-info-image-sliderbig-slide">
-									<span class="moreinfo-tovar-info-image-sliderbig-slide__image">
-										<VueMagnify :src="`${image.src_max}`" :alt="`${product.title}_${product.id}`"></VueMagnify>
-									</span>
-									<span class="moreinfo-tovar-info-image-sliderbig-slide__background">
-										<img :src="image.src_max"/>
-									</span>
-								</a>
-							</template>
-							<template v-slot:container-end>
-								<button type="button" class="moreinfo-tovar-info-image-sliderbig-pagination__next moreinfo-tovar-info-image-sliderbig-pagination-next">
-									<span class="moreinfo-tovar-info-image-sliderbig-pagination-next__icon">
-										<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
-									</span>
-								</button>
-								<button type="button" class="moreinfo-tovar-info-image-sliderbig-pagination__prev moreinfo-tovar-info-image-sliderbig-pagination-prev">
-									<span class="moreinfo-tovar-info-image-sliderbig-pagination-prev__icon">
-										<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
-									</span>
-								</button>
-							</template>
-						</swiper>
+								</template>
+								<template v-slot:wrapper-start>
+									<a
+										v-for="(image, index) in product.media"
+										:key="index"
+										:data-fancybox="'gallery'"
+										:data-caption="`${product.title}_${product.id}_${index}`"
+										:data-src="image.src_max"
+										class="swiper-slide moreinfo-tovar-info-image-sliderbig__slide moreinfo-tovar-info-image-sliderbig-slide">
+										<span class="moreinfo-tovar-info-image-sliderbig-slide__image">
+											<VueMagnify loading="lazy" :src="`${image.src_max}`" :alt="`${product.title}_${product.id}`"></VueMagnify>
+											<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+										</span>
+										<span class="moreinfo-tovar-info-image-sliderbig-slide__background">
+											<img loading="lazy" :src="image.src_max"/>
+										</span>
+									</a>
+								</template>
+								<template v-slot:container-end>
+									<button type="button" class="moreinfo-tovar-info-image-sliderbig-pagination__next moreinfo-tovar-info-image-sliderbig-pagination-next">
+										<span class="moreinfo-tovar-info-image-sliderbig-pagination-next__icon">
+											<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+										</span>
+									</button>
+									<button type="button" class="moreinfo-tovar-info-image-sliderbig-pagination__prev moreinfo-tovar-info-image-sliderbig-pagination-prev">
+										<span class="moreinfo-tovar-info-image-sliderbig-pagination-prev__icon">
+											<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H109.3l105.3-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+										</span>
+									</button>
+								</template>
+							</swiper>
+						</Fancybox>
 						<swiper
 							@swiper="setThumbsSwiper"
 							:modules="modules"
@@ -62,7 +73,8 @@
 							class="moreinfo-tovar-info-image__pagination moreinfo-tovar-info-image-pagination">
 							<template v-slot:wrapper-start>
 								<div v-for="(image, index) in product.media" :key="index" class="swiper-slide">
-									<img :src="image.src_min" :alt="`${product.title}_${product.id}`" />
+									<img loading="lazy" :src="image.src_min" :alt="`${product.title}_${product.id}`" />
+									<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
 								</div>
 							</template>
 							<template v-slot:container-end>
@@ -86,7 +98,10 @@
 							</li>
 							<li v-for="(category, index) in product.categories" :key="index" class="moreinfo-tovar-info-textinfo-categories__list">
 								<span class="moreinfo-tovar-info-textinfo-categories__icon">/</span>
-								<router-link :to="{ name: 'categories', params: {id: category.id} }" class="moreinfo-tovar-info-textinfo-categories__name">{{ category.name }}</router-link>
+								<router-link
+									:to="{ name: 'search', query: { category_id: category.id } }"
+									@click.prevent="$store.dispatch('zeroingHref', { name: 'setCategoryId' , value: category.id })"
+									class="moreinfo-tovar-info-textinfo-categories__name">{{ category.name }}</router-link>
 							</li>
 						</ul>
 						<div class="moreinfo-tovar-info-textinfo__title">
@@ -179,9 +194,14 @@
 						</div>
 						<div class="moreinfo-tovar-info-textinfo__meta">
 							<b>Мета: </b>
-							<router-link v-for="(tag, index) in product.tags" :key="index" :to="{ name: 'search', query: { q: tag.name } }">
-								{{ tag.name }}{{ product.tags.length <= (index + 1) ? '' : ', '}}
-							</router-link>
+							<template v-for="(tag, index) in product.tags" :key="index">
+								<router-link
+									:to="{ name: 'search', query: { q: tag.name } }"
+									@click.prevent="$store.dispatch('zeroingHref', { name: 'setSearchInput' , value: tag.name })">
+									{{ tag.name }}
+								</router-link>
+								<template v-if="product.tags.length > (index + 1)">, </template>
+							</template>
 						</div>
 						<div class="moreinfo-tovar-info-textinfo__share moreinfo-tovar-info-textinfo-share">
 							<div class="moreinfo-tovar-info-textinfo-share__title">
@@ -274,8 +294,10 @@
 </template>
 
 <script>
+	import Preloader from '@/project/plugins/Preloader/Preloader.vue';
+
 	import { FreeMode, Navigation, Mousewheel, Thumbs } from 'swiper/modules';
-	import { Swiper } from 'swiper/vue';
+	import { Swiper } from 'swiper/vue'
 
 	import VueMagnify from '@/project/plugins/VueMagnify/VueMagnify.vue';
 
@@ -287,16 +309,22 @@
 	import HistoriesBlock from "./../includes/Block/HistoriesBlock.vue";
 	import CommentaryPopup from "./../includes/Popup/CommentaryPopup.vue";
 	import Commentary from "./../includes/Commentary/Commentary.vue";
+	import Fancybox from "@/project/plugins/Fancybox/Fancybox.vue";
 
 	export default {
 		name: 'Show',
+		beforeCreate() {
+			document.documentElement.classList.add('lock');
+		},
 		components: {
+			'preloader': Preloader,
 			"commentary": Commentary,
 			"histories-block": HistoriesBlock,
 			"rec-block": RecBlock,
 			"commentary-popup": CommentaryPopup,
 			'swiper': Swiper,
-			'VueMagnify': VueMagnify
+			'VueMagnify': VueMagnify,
+			'Fancybox': Fancybox,
 		},
 		setup() {
 			const thumbsSwiper = ref(null);
@@ -313,6 +341,8 @@
 		},
 		data(){
 			return {
+				isPreloader: false,
+
 				product: [],
 				status: false,
 				description: null,
@@ -334,11 +364,15 @@
 			popup;
 		},
 		methods: {
+			preloader() {
+				document.documentElement.classList.remove('lock');
+				this.isPreloader = true;
+			},
 			async getProduct() {
-				axios.get("/api/products/" + this.$route.params.id)
-				.then(res => {
-					if (res && res.data) {
-						this.product = res.data;
+				try {
+					let response = await axios.get("/api/products/" + this.$route.params.id);
+					if (response && response.data) {
+						this.product = response.data;
 						this.$store.dispatch('metaInfo', {
 							title: 'Информация о товаре' + ' ' + this.product.title,
 							description: 'О товаре' + ' ' + this.product.title
@@ -346,16 +380,23 @@
 						this.$store.commit("setCommentariesCount", this.product.commentaries)
 						this.getProductDesc();
 						this.status = true;
+
+						this.preloader();
+					} else {
+						this.$router.push({ name: '404' });
 					}
-				})
+				} catch (error) {
+					this.$router.push({ name: '404' });
+				}
 			},
 			async getProductDesc() {
-				axios.get(`/api/products/${this.$route.params.id}/description`)
-				.then(res => {
-					if (res && res.data) {
+				try {
+					let response = await axios.get(`/api/products/${this.$route.params.id}/description`);
+					if (response && response.data) {
 						this.description = res.data.content
 					}
-				})
+				} catch (error) {
+				}
 			},
 		},
 		updated() {

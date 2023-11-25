@@ -28,7 +28,7 @@
 	<meta name="author" content="Akylbek u Bektur" />
 	<!--------------------  Additional connection  --Start--  -------------------->
 	<!--------------------  CSS  -------------------->
-    @vite(['resources/sass/admin/app.scss', 'resources/js/admin/app.js'])
+	@vite(['resources/sass/admin/app.scss', 'resources/js/admin/app.js'])
 	<!--------------------  Additional connection  --End--  -------------------->
 </head>
 <body>

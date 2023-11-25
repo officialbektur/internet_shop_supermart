@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class ShowController extends BaseController {
 	public function __invoke($category)
-    {
+	{
 		$category = Category::with('parentRecursive')->find($category);
 
-        $categoryHierarchy = $this->formatCategoryHierarchy($category);
+		$categoryHierarchy = $this->formatCategoryHierarchy($category);
 
-        return response()->json($categoryHierarchy);
+		return response()->json($categoryHierarchy);
 	}
 }

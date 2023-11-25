@@ -634,7 +634,7 @@
 			},
 			async getSpecifications(id) {
 				try {
-					let response = await API.get('/api/admin/category_specifications/' + id);
+					let response = await axios.get('/api/category_specifications/' + id);
 					if (response && response.data && response.data.length > 0) {
 						let data = response.data;
 

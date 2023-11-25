@@ -64,8 +64,8 @@
 				if (this.isActiveFilter && !el.closest(".header-top-search-filter__menu") && !el.closest(".header-top-search-filter__button")) {
 					this.isActiveFilter = false;
 				}
-				if (this.isSubMenuIcon(e.target)) {
-					this.toggleSubMenu(e.target);
+				if (this.isSubMenuIcon(el)) {
+					this.toggleSubMenu(el);
 				}
 			},
 			isSubMenuIcon(target) {
@@ -76,7 +76,7 @@
 				const parent = target;
 				if (!submenu.classList.contains("_slide")) {
 					flsFunctions._slideToggle(submenu);
-					parent.classList.toggle('_active');
+					parent.classList.toggle('_show');
 				}
 			},
 			toggleFilter() {

@@ -15,6 +15,12 @@ class DiscountController extends Controller {
 	{
 		$products = Product::where('price_old', '>', 0)->paginate(20);
 		$productsResource = IndexResource::collection($products);
-		return response()->json($productsResource);
+
+		$totalCount = $products->total();
+
+		return response()->json([
+			'data' => $productsResource,
+			'total' => $totalCount,
+		]);
 	}
 }

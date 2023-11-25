@@ -29,11 +29,11 @@ const router = createRouter({
 			component: () => import('./components/Product/Favorite.vue'),
 			name: 'favorites'
 		},
-		{
-			path: '/categories/:id',
-			component: () => import('./components/Product/Category.vue'),
-			name: 'categories'
-		},
+		// {
+		// 	path: '/categories/:id',
+		// 	component: () => import('./components/Product/Category.vue'),
+		// 	name: 'categories'
+		// },
 		{
 			path: '/trash',
 			component: () => import('./components/Product/Trash.vue'),
@@ -64,24 +64,13 @@ const router = createRouter({
 			component: () => import('./components/Product/Show.vue'),
 			name: 'show'
 		},
-		// {
-		// 	path: '/:catchAll(.*)',
-		// 	component: () => import('./components/404/404.vue'),
-		// 	name: '404'
-		// }
+		{
+			path: '/:catchAll(.*)',
+			component: () => import('./components/404/404.vue'),
+			name: '404'
+		}
 	]
 });
 
-
-// router.beforeEach((to, from, next) => {
-
-// 	store.dispatch('startProgress');
-
-// 	next();
-// });
-
-// router.afterEach(() => {
-// 	store.dispatch('endProgress');
-// })
 
 export default router;

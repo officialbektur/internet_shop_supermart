@@ -11,6 +11,7 @@
 @import "_body";
 @import "additional/_scroll_up_button";
 @import "additional/_windows-size";
+@import 'swiper/css';
 
 /* ===================================  wrapper  --Start--  =================================== */
 .wrapper {
@@ -116,8 +117,7 @@
 @import "_page";
 @import "_footer-sidbar";
 @import "_footer";
-@import 'swiper/css';
-// @import "base/_swiper.scss";
+@import "_sidebar";
 @import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 
 // Подключение стилей отдельных страниц

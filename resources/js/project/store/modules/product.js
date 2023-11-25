@@ -1,7 +1,10 @@
+import axios from 'axios';
 const state = {
 	colstartblockproducts: 20,
 
 	ids: [],
+
+	cancelTokenSource: null,
 
 	api_src: null,
 	products: [],
@@ -11,6 +14,7 @@ const state = {
 	addSaveTovarTrashMethodToggle: true,
 
 	page: 0,
+	total: null,
 
 	loadTriggerElement: null,
 
@@ -37,12 +41,14 @@ const state = {
 const getters = {
 	colstartblockproducts: (state) => state.colstartblockproducts,
 	ids: (state) => state.ids,
+	cancelTokenSource: (state) => state.cancelTokenSource,
 	api_src: (state) => state.api_src,
 	addSaveTovarTrashMethodCol: (state) => state.addSaveTovarTrashMethodCol,
 	addSaveTovarTrashMethodToggle: (state) => state.addSaveTovarTrashMethodToggle,
 	products: (state) => state.products,
 	isLoading: (state) => state.isLoading,
 	page: (state) => state.page,
+	total: (state) => state.total,
 	loadTriggerElement: (state) => state.loadTriggerElement,
 	localStorageFavorite: (state) => state.localStorageFavorite,
 	localStorageTrash: (state) => state.localStorageTrash,
@@ -61,10 +67,17 @@ const getters = {
 
 const actions = {
 	zeroingProducts({ commit, getters, dispatch }){
+		if (getters.cancelTokenSource) {
+			getters.cancelTokenSource.cancel('Запрос был отменен пользователем');
+		}
+		const newCancelTokenSource = axios.CancelToken.source();
+		commit('setСancelTokenSource', newCancelTokenSource);
+
 		commit('setIsMessage', false);
 		commit('setProducts', []);
 		commit('setIsLoading', true);
 		commit('setPage', 0);
+		commit('setTotal', null);
 	},
 	initializeProducts({ commit, getters, dispatch }) {
 		dispatch('getProducts');
@@ -72,11 +85,7 @@ const actions = {
 	loadMoreButton({ commit, dispatch }) {
 		dispatch('getProducts');
 	},
-	async getProducts({ commit, getters, dispatch,
-	 state }) {
-		if (state.cancelTokenSource) {
-			state.cancelTokenSource.cancel("Request canceled");
-		}
+	async getProducts({ commit, getters, dispatch, state }) {
 		if (getters.methods == 'post' && getters.ids.length == 0) {
 			commit('setIsMessage', true)
 			commit("setIsLoading", false);
@@ -90,18 +99,24 @@ const actions = {
 				pageNumberFragment = '&page=';
 			}
 			if (getters.methods == 'get') {
-				response = await axios.get('/api/' + getters.api_src + pageNumberFragment + getters.page);
+				response = await axios.get('/api/' + getters.api_src + pageNumberFragment + getters.page, {
+					cancelToken: getters.cancelTokenSource.token,
+				});
 			} else if (getters.methods == 'post') {
-				response = await axios.post('/api/' + getters.api_src + pageNumberFragment + getters.page, {productIds: getters.ids});
+				response = await axios.post('/api/' + getters.api_src + pageNumberFragment + getters.page, {productIds: getters.ids}, {
+					cancelToken: getters.cancelTokenSource.token,
+				});
 			}
-			if (response && response.data && response.data.length > 0) {
-				if (getters.page == 1) {
-					commit("setProducts", []);
-					commit("setProducts", response.data);
-				} else {
-					let products = getters.products;
-					products.push(...response.data);
-					commit("setProducts", products);
+			if (response && response.data && response.data.data && response.data.data.length > 0) {
+				let products = getters.products;
+				products.push(...response.data.data);
+				commit("setProducts", products);
+
+				if (response.data.data.length > 20) {
+					commit("setIsLoading", false);
+				}
+				if (response.data.total) {
+					commit("setTotal", response.data.total);
 				}
 			} else {
 				if (getters.products.length > 0) {
@@ -293,6 +308,9 @@ const mutations = {
 	setApiSrc(state, api_src) {
 		state.api_src = api_src
 	},
+	setСancelTokenSource(state, cancelTokenSource) {
+		state.cancelTokenSource = cancelTokenSource
+	},
 	setProducts(state, products) {
 		state.products = products
 	},
@@ -301,6 +319,9 @@ const mutations = {
 	},
 	setPage(state, page) {
 		state.page = page
+	},
+	setTotal(state, total) {
+		state.total = total
 	},
 	setLoadTriggerElement(state, loadTriggerElement) {
 		state.loadTriggerElement = loadTriggerElement

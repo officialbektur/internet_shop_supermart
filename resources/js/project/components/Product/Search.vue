@@ -1,8 +1,9 @@
 <template>
+	<sidebar-component></sidebar-component>
 	<section class="content index">
 		<div class="content__container">
 			<h2 class="_title mx-body">
-				Поиск
+				Поиск <template v-if="total">: "{{ total }}" товаров</template>
 			</h2>
 			<content-block></content-block>
 		</div>
@@ -10,7 +11,8 @@
 </template>
 
 <script>
-	import ContentBlock from "../includes/Block/ContentBlock.vue";
+	import SidebarComponent from "./../includes/Sidebar/SidebarComponent.vue";
+	import ContentBlock from "./../includes/Block/ContentBlock.vue";
 	export default {
 		name: 'Index',
 		data(){
@@ -34,8 +36,12 @@
 		updated() {
 		},
 		computed: {
+			total() {
+				return this.$store.getters.total
+			}
 		},
 		components: {
+			'sidebar-component': SidebarComponent,
 			'content-block': ContentBlock,
 		}
 	}

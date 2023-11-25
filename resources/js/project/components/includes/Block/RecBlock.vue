@@ -13,9 +13,9 @@
 			class="product-block-slids">
 			<template v-slot:wrapper-start>
 				<div v-for="(product, index) in products.slice(0, 12)" :key="index" class="swiper-slide">
-					<product-block	product-block :product="product" :index="index"></product-block>
+					<product-block	product-block :product="product"></product-block>
 				</div>
-				<div class="product-block-slids__dpinnerlink swiper-slide">
+				<div v-if="products.length >= 12" class="swiper-slide product-block-slids__dpinnerlink">
 					<router-link :to="{ name: 'index' }" class="product-block-slids__dplink product-block-slids-dplink">
 						<span class="product-block-slids-dplink__title">Ещё</span>
 						<span class="product-block-slids-dplink__icon">

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\Admin\Category;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
 use App\Models\Project\Category;
 
@@ -49,8 +48,8 @@ class DestroyController extends Controller
 		} catch (QueryException $exception) {
 			DB::rollBack();
 
-			return response()->json(['error' => $exception->getMessage()], 500);
-		} catch (\Exception $exception) {
+            return response()->json(['error' => 'Ошибка со стороны БД'], 500);
+        } catch (\Exception $exception) {
 			DB::rollBack();
 
 			return response()->json(['error' => 'Ошибка со стороны сервера'], 500);

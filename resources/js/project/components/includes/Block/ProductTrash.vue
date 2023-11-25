@@ -1,16 +1,19 @@
 <template>
-	<tr v-if="products && products.length > 0" v-for="(product, index) in products" :key="index" class="product-block-trash__block">
+	<tr
+		v-if="products && products.length > 0"
+		v-for="(product, index) in products"
+		:key="index"
+		class="product-block-trash__block">
 		<td class="product-block-trash__column product-block-trash__columntitle">
-			<router-link :to="{ name: 'show', params: {id: product.id} }" class="product-block-trash__title product-block-trash-title">
+			<router-link
+				:to="{ name: 'show', params: {id: product.id} }"
+				class="product-block-trash__title product-block-trash-title">
 				<div class="product-block-trash-title__image product-block-trash-title-image">
 					<div class="product-block-trash-title-image__img">
 						<VueLazyload :dataSrc="product.image" :src="'/storage/project/loading.gif'" :alt="`${product.title}_${product.id}`"></VueLazyload>
 					</div>
 				</div>
 				<div class="product-block-trash-title__infotext product-block-trash-titleinfotext">
-					<!-- <div class="product-block-trash-title-infotext__category">
-						Категория<template v-for="category in Array.isArray(product.categories) ? product.categories : []"> > {{ category.name }}</template>
-					</div> -->
 					<div class="product-block-trash-title-infotext__category">
 						Категория
 						<template v-if="Array.isArray(product.categories)">

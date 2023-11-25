@@ -36,10 +36,10 @@
 			</div>
 		</router-link>
 		<div class="product-block__info product-block-info">
-			<!-- <router-link :to="{ name: 'categories', params: {id: product.categories[product.categories.length - 1].id} }" class="product-block-info__catigory">
-				Категория<template v-for="category in Array.isArray(product.categories) ? product.categories : []">>{{ category.name }}</template>
-			</router-link> -->
-			<router-link :to="{ name: 'categories', params: {id: product.categories[product.categories.length - 1].id} }" class="product-block-info__catigory">
+			<router-link
+				:to="{ name: 'search', query: { category_id: product.categories[product.categories.length - 1].id } }"
+				@click.prevent="$store.dispatch('zeroingHref', { name: 'setCategoryId' , value: product.categories[product.categories.length - 1].id })"
+				class="product-block-info__catigory">
 				Категория
 				<template v-if="Array.isArray(product.categories)">
 					<template v-for="category in product.categories">

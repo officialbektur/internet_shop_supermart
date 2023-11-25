@@ -15,6 +15,12 @@ class NewproductController extends Controller {
 	{
 		$products = Product::orderByDesc('id')->paginate(20);
 		$productsResource = IndexResource::collection($products);
-		return response()->json($productsResource);
+
+		$totalCount = $products->total();
+
+		return response()->json([
+			'data' => $productsResource,
+			'total' => $totalCount,
+		]);
 	}
 }

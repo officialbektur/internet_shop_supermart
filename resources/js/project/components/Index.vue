@@ -8,7 +8,7 @@
 	<sidbar-component></sidbar-component>
 	<footer-component></footer-component>
 	<popup-address-component></popup-address-component>
-	
+
 </template>
 
 <script>

@@ -15,6 +15,12 @@ class IndexController extends Controller {
 	{
 		$products = Product::paginate(20);
 		$productsResource = IndexResource::collection($products);
-		return response()->json($productsResource);
+
+		$totalCount = $products->total();
+
+		return response()->json([
+			'data' => $productsResource,
+			'total' => $totalCount,
+		]);
 	}
 }

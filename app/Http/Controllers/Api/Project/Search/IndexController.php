@@ -23,6 +23,11 @@ class IndexController extends Controller
 
 		$productsResource = IndexResource::collection($products);
 
-		return response()->json($productsResource);
+		$totalCount = $products->total();
+
+		return response()->json([
+			'data' => $productsResource,
+			'total' => $totalCount,
+		]);
 	}
 }

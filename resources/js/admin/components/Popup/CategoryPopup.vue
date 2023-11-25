@@ -14,7 +14,10 @@
 					</button>
 				</div>
 				<div class="popup__main">
-					<ul ref="data-category-menu" class="popup__menu" data-category-menu>
+					<ul
+                        ref="data-category-menu"
+                        class="popup__menu"
+                        data-category-menu>
 						<li
 							data-close
 							data-category-link

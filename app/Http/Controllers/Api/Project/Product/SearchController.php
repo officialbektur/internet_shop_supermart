@@ -20,8 +20,13 @@ class SearchController extends Controller {
 
 		$products = Product::filter($fillter)->paginate(20);
 
-		$result = IndexResource::collection($products);
+		$productsResource = IndexResource::collection($products);
 
-		return response()->json($result);
+		$totalCount = $products->total();
+
+		return response()->json([
+			'data' => $products,
+			'total' => $totalCount,
+		]);
 	}
 }
