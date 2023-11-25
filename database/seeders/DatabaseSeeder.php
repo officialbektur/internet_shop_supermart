@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
 
 			$categories = Category::factory(100)->create();
 
-			$specifications = Specification::factory(30)->create();
+			$specifications = Specification::factory(50)->create();
 			$filteredSpecifications = Specification::where('parent_id', '!=', 0);
 
 			foreach ($categories as $category) {
@@ -54,8 +54,8 @@ class DatabaseSeeder extends Seeder
 				$category->specifications()->attach($specificationIds);
 			}
 
-			$products = Product::factory(100)->create();
-			$tags = Tag::factory(100)->create();
+			$products = Product::factory(2000)->create();
+			$tags = Tag::factory(2000)->create();
 			$products = Product::all();
 			$specifications = Specification::with('parentRecursive')->get();
 
@@ -102,10 +102,10 @@ class DatabaseSeeder extends Seeder
 
 				$product->specifications()->attach($specificationIds);
 			}
-			Description::factory(100)->create();
-			Media::factory(100)->create();
+			Description::factory(2000)->create();
+			Media::factory(2000)->create();
 			SearchHint::factory(5)->create();
-			Commentary::factory(2200)->create();
+			Commentary::factory(4600)->create();
 			About::factory(1)->create();
 
 			// \App\Models\User::factory()->create([
