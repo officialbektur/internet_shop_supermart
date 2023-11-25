@@ -36,11 +36,8 @@ class RecController extends BaseController {
 
 		$productsResource = IndexResource::collection($products);
 
-		$totalCount = $products->total();
-
 		return response()->json([
 			'data' => $productsResource,
-			'total' => $totalCount,
 		]);
 	}
 }
