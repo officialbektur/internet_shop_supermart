@@ -101,7 +101,6 @@ const actions = {
 		commit("setMinPrice", '')
 		commit("setSort", 0);
 		commit("setSelectedSpecifications", []);
-		dispatch("sendSearch");
 	},
 	sendSearch({ getters, commit, dispatch }) {
 		const specificationsParam = getters.selectedSpecifications.length > 0

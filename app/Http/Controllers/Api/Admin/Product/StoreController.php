@@ -138,7 +138,7 @@ class StoreController extends Controller
 		} catch (\Exception $exception) {
 			DB::rollBack();
 
-			return response()->json(['error' => $exception->getMessage()], 500);
+			return response()->json(['error' => 'Ошибка со стороны сервера'], 500);
 		}
 	}
 	private function getTagIds($tags)

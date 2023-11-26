@@ -6,7 +6,7 @@
 				<svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M8 9.83a3.001 3.001 0 10-2 0V19a1 1 0 102 0V9.83zm9 4.34a3.001 3.001 0 11-2 0V5a1 1 0 112 0v9.17z" clip-rule="evenodd"/></svg>
 			</span>
 		</button>
-		<div class="header-footer-menu__body" :class="{ '_active': $store.getters.isActiveMenu }">
+		<div class="header-footer-menu__body" :class="{ '_active': isActiveMenu }">
 			<div v-if="$store.getters.categories.length > 0" class="header-footer-menu__content">
 				<category-block v-for="category in $store.getters.categories" :category="category" :key="category"></category-block>
 			</div>
@@ -32,6 +32,11 @@
 		},
 		methods: {
 
+		},
+		computed: {
+			isActiveMenu() {
+				return this.$store.getters.isActiveMenu;
+			}
 		},
 		components: {
 			'category-block': CategoryBlock,

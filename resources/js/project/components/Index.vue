@@ -72,6 +72,10 @@ export default {
 			if (this.$store.getters.isActiveMenu && !el.closest(".header-footer__menu")) {
 				this.$store.commit("setIsActiveMenu", false);
 			}
+			if (flsFunctions.bodyLockStatus && (el.closest(".header-footer-menu__list") || el.closest(".header-footer-menu-sublist-button__title"))) {
+				flsFunctions.bodyUnlock();
+				document.documentElement.classList.remove("menu-open");
+			}
 			if (el.closest('.header-footer-menu-sublist-button__icon')) {
 				const submenu = el.parentElement.nextElementSibling;
 				const parent = el.parentElement.parentElement;
