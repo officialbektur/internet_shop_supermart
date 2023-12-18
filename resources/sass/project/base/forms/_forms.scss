@@ -1,32 +1,40 @@
 //<FORM>
-// Снипет (HTML):
-// .form {
-// 	&__row {
-// 	}
-// 	&__column {
-// 	}
-// 	&__line {
-// 	}
-// 	&__input {
-// 	}
-// 	&__button {
-// 	}
-// 	&__error {
-// 	}
-// }
+// .moreinfo-tovar-body-reviews__form
+.moreinfo-tovar-body-reviews__form {
+	padding: rem(0) rem(20);
+	@include adaptiveValue("padding-left", 20, 4);
+	@include adaptiveValue("padding-right", 20, 4);
+}
+
+// .moreinfo-tovar-body-reviews-form
+.moreinfo-tovar-body-reviews-form {
+
+	// .moreinfo-tovar-body-reviews-form__title
+	&__title {
+		margin-top: rem(12);
+		@include adaptiveValue("margin-top", 12, 8);
+		padding: rem(8) rem(0);
+		@include adaptiveValue("padding-top", 8, 10);
+		@include adaptiveValue("padding-bottom", 8, 10);
+		font-size: rem(26);
+		@include adaptiveValue("font-size", 26, 20);
+		font-weight: 700;
+		text-align: center;
+	}
+}
 //</FORM>
 
 // <BUTTONS>
 // Снипет (HTML): btn
-// @import "_button";
+@import "_button";
 
 // <INPUTS>
 // Снипет (HTML): inp
-// @import "_input";
+@import "_input";
 
 // <CHECK>
 // Снипет (HTML): chk
-// @import "_checkbox";
+@import "_checkbox";
 
 // <RADIO>
 // Снипет (HTML): opt
@@ -38,7 +46,7 @@
 
 // <RATING>
 // Снипет (HTML): rating
-// @import "_rating";
+@import "_rating";
 
 // <QUANTITY>
 // Снипет (HTML): qa

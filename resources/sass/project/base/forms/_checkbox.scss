@@ -1,38 +1,69 @@
-.checkbox {
-	position: relative;
-	&:not(:last-child) {
-		margin-bottom: em(5);
+// .moreinfo-tovar-body-reviews-form__checkbox
+.moreinfo-tovar-body-reviews-form__checkbox {
+	margin-top: rem(12);
+}
+
+// .moreinfo-tovar-body-reviews-form-checkbox
+.moreinfo-tovar-body-reviews-form-checkbox {
+
+	// .moreinfo-tovar-body-reviews-form-checkbox._error
+	&._error .moreinfo-tovar-body-reviews-form-checkbox__label .moreinfo-tovar-body-reviews-form-checkbox-label__inputcheckbox {
+		box-shadow: rem(0) rem(0) rem(8) #ff0000;
 	}
-	// .checkbox__input
+
+	// .moreinfo-tovar-body-reviews-form-checkbox__input
 	&__input {
-		position: absolute;
-		width: 0;
-		height: 0;
-		opacity: 0;
-		&:focus + .checkbox__label:before {
-			box-shadow: 0 0 rem(5) #000;
-		}
-		&:checked + .checkbox__label:before {
-			background: #000;
+		display: none;
+
+		&:checked + .moreinfo-tovar-body-reviews-form-checkbox__label .moreinfo-tovar-body-reviews-form-checkbox-label__inputcheckbox::before {
+			transform: scale(1);
 		}
 	}
-	// .checkbox__label
+
+	// .moreinfo-tovar-body-reviews-form-checkbox__label
 	&__label {
-		cursor: pointer;
-		display: inline-flex;
-		align-items: center;
 		position: relative;
-		gap: rem(10);
-		&:before {
-			content: "";
-			align-self: flex-start;
-			flex: 0 0 rem(20);
-			width: rem(20);
-			height: rem(20);
-			border: rem(1) solid #a7a9ac;
-		}
+		cursor: pointer;
+		-webkit-tap-highlight-color: $clickByTouchColor0;
+		user-select: none;
 	}
-	// .checkbox__text
-	&__text {
+
+	// .moreinfo-tovar-body-reviews-form-checkbox-label
+	&-label {
+
+		// .moreinfo-tovar-body-reviews-form-checkbox-label__inputcheckbox
+		&__inputcheckbox {
+			position: relative;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: rem(24);
+			@include adaptiveValue("width", 24, 18);
+			height: rem(24);
+			@include adaptiveValue("height", 24, 18);
+			background-color: #ededed;
+			border: solid rem(1) #b3b3b3;
+			border-radius: rem(4);
+			margin: rem(0) rem(4) rem(0) rem(0);
+
+			&::before {
+				content: "";
+				position: absolute;
+				width: calc(100% - rem(4));
+				height: calc(100% - rem(4));
+				background-color: #77608d;
+				border-radius: rem(4);
+				transform: scale(0);
+				transition: transform 0.5s ease 0s;
+			}
+		}
+
+		// .moreinfo-tovar-body-reviews-form-checkbox-label__text
+		&__text {
+			color: $colorBlack;
+			font-size: rem(16);
+			@include adaptiveValue("font-size", 16, 12);
+			font-weight: 700;
+		}
 	}
 }

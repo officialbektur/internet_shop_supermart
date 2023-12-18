@@ -1,0 +1,63 @@
+// .footer-spoller
+.footer-spoller {
+
+	// .footer-spoller__title
+	&__title {
+		position: relative;
+		width: 100%;
+		cursor: default;
+		text-align: left;
+		@include adaptiveValue("margin-top", 7, 5, 991.98);
+		@include adaptiveValue("margin-top", 6, 5, 767.98, 991.98);
+		@include adaptiveValue("margin-bottom", 7, 5, 991.98);
+		@include adaptiveValue("margin-bottom", 6, 5, 767.98, 991.98);
+		color: $colorWhite;
+		font-size: rem(22);
+		@include adaptiveValue("font-size", 22, 16, 991.98);
+		@include adaptiveValue("font-size", 17, 16, 767.98, 991.98);
+		@include adaptiveValue("font-size", 24, 18, 0, 767.98);
+		font-weight: 700;
+
+		@media (max-width: $mobile) {
+			padding: rem(6) rem(0);
+		}
+
+		._spoller-init & {
+			cursor: pointer;
+
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				right: rem(10);
+				top: 50%;
+				background-color: #ffffff;
+				height: rem(2);
+				width: rem(10);
+				@include adaptiveValue("width", 12, 10, 0, 767.98);
+				transition: transform 0.5s ease 0s;
+			}
+
+			&::before {
+				transform: translate(-75%, -50%) rotate(40deg);
+			}
+
+			&::after {
+				transform: translate(0, -50%) rotate(-40deg);
+			}
+
+			&._spoller-active {
+				&::before {
+					transform: translateX(-75%) rotate(-40deg);
+				}
+
+				&::after {
+					transform: rotate(40deg);
+				}
+			}
+		}
+	}
+
+	// .footer-spoller__content
+	&__content {}
+}

@@ -1,0 +1,74 @@
+// .moreinfo-tovar-info-textinfo__btnfavorite
+.moreinfo-tovar-info-textinfo__btnfavorite {
+	margin-right: rem(6);
+	@include adaptiveValue("margin-right", 6, 4, 767.98);
+	@include adaptiveValue("margin-right", 8, 6, 0, 767.98);
+	width: 100%;
+	user-select: none;
+	overflow: hidden;
+}
+
+// .moreinfo-tovar-info-textinfo-btnfavorite
+.moreinfo-tovar-info-textinfo-btnfavorite {
+
+	// .moreinfo-tovar-info-textinfo-btnfavorite__button
+	&__button {
+		padding: rem(16) rem(14);
+		width: 100%;
+		@include adaptiveValue("padding-top", 16, 12, 767.98);
+		@include adaptiveValue("padding-top", 16, 14, 0, 767.98);
+		@include adaptiveValue("padding-bottom", 16, 12, 767.98);
+		@include adaptiveValue("padding-bottom", 16, 14, 0, 767.98);
+		color: $colorWhite;
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 12, 767.98);
+		@include adaptiveValue("font-size", 20, 14, 0, 767.98);
+		font-weight: 700;
+		white-space: nowrap;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		border-radius: rem(4);
+		background-color: #00b9ff;
+		transition: all 0.46s ease 0s;
+
+		html._pc &:hover {
+			background-color: #018aff;
+		}
+
+		&._active {
+			// background-color: #018aff;
+			background-color: $colorRed;
+		}
+	}
+
+	// .moreinfo-tovar-info-textinfo-btnfavorite-button
+	&-button {
+
+		// .moreinfo-tovar-info-textinfo-btnfavorite-button__icon
+		&__icon {
+			margin-right: em(2);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			// .moreinfo-tovar-info-textinfo-btnfavorite-button__icon svg
+			& svg {
+				width: em(16);
+				height: em(16);
+
+				// .moreinfo-tovar-info-textinfo-btnfavorite-button__icon svg *
+				& * {
+					fill: $colorWhite;
+				}
+			}
+		}
+
+		// .moreinfo-tovar-info-textinfo-btnfavorite-button__title
+		&__title {
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}

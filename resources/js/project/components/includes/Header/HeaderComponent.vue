@@ -1,6 +1,6 @@
 <template>
 	<!-----------------------------------  Header  --Start--  ----------------------------------->
-	<header data-lp class="header">
+	<header data-lp class="header w-100">
 		<top-block></top-block>
 		<bottom-block></bottom-block>
 	</header>

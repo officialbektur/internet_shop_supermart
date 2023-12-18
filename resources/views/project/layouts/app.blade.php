@@ -32,7 +32,7 @@
 </head>
 <body>
 	<!---------------------------------------------  Wrapper  --Start--  --------------------------------------------->
-	<div class="wrapper" id="app">
+	<div class="wrapper d-flex flex-direction-column" id="app">
 		@yield('content')
 	</div>
 	<!---------------------------------------------  Wrapper  --End--  --------------------------------------------->

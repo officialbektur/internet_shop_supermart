@@ -1,0 +1,71 @@
+// .header-top-search__filter
+.header-top-search__filter {
+	@media (min-width: $mobile) {
+		html._pc &:hover .header-top-search-filter__menu {
+			opacity: 1;
+			visibility: visible;
+			pointer-events: all;
+		}
+	}
+}
+
+// .header-top-search-filter
+.header-top-search-filter {
+	@media (min-width: $mobile) {
+		position: relative;
+	}
+
+	// .header-top-search-filter__button
+	&__button {
+		position: relative;
+		width: 100%;
+		height: 100%;
+
+		padding: rem(0) rem(12);
+		@include adaptiveValue("padding-left", 12, 8, 991.98);
+		@include adaptiveValue("padding-left", 12, 8, 0, 767.98);
+		@include adaptiveValue("padding-right", 12, 8, 991.98);
+		@include adaptiveValue("padding-right", 12, 8, 0, 767.98);
+
+		border: solid rem(1) #ffffff;
+		background-color: #e1dede;
+		user-select: none;
+
+		@media (max-width: $tablet) and (min-width: $mobile) {
+			padding: rem(0) rem(7);
+		}
+
+		& * {
+			pointer-events: none;
+		}
+	}
+
+	// .header-top-search-filter-button
+	&-button {
+
+		// .header-top-search-filter-button__icon
+		&__icon {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			// .header-top-search-filter-button__icon svg
+			& svg {
+				width: rem(20);
+				height: rem(20);
+				@include adaptiveValue("width", 20, 18, 991.98);
+				@include adaptiveValue("width", 18, 14, 767.98, 991.98);
+				@include adaptiveValue("width", 22, 18, 0, 767.98);
+				@include adaptiveValue("height", 20, 18, 991.98);
+				@include adaptiveValue("height", 18, 14, 767.98, 991.98);
+				@include adaptiveValue("height", 22, 18, 0, 767.98);
+
+				& * {
+					fill: #222222;
+				}
+			}
+		}
+	}
+}
+
+@import "includes/menu/_menu";

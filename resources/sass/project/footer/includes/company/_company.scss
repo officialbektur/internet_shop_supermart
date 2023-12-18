@@ -1,0 +1,31 @@
+// .footer__company
+.footer__company {}
+
+// .footer-company
+.footer-company {
+
+	// .footer-company__title
+	&__title {
+		padding: rem(20) rem(0);
+		@include adaptiveValue("padding-top", 20, 14, 991.98);
+		@include adaptiveValue("padding-top", 14, 12, 767.98, 991.98);
+		@include adaptiveValue("padding-top", 22, 10, 0, 767.98);
+		@include adaptiveValue("padding-bottom", 20, 14, 991.98);
+		@include adaptiveValue("padding-bottom", 14, 12, 767.98, 991.98);
+		@include adaptiveValue("padding-bottom", 22, 10, 0, 767.98);
+		color: #ffffff;
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 12, 991.98);
+		@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+		font-weight: 700;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		text-align: center;
+		border-top: solid rem(1) #b3b3b3;
+
+		@media (max-width: $tablet) and (min-width: $mobile) {
+			font-size: rem(12);
+		}
+	}
+}

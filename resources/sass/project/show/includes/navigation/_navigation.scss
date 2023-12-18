@@ -1,0 +1,22 @@
+// .moreinfo-tovar-navigation
+.moreinfo-tovar-navigation {
+	padding: rem(6) rem(12);
+	display: flex;
+	justify-content: center;
+	background-color: #ffffff;
+
+	// .moreinfo-tovar-navigation__link
+	&__link {
+		margin: rem(2) rem(4);
+		padding: rem(2) rem(4);
+		color: #222222;
+		font-size: rem(20);
+		@include adaptiveValue("font-size", 20, 14, 0, 767.98);
+		font-weight: 700;
+
+		// .moreinfo-tovar-navigation__link ._tab-active
+		&._tab-active {
+			text-decoration: line-through;
+		}
+	}
+}

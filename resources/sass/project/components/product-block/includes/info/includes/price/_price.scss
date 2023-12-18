@@ -1,0 +1,74 @@
+// .product-block-info__price
+.product-block-info__price {
+	margin: rem(6) rem(0);
+
+	@media (max-width: $mobile) {
+		margin: rem(4) rem(0);
+	}
+}
+
+// .product-block-info-price
+.product-block-info-price {
+
+	// .product-block-info-price__old
+	&__old {
+		color: #878787;
+		font-size: rem(15);
+		@include adaptiveValue("font-size", 16, 12, 991.98);
+		@include adaptiveValue("font-size", 16, 12, 767.98, 991.98);
+		@include adaptiveValue("font-size", 16, 12, 479.98, 767.98);
+		@include adaptiveValue("font-size", 16, 12, 0, 479.98);
+		font-weight: 700;
+		text-decoration: line-through;
+		display: flex;
+		overflow: hidden;
+	}
+
+	// .product-block-info-price-old
+	&-old {
+
+		// .product-block-info-price-old__number
+		&__number {
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		// .product-block-info-price-old__currency
+		&__currency {
+			margin-left: em(3);
+		}
+	}
+
+	// .product-block-info-price__now
+	&__now {
+		color: #FF0000;
+		font-size: rem(22);
+		@include adaptiveValue("font-size", 22, 16, 991.98);
+		@include adaptiveValue("font-size", 22, 16, 767.98, 991.98);
+		@include adaptiveValue("font-size", 22, 16, 479.98, 767.98);
+		@include adaptiveValue("font-size", 22, 16, 0, 479.98);
+		font-weight: 700;
+		line-height: math.div(22, 18);
+		display: flex;
+		overflow: hidden;
+	}
+
+	// .product-block-info-price-now
+	&-now {
+
+		// .product-block-info-price-now__number
+		&__number {
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		// .product-block-info-price-now__currency
+		&__currency {
+			margin-left: em(3);
+		}
+	}
+}

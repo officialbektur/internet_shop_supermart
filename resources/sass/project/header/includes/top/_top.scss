@@ -1,0 +1,23 @@
+// .header__top
+.header__top {}
+
+// .header-top
+.header-top {
+
+	// .header-top__body
+	&__body {
+		padding: rem(10) rem(0);
+
+		position: relative;
+
+		z-index: 95;
+
+		@media (max-width: $mobile) {
+			padding: rem(4) rem(0);
+		}
+	}
+}
+
+@import "includes/logo/_logo";
+@import "includes/search/_search";
+@import "includes/bar/_bar";

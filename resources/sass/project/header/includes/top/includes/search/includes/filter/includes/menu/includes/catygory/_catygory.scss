@@ -1,0 +1,408 @@
+/* ===================================  bkt-catygory  --Start--  =================================== */
+.bkt-catygory {
+	// .bkt-catygory__button
+	&__button {
+		padding: rem(12) rem(14);
+		@include adaptiveValue("padding-top", 12, 8, 991.98);
+		@include adaptiveValue("padding-bottom", 12, 8, 991.98);
+		width: 100%;
+		color: #222222;
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 14, 991.98);
+		@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+		@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+		font-weight: 700;
+		line-height: math.div(18, 16);
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: rem(6);
+
+		border-radius: rem(6);
+		background-color: #fff;
+		cursor: pointer;
+		@media (max-width: $tablet) and (min-width: $mobile){
+			padding: rem(8) rem(14);
+		}
+	}
+	// .bkt-catygory-button
+	&-button {
+		// .bkt-catygory-button__icon
+		&__icon {
+			padding: rem(4);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			// .bkt-catygory-button__icon svg
+			& svg {
+				width: rem(20);
+				height: rem(20);
+				@include adaptiveValue("width", 20, 16, 991.98);
+				@include adaptiveValue("width", 16, 14, 767.98, 991.98);
+				@include adaptiveValue("width", 16, 12, 0, 767.98);
+				@include adaptiveValue("height", 20, 16, 991.98);
+				@include adaptiveValue("height", 16, 14, 767.98, 991.98);
+				@include adaptiveValue("height", 16, 12, 0, 767.98);
+				transform: rotate(180deg);
+				& * {
+					fill: #222222;
+				}
+			}
+			// .bkt-catygory__button._active .bkt-catygory-button__icon
+			.bkt-catygory__button._active & {
+				display: none;
+			}
+		}
+		// .bkt-catygory-button__clear
+		&__clear {
+			display: none;
+			// .bkt-catygory-button__clear .bkt-catygory__button._active
+			.bkt-catygory__button._active & {
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: rem(4);
+				// .bkt-catygory-button__icon svg
+				& svg {
+					pointer-events: none;
+					width: rem(20);
+					height: rem(20);
+					@include adaptiveValue("width", 20, 16, 991.98);
+					@include adaptiveValue("width", 16, 14, 767.98, 991.98);
+					@include adaptiveValue("width", 16, 12, 0, 767.98);
+					@include adaptiveValue("height", 20, 16, 991.98);
+					@include adaptiveValue("height", 16, 14, 767.98, 991.98);
+					@include adaptiveValue("height", 16, 12, 0, 767.98);
+					transform: rotate(45deg);
+					& * {
+						fill: #222222;
+					}
+				}
+			}
+		}
+	}
+	// .bkt-catygory__menu
+	&__menu {
+		position: absolute;
+		top: rem(0);
+		left: -120%;
+		padding: rem(18) rem(28);
+		width: 100%;
+		height: 100%;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background-color: #e1dede;
+		box-shadow: rem(0) rem(0) rem(1) #ffffff,
+					rem(0) rem(0) rem(2) #ffffff,
+					rem(0) rem(0) rem(3) #ffffff;
+		z-index: 1;
+		transition: left 0.56s ease 0s;
+		pointer-events: none;
+		@media (max-width: $mobile) {
+			padding-bottom: rem(60);
+		}
+		&::-webkit-scrollbar {
+			width: rem(6);
+		}
+		&::-webkit-scrollbar-track {
+			background-color: rgba($color: #999999, $alpha: 0.3);
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: #999999;
+			border-radius: rem(20);
+		}
+		.bkt-catygory._active & {
+			left: 0;
+			pointer-events: all;
+		}
+	}
+	// .bkt-catygory-menu
+	&-menu {
+		// .bkt-catygory-menu__header
+		&__header {
+			position: fixed;
+			top: rem(0);
+			left: -120%;
+			padding: rem(10) rem(14);
+			@include adaptiveValue("padding-top", 10, 6, 991.98);
+			@include adaptiveValue("padding-bottom", 10, 6, 991.98);
+			width: 100%;
+			background-color: #fff;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			z-index: 1;
+			transition: left 0.56s ease 0s;
+			.bkt-catygory._active & {
+				left: 0;
+				pointer-events: all;
+			}
+			@media (max-width: $mobile) {
+				padding: rem(8) rem(10);
+			}
+			@media (max-width: $mobileSmall) {
+				padding: rem(6) rem(8);
+			}
+		}
+		// .bkt-catygory-menu-header
+		&-header {
+			// .bkt-catygory-menu-header__back
+			&__back {
+				padding: rem(6) rem(6);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			// .bkt-catygory-menu-header-back
+			&-back {
+				// .bkt-catygory-menu-header-back__icon
+				&__icon {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					// .bkt-catygory-menu-header-back__icon svg
+					& svg {
+						width: rem(20);
+						height: rem(20);
+						@include adaptiveValue("width", 20, 16, 991.98);
+						@include adaptiveValue("width", 16, 14, 767.98, 991.98);
+						@include adaptiveValue("width", 16, 12, 0, 767.98);
+						@include adaptiveValue("height", 20, 16, 991.98);
+						@include adaptiveValue("height", 16, 14, 767.98, 991.98);
+						@include adaptiveValue("height", 16, 12, 0, 767.98);
+						& * {
+							fill: #222222;
+						}
+					}
+				}
+				// .bkt-catygory-menu-header-back__text
+				&__text {
+					padding-left: rem(4);
+					color: #222222;
+					font-size: rem(18);
+					@include adaptiveValue("font-size", 18, 14, 991.98);
+					@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+					@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+					font-weight: 700;
+				}
+			}
+			// .bkt-catygory-menu-header__close
+			&__close {
+				padding: rem(6) rem(6);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			// .bkt-catygory-menu-header-close
+			&-close {
+				// .bkt-catygory-menu-header-close__icon
+				&__icon {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					& svg {
+						width: rem(20);
+						height: rem(20);
+						@include adaptiveValue("width", 20, 18, 767.98);
+						@include adaptiveValue("width", 26, 22, 0, 767.98);
+						@include adaptiveValue("height", 20, 18, 767.98);
+						@include adaptiveValue("height", 26, 22, 0, 767.98);
+						& * {
+							fill: #222222;
+						}
+					}
+				}
+			}
+		}
+
+		// .bkt-catygory-menu__main
+		&__main {
+			margin-top: rem(44);
+			margin-bottom: rem(22);
+		}
+		// .bkt-catygory-menu-main
+		&-main {
+			// .bkt-catygory-menu-main__null
+			&__null {
+				margin: rem(4) rem(0);
+				padding: rem(12) rem(12);
+				@include adaptiveValue("padding-top", 12, 10, 991.98);
+				@include adaptiveValue("padding-bottom", 12, 10, 991.98);
+				width: 100%;
+				color: #222222;
+				font-size: rem(18);
+				@include adaptiveValue("font-size", 18, 14, 991.98);
+				@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+				@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+				font-weight: 700;
+				text-align: center;
+				border-radius: rem(4);
+				@media (max-width: $tablet) and (min-width: $mobile) {
+					padding: rem(10) rem(12);
+				}
+			}
+			// .bkt-catygory-menu-main__defaultlist
+			&__defaultlist {
+				width: 100%;
+			}
+			// .bkt-catygory-menu-main-defaultlist
+			&-defaultlist {
+				// .bkt-catygory-menu-main-defaultlist__button
+				&__button {
+					margin: rem(4) rem(0);
+					padding: rem(12) rem(12);
+					@include adaptiveValue("padding-top", 12, 10, 991.98);
+					@include adaptiveValue("padding-bottom", 12, 10, 991.98);
+					width: 100%;
+					color: #222222;
+					font-size: rem(18);
+					@include adaptiveValue("font-size", 18, 14, 991.98);
+					@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+					@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+					font-weight: 700;
+					border-radius: rem(4);
+					background-color: #afafaf;
+					@media (max-width: $tablet) and (min-width: $mobile) {
+						padding: rem(10) rem(12);
+					}
+                    & * {
+                        pointer-events: none;
+                    }
+				}
+				// .bkt-catygory-menu-main-defaultlist-button
+				&-button {
+					// .bkt-catygory-menu-main-defaultlist-button__categoryname
+					&__categoryname {
+					}
+				}
+			}
+			// .bkt-catygory-menu-main__list
+			&__list {
+				width: 100%;
+			}
+			// .bkt-catygory-menu-main-list
+			&-list {
+				// .bkt-catygory-menu-main-list__button
+				&__button {
+					padding: rem(12) rem(12);
+					@include adaptiveValue("padding-top", 12, 10, 991.98);
+					@include adaptiveValue("padding-bottom", 12, 10, 991.98);
+					width: 100%;
+					color: #222222;
+					font-size: rem(18);
+					@include adaptiveValue("font-size", 18, 14, 991.98);
+					@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+					@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+					font-weight: 700;
+					display: flex;
+					justify-content: flex-start;
+					transition: all 0.56s ease 0s;
+					&._show {
+						color: $colorWhite;
+						background-color: #00a1ff;
+					}
+                    & * {
+                        pointer-events: none;
+                    }
+				}
+				// .bkt-catygory-menu-main-list-button
+				&-button {
+					// .bkt-catygory-menu-main-list__title
+					&__title {
+					}
+				}
+			}
+			// .bkt-catygory-menu-main__sublist
+			&__sublist {
+				width: 100%;
+			}
+			// .bkt-catygory-menu-main-sublist
+			&-sublist {
+				// .bkt-catygory-menu-main-sublist__button
+				&__button {
+					padding: rem(12) rem(12);
+					@include adaptiveValue("padding-top", 12, 10, 991.98);
+					@include adaptiveValue("padding-bottom", 12, 10, 991.98);
+					width: 100%;
+					color: #222222;
+					font-size: rem(18);
+					@include adaptiveValue("font-size", 18, 14, 991.98);
+					@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+					@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+					font-weight: 700;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					transition: all 0.56s ease 0s;
+					&._show {
+						color: $colorWhite;
+						background-color: #00a1ff;
+					}
+                    & * {
+                        pointer-events: none;
+                    }
+				}
+				// .bkt-catygory-menu-main-sublist-button
+				&-button {
+					// .bkt-catygory-menu-main-sublist__title
+					&__title {
+					}
+					// .bkt-catygory-menu-main-sublist-button__icon
+					&__icon {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						// .bkt-catygory-menu-main-sublist-button__icon svg
+						& svg {
+							width: rem(20);
+							height: rem(20);
+
+							@include adaptiveValue("width", 20, 14, 767.98);
+							@include adaptiveValue("width", 16, 12, 0, 767.98);
+							@include adaptiveValue("height", 20, 14, 767.98);
+							@include adaptiveValue("height", 16, 12, 0, 767.98);
+
+							transform: rotate(90deg);
+
+							transition: all 0.56s ease 0s;
+							.bkt-catygory-menu-main-sublist__button._show & {
+								transform: rotate(0deg);
+							}
+							& * {
+								fill: #222222;
+								transition: all 0.56s ease 0s;
+								.bkt-catygory-menu-main-sublist__button._show & {
+									fill: $colorWhite;
+								}
+							}
+						}
+					}
+				}
+				// .bkt-catygory-menu-main-sublist__menulist
+				&__menulist {
+					padding: rem(0) rem(8);
+					width: 100%;
+					background-color: rgba($color: #00b9ff, $alpha: 0.15);
+				}
+				// .bkt-catygory-menu-main-sublist-menulist
+				&-menulist {
+					// .bkt-catygory-menu-main-sublist-menulist__list
+					&__list {
+						padding: rem(12) rem(12);
+						@include adaptiveValue("padding-top", 12, 10, 991.98);
+						@include adaptiveValue("padding-bottom", 12, 10, 991.98);
+						width: 100%;
+						color: #222222;
+						font-size: rem(18);
+						@include adaptiveValue("font-size", 18, 12, 767.98);
+						@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+						font-weight: 700;
+					}
+				}
+			}
+		}
+	}
+}
+/* ===================================  bkt-catygory  --End--  =================================== */

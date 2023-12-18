@@ -1,0 +1,38 @@
+// .moreinfo-tovar-info-textinfo-ratinginfo__rating
+.moreinfo-tovar-info-textinfo-ratinginfo__rating {
+	white-space: nowrap;
+	overflow: hidden;
+	border-right: solid rem(1) #878787;
+}
+
+// .moreinfo-tovar-info-textinfo-ratinginfo-rating
+.moreinfo-tovar-info-textinfo-ratinginfo-rating {
+
+	// .moreinfo-tovar-info-textinfo-ratinginfo-rating__icon
+	&__icon {
+		margin-right: em(3);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		// .moreinfo-tovar-info-textinfo-ratinginfo-rating__icon svg
+		& svg {
+			width: rem(16);
+			height: rem(16);
+			@include adaptiveValue("width", 16, 14, 767.98);
+			@include adaptiveValue("width", 24, 16, 0, 767.98);
+			@include adaptiveValue("height", 16, 14, 767.98);
+			@include adaptiveValue("height", 24, 16, 0, 767.98);
+
+			& * {
+				fill: $colorBlack;
+			}
+		}
+	}
+
+	// .moreinfo-tovar-info-textinfo-ratinginfo-rating__number
+	&__number {
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}

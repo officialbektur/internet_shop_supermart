@@ -1,0 +1,64 @@
+// .product-block-info-buttons__basket
+.product-block-info-buttons__basket {
+	margin-left: rem(4);
+	margin-right: rem(0);
+	color: $colorWhite;
+	font-size: rem(11);
+	@include adaptiveValue("font-size", 11, 9, 991.98);
+	@include adaptiveValue("font-size", 11, 9, 767.98, 991.98);
+	@include adaptiveValue("font-size", 11, 9, 479.98, 767.98);
+	@include adaptiveValue("font-size", 11, 8, 0, 479.98);
+	font-weight: 700;
+	white-space: nowrap;
+	background-color: #000000;
+	transition: all 0.4s ease 0s;
+
+	&._active {
+		background-color: $colorRed;
+	}
+
+	html._pc &:hover {
+		box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.6),
+			rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.6),
+			rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.6),
+			rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.6);
+	}
+
+	html._pc &._active:hover {
+		box-shadow: rem(0) rem(0) rem(5) rgba($color: $colorRed, $alpha: 0.6),
+			rem(0) rem(0) rem(8) rgba($color: $colorRed, $alpha: 0.6),
+			rem(0) rem(0) rem(14) rgba($color: $colorRed, $alpha: 0.6),
+			rem(0) rem(0) rem(20) rgba($color: $colorRed, $alpha: 0.6);
+	}
+}
+
+// .product-block-info-buttons-basket
+.product-block-info-buttons-basket {
+
+	// .product-block-info-buttons-basket__icon
+	&__icon {
+		margin-right: em(3);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		& svg {
+			width: rem(14);
+			height: rem(14);
+
+			// @include adaptiveValue("width", 11, 9, 991.98);
+			// @include adaptiveValue("width", 11, 9, 767.98, 991.98);
+			// @include adaptiveValue("height", 11, 9, 991.98);
+			// @include adaptiveValue("height", 11, 9, 767.98, 991.98);
+			& * {
+				fill: $colorWhite;
+			}
+		}
+	}
+
+	// .product-block-info-buttons-basket__title
+	&__title {
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}

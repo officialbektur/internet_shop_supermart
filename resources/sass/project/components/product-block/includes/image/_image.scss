@@ -1,0 +1,62 @@
+// .product-block__image
+.product-block__image {}
+
+// .product-block-image
+.product-block-image {
+
+	// .product-block-image__content
+	&__content {
+		position: relative;
+		width: 100%;
+		height: rem(258);
+		@include adaptiveValue("height", 258, 220, 991.98);
+		@include adaptiveValue("height", 290, 234, 767.98, 991.98);
+		@include adaptiveValue("height", 320, 200, 479.98, 767.98);
+		// @include adaptiveValue("height", 304, 190, 0, 479.98);
+		@include adaptiveValue("height", 254, 150, 0, 479.98);
+		overflow: hidden;
+
+		.product-block._show-loading & {
+			background-color: #ededed;
+			background: linear-gradient(100deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, 0) 60%) #ededed;
+			background-size: 200% 100%;
+			background-position-x: 180%;
+			animation: 2.6s loading ease-in-out infinite;
+		}
+		@keyframes loading {
+			to {
+				background-position-x: -20%;
+			}
+		}
+		html._pc &:hover {
+			& .product-block-image-item__pagination::after {
+				bottom: rem(8);
+			}
+
+			& .product-block-image__numberofimages {
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			& .product-block-image__sticker {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+	}
+
+	// .product-block-image__items
+	&__items {
+		position: absolute;
+		top: rem(0);
+		left: rem(0);
+		width: 100%;
+		height: 100%;
+		display: flex;
+	}
+}
+
+
+@import "includes/item/_item";
+@import "includes/numberofimages/_numberofimages";
+@import "includes/sticker/_sticker";

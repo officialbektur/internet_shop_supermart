@@ -1,0 +1,42 @@
+// .product-block-info-ratinginfo__writereview
+.product-block-info-ratinginfo__writereview {
+	border-left: solid rem(1) #878787;
+}
+
+// .product-block-info-ratinginfo-writereview
+.product-block-info-ratinginfo-writereview {
+
+	// .product-block-info-ratinginfo-writereview__icon
+	&__icon {
+		margin-right: rem(1);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		// .product-block-info-ratinginfo-writereview__icon svg
+		& svg {
+			width: rem(11);
+			height: rem(11);
+			@include adaptiveValue("width", 11, 9, 991.98);
+			@include adaptiveValue("width", 11, 9, 767.98, 991.98);
+			@include adaptiveValue("width", 11, 9, 0, 767.98);
+			@include adaptiveValue("height", 11, 9, 991.98);
+			@include adaptiveValue("height", 11, 9, 767.98, 991.98);
+			@include adaptiveValue("height", 11, 9, 0, 767.98);
+
+			& * {
+				fill: $colorBlack;
+			}
+		}
+	}
+
+	// .product-block-info-ratinginfo-writereview__text
+	&__text {
+		-webkit-line-clamp: 2;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		word-break: break-all;
+	}
+}

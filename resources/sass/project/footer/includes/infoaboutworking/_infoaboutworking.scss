@@ -1,0 +1,101 @@
+// .footer__infoaboutworking
+.footer__infoaboutworking {}
+
+// .footer-infoaboutworking
+.footer-infoaboutworking {
+
+	// .footer-infoaboutworking__title
+	&__title {}
+
+	// .footer-infoaboutworking__content
+	&__content {
+		display: flex;
+		flex-direction: column;
+	}
+
+	// .footer-infoaboutworking-content
+	&-content {
+
+		// .footer-infoaboutworking-content__dayworking
+		&__dayworking {
+			margin: rem(6) rem(0);
+			@include adaptiveValue("margin-top", 6, 2, 991.98);
+			@include adaptiveValue("margin-bottom", 6, 2, 991.98);
+			display: flex;
+			flex-direction: column;
+
+			@media (max-width: $tablet) and (min-width: $mobile) {
+				margin: rem(2) rem(0);
+			}
+		}
+
+		// .footer-infoaboutworking-content-dayworking
+		&-dayworking {
+
+			// .footer-infoaboutworking-content-dayworking__title
+			&__title {
+				margin: rem(4) rem(0);
+				color: $colorWhite;
+				font-size: rem(18);
+				@include adaptiveValue("font-size", 18, 14, 991.98);
+				@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+				@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+				font-weight: 700;
+			}
+
+			// .footer-infoaboutworking-content-dayworking__infotext
+			&__infotext {
+				margin: rem(4) rem(0);
+				color: $colorWhite;
+				font-size: rem(18);
+				@include adaptiveValue("font-size", 18, 14, 991.98);
+				@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+				@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+				font-weight: 400;
+				line-height: math.div(24, 18);
+				text-decoration: underline;
+			}
+		}
+
+		// .footer-infoaboutworking-content__timework
+		&__timework {
+			margin: rem(6) rem(0);
+			@include adaptiveValue("margin-top", 6, 2, 991.98);
+			@include adaptiveValue("margin-bottom", 6, 2, 991.98);
+			display: flex;
+			flex-direction: column;
+
+			@media (max-width: $tablet) and (min-width: $mobile) {
+				margin: rem(2) rem(0);
+			}
+		}
+
+		// .footer-infoaboutworking-content-timework
+		&-timework {
+
+			// .footer-infoaboutworking-content-timework__title
+			&__title {
+				margin: rem(4) rem(0);
+				color: $colorWhite;
+				font-size: rem(18);
+				@include adaptiveValue("font-size", 18, 14, 991.98);
+				@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+				@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+				font-weight: 700;
+			}
+
+			// .footer-infoaboutworking-content-timework__infotext
+			&__infotext {
+				margin: rem(4) rem(0);
+				color: $colorWhite;
+				font-size: rem(18);
+				@include adaptiveValue("font-size", 18, 14, 991.98);
+				@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+				@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+				font-weight: 400;
+				line-height: math.div(24, 18);
+				text-decoration: underline;
+			}
+		}
+	}
+}

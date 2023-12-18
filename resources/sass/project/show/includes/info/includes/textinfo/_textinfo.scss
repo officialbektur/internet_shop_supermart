@@ -1,0 +1,22 @@
+// .moreinfo-tovar-info__textinfo
+.moreinfo-tovar-info__textinfo {
+	@include adaptiveValue("margin-left", 8, 4, 767.98);
+	@include adaptiveValue("max-width", 520, 280, 767.98);
+	width: 100%;
+
+	@media (max-width: $mobile) {
+		margin-top: rem(6);
+	}
+}
+
+// .moreinfo-tovar-info-textinfo
+.moreinfo-tovar-info-textinfo {
+}
+
+@import "includes/categories/_categories";
+@import "includes/title/_title";
+@import "includes/price/_price";
+@import "includes/ratinginfo/_ratinginfo";
+@import "includes/buttons/_buttons";
+@import "includes/meta/_meta";
+@import "includes/share/_share";

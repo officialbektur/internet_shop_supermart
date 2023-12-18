@@ -1,0 +1,21 @@
+/* ===================================  moreinfo-tovar  --Start--  =================================== */
+.moreinfo-tovar {
+	// .moreinfo-tovar__body
+	&__body {
+		margin-top: rem(12);
+	}
+
+	// .moreinfo-tovar__content
+	&__content {
+		margin-top: rem(28);
+		@include adaptiveValue("margin-top", 28, 16);
+	}
+	// .moreinfo-tovar__dp
+	&__dp {
+		margin-top: rem(16);
+	}
+}
+@import "includes/body/_body";
+@import "includes/info/_info";
+@import "includes/navigation/_navigation";
+/* ===================================  moreinfo-tovar  --End--  =================================== */

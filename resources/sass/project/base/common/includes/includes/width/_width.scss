@@ -1,0 +1,45 @@
+/* ===================================  w-100  --Start--  =================================== */
+.w-100 {
+	width: 100%;
+}
+@media (min-width: $pc) {
+	.mmd-pc-w-100 {
+		width: 100%;
+	}
+}
+@media (max-width: $pc) {
+	.md-pc-w-100 {
+		width: 100%;
+	}
+}
+@media (min-width: $tablet) {
+	.mmd-table-w-100 {
+		width: 100%;
+	}
+}
+@media (max-width: $tablet) {
+	.md-table-w-100 {
+		width: 100%;
+	}
+}
+@media (min-width: $mobile) {
+	.mmd-mobile-w-100 {
+		width: 100%;
+	}
+}
+@media (max-width: $mobile) {
+	.md-mobile-w-100 {
+		width: 100%;
+	}
+}
+@media (min-width: $mobileSmall) {
+	.mmd-mobileSmall-w-100 {
+		width: 100%;
+	}
+}
+@media (max-width: $mobileSmall) {
+	.md-mobileSmall-w-100 {
+		width: 100%;
+	}
+}
+/* ===================================  w-100  --End--  =================================== */

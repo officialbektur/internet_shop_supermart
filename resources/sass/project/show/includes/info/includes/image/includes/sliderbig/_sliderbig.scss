@@ -1,0 +1,25 @@
+// .moreinfo-tovar-info-image__sliderbig
+.moreinfo-tovar-info-image__sliderbig {
+	position: relative;
+	width: 100%;
+	height: rem(480);
+	@include adaptiveValue("height", 480, 300, 767.98);
+	@include adaptiveValue("height", 340, 200, 0, 767.98);
+	overflow: hidden;
+	-webkit-tap-highlight-color: $clickByTouchColor0;
+	user-select: none;
+
+	html._pc &:hover .moreinfo-tovar-info-image-sliderbig__sticker {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+// .moreinfo-tovar-info-image-sliderbig
+.moreinfo-tovar-info-image-sliderbig {
+}
+
+
+@import "includes/sticker/_sticker";
+@import "includes/slide/_slide";
+@import "includes/pagination/_pagination";

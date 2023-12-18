@@ -1,5 +1,5 @@
 <template>
-	<div class="header-top__search header-top-search" :class="{ '_show': isActiveSearch }">
+	<div class="header-top__search header-top-search d-flex" :class="{ '_show': isActiveSearch }">
 		<form action="" method="get" class="header-top-search__form">
 			<input
 				autocomplete="off"

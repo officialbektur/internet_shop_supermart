@@ -1,0 +1,36 @@
+// .product__block
+.product__block {
+	margin: rem(10) rem(6);
+	@include adaptiveValue("margin-top", 10, 6, 991.98);
+	@include adaptiveValue("margin-top", 8, 4, 479.98, 767.98);
+	@include adaptiveValue("margin-bottom", 10, 6, 991.98);
+	@include adaptiveValue("margin-bottom", 8, 4, 479.98, 767.98);
+	@include adaptiveValue("margin-left", 6, 4, 991.98);
+	@include adaptiveValue("margin-left", 6, 1, 479.98, 767.98);
+	@include adaptiveValue("margin-right", 6, 4, 991.98);
+	@include adaptiveValue("margin-right", 6, 1, 479.98, 767.98);
+	// width: rem(214);
+	// @include adaptiveValue("width", 214, 188.2, 1039.98);
+	// @include adaptiveValue("width", 188.54, 180, 991.98, 1039.98);
+
+	display: flex;
+	flex-direction: column;
+
+	background-color: $colorWhite;
+	border: solid rem(1) #ede3e3;
+	user-select: none;
+	@media (max-width: $tablet) and (min-width: $mobile){
+		margin: rem(6) rem(4);
+	}
+	@media (max-width: $mobileSmall) {
+		margin: rem(4) rem(2);
+	}
+}
+// .product-block
+.product-block {
+}
+
+@import "includes/image/_image";
+@import "includes/info/_info";
+@import "includes/slids/_slids";
+@import "includes/trash/_trash";

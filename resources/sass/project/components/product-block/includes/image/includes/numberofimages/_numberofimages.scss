@@ -1,0 +1,84 @@
+// .product-block-image__numberofimages
+.product-block-image__numberofimages {
+	position: absolute;
+	bottom: rem(6);
+	@include adaptiveValue("bottom", 6, 4, 991.98);
+	@include adaptiveValue("bottom", 6, 4, 0, 767.98);
+	left: rem(6);
+	@include adaptiveValue("left", 6, 4, 991.98);
+	@include adaptiveValue("left", 6, 4, 0, 767.98);
+	pointer-events: none;
+	transition: all 0.46s ease 0s;
+}
+
+// .product-block-image-numberofimages
+.product-block-image-numberofimages {
+
+	// .product-block-image-numberofimages__number
+	&__number {
+		position: relative;
+		padding: rem(1) rem(3) rem(0) rem(3);
+		width: rem(30);
+		height: rem(22);
+		@include adaptiveValue("width", 30, 26, 991.98);
+		@include adaptiveValue("width", 30, 26, 767.98, 991.98);
+		@include adaptiveValue("width", 30, 24, 479.98, 767.98);
+		@include adaptiveValue("width", 22, 18, 0, 767.98);
+		@include adaptiveValue("height", 22, 18, 991.98);
+		@include adaptiveValue("height", 22, 18, 767.98, 991.98);
+		@include adaptiveValue("height", 22, 16, 479.98, 767.98);
+		@include adaptiveValue("height", 16, 14, 0, 767.98);
+		color: $colorWhite;
+		font-size: rem(12);
+		@include adaptiveValue("font-size", 12, 10, 991.98);
+		@include adaptiveValue("font-size", 12, 10, 767.98, 991.98);
+		@include adaptiveValue("font-size", 12, 10, 479.98, 767.98);
+		@include adaptiveValue("font-size", 10, 8, 0, 767.98);
+		font-weight: 700;
+		border-radius: rem(5);
+		@include adaptiveValue("border-radius", 5, 3, 991.98);
+		@include adaptiveValue("border-radius", 5, 3, 767.98, 991.98);
+		@include adaptiveValue("border-radius", 5, 3, 479.98, 767.98);
+		@include adaptiveValue("border-radius", 3, 2, 0, 767.98);
+		background-color: #4b4f58;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&::before {
+			content: '';
+			position: absolute;
+			bottom: rem(20);
+			@include adaptiveValue("bottom", 20, 17, 991.98);
+			@include adaptiveValue("bottom", 20, 17, 767.98, 991.98);
+			@include adaptiveValue("bottom", 15, 14, 479.98, 767.98);
+			left: 50%;
+			transform: translateX(-50%);
+			width: rem(20);
+			@include adaptiveValue("width", 20, 16, 991.98);
+			@include adaptiveValue("width", 20, 16, 767.98, 991.98);
+			@include adaptiveValue("width", 20, 16, 479.98, 767.98);
+			@include adaptiveValue("width", 16, 14, 0, 767.98);
+			height: rem(5);
+			@include adaptiveValue("height", 5, 3.6, 991.98);
+			@include adaptiveValue("height", 5, 3.6, 767.98, 991.98);
+			@include adaptiveValue("height", 5, 3.6, 479.98, 767.98);
+			@include adaptiveValue("height", 4, 2, 0, 767.98);
+			border-top-left-radius: rem(3);
+			@include adaptiveValue("border-top-left-radius", 3, 2, 991.98);
+			@include adaptiveValue("border-top-left-radius", 3, 2, 767.98, 991.98);
+			@include adaptiveValue("border-top-left-radius", 3, 2, 479.98, 767.98);
+			@include adaptiveValue("border-top-left-radius", 3, 2, 0, 767.98);
+			border-top-right-radius: rem(3);
+			@include adaptiveValue("border-top-right-radius", 3, 2, 991.98);
+			@include adaptiveValue("border-top-right-radius", 3, 2, 767.98, 991.98);
+			@include adaptiveValue("border-top-right-radius", 3, 2, 479.98, 767.98);
+			@include adaptiveValue("border-top-right-radius", 3, 2, 0, 767.98);
+			background-color: inherit;
+
+			@media (max-width: $mobileSmall) {
+				bottom: rem(14);
+			}
+		}
+	}
+}

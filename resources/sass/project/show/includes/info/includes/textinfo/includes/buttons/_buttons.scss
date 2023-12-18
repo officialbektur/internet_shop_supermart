@@ -1,0 +1,11 @@
+// .moreinfo-tovar-info-textinfo__buttons
+.moreinfo-tovar-info-textinfo__buttons {
+	margin-top: rem(32);
+	@include adaptiveValue("margin-top", 32, 28, 767.98);
+	display: flex;
+	justify-content: space-between;
+}
+
+@import "includes/btnbasket/_btnbasket";
+@import "includes/btnfavorite/_btnfavorite";
+@import "includes/buy/_buy";

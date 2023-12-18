@@ -1,0 +1,14 @@
+// .moreinfo-tovar-info__image
+.moreinfo-tovar-info__image {
+	@include adaptiveValue("margin-right", 8, 4, 767.98);
+	width: 100%;
+	overflow: hidden;
+}
+
+// .moreinfo-tovar-info-image
+.moreinfo-tovar-info-image {
+
+}
+
+@import "includes/sliderbig/_sliderbig";
+@import "includes/pagination/_pagination";

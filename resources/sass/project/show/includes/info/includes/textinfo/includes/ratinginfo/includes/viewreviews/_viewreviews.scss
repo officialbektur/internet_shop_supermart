@@ -1,0 +1,53 @@
+// .moreinfo-tovar-info-textinfo-ratinginfo__viewreviews
+.moreinfo-tovar-info-textinfo-ratinginfo__viewreviews {}
+
+// .moreinfo-tovar-info-textinfo-ratinginfo-rating
+.moreinfo-tovar-info-textinfo-ratinginfo-rating {
+
+	// .moreinfo-tovar-info-textinfo-ratinginfo-viewreviews__icon
+	&__icon {
+		margin-right: em(1);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		// .moreinfo-tovar-info-textinfo-ratinginfo-viewreviews__icon svg
+		& svg {
+			width: rem(16);
+			height: rem(16);
+			@include adaptiveValue("width", 16, 14, 767.98);
+			@include adaptiveValue("width", 24, 16, 0, 767.98);
+			@include adaptiveValue("height", 16, 14, 767.98);
+			@include adaptiveValue("height", 24, 16, 0, 767.98);
+
+			& * {
+				fill: $colorBlack;
+			}
+		}
+	}
+
+	// .moreinfo-tovar-info-textinfo-ratinginfo-viewreviews__content
+	&__content {
+		overflow: hidden;
+	}
+
+	// .moreinfo-tovar-info-textinfo-ratinginfo-viewreviews-content
+	&-content {
+
+		// .moreinfo-tovar-info-textinfo-ratinginfo-viewreviews-content__text
+		&__text {
+			display: block;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		// .moreinfo-tovar-info-textinfo-ratinginfo-viewreviews-content__number
+		&__number {
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}

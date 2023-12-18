@@ -1,0 +1,43 @@
+// .product-block-info__ratinginfo
+.product-block-info__ratinginfo {
+	margin: rem(8) rem(0);
+
+	width: 100%;
+	height: rem(22);
+
+	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1.5fr 1fr;
+	align-items: center;
+}
+
+// .product-block-info-ratinginfo
+.product-block-info-ratinginfo {
+
+	// .product-block-info-ratinginfo__column
+	&__column {
+		padding: rem(0) rem(4);
+		width: 100%;
+		height: 100%;
+		color: $colorBlack;
+		font-size: rem(11);
+		@include adaptiveValue("font-size", 11, 9, 991.98);
+		@include adaptiveValue("font-size", 11, 9, 767.98, 991.98);
+		@include adaptiveValue("font-size", 11, 9, 479.98, 767.98);
+		@include adaptiveValue("font-size", 10, 6, 0, 479.98);
+		font-weight: 700;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		overflow: hidden;
+
+		& [class*="icon-"] {
+			padding-right: rem(2);
+		}
+	}
+}
+
+@import "includes/rating/rating";
+@import "includes/viewreviews/viewreviews";
+@import "includes/writereview/writereview";

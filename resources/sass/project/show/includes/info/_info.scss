@@ -1,0 +1,15 @@
+// .moreinfo-tovar__info
+.moreinfo-tovar__info {
+	display: flex;
+
+	@media (max-width: $mobile) {
+		flex-direction: column;
+	}
+}
+
+// .moreinfo-tovar-info
+.moreinfo-tovar-info {
+}
+
+@import "includes/image/_image.scss";
+@import "includes/textinfo/_textinfo";

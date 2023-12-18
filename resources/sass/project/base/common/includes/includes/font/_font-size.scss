@@ -1,0 +1,486 @@
+/* ===================================  fs-14  --Start--  =================================== */
+.fs-14 {
+	font-size: rem(14);
+	@include adaptiveValue("font-size", 14, 12);
+}
+@media (min-width: pc) {
+	.mmd-pc-fs-14 {
+		font-size: rem(14);
+		@include adaptiveValue("font-size", 14, 12);
+	}
+}
+@media (max-width: pc) {
+	.md-pc-fs-14 {
+		font-size: rem(14);
+		@include adaptiveValue("font-size", 14, 12);
+	}
+}
+@media (min-width: tablet) {
+	.mmd-table-fs-14 {
+		font-size: rem(14);
+		@include adaptiveValue("font-size", 14, 12);
+	}
+}
+@media (max-width: tablet) {
+	.md-table-fs-14 {
+		font-size: rem(14);
+		@include adaptiveValue("font-size", 14, 12);
+	}
+}
+@media (min-width: mobile) {
+	.mmd-mobile-fs-14 {
+		font-size: rem(14);
+		@include adaptiveValue("font-size", 14, 12);
+	}
+}
+@media (max-width: mobile) {
+	.md-mobile-fs-14 {
+		font-size: rem(14);
+		@include adaptiveValue("font-size", 14, 12);
+	}
+}
+@media (min-width: mobileSmall) {
+	.mmd-mobileSmall-fs-14 {
+		font-size: rem(14);
+		@include adaptiveValue("font-size", 14, 12);
+	}
+}
+@media (max-width: mobileSmall) {
+	.md-mobileSmall-fs-14 {
+		font-size: rem(14);
+		@include adaptiveValue("font-size", 14, 12);
+	}
+}
+/* ===================================  fs-14  --End--  =================================== */
+
+
+
+/* ===================================  fs-16  --Start--  =================================== */
+.fs-16 {
+	font-size: rem(16);
+	@include adaptiveValue("font-size", 16, 12, 991.98);
+	@include adaptiveValue("font-size", 12, 11, 767.98, 991.98);
+	@include adaptiveValue("font-size", 20, 14, 0, 767.98);
+}
+@media (min-width: pc) {
+	.mmd-pc-fs-16 {
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 12, 991.98);
+		@include adaptiveValue("font-size", 12, 11, 767.98, 991.98);
+		@include adaptiveValue("font-size", 20, 14, 0, 767.98);
+	}
+}
+@media (max-width: pc) {
+	.md-pc-fs-16 {
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 12, 991.98);
+		@include adaptiveValue("font-size", 12, 11, 767.98, 991.98);
+		@include adaptiveValue("font-size", 20, 14, 0, 767.98);
+	}
+}
+@media (min-width: tablet) {
+	.mmd-table-fs-16 {
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 12, 991.98);
+		@include adaptiveValue("font-size", 12, 11, 767.98, 991.98);
+		@include adaptiveValue("font-size", 20, 14, 0, 767.98);
+	}
+}
+@media (max-width: tablet) {
+	.md-table-fs-16 {
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 12, 991.98);
+		@include adaptiveValue("font-size", 12, 11, 767.98, 991.98);
+		@include adaptiveValue("font-size", 20, 14, 0, 767.98);
+	}
+}
+@media (min-width: mobile) {
+	.mmd-mobile-fs-16 {
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 12, 991.98);
+		@include adaptiveValue("font-size", 12, 11, 767.98, 991.98);
+		@include adaptiveValue("font-size", 20, 14, 0, 767.98);
+	}
+}
+@media (max-width: mobile) {
+	.md-mobile-fs-16 {
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 12, 991.98);
+		@include adaptiveValue("font-size", 12, 11, 767.98, 991.98);
+		@include adaptiveValue("font-size", 20, 14, 0, 767.98);
+	}
+}
+@media (min-width: mobileSmall) {
+	.mmd-mobileSmall-fs-16 {
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 12, 991.98);
+		@include adaptiveValue("font-size", 12, 11, 767.98, 991.98);
+		@include adaptiveValue("font-size", 20, 14, 0, 767.98);
+	}
+}
+@media (max-width: mobileSmall) {
+	.md-mobileSmall-fs-16 {
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 12, 991.98);
+		@include adaptiveValue("font-size", 12, 11, 767.98, 991.98);
+		@include adaptiveValue("font-size", 20, 14, 0, 767.98);
+	}
+}
+/* ===================================  fs-16  --End--  =================================== */
+
+
+
+/* ===================================  fs-18  --Start--  =================================== */
+.fs-18 {
+	font-size: rem(18);
+	@include adaptiveValue("font-size", 18, 14, 991.98);
+	@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+	@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+}
+@media (min-width: pc) {
+	.mmd-pc-fs-18 {
+		font-size: rem(18);
+		@include adaptiveValue("font-size", 18, 14, 991.98);
+		@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+		@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+	}
+}
+@media (max-width: pc) {
+	.md-pc-fs-18 {
+		font-size: rem(18);
+		@include adaptiveValue("font-size", 18, 14, 991.98);
+		@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+		@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+	}
+}
+@media (min-width: tablet) {
+	.mmd-table-fs-18 {
+		font-size: rem(18);
+		@include adaptiveValue("font-size", 18, 14, 991.98);
+		@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+		@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+	}
+}
+@media (max-width: tablet) {
+	.md-table-fs-18 {
+		font-size: rem(18);
+		@include adaptiveValue("font-size", 18, 14, 991.98);
+		@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+		@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+	}
+}
+@media (min-width: mobile) {
+	.mmd-mobile-fs-18 {
+		font-size: rem(18);
+		@include adaptiveValue("font-size", 18, 14, 991.98);
+		@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+		@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+	}
+}
+@media (max-width: mobile) {
+	.md-mobile-fs-18 {
+		font-size: rem(18);
+		@include adaptiveValue("font-size", 18, 14, 991.98);
+		@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+		@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+	}
+}
+@media (min-width: mobileSmall) {
+	.mmd-mobileSmall-fs-18 {
+		font-size: rem(18);
+		@include adaptiveValue("font-size", 18, 14, 991.98);
+		@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+		@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+	}
+}
+@media (max-width: mobileSmall) {
+	.md-mobileSmall-fs-18 {
+		font-size: rem(18);
+		@include adaptiveValue("font-size", 18, 14, 991.98);
+		@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+		@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+	}
+}
+/* ===================================  fs-18  --End--  =================================== */
+
+
+
+/* ===================================  fs-20  --Start--  =================================== */
+.fs-20 {
+	font-size: rem(20);
+	@include adaptiveValue("font-size", 20, 16, 991.98);
+	@include adaptiveValue("font-size", 16, 13, 767.98, 991.98);
+	@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
+	@include adaptiveValue("font-size", 20, 18, 0, 479.98);
+}
+@media (min-width: pc) {
+	.mmd-pc-fs-20 {
+		font-size: rem(20);
+		@include adaptiveValue("font-size", 20, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 13, 767.98, 991.98);
+		@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
+		@include adaptiveValue("font-size", 20, 18, 0, 479.98);
+	}
+}
+@media (max-width: pc) {
+	.md-pc-fs-20 {
+		font-size: rem(20);
+		@include adaptiveValue("font-size", 20, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 13, 767.98, 991.98);
+		@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
+		@include adaptiveValue("font-size", 20, 18, 0, 479.98);
+	}
+}
+@media (min-width: tablet) {
+	.mmd-table-fs-20 {
+		font-size: rem(20);
+		@include adaptiveValue("font-size", 20, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 13, 767.98, 991.98);
+		@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
+		@include adaptiveValue("font-size", 20, 18, 0, 479.98);
+	}
+}
+@media (max-width: tablet) {
+	.md-table-fs-20 {
+		font-size: rem(20);
+		@include adaptiveValue("font-size", 20, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 13, 767.98, 991.98);
+		@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
+		@include adaptiveValue("font-size", 20, 18, 0, 479.98);
+	}
+}
+@media (min-width: mobile) {
+	.mmd-mobile-fs-20 {
+		font-size: rem(20);
+		@include adaptiveValue("font-size", 20, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 13, 767.98, 991.98);
+		@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
+		@include adaptiveValue("font-size", 20, 18, 0, 479.98);
+	}
+}
+@media (max-width: mobile) {
+	.md-mobile-fs-20 {
+		font-size: rem(20);
+		@include adaptiveValue("font-size", 20, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 13, 767.98, 991.98);
+		@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
+		@include adaptiveValue("font-size", 20, 18, 0, 479.98);
+	}
+}
+@media (min-width: mobileSmall) {
+	.mmd-mobileSmall-fs-20 {
+		font-size: rem(20);
+		@include adaptiveValue("font-size", 20, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 13, 767.98, 991.98);
+		@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
+		@include adaptiveValue("font-size", 20, 18, 0, 479.98);
+	}
+}
+@media (max-width: mobileSmall) {
+	.md-mobileSmall-fs-20 {
+		font-size: rem(20);
+		@include adaptiveValue("font-size", 20, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 13, 767.98, 991.98);
+		@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
+		@include adaptiveValue("font-size", 20, 18, 0, 479.98);
+	}
+}
+/* ===================================  fs-20  --End--  =================================== */
+
+
+
+/* ===================================  fs-22  --Start--  =================================== */
+.fs-22 {
+	font-size: rem(22);
+	@include adaptiveValue("font-size", 22, 16, 991.98);
+	@include adaptiveValue("font-size", 16, 14, 767.98, 991.98);
+	@include adaptiveValue("font-size", 22, 18, 0, 767.98);
+}
+@media (min-width: pc) {
+	.mmd-pc-fs-22 {
+		font-size: rem(22);
+		@include adaptiveValue("font-size", 22, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 14, 767.98, 991.98);
+		@include adaptiveValue("font-size", 22, 18, 0, 767.98);
+	}
+}
+@media (max-width: pc) {
+	.md-pc-fs-22 {
+		font-size: rem(22);
+		@include adaptiveValue("font-size", 22, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 14, 767.98, 991.98);
+		@include adaptiveValue("font-size", 22, 18, 0, 767.98);
+	}
+}
+@media (min-width: tablet) {
+	.mmd-table-fs-22 {
+		font-size: rem(22);
+		@include adaptiveValue("font-size", 22, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 14, 767.98, 991.98);
+		@include adaptiveValue("font-size", 22, 18, 0, 767.98);
+	}
+}
+@media (max-width: tablet) {
+	.md-table-fs-22 {
+		font-size: rem(22);
+		@include adaptiveValue("font-size", 22, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 14, 767.98, 991.98);
+		@include adaptiveValue("font-size", 22, 18, 0, 767.98);
+	}
+}
+@media (min-width: mobile) {
+	.mmd-mobile-fs-22 {
+		font-size: rem(22);
+		@include adaptiveValue("font-size", 22, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 14, 767.98, 991.98);
+		@include adaptiveValue("font-size", 22, 18, 0, 767.98);
+	}
+}
+@media (max-width: mobile) {
+	.md-mobile-fs-22 {
+		font-size: rem(22);
+		@include adaptiveValue("font-size", 22, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 14, 767.98, 991.98);
+		@include adaptiveValue("font-size", 22, 18, 0, 767.98);
+	}
+}
+@media (min-width: mobileSmall) {
+	.mmd-mobileSmall-fs-22 {
+		font-size: rem(22);
+		@include adaptiveValue("font-size", 22, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 14, 767.98, 991.98);
+		@include adaptiveValue("font-size", 22, 18, 0, 767.98);
+	}
+}
+@media (max-width: mobileSmall) {
+	.md-mobileSmall-fs-22 {
+		font-size: rem(22);
+		@include adaptiveValue("font-size", 22, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 14, 767.98, 991.98);
+		@include adaptiveValue("font-size", 22, 18, 0, 767.98);
+	}
+}
+/* ===================================  fs-22  --End--  =================================== */
+
+
+
+/* ===================================  fs-26  --Start--  =================================== */
+.fs-26 {
+	font-size: rem(26);
+	@include adaptiveValue("font-size", 26, 20, 767.98);
+	@include adaptiveValue("font-size", 26, 20, 0, 767.98);
+}
+@media (min-width: pc) {
+	.mmd-pc-fs-26 {
+		font-size: rem(26);
+		@include adaptiveValue("font-size", 26, 20, 767.98);
+		@include adaptiveValue("font-size", 26, 20, 0, 767.98);
+	}
+}
+@media (max-width: pc) {
+	.md-pc-fs-26 {
+		font-size: rem(26);
+		@include adaptiveValue("font-size", 26, 20, 767.98);
+		@include adaptiveValue("font-size", 26, 20, 0, 767.98);
+	}
+}
+@media (min-width: tablet) {
+	.mmd-table-fs-26 {
+		font-size: rem(26);
+		@include adaptiveValue("font-size", 26, 20, 767.98);
+		@include adaptiveValue("font-size", 26, 20, 0, 767.98);
+	}
+}
+@media (max-width: tablet) {
+	.md-table-fs-26 {
+		font-size: rem(26);
+		@include adaptiveValue("font-size", 26, 20, 767.98);
+		@include adaptiveValue("font-size", 26, 20, 0, 767.98);
+	}
+}
+@media (min-width: mobile) {
+	.mmd-mobile-fs-26 {
+		font-size: rem(26);
+		@include adaptiveValue("font-size", 26, 20, 767.98);
+		@include adaptiveValue("font-size", 26, 20, 0, 767.98);
+	}
+}
+@media (max-width: mobile) {
+	.md-mobile-fs-26 {
+		font-size: rem(26);
+		@include adaptiveValue("font-size", 26, 20, 767.98);
+		@include adaptiveValue("font-size", 26, 20, 0, 767.98);
+	}
+}
+@media (min-width: mobileSmall) {
+	.mmd-mobileSmall-fs-26 {
+		font-size: rem(26);
+		@include adaptiveValue("font-size", 26, 20, 767.98);
+		@include adaptiveValue("font-size", 26, 20, 0, 767.98);
+	}
+}
+@media (max-width: mobileSmall) {
+	.md-mobileSmall-fs-26 {
+		font-size: rem(26);
+		@include adaptiveValue("font-size", 26, 20, 767.98);
+		@include adaptiveValue("font-size", 26, 20, 0, 767.98);
+	}
+}
+/* ===================================  fs-26  --End--  =================================== */
+
+
+
+/* ===================================  fs-36  --Start--  =================================== */
+.fs-36 {
+	font-size: rem(36);
+	@include adaptiveValue("font-size", 36, 26);
+}
+@media (min-width: pc) {
+	.mmd-pc-fs-36 {
+		font-size: rem(36);
+		@include adaptiveValue("font-size", 36, 26);
+	}
+}
+@media (max-width: pc) {
+	.md-pc-fs-36 {
+		font-size: rem(36);
+		@include adaptiveValue("font-size", 36, 26);
+	}
+}
+@media (min-width: tablet) {
+	.mmd-table-fs-36 {
+		font-size: rem(36);
+		@include adaptiveValue("font-size", 36, 26);
+	}
+}
+@media (max-width: tablet) {
+	.md-table-fs-36 {
+		font-size: rem(36);
+		@include adaptiveValue("font-size", 36, 26);
+	}
+}
+@media (min-width: mobile) {
+	.mmd-mobile-fs-36 {
+		font-size: rem(36);
+		@include adaptiveValue("font-size", 36, 26);
+	}
+}
+@media (max-width: mobile) {
+	.md-mobile-fs-36 {
+		font-size: rem(36);
+		@include adaptiveValue("font-size", 36, 26);
+	}
+}
+@media (min-width: mobileSmall) {
+	.mmd-mobileSmall-fs-36 {
+		font-size: rem(36);
+		@include adaptiveValue("font-size", 36, 26);
+	}
+}
+@media (max-width: mobileSmall) {
+	.md-mobileSmall-fs-36 {
+		font-size: rem(36);
+		@include adaptiveValue("font-size", 36, 26);
+	}
+}
+/* ===================================  fs-36  --End--  =================================== */

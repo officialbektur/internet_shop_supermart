@@ -1,0 +1,576 @@
+/* ===================================  d-flex-center  --Start--  =================================== */
+.d-flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@media (min-width: $pc) {
+	.mmd-pc-d-flex-center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+@media (max-width: $pc) {
+	.md-pc-d-flex-center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+
+@media (min-width: $tablet) {
+	.mmd-table-d-flex-center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+@media (max-width: $tablet) {
+	.md-table-d-flex-center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+@media (min-width: $mobile) {
+	.mmd-mobile-d-flex-center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+@media (max-width: $mobile) {
+	.md-mobile-d-flex-center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+@media (min-width: $mobileSmall) {
+	.mmd-mobileSmall-d-flex-center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+@media (max-width: $mobileSmall) {
+	.md-mobileSmall-d-flex-center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+/* ===================================  d-flex-center  --End--  =================================== */
+
+
+
+/* ===================================  d-flex  --Start--  =================================== */
+.d-flex {
+	display: flex;
+}
+
+@media (min-width: $pc) {
+	.mmd-pc-d-flex {
+		display: flex;
+	}
+}
+
+@media (max-width: $pc) {
+	.md-pc-d-flex {
+		display: flex;
+	}
+}
+
+@media (min-width: $tablet) {
+	.mmd-table-d-flex {
+		display: flex;
+	}
+}
+
+@media (max-width: $tablet) {
+	.md-table-d-flex {
+		display: flex;
+	}
+}
+
+@media (min-width: $mobile) {
+	.mmd-mobile-d-flex {
+		display: flex;
+	}
+}
+
+@media (max-width: $mobile) {
+	.md-mobile-d-flex {
+		display: flex;
+	}
+}
+
+@media (min-width: $mobileSmall) {
+	.mmd-mobileSmall-d-flex {
+		display: flex;
+	}
+}
+
+@media (max-width: $mobileSmall) {
+	.md-mobileSmall-d-flex {
+		display: flex;
+	}
+}
+/* ===================================  d-flex  --End--  =================================== */
+
+
+
+/* ===================================  flex-direction-column  --Start--  =================================== */
+.flex-direction-column {
+	flex-direction: column;
+}
+
+@media (min-width: $pc) {
+	.mmd-pc-flex-direction-column {
+		flex-direction: column;
+	}
+}
+
+@media (max-width: $pc) {
+	.md-pc-flex-direction-column {
+		flex-direction: column;
+	}
+}
+
+@media (min-width: $tablet) {
+	.mmd-table-flex-direction-column {
+		flex-direction: column;
+	}
+}
+
+@media (max-width: $tablet) {
+	.md-table-flex-direction-column {
+		flex-direction: column;
+	}
+}
+
+@media (min-width: $mobile) {
+	.mmd-mobile-flex-direction-column {
+		flex-direction: column;
+	}
+}
+
+@media (max-width: $mobile) {
+	.md-mobile-flex-direction-column {
+		flex-direction: column;
+	}
+}
+
+@media (min-width: $mobileSmall) {
+	.mmd-mobileSmall-flex-direction-column {
+		flex-direction: column;
+	}
+}
+
+@media (max-width: $mobileSmall) {
+	.md-mobileSmall-flex-direction-column {
+		flex-direction: column;
+	}
+}
+/* ===================================  flex-direction-column  --End--  =================================== */
+
+
+
+/* ===================================  align-items-center  --Start--  =================================== */
+.align-items-center {
+	align-items: center;
+}
+
+@media (min-width: $pc) {
+	.mmd-pc-align-items-center {
+		align-items: center;
+	}
+}
+
+@media (max-width: $pc) {
+	.md-pc-align-items-center {
+		align-items: center;
+	}
+}
+
+@media (min-width: $tablet) {
+	.mmd-table-align-items-center {
+		align-items: center;
+	}
+}
+
+@media (max-width: $tablet) {
+	.md-table-align-items-center {
+		align-items: center;
+	}
+}
+
+@media (min-width: $mobile) {
+	.mmd-mobile-align-items-center {
+		align-items: center;
+	}
+}
+
+@media (max-width: $mobile) {
+	.md-mobile-align-items-center {
+		align-items: center;
+	}
+}
+
+@media (min-width: $mobileSmall) {
+	.mmd-mobileSmall-align-items-center {
+		align-items: center;
+	}
+}
+
+@media (max-width: $mobileSmall) {
+	.md-mobileSmall-align-items-center {
+		align-items: center;
+	}
+}
+/* ===================================  align-items-center  --End--  =================================== */
+
+
+
+/* ===================================  justify-content-start  --Start--  =================================== */
+.justify-content-start {
+	justify-content: flex-start;
+}
+@media (min-width: $pc) {
+	.mmd-pc-justify-content-start {
+		justify-content: flex-start;
+	}
+}
+@media (max-width: $pc) {
+	.md-pc-justify-content-start {
+		justify-content: flex-start;
+	}
+}
+@media (min-width: $tablet) {
+	.mmd-table-justify-content-start {
+		justify-content: flex-start;
+	}
+}
+@media (max-width: $tablet) {
+	.md-table-justify-content-start {
+		justify-content: flex-start;
+	}
+}
+@media (min-width: $mobile) {
+	.mmd-mobile-justify-content-start {
+		justify-content: flex-start;
+	}
+}
+@media (max-width: $mobile) {
+	.md-mobile-justify-content-start {
+		justify-content: flex-start;
+	}
+}
+@media (min-width: $mobileSmall) {
+	.mmd-mobileSmall-justify-content-start {
+		justify-content: flex-start;
+	}
+}
+@media (max-width: $mobileSmall) {
+	.md-mobileSmall-justify-content-start {
+		justify-content: flex-start;
+	}
+}
+/* ===================================  justify-content-start  --End--  =================================== */
+
+
+
+/* ===================================  justify-content-end  --Start--  =================================== */
+.justify-content-end {
+	justify-content: flex-end;
+}
+@media (min-width: $pc) {
+	.mmd-pc-justify-content-end {
+		justify-content: flex-end;
+	}
+}
+@media (max-width: $pc) {
+	.md-pc-justify-content-end {
+		justify-content: flex-end;
+	}
+}
+@media (min-width: $tablet) {
+	.mmd-table-justify-content-end {
+		justify-content: flex-end;
+	}
+}
+@media (max-width: $tablet) {
+	.md-table-justify-content-end {
+		justify-content: flex-end;
+	}
+}
+@media (min-width: $mobile) {
+	.mmd-mobile-justify-content-end {
+		justify-content: flex-end;
+	}
+}
+@media (max-width: $mobile) {
+	.md-mobile-justify-content-end {
+		justify-content: flex-end;
+	}
+}
+@media (min-width: $mobileSmall) {
+	.mmd-mobileSmall-justify-content-end {
+		justify-content: flex-end;
+	}
+}
+@media (max-width: $mobileSmall) {
+	.md-mobileSmall-justify-content-end {
+		justify-content: flex-end;
+	}
+}
+/* ===================================  justify-content-end  --End--  =================================== */
+
+
+
+/* ===================================  justify-content-center  --Start--  =================================== */
+.justify-content-center {
+	justify-content: center;
+}
+@media (min-width: pc) {
+	.mmd-pc-justify-content-center {
+		justify-content: center;
+	}
+}
+@media (max-width: pc) {
+	.md-pc-justify-content-center {
+		justify-content: center;
+	}
+}
+@media (min-width: tablet) {
+	.mmd-table-justify-content-center {
+		justify-content: center;
+	}
+}
+@media (max-width: tablet) {
+	.md-table-justify-content-center {
+		justify-content: center;
+	}
+}
+@media (min-width: mobile) {
+	.mmd-mobile-justify-content-center {
+		justify-content: center;
+	}
+}
+@media (max-width: mobile) {
+	.md-mobile-justify-content-center {
+		justify-content: center;
+	}
+}
+@media (min-width: mobileSmall) {
+	.mmd-mobileSmall-justify-content-center {
+		justify-content: center;
+	}
+}
+@media (max-width: mobileSmall) {
+	.md-mobileSmall-justify-content-center {
+		justify-content: center;
+	}
+}
+/* ===================================  justify-content-center  --End--  =================================== */
+
+
+
+/* ===================================  justify-content-between  --Start--  =================================== */
+.justify-content-between {
+	justify-content: space-between;
+}
+@media (min-width: pc) {
+	.mmd-pc-justify-content-between {
+		justify-content: space-between;
+	}
+}
+@media (max-width: pc) {
+	.md-pc-justify-content-between {
+		justify-content: space-between;
+	}
+}
+@media (min-width: tablet) {
+	.mmd-table-justify-content-between {
+		justify-content: space-between;
+	}
+}
+@media (max-width: tablet) {
+	.md-table-justify-content-between {
+		justify-content: space-between;
+	}
+}
+@media (min-width: mobile) {
+	.mmd-mobile-justify-content-between {
+		justify-content: space-between;
+	}
+}
+@media (max-width: mobile) {
+	.md-mobile-justify-content-between {
+		justify-content: space-between;
+	}
+}
+@media (min-width: mobileSmall) {
+	.mmd-mobileSmall-justify-content-between {
+		justify-content: space-between;
+	}
+}
+@media (max-width: mobileSmall) {
+	.md-mobileSmall-justify-content-between {
+		justify-content: space-between;
+	}
+}
+/* ===================================  justify-content-between  --End--  =================================== */
+
+
+
+/* ===================================  justify-content-around  --Start--  =================================== */
+.justify-content-around {
+	justify-content: space-around;
+}
+@media (min-width: pc) {
+	.mmd-pc-justify-content-around {
+		justify-content: space-around;
+	}
+}
+@media (max-width: pc) {
+	.md-pc-justify-content-around {
+		justify-content: space-around;
+	}
+}
+@media (min-width: tablet) {
+	.mmd-table-justify-content-around {
+		justify-content: space-around;
+	}
+}
+@media (max-width: tablet) {
+	.md-table-justify-content-around {
+		justify-content: space-around;
+	}
+}
+@media (min-width: mobile) {
+	.mmd-mobile-justify-content-around {
+		justify-content: space-around;
+	}
+}
+@media (max-width: mobile) {
+	.md-mobile-justify-content-around {
+		justify-content: space-around;
+	}
+}
+@media (min-width: mobileSmall) {
+	.mmd-mobileSmall-justify-content-around {
+		justify-content: space-around;
+	}
+}
+@media (max-width: mobileSmall) {
+	.md-mobileSmall-justify-content-around {
+		justify-content: space-around;
+	}
+}
+/* ===================================  justify-content-around  --End--  =================================== */
+
+
+
+/* ===================================  flex-wrap  --Start--  =================================== */
+.flex-wrap {
+	flex-wrap: wrap;
+}
+@media (min-width: pc) {
+	.mmd-pc-flex-wrap {
+		flex-wrap: wrap;
+	}
+}
+@media (max-width: pc) {
+	.md-pc-flex-wrap {
+		flex-wrap: wrap;
+	}
+}
+@media (min-width: tablet) {
+	.mmd-table-flex-wrap {
+		flex-wrap: wrap;
+	}
+}
+@media (max-width: tablet) {
+	.md-table-flex-wrap {
+		flex-wrap: wrap;
+	}
+}
+@media (min-width: mobile) {
+	.mmd-mobile-flex-wrap {
+		flex-wrap: wrap;
+	}
+}
+@media (max-width: mobile) {
+	.md-mobile-flex-wrap {
+		flex-wrap: wrap;
+	}
+}
+@media (min-width: mobileSmall) {
+	.mmd-mobileSmall-flex-wrap {
+		flex-wrap: wrap;
+	}
+}
+@media (max-width: mobileSmall) {
+	.md-mobileSmall-flex-wrap {
+		flex-wrap: wrap;
+	}
+}
+/* ===================================  flex-wrap  --End--  =================================== */
+
+
+
+/* ===================================  flex-no-wrap  --Start--  =================================== */
+.flex-no-wrap {
+	flex-wrap: nowrap;
+}
+@media (min-width: pc) {
+	.mmd-pc-flex-no-wrap {
+		flex-wrap: nowrap;
+	}
+}
+@media (max-width: pc) {
+	.md-pc-flex-no-wrap {
+		flex-wrap: nowrap;
+	}
+}
+@media (min-width: tablet) {
+	.mmd-table-flex-no-wrap {
+		flex-wrap: nowrap;
+	}
+}
+@media (max-width: tablet) {
+	.md-table-flex-no-wrap {
+		flex-wrap: nowrap;
+	}
+}
+@media (min-width: mobile) {
+	.mmd-mobile-flex-no-wrap {
+		flex-wrap: nowrap;
+	}
+}
+@media (max-width: mobile) {
+	.md-mobile-flex-no-wrap {
+		flex-wrap: nowrap;
+	}
+}
+@media (min-width: mobileSmall) {
+	.mmd-mobileSmall-flex-no-wrap {
+		flex-wrap: nowrap;
+	}
+}
+@media (max-width: mobileSmall) {
+	.md-mobileSmall-flex-no-wrap {
+		flex-wrap: nowrap;
+	}
+}
+/* ===================================  flex-no-wrap  --End--  =================================== */

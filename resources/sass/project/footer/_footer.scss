@@ -1,0 +1,49 @@
+/* ===================================  Footer  --Start--  =================================== */
+.footer {
+	// @include adaptiveValue("margin-top", 22, 12);
+	@include adaptiveValue("padding-bottom", 70, 44, 0, 767.98);
+	background-color: #2F323A;
+	// .footer__body
+	&__body {
+		padding: rem(36) rem(0);
+		@include adaptiveValue("padding-top", 36, 26, 991.98);
+		@include adaptiveValue("padding-bottom", 36, 26, 991.98);
+	}
+	// .footer__content
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		@media (max-width: $mobile) {
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: flex-start;
+		}
+	}
+	// .footer__column
+	&__column {
+		@media (min-width: $mobile) {
+			margin: rem(0) rem(12);
+			@include adaptiveValue("margin-left", 12, 8, 991.98);
+			@include adaptiveValue("margin-rem", 12, 8, 991.98);
+			flex: 0 25%;
+			&:first-child {
+				margin-left: rem(0);
+			}
+			&:last-child {
+				margin-right: rem(0);
+			}
+		}
+		@media (max-width: $mobile) {
+			margin: rem(2) rem(0);
+			width: 100%;
+		}
+	}
+}
+
+@import "includes/aboutuse/aboutuse";
+@import "includes/company/company";
+@import "includes/infoaboutus/infoaboutus";
+@import "includes/infoaboutworking/infoaboutworking";
+@import "includes/ouraddress/ouraddress";
+@import "includes/spoller/spoller";
+/* ===================================  Footer  --End--  =================================== */

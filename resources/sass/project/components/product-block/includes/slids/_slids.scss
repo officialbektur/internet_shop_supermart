@@ -1,0 +1,251 @@
+// .product-block__slids
+.product-block__slids {
+}
+// .product-block-slids
+.product-block-slids {
+	position: relative;
+	width: 100%;
+	// height: rem(480);
+	// @include adaptiveValue("height", 480, 300, 767.98);
+	// @include adaptiveValue("height", 340, 200, 0, 767.98);
+	overflow: hidden;
+	-webkit-tap-highlight-color: $clickByTouchColor0;
+	user-select: none;
+
+	// .product-block-slids .swiper-slide
+	& .swiper-slide {
+		height: auto;
+		flex-basis: rem(218);
+		@include adaptiveValue("flex-basis", 218, 185, 767.98);
+		@include adaptiveValue("flex-basis", 256, 176, 0, 767.98);
+		overflow: hidden;
+	}
+
+	// .product-block-slids-pagination
+	&-pagination {
+
+		// .product-block-slids-pagination__next
+		&__next {
+			position: absolute;
+			top: rem(0);
+			left: rem(0);
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 1;
+			cursor: pointer;
+			transform: rotate(0deg);
+			transition: all 0.46s ease 0s;
+
+			html._pc &:hover {
+				background-color: rgba($color: #000000, $alpha: 0.3);
+				box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.2),
+					rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.2),
+					rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.2),
+					rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.2);
+			}
+
+			&.swiper-button-disabled {
+				opacity: 0;
+				visibility: hidden;
+				pointer-events: none;
+			}
+		}
+
+		// .product-block-slids-pagination-next
+		&-next {
+
+			// .product-block-slids-pagination-next__icon
+			&__icon {
+				margin: rem(4) rem(4);
+				padding: rem(10);
+				@include adaptiveValue("padding", 10, 8, 767.98);
+				@include adaptiveValue("padding", 10, 8, 0, 767.98);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: rgba(114, 114, 114, 0.3);
+				border-radius: rem(30);
+				transition: all 0.46s ease 0s;
+
+				html._pc &:hover {
+					background-color: rgba(114, 114, 114, 0.5);
+				}
+
+				// .product-block-slids-pagination-next__icon svg
+				& svg {
+					@include adaptiveValue("width", 22, 18);
+					@include adaptiveValue("height", 22, 18);
+
+					& * {
+						fill: #ffffff;
+					}
+				}
+			}
+		}
+
+		// .product-block-slids-pagination__prev
+		&__prev {
+			position: absolute;
+			top: rem(0);
+			right: rem(0);
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 1;
+			cursor: pointer;
+			transform: rotate(180deg);
+			transition: all 0.46s ease 0s;
+
+			html._pc &:hover {
+				background-color: rgba($color: #000000, $alpha: 0.3);
+				box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.2),
+					rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.2),
+					rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.2),
+					rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.2);
+			}
+
+			&.swiper-button-disabled {
+				opacity: 0;
+				visibility: hidden;
+				pointer-events: none;
+			}
+		}
+
+		// .product-block-slids-pagination-prev
+		&-prev {
+
+			// .product-block-slids-pagination-prev__icon
+			&__icon {
+				margin: rem(4) rem(4);
+				padding: rem(10);
+				@include adaptiveValue("padding", 10, 8, 767.98);
+				@include adaptiveValue("padding", 10, 8, 0, 767.98);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: rgba(114, 114, 114, 0.3);
+				border-radius: rem(30);
+				transition: all 0.46s ease 0s;
+
+				html._pc &:hover {
+					background-color: rgba(114, 114, 114, 0.5);
+				}
+
+				// .product-block-slids-pagination-prev__icon svg
+				& svg {
+					@include adaptiveValue("width", 22, 18);
+					@include adaptiveValue("height", 22, 18);
+
+					& * {
+						fill: #ffffff;
+					}
+				}
+			}
+		}
+	}
+
+	// .product-block-slids__dpinnerlink
+	&__dpinnerlink {
+		padding: rem(0) rem(22);
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	// .product-block-slids__dplink
+	&__dplink {
+		padding: rem(16) rem(12);
+		@include adaptiveValue("padding-top", 16, 12);
+		@include adaptiveValue("padding-bottom", 16, 12);
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		color: #FFFFFF;
+		font-size: rem(14);
+		@include adaptiveValue("font-size", 14, 10);
+		font-weight: 700;
+		border: solid rem(1) #00b9ff;
+		border-radius: rem(20);
+		background-color: #00b9ff;
+		transition: all 0.46s ease 0s;
+		animation: productblockslids__dplink 3s infinite both;
+
+		@keyframes productblockslids__dplink {
+			0% {
+				box-shadow: rem(0) rem(0) rem(4) #00b9ff,
+					rem(0) rem(0) rem(8) #00b9ff,
+					rem(0) rem(0) rem(10) #00b9ff,
+					rem(0) rem(0) rem(14) #00b9ff;
+				animation-timing-function: ease-in;
+			}
+
+			50% {
+				box-shadow: rem(0) rem(0) rem(8) #00b9ff,
+					rem(0) rem(0) rem(14) #00b9ff,
+					rem(0) rem(0) rem(16) #00b9ff,
+					rem(0) rem(0) rem(18) #00b9ff;
+				animation-timing-function: ease-in;
+			}
+
+			100% {
+				box-shadow: rem(0) rem(0) rem(4) #00b9ff,
+					rem(0) rem(0) rem(8) #00b9ff,
+					rem(0) rem(0) rem(10) #00b9ff,
+					rem(0) rem(0) rem(14) #00b9ff;
+				animation-timing-function: ease-in;
+			}
+		}
+	}
+
+	// .product-block-slids-dplink
+	&-dplink {
+
+		// .product-block-slids-dplink__title
+		&__title {}
+
+		// .product-block-slids-dplink__icon
+		&__icon {
+			margin-left: em(4);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			animation: productblockslidsdplink__icon 3s infinite both;
+
+			@keyframes productblockslidsdplink__icon {
+				0% {
+					transform: translateX(rem(0));
+					animation-timing-function: ease-in;
+				}
+
+				50% {
+					transform: translateX(rem(-10));
+					animation-timing-function: ease-in;
+				}
+
+				100% {
+					transform: translateX(rem(0));
+					animation-timing-function: ease-in;
+				}
+			}
+
+			// .moreinfo-tovar-body-reviews-comentary-block-likes-button__icon svg
+			& svg {
+				width: rem(16);
+				@include adaptiveValue("width", 16, 14);
+				height: rem(16);
+				@include adaptiveValue("height", 16, 14);
+				transform: rotate(180deg);
+
+				& * {
+					fill: #FFFFFF;
+				}
+			}
+		}
+	}
+}

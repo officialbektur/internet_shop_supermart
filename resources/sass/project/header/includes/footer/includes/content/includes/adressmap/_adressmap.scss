@@ -1,0 +1,77 @@
+// .header-footer__adressmap
+.header-footer__adressmap {
+	margin: rem(3) rem(8);
+	padding: rem(12) rem(14);
+	@include adaptiveValue("padding-top", 12, 8, 991.98);
+	@include adaptiveValue("padding-top", 8, 5, 767.98, 991.98);
+	@include adaptiveValue("padding-top", 8, 5, 479.98, 767.98);
+	@include adaptiveValue("padding-top", 8, 3, 0, 479.98);
+	@include adaptiveValue("padding-bottom", 12, 8, 991.98);
+	@include adaptiveValue("padding-bottom", 8, 5, 767.98, 991.98);
+	@include adaptiveValue("padding-bottom", 8, 5, 479.98, 767.98);
+	@include adaptiveValue("padding-bottom", 8, 3, 0, 479.98);
+	@include adaptiveValue("padding-left", 12, 10, 479.98, 767.98);
+	@include adaptiveValue("padding-left", 10, 8, 0, 479.98);
+	@include adaptiveValue("padding-right", 12, 10, 479.98, 767.98);
+	@include adaptiveValue("padding-right", 10, 8, 0, 479.98);
+	@include adaptiveValue("width", 174, 78, 479.98, 767.98);
+	color: #222222;
+	font-size: rem(14);
+	@include adaptiveValue("font-size", 14, 12, 991.98);
+	@include adaptiveValue("font-size", 12, 10, 767.98, 991.98);
+	@include adaptiveValue("font-size", 12, 10, 479.98, 767.98);
+	@include adaptiveValue("font-size", 12, 10, 0, 479.98);
+	font-weight: 700;
+	text-transform: uppercase;
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #FFD300;
+	overflow: hidden;
+}
+
+// .header-footer-adressmap
+.header-footer-adressmap {
+
+	// .header-footer-adressmap__icon
+	&__icon {
+		margin-right: rem(4);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		@media (max-width: $mobileSmall) {
+			margin-right: rem(0);
+		}
+
+		// .header-footer-adressmap__icon svg
+		& svg {
+			width: rem(20);
+			height: rem(20);
+			@include adaptiveValue("width", 20, 18, 991.98);
+			@include adaptiveValue("width", 18, 16, 767.98, 991.98);
+			@include adaptiveValue("width", 18, 16, 479.98, 767.98);
+			@include adaptiveValue("width", 18, 16, 0, 479.98);
+			@include adaptiveValue("height", 20, 18, 991.98);
+			@include adaptiveValue("height", 18, 16, 767.98, 991.98);
+			@include adaptiveValue("height", 18, 16, 479.98, 767.98);
+			@include adaptiveValue("height", 18, 16, 0, 479.98);
+
+			& * {
+				fill: #222222;
+			}
+		}
+	}
+
+	// .header-footer-adressmap__title
+	&__title {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		@media (max-width: $mobileSmall) {
+			display: none;
+		}
+	}
+}

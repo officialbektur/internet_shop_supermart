@@ -1,0 +1,45 @@
+// .product-block-info__title
+.product-block-info__title {
+	width: 100%;
+
+	padding: rem(6) rem(0);
+	@include adaptiveValue("padding-top", 6, 2, 991.98);
+	@include adaptiveValue("padding-top", 6, 2, 767.98, 991.98);
+	@include adaptiveValue("padding-top", 4, 1, 479.98, 767.98);
+	@include adaptiveValue("padding-top", 4, 1, 0, 479.98);
+	@include adaptiveValue("padding-bottom", 6, 2, 991.98);
+	@include adaptiveValue("padding-bottom", 6, 2, 767.98, 991.98);
+	@include adaptiveValue("padding-bottom", 4, 1, 479.98, 767.98);
+	@include adaptiveValue("padding-bottom", 4, 1, 0, 479.98);
+
+	color: $colorBlack;
+	font-size: rem(18);
+	@include adaptiveValue("font-size", 18, 14, 991.98);
+	@include adaptiveValue("font-size", 18, 14, 767.98, 991.98);
+	@include adaptiveValue("font-size", 18, 12, 479.98, 767.98);
+	@include adaptiveValue("font-size", 16, 12, 0, 479.98);
+	font-weight: 700;
+
+	display: block;
+
+	white-space: nowrap;
+
+	overflow: hidden;
+
+	text-overflow: ellipsis;
+
+	.product-block._show-loading & {
+		margin-top: rem(12);
+		display: flex;
+		flex-shrink: 0;
+		width: 100%;
+		height: rem(32);
+		background-color: #ededed;
+		background: linear-gradient(100deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, 0) 60%) #ededed;
+		background-size: 200% 100%;
+		background-position-x: 180%;
+		border-radius: rem(5);
+		animation: 2.6s loading ease-in-out infinite;
+		animation-delay: .14s;
+	}
+}

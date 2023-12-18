@@ -1,0 +1,60 @@
+// .header-footer-menu__button
+.header-footer-menu__button {
+	padding: rem(12) rem(20);
+	@include adaptiveValue("padding-top", 12, 8, 991.98);
+	@include adaptiveValue("padding-bottom", 12, 8, 991.98);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #FFD300;
+
+	@media (max-width: $tablet) and (min-width: $mobile) {
+		padding: rem(7) rem(20);
+	}
+
+	@media (max-width: $mobile) {
+		display: none;
+	}
+}
+// .header-footer-menu-button
+.header-footer-menu-button {
+
+	// .header-footer-menu-button__title
+	&__title {
+		color: #222222;
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 14, 991.98);
+		@include adaptiveValue("font-size", 13, 10, 767.98, 991.98);
+		@include adaptiveValue("font-size", 16, 14, 479.98, 767.98);
+		@include adaptiveValue("font-size", 14, 12, 0, 479.98);
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	// .header-footer-menu-button__icon
+	&__icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		// .header-footer-menu-button__icon svg
+		& svg {
+			width: rem(30);
+			height: rem(30);
+			@include adaptiveValue("width", 30, 26, 991.98);
+			@include adaptiveValue("width", 24, 18, 767.98, 991.98);
+			@include adaptiveValue("width", 24, 18, 479.98, 767.98);
+			@include adaptiveValue("width", 24, 18, 0, 479.98);
+			@include adaptiveValue("height", 30, 26, 991.98);
+			@include adaptiveValue("height", 24, 18, 767.98, 991.98);
+			@include adaptiveValue("height", 24, 18, 479.98, 767.98);
+			@include adaptiveValue("height", 24, 18, 0, 479.98);
+
+			& * {
+				fill: #222222;
+			}
+		}
+	}
+}

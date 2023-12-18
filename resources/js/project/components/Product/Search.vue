@@ -1,5 +1,5 @@
 <template>
-	<sidebar-component></sidebar-component>
+	<filter-panel-component></filter-panel-component>
 	<section class="content index">
 		<div class="content__container">
 			<h2 class="_title mx-body">
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-	import SidebarComponent from "./../includes/Sidebar/SidebarComponent.vue";
+	import FilterPanelComponent from "../includes/FilterPanel/FilterPanelComponent.vue";
 	import ContentBlock from "./../includes/Block/ContentBlock.vue";
 	export default {
 		name: 'Index',
@@ -41,7 +41,7 @@
 			}
 		},
 		components: {
-			'sidebar-component': SidebarComponent,
+			'filter-panel-component': FilterPanelComponent,
 			'content-block': ContentBlock,
 		}
 	}

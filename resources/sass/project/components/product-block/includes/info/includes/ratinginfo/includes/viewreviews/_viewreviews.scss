@@ -1,0 +1,55 @@
+// .product-block-info-ratinginfo__viewreviews
+.product-block-info-ratinginfo__viewreviews {}
+
+// .product-block-info-ratinginfo-viewreviews
+.product-block-info-ratinginfo-viewreviews {
+
+	// .product-block-info-ratinginfo-viewreviews__icon
+	&__icon {
+		margin-right: rem(1);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		// .product-block-info-ratinginfo-viewreviews__icon svg
+		& svg {
+			width: rem(11);
+			height: rem(11);
+			@include adaptiveValue("width", 11, 9, 991.98);
+			@include adaptiveValue("width", 11, 9, 767.98, 991.98);
+			@include adaptiveValue("width", 11, 9, 0, 767.98);
+			@include adaptiveValue("height", 11, 9, 991.98);
+			@include adaptiveValue("height", 11, 9, 767.98, 991.98);
+			@include adaptiveValue("height", 11, 9, 0, 767.98);
+
+			& * {
+				fill: $colorBlack;
+			}
+		}
+	}
+
+	// .product-block-info-ratinginfo-viewreviews__content
+	&__content {
+		overflow: hidden;
+	}
+
+	// .product-block-info-ratinginfo-viewreviews-content
+	&-content {
+
+		// .product-block-info-ratinginfo-viewreviews-content__text
+		&__text {
+			display: block;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		// .product-block-info-ratinginfo-viewreviews-content__number
+		&__number {
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}

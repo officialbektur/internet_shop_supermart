@@ -1,0 +1,184 @@
+// .moreinfo-tovar-info-image__pagination
+.moreinfo-tovar-info-image__pagination {
+	position: relative;
+	margin-top: rem(10);
+	@include adaptiveValue("margin-top", 10, 6, 0, 767.98);
+	width: 100%;
+	height: rem(90);
+	@include adaptiveValue("height", 90, 70, 767.98);
+	@include adaptiveValue("height", 90, 76, 0, 767.98);
+	overflow: hidden;
+
+	// .moreinfo-tovar-info-image__pagination .swiper-slide
+	& .swiper-slide {
+		// margin: rem(5) rem(10);
+		width: rem(68);
+		@include adaptiveValue("width", 76, 68, 0, 767.98);
+
+		border: solid rem(2) transparent;
+
+		cursor: pointer;
+
+		overflow: hidden;
+
+		transition: all 0.46s ease 0s;
+
+		// &:first-child {
+		// 	margin-left: rem(0);
+		// }
+		// &:last-child {
+		// 	margin-right: rem(0);
+		// }
+		&.swiper-slide-thumb-active {
+			border: solid rem(2) $colorRed; //#00b9ff
+		}
+
+		& img {
+			object-fit: cover;
+		}
+
+		*:not(.swiper-lazy-preloader-white) {
+			width: 100%;
+			height: 100%;
+		}
+
+		.swiper-lazy-preloader-white {
+			--swiper-preloader-color: #000000;
+			animation: swiper-preloader-spin 1s infinite linear;
+		}
+	}
+}
+
+// .moreinfo-tovar-info-image-pagination
+.moreinfo-tovar-info-image-pagination {
+
+	// .moreinfo-tovar-info-image-pagination__next
+	&__next {
+		position: absolute;
+		top: rem(0);
+		right: rem(0);
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: rgba($color: #000000, $alpha: 0.7);
+		box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.6),
+			rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.6),
+			rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.6),
+			rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.6);
+		z-index: 1;
+		cursor: pointer;
+		transform: rotate(180deg);
+		transition: all 0.46s ease 0s;
+
+		html._pc &:hover {
+			box-shadow: rem(0) rem(0) rem(9) rgba($color: #000000, $alpha: 0.6),
+				rem(0) rem(0) rem(12) rgba($color: #000000, $alpha: 0.6),
+				rem(0) rem(0) rem(18) rgba($color: #000000, $alpha: 0.6),
+				rem(0) rem(0) rem(24) rgba($color: #000000, $alpha: 0.6);
+		}
+
+		&.swiper-button-disabled {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	// .moreinfo-tovar-info-image-pagination__next
+	&-next {
+
+		// .moreinfo-tovar-info-image-pagination-next__icon
+		&__icon {
+			margin: rem(4);
+			padding: rem(6);
+			@include adaptiveValue("padding", 6, 4, 767.98);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: rgba(114, 114, 114, 0.3);
+			border-radius: rem(30);
+			transition: all 0.46s ease 0s;
+
+			html._pc &:hover {
+				background-color: rgba(114, 114, 114, 0.5);
+			}
+
+			// .moreinfo-tovar-info-image-pagination-next__icon svg
+			& svg {
+				@include adaptiveValue("width", 14, 12, 767.98);
+				@include adaptiveValue("width", 14, 12, 0, 767.98);
+				@include adaptiveValue("height", 14, 12, 767.98);
+				@include adaptiveValue("height", 14, 12, 0, 767.98);
+
+				& * {
+					fill: #ffffff;
+				}
+			}
+		}
+	}
+
+	// .moreinfo-tovar-info-image-pagination__prev
+	&__prev {
+		position: absolute;
+		top: rem(0);
+		left: rem(0);
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: rgba($color: #000000, $alpha: 0.7);
+		box-shadow: rem(0) rem(0) rem(5) rgba($color: #000000, $alpha: 0.6),
+			rem(0) rem(0) rem(8) rgba($color: #000000, $alpha: 0.6),
+			rem(0) rem(0) rem(14) rgba($color: #000000, $alpha: 0.6),
+			rem(0) rem(0) rem(20) rgba($color: #000000, $alpha: 0.6);
+		z-index: 1;
+		cursor: pointer;
+		transform: rotate(0deg);
+		transition: all 0.46s ease 0s;
+
+		html._pc &:hover {
+			box-shadow: rem(0) rem(0) rem(9) rgba($color: #000000, $alpha: 0.6),
+				rem(0) rem(0) rem(12) rgba($color: #000000, $alpha: 0.6),
+				rem(0) rem(0) rem(18) rgba($color: #000000, $alpha: 0.6),
+				rem(0) rem(0) rem(24) rgba($color: #000000, $alpha: 0.6);
+		}
+
+		&.swiper-button-disabled {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	// .moreinfo-tovar-info-image-pagination-prev
+	&-prev {
+
+		// .moreinfo-tovar-info-image-pagination-prev__icon
+		&__icon {
+			margin: rem(4);
+			padding: rem(6);
+			@include adaptiveValue("padding", 6, 4, 767.98);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: rgba(114, 114, 114, 0.3);
+			border-radius: rem(30);
+			transition: all 0.46s ease 0s;
+
+			html._pc &:hover {
+				background-color: rgba(114, 114, 114, 0.5);
+			}
+
+			// .moreinfo-tovar-info-image-pagination-prev__icon svg
+			& svg {
+				@include adaptiveValue("width", 14, 12, 767.98);
+				@include adaptiveValue("width", 14, 12, 0, 767.98);
+				@include adaptiveValue("height", 14, 12, 767.98);
+				@include adaptiveValue("height", 14, 12, 0, 767.98);
+
+				& * {
+					fill: #ffffff;
+				}
+			}
+		}
+	}
+}

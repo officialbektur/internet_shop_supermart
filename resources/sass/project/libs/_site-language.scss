@@ -1,0 +1,166 @@
+.site {
+	// .site__language
+	&__language {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		html._pc &:hover .site-language__menu {
+			opacity: 1;
+			visibility: visible;
+			pointer-events: all;
+		}
+	}
+	// .site-language
+	&-language {
+		position: relative;
+		// .site-language__button
+		&__button {
+			padding: rem(8) rem(10);
+			@include adaptiveValue("padding-top", 8, 5, 991.98);
+			@include adaptiveValue("padding-bottom", 8, 5, 991.98);
+			@include adaptiveValue("padding-left", 10, 6, 991.98);
+			@include adaptiveValue("padding-right", 10, 6, 991.98);
+			overflow: hidden;
+			text-overflow: ellipsis;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			@media (max-width: $tablet) and (min-width: $mobile){
+				padding: rem(4) rem(5);
+			}
+		}
+		// .site-language-button
+		&-button {
+			// .site-language-button__icon
+			&__icon {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				// .site-language-button__icon svg
+				& svg {
+					width: rem(32);
+					height: rem(32);
+					@include adaptiveValue("width", 32, 26, 991.98);
+					@include adaptiveValue("width", 26, 22, 767.98, 991.98);
+					@include adaptiveValue("width", 30, 24, 479.98, 767.98);
+					@include adaptiveValue("width", 24, 22, 0, 479.98);
+					@include adaptiveValue("height", 32, 26, 991.98);
+					@include adaptiveValue("height", 26, 22, 767.98, 991.98);
+					@include adaptiveValue("height", 30, 24, 479.98, 767.98);
+					@include adaptiveValue("height", 24, 22, 0, 479.98);
+					transform: rotate(180deg);
+					& * {
+						fill: $colorWhite;
+					}
+				}
+			}
+			// .site-language-button__title
+			&__title {
+				position: relative;
+				display: block;
+				padding-top: rem(6);
+				@include adaptiveValue("padding-top", 6, 4, 479.98, 767.98);
+				@include adaptiveValue("padding-top", 4, 3, 0, 479.98);
+				color: $colorWhite;
+				font-size: rem(14);
+				@include adaptiveValue("font-size", 14, 10, 991.98);
+				@include adaptiveValue("font-size", 10, 8, 767.98, 991.98);
+				@include adaptiveValue("font-size", 10, 9, 479.98, 767.98);
+				@include adaptiveValue("font-size", 10, 9, 0, 479.98);
+				font-weight: normal;
+				line-height: 1;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
+		// .site-language__menu
+		&__menu {
+			position: absolute;
+			// top: rem(69);
+			// @include adaptiveValue("top", 69, 50, 991.98);
+			// @include adaptiveValue("top", 50, 44, 767.98, 991.98);
+			// @include adaptiveValue("top", 58, 45, 0, 767.98);
+			top: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+			padding: rem(14) rem(14);
+			@include adaptiveValue("padding-top", 14, 10, 991.98);
+			@include adaptiveValue("padding-top", 14, 8, 478.98, 767.98);
+			@include adaptiveValue("padding-top", 10, 8, 0, 478.98);
+			@include adaptiveValue("padding-bottom", 14, 10, 991.98);
+			@include adaptiveValue("padding-bottom", 14, 8, 478.98, 767.98);
+			@include adaptiveValue("padding-bottom", 10, 8, 0, 478.98);
+			@include adaptiveValue("padding-left", 14, 10, 991.98);
+			@include adaptiveValue("padding-left", 14, 6, 478.98, 767.98);
+			@include adaptiveValue("padding-left", 10, 6, 0, 478.98);
+			@include adaptiveValue("padding-right", 14, 10, 991.98);
+			@include adaptiveValue("padding-right", 14, 6, 478.98, 767.98);
+			@include adaptiveValue("padding-right", 10, 6, 0, 478.98);
+			width: rem(180);
+			@include adaptiveValue("width", 180, 140, 991.98);
+			@include adaptiveValue("width", 140, 120, 767.98, 991.98);
+			@include adaptiveValue("width", 142, 96, 478.98, 767.98);
+			@include adaptiveValue("width", 110, 96, 0, 478.98);
+			display: flex;
+			flex-direction: column;
+			background-color: #ffffff;
+			border: solid rem(1) #999999;
+			box-shadow: rem(0) rem(0) rem(1) #999999,
+						rem(0) rem(0) rem(3) #999999,
+						rem(0) rem(0) rem(5) #999999;
+			overflow: hidden;
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+			transition: all 0.56s ease 0s;
+			@media (max-width: $tablet) and (min-width: $mobile){
+				padding: rem(10) rem(10);
+			}
+			html._touch .site-language._active & {
+				opacity: 1;
+				visibility: visible;
+				pointer-events: all;
+			}
+		}
+		// .site-language-menu
+		&-menu {
+			// .site-language-menu__list
+			&__list {
+				padding: rem(18) rem(14);
+				@include adaptiveValue("padding-top", 18, 13, 991.98);
+				@include adaptiveValue("padding-top", 12, 10, 478.98, 767.98);
+				@include adaptiveValue("padding-top", 10, 8, 0, 478.98);
+				@include adaptiveValue("padding-bottom", 18, 13, 991.98);
+				@include adaptiveValue("padding-bottom", 12, 10, 478.98, 767.98);
+				@include adaptiveValue("padding-bottom", 10, 8, 0, 478.98);
+				@include adaptiveValue("padding-left", 14, 10, 991.98);
+				@include adaptiveValue("padding-left", 14, 5, 478.98, 767.98);
+				@include adaptiveValue("padding-left", 8, 5, 0, 478.98);
+				@include adaptiveValue("padding-right", 14, 10, 991.98);
+				@include adaptiveValue("padding-right", 14, 5, 478.98, 767.98);
+				@include adaptiveValue("padding-right", 8, 5, 0, 478.98);
+				color: #222222;
+				font-size: rem(16);
+				@include adaptiveValue("font-size", 16, 12, 991.98);
+				@include adaptiveValue("font-size", 12, 10, 767.98, 991.98);
+				@include adaptiveValue("font-size", 14, 10, 478.98, 767.98);
+				@include adaptiveValue("font-size", 11, 10, 0, 478.98);
+				font-weight: 700;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				border-radius: rem(2);
+				-webkit-tap-highlight-color: $clickByTouchColor1;
+				transition: all 0.46s ease 0s;
+				html._pc &:hover {
+					color: $colorWhite;
+					background-color: #408de4;
+				}
+				@media (max-width: $tablet) and (min-width: $mobile){
+					padding: rem(14) rem(6);
+				}
+			}
+		}
+	}
+}

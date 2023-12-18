@@ -1,0 +1,55 @@
+// .moreinfo-tovar-info-textinfo__price
+.moreinfo-tovar-info-textinfo__price {
+	padding: rem(4) rem(0);
+}
+
+// .moreinfo-tovar-info-textinfo-price
+.moreinfo-tovar-info-textinfo-price {
+
+	// .moreinfo-tovar-info-textinfo-price__old
+	&__old {
+		color: #878787;
+		@include adaptiveValue("font-size", 20, 14, 767.98, );
+		@include adaptiveValue("font-size", 30, 18, 0, 767.98);
+		font-weight: 700;
+		text-decoration: line-through;
+		display: flex;
+		overflow: hidden;
+	}
+
+	// .moreinfo-tovar-info-textinfo-price-old
+	&-old {
+
+		// .moreinfo-tovar-info-textinfo-price-old__number
+		&__number {}
+
+		// .moreinfo-tovar-info-textinfo-price-old__currency
+		&__currency {
+			margin-left: em(3);
+		}
+	}
+
+	// .moreinfo-tovar-info-textinfo-price__new
+	&__new {
+		padding: rem(0) rem(4);
+		color: #FF0000;
+		@include adaptiveValue("font-size", 28, 22, 767.98);
+		@include adaptiveValue("font-size", 44, 24, 0, 767.98);
+		font-weight: 700;
+		line-height: math.div(22, 18);
+		display: flex;
+		overflow: hidden;
+	}
+
+	// .moreinfo-tovar-info-textinfo-price-new
+	&-new {
+
+		// .moreinfo-tovar-info-textinfo-price-new__number
+		&__number {}
+
+		// .moreinfo-tovar-info-textinfo-price-new__currency
+		&__currency {
+			margin-left: em(3);
+		}
+	}
+}

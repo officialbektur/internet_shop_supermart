@@ -1,0 +1,18 @@
+// .header-footer-menu__list
+.header-footer-menu__list {
+	padding: rem(12) rem(12);
+	width: 100%;
+	color: #3a3a3a;
+	font-size: rem(20);
+	@include adaptiveValue("font-size", 20, 16, 991.98);
+	@include adaptiveValue("font-size", 16, 13, 767.98, 991.98);
+	@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
+	@include adaptiveValue("font-size", 20, 18, 0, 479.98);
+	font-weight: 400;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	@media (max-width: $mobile) {
+		color: $colorWhite;
+	}
+}

@@ -1,60 +1,104 @@
-// <RATING>
-// Снипет (HTML): rating
-.rating {
-	display: flex;
-	align-items: flex-end;
-	font-size: rem(40);
-	line-height: 0.75;
-	transition: opacity 0.3s ease 0s;
-}
-.rating.rating_sending {
-	opacity: 0.2;
-}
-.rating.rating_set .rating__active,
-.rating.rating_set .rating__item {
-	cursor: pointer;
+// .moreinfo-tovar-body-reviews-form__rating
+.moreinfo-tovar-body-reviews-form__rating {
+	margin-top: rem(12);
 }
 
-.rating__body {
-	position: relative;
-}
-.rating__body::before {
-	content: "★★★★★";
-	display: block;
-}
-.rating__active {
-	position: absolute;
-	width: 0%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	overflow: hidden;
-}
-.rating__active::before {
-	content: "★★★★★";
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	color: #ffd300;
-}
+.moreinfo-tovar-body-reviews-form-rating {
 
-.rating__items {
-	display: flex;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-}
-.rating__item {
-	flex: 0 0 20%;
-	height: 100%;
-	opacity: 0;
-}
-.rating__value {
-	font-size: 50%;
-	line-height: 1;
-	padding: rem(0) rem(0) rem(0) rem(10);
+	// .moreinfo-tovar-body-reviews-form-rating__label
+	&__label {
+		color: $colorBlack;
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 14);
+		font-weight: 700;
+
+		// .moreinfo-tovar-body-reviews-form-rating__label span
+		& span {
+			color: #09ff00;
+		}
+	}
+
+	// .moreinfo-tovar-body-reviews-form-rating__body
+	&__body {
+		position: relative;
+		display: flex;
+		align-items: flex-end;
+		color: $colorBlack;
+		font-size: rem(36);
+		@include adaptiveValue("font-size", 36, 26);
+	}
+
+	// .moreinfo-tovar-body-reviews-form-rating__content
+	&__content {
+		position: relative;
+
+		// .moreinfo-tovar-body-reviews-form-rating__content::before
+		&::before {
+			content: "★★★★★";
+			display: block;
+			-webkit-text-stroke-width: rem(1);
+			-webkit-text-stroke-color: #b5b5b5;
+			-webkit-text-fill-color: transparent;
+
+		}
+
+		// .moreinfo-tovar-body-reviews-form-rating__content._error::before
+		&._error {
+			&::before {
+				box-shadow: rem(0) rem(0) rem(8) #ff0000;
+			}
+		}
+	}
+
+	// .moreinfo-tovar-body-reviews-form-rating__active
+	&__active {
+		position: absolute;
+		width: 0%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		transition: all 0.46s ease 0s;
+
+		&::before {
+			content: "★★★★★";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			color: #ffd300;
+			-webkit-text-stroke-width: rem(1);
+			-webkit-text-stroke-color: #ffd300;
+			-webkit-text-fill-color: #ffd300
+		}
+	}
+
+	// .moreinfo-tovar-body-reviews-form-rating__items
+	&__items {
+		display: flex;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	// .moreinfo-tovar-body-reviews-form-rating__item
+	&__item {
+		flex: 0 0 20%;
+		height: 100%;
+		opacity: 0;
+		cursor: pointer;
+		transition: all 0.26s ease 0s;
+	}
+
+	// .moreinfo-tovar-body-reviews-form-rating__value
+	&__value {
+		color: $colorBlack;
+		font-size: 50%;
+		font-weight: 700;
+		line-height: em(21);
+		padding-left: em(4);
+	}
 }

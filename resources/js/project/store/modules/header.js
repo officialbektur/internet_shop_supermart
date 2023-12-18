@@ -13,7 +13,7 @@ const state = {
 
 	selectedSpecifications: [],
 
-	isActiveMenuSidebar: false,
+	isActiveMenuFilterPanel: false,
 	isActiveMenu: false,
 	isActiveMenuFillter: false,
 	isActiveSubMenu: false,
@@ -36,7 +36,7 @@ const getters = {
 	minPrice: (state) => state.minPrice,
 	sort: (state) => state.sort,
 	selectedSpecifications: (state) => state.selectedSpecifications,
-	isActiveMenuSidebar: (state) => state.isActiveMenuSidebar,
+	isActiveMenuFilterPanel: (state) => state.isActiveMenuFilterPanel,
 	isActiveMenuFillter: (state) => state.isActiveMenuFillter,
 	isActiveSubMenu: (state) => state.isActiveSubMenu,
 	categoryTitle: (state) => state.categoryTitle,
@@ -306,8 +306,8 @@ const mutations = {
 	setSelectedSpecifications(state, selectedSpecifications) {
 		state.selectedSpecifications = selectedSpecifications;
 	},
-	setIsActiveMenuSidebar(state, isActiveMenuSidebar) {
-		state.isActiveMenuSidebar = isActiveMenuSidebar;
+	setIsActiveMenuFilterPanel(state, isActiveMenuFilterPanel) {
+		state.isActiveMenuFilterPanel = isActiveMenuFilterPanel;
 	},
 	setIsActiveMenu(state, isActiveMenu) {
 		state.isActiveMenu = isActiveMenu;

@@ -1,0 +1,30 @@
+// .moreinfo-tovar-info-textinfo__categories
+.moreinfo-tovar-info-textinfo__categories {
+	padding: rem(2) rem(0);
+	color: #878787;
+	@include adaptiveValue("font-size", 18, 12, 767.98);
+	@include adaptiveValue("font-size", 22, 16, 0, 767.98);
+	font-weight: 400;
+	overflow: hidden;
+
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+}
+
+// .moreinfo-tovar-info-textinfo-categories
+.moreinfo-tovar-info-textinfo-categories {
+
+	// .moreinfo-tovar-info-textinfo-categories__list
+	&__list {}
+
+	// .moreinfo-tovar-info-textinfo-categories__icon
+	&__icon {
+		margin: rem(0) rem(6);
+	}
+
+	// .moreinfo-tovar-info-textinfo-categories__name
+	&__name {
+		color: inherit;
+	}
+}

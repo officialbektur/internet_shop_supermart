@@ -1,0 +1,153 @@
+// .header-top__bar
+.header-top__bar {
+	display: flex;
+	column-gap: rem(8);
+}
+
+// .header-top-bar
+.header-top-bar {
+
+	// .header-top-bar__block
+	&__block {
+		padding: rem(8) rem(0);
+		@include adaptiveValue("padding-top", 8, 5, 991.98);
+		@include adaptiveValue("padding-bottom", 8, 5, 991.98);
+		@include adaptiveValue("padding-left", 10, 6, 991.98);
+		@include adaptiveValue("padding-right", 10, 6, 991.98);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+
+		@media (max-width: $tablet) {
+			padding: rem(5) rem(10);
+		}
+
+		@media (max-width: $mobile) {
+			display: none;
+		}
+	}
+
+	// .header-top-bar-block
+	&-block {
+
+		// .header-top-bar-block__info
+		&-info {
+			position: relative;
+			z-index: 1;
+		}
+
+		// .header-top-bar-block-info
+		&-info {
+
+			// .header-top-bar-block-info__icon
+			&__icon {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				// .header-top-bar-block-info__icon svg
+				& svg {
+					width: rem(32);
+					height: rem(32);
+					@include adaptiveValue("width", 32, 26, 991.98);
+					@include adaptiveValue("width", 26, 22, 767.98, 991.98);
+					@include adaptiveValue("height", 32, 26, 991.98);
+					@include adaptiveValue("height", 26, 22, 767.98, 991.98);
+
+					& * {
+						fill: $colorWhite;
+					}
+				}
+			}
+
+			// .header-top-bar-block-info__number
+			&__number {
+				position: absolute;
+				bottom: rem(18);
+				@include adaptiveValue("bottom", 18, 15, 991.98);
+				@include adaptiveValue("bottom", 15, 14, 767.98, 991.98);
+				left: rem(22);
+				@include adaptiveValue("left", 22, 18, 991.98);
+				@include adaptiveValue("left", 18, 17, 767.98, 991.98);
+				width: rem(34);
+				@include adaptiveValue("width", 34, 28, 991.98);
+				@include adaptiveValue("width", 28, 22, 767.98, 991.98);
+				height: rem(24);
+				@include adaptiveValue("height", 24, 18, 991.98);
+				@include adaptiveValue("height", 18, 14, 767.98, 991.98);
+				color: $colorWhite;
+				font-size: rem(12);
+				@include adaptiveValue("font-size", 12, 10, 991.98);
+				@include adaptiveValue("font-size", 10, 8, 767.98, 991.98);
+				font-weight: 700;
+				white-space: nowrap;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				align-content: start;
+				border-radius: rem(10);
+				background-color: $colorRed;
+				box-shadow: rem(0) rem(0) rem(1) $colorRed,
+					rem(0) rem(0) rem(2) $colorRed,
+					rem(0) rem(0) rem(4) $colorRed;
+			}
+		}
+
+		// .header-top-bar-block__title
+		&__title {
+			position: relative;
+			display: block;
+			padding-top: rem(6);
+			color: $colorWhite;
+			font-size: rem(14);
+			@include adaptiveValue("font-size", 14, 10, 991.98);
+			@include adaptiveValue("font-size", 10, 8, 767.98, 991.98);
+			font-weight: normal;
+			white-space: nowrap;
+			z-index: 1;
+		}
+	}
+
+	// .header-top-bar__menu
+	&__menu {
+		// @include adaptiveValue("margin-left", 20, 10, 0, 767.98);
+
+		@media (min-width: $mobile) {
+			display: none;
+		}
+
+		& * {
+			pointer-events: none;
+		}
+	}
+
+	// .header-top-bar-menu
+	&-menu {
+
+		// .header-top-bar-menu__icon
+		&__icon {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			// .header-top-bar-menu__icon svg
+			& svg {
+				width: rem(46);
+				height: rem(42);
+				@include adaptiveValue("width", 50, 48, 479.98, 767.98);
+				@include adaptiveValue("width", 48, 46, 0, 479.98);
+				@include adaptiveValue("height", 42, 40, 479.98, 767.98);
+				@include adaptiveValue("height", 40, 34, 0, 479.98);
+
+				& * {
+					fill: #ffffff;
+				}
+			}
+
+			@media (min-width: $mobile) {
+				display: none;
+			}
+		}
+	}
+}

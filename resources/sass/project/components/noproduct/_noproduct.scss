@@ -1,0 +1,32 @@
+.noproduct {
+	margin: rem(36) rem(0);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: rem(12);
+
+	// .noproduct__icon
+	&__icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		& svg {
+			fill: $colorRed;
+			width: rem(120);
+			height: rem(120);
+		}
+	}
+
+	// .noproduct__title
+	&__title {
+		color: $colorRed;
+		font-size: rem(18);
+		@include adaptiveValue("font-size", 18, 14, 991.98);
+		@include adaptiveValue("font-size", 14, 10, 767.98, 991.98);
+		@include adaptiveValue("font-size", 18, 12, 0, 767.98);
+		font-weight: 700;
+		text-align: center;
+	}
+}

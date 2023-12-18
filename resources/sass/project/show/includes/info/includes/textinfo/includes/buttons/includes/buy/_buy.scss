@@ -1,0 +1,68 @@
+// .moreinfo-tovar-info-textinfo__buy
+.moreinfo-tovar-info-textinfo__buy {
+	margin-top: rem(14);
+	@include adaptiveValue("margin-top", 14, 10, 767.98);
+	@include adaptiveValue("margin-top", 18, 16, 0, 767.98);
+	width: 100%;
+	display: flex;
+	user-select: none;
+}
+
+// .moreinfo-tovar-info-textinfo-buy
+.moreinfo-tovar-info-textinfo-buy {
+
+	// .moreinfo-tovar-info-textinfo-buy__link
+	&__link {
+		width: 100%;
+		padding: rem(16) rem(14);
+		@include adaptiveValue("padding-top", 16, 14, 767.98);
+		@include adaptiveValue("padding-top", 16, 14, 0, 767.98);
+		@include adaptiveValue("padding-bottom", 16, 14, 767.98);
+		@include adaptiveValue("padding-bottom", 16, 14, 0, 767.98);
+		color: $colorWhite;
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 12, 767.98);
+		@include adaptiveValue("font-size", 20, 14, 0, 767.98);
+		font-weight: 700;
+		white-space: nowrap;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		background-color: #000000;
+		border-radius: rem(4);
+		transition: all 0.46s ease 0s;
+
+		html._pc &:hover {
+			background-color: #018aff;
+		}
+	}
+
+	// .moreinfo-tovar-info-textinfo-buy-link
+	&-link {
+
+		// .moreinfo-tovar-info-textinfo-buy-link__icon
+		&__icon {
+			margin: em(0) em(3) em(0) em(0);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			// .moreinfo-tovar-info-textinfo-buy-link__icon svg
+			& svg {
+				width: em(18);
+				height: em(18);
+
+				& * {
+					fill: $colorWhite;
+				}
+			}
+		}
+
+		// .moreinfo-tovar-info-textinfo-buy-link__title
+		&__title {
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}

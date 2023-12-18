@@ -1,0 +1,27 @@
+// .moreinfo-tovar-info-textinfo__share
+.moreinfo-tovar-info-textinfo__share {
+	margin-top: rem(42);
+	@include adaptiveValue("margin-top", 28, 16, 767.98);
+	@include adaptiveValue("margin-top", 16, 14, 0, 767.98);
+	user-select: none;
+}
+
+// .moreinfo-tovar-info-textinfo-share
+.moreinfo-tovar-info-textinfo-share {
+
+	// .moreinfo-tovar-info-textinfo-share__title
+	&__title {
+		color: $colorBlack;
+		@include adaptiveValue("font-size", 20, 16, 767.98);
+		@include adaptiveValue("font-size", 28, 20, 0, 767.98);
+		font-weight: 700;
+	}
+
+	// .moreinfo-tovar-info-textinfo-share__content
+	&__content {
+		margin-top: rem(6);
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+@import "includes/link/_link";

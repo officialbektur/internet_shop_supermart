@@ -1,0 +1,16 @@
+// .moreinfo-tovar-info-textinfo__meta
+.moreinfo-tovar-info-textinfo__meta {
+	margin-top: rem(24);
+	@include adaptiveValue("margin-top", 24, 20, 767.98);
+	@include adaptiveValue("margin-top", 22, 16, 0, 767.98);
+	font-size: rem(16);
+	@include adaptiveValue("font-size", 16, 14, 767.98);
+	@include adaptiveValue("font-size", 16, 14, 0, 767.98);
+
+	& a {
+		color: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+		line-height: inherit;
+	}
+}

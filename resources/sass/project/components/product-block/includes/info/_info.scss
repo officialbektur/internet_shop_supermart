@@ -1,0 +1,41 @@
+// .product-block__info
+.product-block__info {
+	margin-top: rem(16);
+
+	margin-bottom: rem(28);
+
+	@include adaptiveValue("margin-top", 14, 4, 991.98);
+	@include adaptiveValue("margin-top", 14, 4, 767.98, 991.98);
+	@include adaptiveValue("margin-top", 8, 2, 0, 767.98);
+
+	@include adaptiveValue("margin-bottom", 28, 12, 991.98);
+	@include adaptiveValue("margin-bottom", 28, 12, 767.98, 991.98);
+	@include adaptiveValue("margin-bottom", 30, 24, 0, 767.98);
+
+	padding: rem(0) rem(12);
+
+	@include adaptiveValue("padding-left", 12, 4, 991.98);
+	@include adaptiveValue("padding-left", 12, 4, 767.98, 991.98);
+	@include adaptiveValue("padding-left", 8, 2, 0, 767.98);
+
+	@include adaptiveValue("padding-right", 12, 4, 991.98);
+	@include adaptiveValue("padding-right", 12, 4, 767.98, 991.98);
+	@include adaptiveValue("padding-right", 8, 2, 0, 767.98);
+
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	height: 100%;
+}
+
+// .product-block-info
+.product-block-info {
+
+}
+
+@import "includes/catigory/_catigory";
+@import "includes/title/_title";
+@import "includes/price/_price";
+@import "includes/ratinginfo/_ratinginfo";
+@import "includes/buttons/_buttons";

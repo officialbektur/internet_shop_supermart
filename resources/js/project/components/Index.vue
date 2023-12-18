@@ -5,7 +5,7 @@
 	<main class="page">
 		<router-view :key="$route.fullPath"></router-view>
 	</main>
-	<sidbar-component></sidbar-component>
+	<sidebar-component></sidebar-component>
 	<footer-component></footer-component>
 	<popup-address-component></popup-address-component>
 
@@ -17,7 +17,7 @@ import { popup } from '@/project/libs/popup.js';
 import * as flsFunctions from "@/project/files/functions.js";
 
 import HeaderComponent from './includes/Header/HeaderComponent.vue';
-import SidbarComponent from './includes/Sidbar/SidbarComponent.vue';
+import SidebarComponent from './includes/Sidebar/SidebarComponent.vue';
 import FooterComponent from './includes/Footer/FooterComponent.vue';
 import AddressPopup from './includes/Popup/AddressPopup.vue';
 
@@ -87,7 +87,7 @@ export default {
 			if (this.$store.getters.isActiveSearchHint && !el.closest(".header-top-search__hint") && !el.closest(".header-top-search__input")) {
 				this.$store.commit("setIsActiveSearchHint", false)
 			}
-			if (this.$store.getters.isActiveSearch && !el.closest(".mb-footer-sidbar__search") && !el.closest(".header-top-search__hint") && !el.closest(".header-top-search__form")) {
+			if (this.$store.getters.isActiveSearch && !el.closest(".mb-footer-sidebar__search") && !el.closest(".header-top-search__hint") && !el.closest(".header-top-search__form")) {
 				flsFunctions.bodyUnlock()
 				this.$store.commit("setIsActiveSearch", false);
 			}
@@ -103,7 +103,7 @@ export default {
 	},
 	components: {
 		'header-component': HeaderComponent,
-		'sidbar-component': SidbarComponent,
+		'sidebar-component': SidebarComponent,
 		'footer-component': FooterComponent,
 		'popup-address-component': AddressPopup,
 	},

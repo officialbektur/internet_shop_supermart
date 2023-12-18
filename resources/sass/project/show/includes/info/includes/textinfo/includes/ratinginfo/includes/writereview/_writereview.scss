@@ -1,0 +1,40 @@
+// .moreinfo-tovar-info-textinfo-ratinginfo__writereview
+.moreinfo-tovar-info-textinfo-ratinginfo__writereview {
+	border-left: solid rem(1) #878787;
+}
+
+// .moreinfo-tovar-info-textinfo-ratinginfo-writereview
+.moreinfo-tovar-info-textinfo-ratinginfo-writereview {
+
+	// .moreinfo-tovar-info-textinfo-ratinginfo-writereview__icon
+	&__icon {
+		margin-right: em(1);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		// .moreinfo-tovar-info-textinfo-ratinginfo-writereview__icon svg
+		& svg {
+			width: rem(16);
+			height: rem(16);
+			@include adaptiveValue("width", 16, 14, 767.98);
+			@include adaptiveValue("width", 24, 16, 0, 767.98);
+			@include adaptiveValue("height", 16, 14, 767.98);
+			@include adaptiveValue("height", 24, 16, 0, 767.98);
+
+			& * {
+				fill: $colorBlack;
+			}
+		}
+	}
+
+	// .moreinfo-tovar-info-textinfo-ratinginfo-writereview__text
+	&__text {
+		-webkit-line-clamp: 2;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		word-break: break-all;
+	}
+}

@@ -1,0 +1,45 @@
+/* ===================================  max-width-100  --Start--  =================================== */
+.max-width-100 {
+	max-width: 100%;
+}
+@media (min-width: $pc) {
+	.mmd-pc-max-width-100 {
+		width: 100%;
+	}
+}
+@media (max-width: $pc) {
+	.md-pc-max-width-100 {
+		width: 100%;
+	}
+}
+@media (min-width: $tablet) {
+	.mmd-table-max-width-100 {
+		width: 100%;
+	}
+}
+@media (max-width: $tablet) {
+	.md-table-max-width-100 {
+		width: 100%;
+	}
+}
+@media (min-width: $mobile) {
+	.mmd-mobile-max-width-100 {
+		width: 100%;
+	}
+}
+@media (max-width: $mobile) {
+	.md-mobile-max-width-100 {
+		width: 100%;
+	}
+}
+@media (min-width: $mobileSmall) {
+	.mmd-mobileSmall-max-width-100 {
+		width: 100%;
+	}
+}
+@media (max-width: $mobileSmall) {
+	.md-mobileSmall-max-width-100 {
+		width: 100%;
+	}
+}
+/* ===================================  max-width-100  --End--  =================================== */

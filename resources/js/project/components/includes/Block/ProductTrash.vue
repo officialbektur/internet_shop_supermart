@@ -77,11 +77,13 @@
 		methods: {
 			deleteProduct(index) {
 				let products = this.$store.getters.products;
+				let productsSaveTovarTrash = this.$store.getters.saveTovarTrash;
 				products.splice(index, 1);
+				productsSaveTovarTrash.splice(index, 1);
 				if (products.length == 0) {
 					this.$store.commit('setIsMessage', true);
 				}
-				this.$store.dispatch("updateSaveTovarTrash", products);
+				this.$store.dispatch("updateSaveTovarTrash", productsSaveTovarTrash);
 			},
 			price(id, price) {
 				let col = this.getQuantity(id);

@@ -1,0 +1,40 @@
+// .footer__ouraddress
+.footer__ouraddress {}
+
+// .footer-ouraddress
+.footer-ouraddress {
+
+	// .footer-ouraddress__title
+	&__title {}
+
+	// .footer-ouraddress__content
+	&__content {}
+
+	// .footer-ouraddress-content
+	&-content {
+
+		// .footer-ouraddress-content__title
+		&__title {
+			margin: rem(4) rem(0);
+			color: $colorWhite;
+			font-size: rem(18);
+			@include adaptiveValue("font-size", 18, 14, 991.98);
+			@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+			@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+			font-weight: 700;
+		}
+
+		// .footer-ouraddress-content__infotext
+		&__infotext {
+			margin: rem(4) rem(0);
+			color: $colorWhite;
+			font-size: rem(16);
+			@include adaptiveValue("font-size", 16, 12, 991.98);
+			@include adaptiveValue("font-size", 13, 12, 767.98, 991.98);
+			@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+			font-weight: 400;
+			line-height: math.div(24, 16);
+			text-decoration: underline;
+		}
+	}
+}

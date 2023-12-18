@@ -1,0 +1,221 @@
+// .moreinfo-tovar-info-textinfo-share__link
+.moreinfo-tovar-info-textinfo-share__link {
+	position: relative;
+	margin-top: rem(8);
+	margin-right: rem(8);
+	@include adaptiveValue("margin-top", 8, 6, 767.98);
+	@include adaptiveValue("margin-right", 8, 6, 767.98);
+	@include adaptiveValue("margin-top", 8, 6, 0, 767.98);
+	@include adaptiveValue("margin-right", 8, 6, 0, 767.98);
+}
+
+// .moreinfo-tovar-info-textinfo-share-link
+.moreinfo-tovar-info-textinfo-share-link {
+
+	// .moreinfo-tovar-info-textinfo-share-link__icon
+	&__icon {
+		padding: rem(8);
+		@include adaptiveValue("padding", 8, 6, 767.98);
+		@include adaptiveValue("padding", 8, 6, 0, 767.98);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: solid rem(2) $colorBlack;
+		border-radius: 50%;
+		transition: all 0.46s ease 0s;
+
+		.moreinfo-tovar-info-textinfo-share__link.facebook & {
+			border-color: #0165E1;
+
+			& svg * {
+				fill: #0165E1;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.facebook:hover & {
+			background-color: #0165E1;
+
+			& svg * {
+				fill: #ffffff;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.twitter & {
+			border-color: #1D9BF0;
+
+			& svg * {
+				fill: #1D9BF0;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.twitter:hover & {
+			background-color: #1D9BF0;
+
+			& svg * {
+				fill: #ffffff;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.instagram & {
+			border-color: #E1306C;
+
+			& svg * {
+				fill: #E1306C;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.instagram:hover & {
+			background-color: #E1306C;
+
+			& svg * {
+				fill: #ffffff;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.whatsapp & {
+			border-color: #28D146;
+
+			& svg * {
+				fill: #28D146;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.whatsapp:hover & {
+			background-color: #28D146;
+
+			& svg * {
+				fill: #ffffff;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.telegram & {
+			border-color: #27A7E7;
+
+			& svg * {
+				fill: #27A7E7;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.telegram:hover & {
+			background-color: #27A7E7;
+
+			& svg * {
+				fill: #ffffff;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.vkontakte & {
+			border-color: #4C75A3;
+
+			& svg * {
+				fill: #4C75A3;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.vkontakte:hover & {
+			background-color: #4C75A3;
+
+			& svg * {
+				fill: #ffffff;
+			}
+		}
+
+		// .moreinfo-tovar-info-textinfo-share-link__icon svg
+		& svg {
+			width: rem(20);
+			height: rem(20);
+			@include adaptiveValue("width", 20, 16, 767.98);
+			@include adaptiveValue("width", 20, 16, 0, 767.98);
+			@include adaptiveValue("height", 20, 16, 767.98);
+			@include adaptiveValue("height", 20, 16, 0, 767.98);
+
+			& * {
+				fill: $colorBlack;
+				transition: all 0.46s ease 0s;
+			}
+		}
+	}
+
+	// .moreinfo-tovar-info-textinfo-share-link__title
+	&__title {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		margin-top: rem(10);
+		white-space: nowrap;
+		padding: rem(6) rem(8);
+		background-color: #FF0000;
+		color: $colorWhite;
+		font-size: rem(14);
+		font-weight: 700;
+		border-radius: rem(2);
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		z-index: 5;
+		transition: all 0.46s ease 0s;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+			border: solid rem(8) transparent;
+			border-bottom: solid rem(8) #FF0000;
+		}
+
+		html._pc .moreinfo-tovar-info-textinfo-share__link:hover & {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.facebook & {
+			background-color: #0165E1;
+
+			&:before {
+				border-bottom-color: #0165E1;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.twitter & {
+			background-color: #1D9BF0;
+
+			&:before {
+				border-bottom-color: #1D9BF0;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.instagram & {
+			background-color: #E1306C;
+
+			&:before {
+				border-bottom-color: #E1306C;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.whatsapp & {
+			background-color: #28D146;
+
+			&:before {
+				border-bottom-color: #28D146;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.telegram & {
+			background-color: #27A7E7;
+
+			&:before {
+				border-bottom-color: #27A7E7;
+			}
+		}
+
+		.moreinfo-tovar-info-textinfo-share__link.vkontakte & {
+			background-color: #4C75A3;
+
+			&:before {
+				border-bottom-color: #4C75A3;
+			}
+		}
+	}
+}

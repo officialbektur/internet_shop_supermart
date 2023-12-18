@@ -1,0 +1,34 @@
+// .moreinfo-tovar-body__description
+.moreinfo-tovar-body__description {
+	padding: rem(0) rem(20);
+	@include adaptiveValue("padding-left", 20, 15);
+	@include adaptiveValue("padding-right", 20, 15);
+
+	& * {
+		padding: revert;
+		margin: revert;
+	}
+
+	& ul {
+		margin-block-start: em(12);
+		margin-block-end: em(12);
+		padding-inline-start: rem(20);
+	}
+}
+
+// .moreinfo-tovar-body-description
+.moreinfo-tovar-body-description {
+
+	// .moreinfo-tovar-body-description__title
+	&__title {
+		margin-top: rem(12);
+		@include adaptiveValue("margin-top", 12, 8);
+		padding: rem(8) rem(0);
+		@include adaptiveValue("padding-top", 8, 10);
+		@include adaptiveValue("padding-bottom", 8, 10);
+		font-size: rem(26);
+		@include adaptiveValue("font-size", 26, 20);
+		font-weight: 700;
+		text-align: center;
+	}
+}

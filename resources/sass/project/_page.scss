@@ -13,8 +13,6 @@
 	display: grid;
 	grid-template-columns: repeat(5, minmax(180px, 1fr));
 
-	// display: flex;
-	// flex-wrap: wrap
 	@media (max-width: $tablet) {
 		grid-template-columns: repeat(4, minmax(20px, 1fr));
 	}
@@ -27,10 +25,64 @@
 		grid-template-columns: repeat(2, minmax(20px, 1fr));
 	}
 }
+.content-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
-@import "_product-block";
-@import "_product-block-con";
-// @import "_form";
+	// .content-header__info
+	&__info {
+		display: flex;
+		white-space: nowrap;
+	}
 
+	// .content-header-info
+	&-info {
 
+		// .content-header-info__title
+		&__title {
+			color: #363636;
+
+			font-weight: 700;
+		}
+
+		// .content-header-info__content
+		&__content {
+			color: #363636;
+			font-size: rem(20);
+			@include adaptiveValue("font-size", 20, 16, 767.98);
+			@include adaptiveValue("font-size", 18, 10, 0, 767.98);
+			font-weight: 700;
+		}
+
+		// .content-header-info__col
+		&__col {}
+
+		// .content-header-info-col
+		&-col {
+
+			// .content-header-info-col__number
+			&__number {}
+
+			// .content-header-info-col__text
+			&__text {}
+		}
+
+		// .content-header-info__price
+		&__price {}
+
+		// .content-header-info-price
+		&-price {
+
+			// .content-header-info-price__number
+			&__number {}
+
+			// .content-header-info-price__text
+			&__text {}
+		}
+	}
+}
+
+@import "components/noproduct/_noproduct";
+@import "components/product-block/_product-block";
 /* =============================================  Page  --End--  ============================================= */

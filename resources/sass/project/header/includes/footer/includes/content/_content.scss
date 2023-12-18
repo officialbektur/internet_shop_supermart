@@ -1,0 +1,10 @@
+// .header-footer__content
+.header-footer__content {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	overflow: hidden;
+}
+@import "includes/adressmap/_adressmap";
+@import "includes/swiper/_swiper";

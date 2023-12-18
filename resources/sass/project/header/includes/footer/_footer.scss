@@ -1,0 +1,23 @@
+// .header__footer
+.header__footer {
+	@media (max-width: $mobile) {
+		background-color: #222222;
+	}
+}
+
+// .header-footer
+.header-footer {
+
+	// .header-footer__body
+	&__body {
+		position: relative;
+		display: flex;
+		z-index: 89;
+
+		@media (min-width: $mobile) {
+			background-color: #222222;
+		}
+	}
+}
+@import "includes/menu/_menu";
+@import "includes/content/_content";

@@ -1,0 +1,149 @@
+// .header-footer-menu__sublist
+.header-footer-menu__sublist {
+	width: 100%;
+	position: relative;
+}
+
+// .header-footer-menu-sublist
+.header-footer-menu-sublist {
+
+	// .header-footer-menu-sublist__button
+	&__button {
+		padding: rem(4) rem(0);
+		width: 100%;
+
+		color: #3a3a3a;
+		font-size: rem(20);
+		@include adaptiveValue("font-size", 20, 16, 991.98);
+		@include adaptiveValue("font-size", 16, 13, 767.98, 991.98);
+		@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
+		@include adaptiveValue("font-size", 20, 18, 0, 479.98);
+		font-weight: 400;
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		overflow: hidden;
+
+		@media (max-width: $mobile) {
+			color: $colorWhite;
+		}
+	}
+
+	// .header-footer-menu-sublist-button
+	&-button {
+
+		// .header-footer-menu-sublist-button__title
+		&__title {
+			padding: rem(12) rem(12);
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+
+			font-size: inherit;
+			color: inherit;
+			line-height: inherit;
+			font-weight: inherit;
+		}
+
+		// .header-footer-menu-sublist-button__icon
+		&__icon {
+			margin: rem(0) rem(4);
+			padding: rem(12) rem(12);
+			@include adaptiveValue("padding-top", 12, 10, 991.98);
+			@include adaptiveValue("padding-top", 10, 8, 767.98, 991.98);
+			@include adaptiveValue("padding-bottom", 12, 10, 991.98);
+			@include adaptiveValue("padding-bottom", 10, 8, 767.98, 991.98);
+			@include adaptiveValue("padding-left", 12, 10, 991.98);
+			@include adaptiveValue("padding-left", 10, 8, 767.98, 991.98);
+			@include adaptiveValue("padding-right", 12, 10, 991.98);
+			@include adaptiveValue("padding-right", 10, 8, 767.98, 991.98);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: rem(4);
+			cursor: pointer;
+
+			@media (min-width: $mobile) {
+				background-color: #fff;
+			}
+
+			@media (max-width: $mobile) {
+				background-color: rgba(197, 197, 197, 0.5);
+			}
+
+			& * {
+				pointer-events: none;
+			}
+
+			// .header-footer-menu-sublist-button__icon svg
+			& svg {
+				width: rem(18);
+				height: rem(18);
+				@include adaptiveValue("width", 18, 16, 991.98);
+				@include adaptiveValue("width", 16, 13, 767.98, 991.98);
+				@include adaptiveValue("height", 18, 16, 991.98);
+				@include adaptiveValue("height", 16, 13, 767.98, 991.98);
+				transform: rotate(90deg);
+				transition: all 0.56s ease 0s;
+
+				.header-footer-menu__sublist._active > .header-footer-menu-sublist__button & {
+					transform: rotate(180deg);
+				}
+
+				& * {
+					fill: #3a3a3a;
+
+					@media (max-width: $mobile) {
+						fill: $colorWhite;
+					}
+				}
+			}
+		}
+	}
+
+	// .header-footer-menu-sublist__title
+	&__title {}
+
+	// .header-footer-menu-sublist__menulist
+	&__menulist {
+		width: 100%;
+		transition: all 0.56s ease 0s;
+
+		@media (min-width: $mobile) {
+			background-color: rgba($color: #00b9ff, $alpha: 0.15);
+		}
+	}
+
+	// .header-footer-menu-sublist-menulist
+	&-menulist {
+
+		// .header-footer-menu-sublist-menulist__content
+		&__content {
+			padding: rem(0) rem(8);
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		// .header-footer-menu__list
+		& .header-footer-menu__list {
+			padding: rem(12) rem(12);
+			width: 100%;
+
+			color: #3a3a3a;
+			font-size: rem(20);
+			@include adaptiveValue("font-size", 20, 16, 991.98);
+			@include adaptiveValue("font-size", 16, 13, 767.98, 991.98);
+			@include adaptiveValue("font-size", 26, 22, 479.98, 767.98);
+			@include adaptiveValue("font-size", 20, 18, 0, 479.98);
+			font-weight: 400;
+
+			@media (max-width: $mobile) {
+				color: $colorWhite;
+			}
+		}
+	}
+}

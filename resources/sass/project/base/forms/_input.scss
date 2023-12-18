@@ -8,18 +8,109 @@ textarea {
 	-moz-appearance: none;
 	appearance: none;
 }
-.input {
-	border-radius: 0 !important;
-	width: 100%;
-	display: block;
-	padding: rem(0) rem(20);
-	border: rem(1) solid #eee;
-	&._focus {
+// .moreinfo-tovar-body-reviews-form__username
+.moreinfo-tovar-body-reviews-form__username {
+	margin-top: rem(12);
+}
+// .moreinfo-tovar-body-reviews-form-username
+.moreinfo-tovar-body-reviews-form-username {
+
+	// .moreinfo-tovar-body-reviews-form-username__label
+	&__label {
+		color: $colorBlack;
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 14);
+		font-weight: 700;
+
+		// .moreinfo-tovar-body-reviews-form-username__label span
+		& span {
+			color: #09ff00;
+		}
 	}
-	&._error {
+
+	// .moreinfo-tovar-body-reviews-form-username__input
+	&__input {
+		margin-top: rem(8);
+		padding: rem(10) rem(6);
+		width: 100%;
+		color: $colorBlack;
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 14);
+		font-weight: 700;
+		outline: none;
+		border: solid rem(2) #969696;
+		border-radius: rem(4);
+		transition: all 0.36s ease 0s;
+
+		// .moreinfo-tovar-body-reviews-form-username__input:focus
+		&:focus {
+			border: solid rem(2) #7c7c7c;
+			box-shadow: rem(0) rem(0) rem(4) #969696,
+				rem(0) rem(0) rem(6) #969696,
+				rem(0) rem(0) rem(8) #969696;
+		}
+
+		// .moreinfo-tovar-body-reviews-form-username__input._error
+		&._error {
+			box-shadow: rem(0) rem(0) rem(4) #ff0000,
+				rem(0) rem(0) rem(6) #ff0000,
+				rem(0) rem(0) rem(8) #ff0000;
+		}
 	}
 }
-textarea.input {
-	resize: none;
-	padding: rem(0) rem(0);
+// .moreinfo-tovar-body-reviews-form__message
+.moreinfo-tovar-body-reviews-form__message {
+	margin-top: rem(12);
+}
+
+// .moreinfo-tovar-body-reviews-form-message
+.moreinfo-tovar-body-reviews-form-message {
+
+	// .moreinfo-tovar-body-reviews-form-message__label
+	&__label {
+		color: $colorBlack;
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 14);
+		font-weight: 700;
+
+		// .moreinfo-tovar-body-reviews-form-message__label span
+		& span {
+			color: #09ff00;
+		}
+	}
+
+	// .moreinfo-tovar-body-reviews-form-message__textarea
+	&__textarea {
+		margin-top: rem(8);
+		padding: rem(10) rem(6);
+		width: 100%;
+		min-height: rem(220);
+		@include adaptiveValue("min-height", 220, 160);
+		max-height: rem(720);
+		@include adaptiveValue("max-height", 720, 420);
+		resize: vertical;
+		color: $colorBlack;
+		font-size: rem(16);
+		@include adaptiveValue("font-size", 16, 14);
+		font-weight: 700;
+		outline: none;
+		border: solid rem(2) #969696;
+		border-radius: rem(4);
+		transition: all 0.36s ease 0s;
+
+		// .moreinfo-tovar-body-reviews-form-message__textarea:focus
+		&:focus {
+			border: solid rem(2) #7c7c7c;
+			box-shadow: rem(0) rem(0) rem(4) #969696,
+				rem(0) rem(0) rem(6) #969696,
+				rem(0) rem(0) rem(8) #969696;
+		}
+
+		// .moreinfo-tovar-body-reviews-form-message__textarea._error
+		&._error {
+			box-shadow: rem(0) rem(0) rem(4) #ff0000,
+				rem(0) rem(0) rem(6) #ff0000,
+				rem(0) rem(0) rem(8) #ff0000;
+		}
+	}
 }

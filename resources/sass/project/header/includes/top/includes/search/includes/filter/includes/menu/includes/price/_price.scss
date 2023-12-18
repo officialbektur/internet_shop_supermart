@@ -1,0 +1,70 @@
+// .header-top-search-filter-menu-item__price
+.header-top-search-filter-menu-item__price {
+	justify-content: space-between;
+}
+
+// .header-top-search-filter-menu-item-price
+.header-top-search-filter-menu-item-price {
+
+	// .header-top-search-filter-menu-item-price__input
+	&__input {
+		height: rem(46);
+		@include adaptiveValue("height", 46, 40, 991.98);
+		@include adaptiveValue("height", 40, 38, 767.98, 991.98);
+
+		display: flex;
+		align-items: center;
+	}
+
+	// .header-top-search-filter-menu-item-price-input
+	&-input {
+
+		// .header-top-search-filter-menu-item-price-input label
+		& label {
+			padding-right: rem(12);
+
+			color: #222222;
+			font-size: rem(16);
+			@include adaptiveValue("font-size", 16, 12, 991.98);
+			@include adaptiveValue("font-size", 18, 14, 0, 767.98);
+			font-weight: 700;
+
+			cursor: pointer;
+			-webkit-tap-highlight-color: $clickByTouchColor0;
+
+			@media (max-width: $tablet) {
+				font-size: rem(11);
+			}
+		}
+
+		// .header-top-search-filter-menu-item-price-input input
+		& input {
+			padding: rem(0) rem(8);
+
+			width: rem(120);
+			@include adaptiveValue("width", 120, 84, 767.98);
+			@include adaptiveValue("width", 160, 120, 0, 767.98);
+			height: 100%;
+
+			font-size: rem(16);
+			@include adaptiveValue("font-size", 16, 12, 991.98);
+			@include adaptiveValue("font-size", 18, 14, 0, 767.98);
+
+			border-radius: rem(4);
+
+			outline: none;
+			appearance: textfield;
+
+			&::-webkit-outer-spin-button,
+			&::-webkit-inner-spin-button {
+				display: none;
+			}
+
+			&:focus {
+				box-shadow: rem(0) rem(0) rem(6) #ffffff,
+					rem(0) rem(0) rem(8) #ffffff,
+					rem(0) rem(0) rem(10) #ffffff;
+			}
+		}
+	}
+}

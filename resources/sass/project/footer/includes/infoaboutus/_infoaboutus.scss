@@ -1,0 +1,99 @@
+// .footer__infoaboutus
+.footer__infoaboutus {
+	display: flex;
+	flex-direction: column;
+}
+
+// .footer-infoaboutus
+.footer-infoaboutus {
+
+	// .footer-infoaboutus__logo
+	&__logo {
+		max-width: rem(220);
+		@include adaptiveValue("max-width", 220, 150, 991.98);
+		@include adaptiveValue("max-width", 140, 110, 767.98, 991.98);
+		@include adaptiveValue("max-width", 200, 140, 0, 767.98);
+	}
+
+	// .footer-infoaboutus__telephones
+	&__telephones {
+		padding-top: rem(10);
+		@include adaptiveValue("padding-top", 10, 6, 991.98);
+		display: flex;
+		flex-direction: column;
+
+		@media (max-width: $tablet) and (min-width: $mobile) {
+			padding-top: rem(5);
+		}
+	}
+
+	// .footer-infoaboutus-telephones
+	&-telephones {
+
+		// .footer-infoaboutus-telephones__title
+		&__title {}
+
+		// .footer-infoaboutus-telephones__lists
+		&__lists {
+			display: flex;
+			flex-direction: column;
+			list-style: none;
+		}
+
+		// .footer-infoaboutus-telephones__list
+		&__list {
+			margin: rem(3) rem(0);
+		}
+
+		// .footer-infoaboutus-telephones__link
+		&__link {
+			padding: rem(3) rem(0);
+			color: $colorWhite;
+			font-size: rem(16);
+			@include adaptiveValue("font-size", 16, 12, 991.98);
+			@include adaptiveValue("font-size", 18, 16, 0, 767.98);
+			font-weight: 400;
+
+			@media (max-width: $tablet) and (min-width: $mobile) {
+				font-size: rem(12);
+			}
+		}
+	}
+
+	// .footer-infoaboutus__gmaile
+	&__gmaile {}
+
+	// .footer-infoaboutus-gmaile
+	&-gmaile {
+
+		// .footer-infoaboutus-gmaile__lists
+		&__lists {
+			display: flex;
+			flex-direction: column;
+			list-style: none;
+		}
+
+		// .footer-infoaboutus-gmaile__list
+		&__list {
+			margin: rem(3) rem(0);
+		}
+
+		// .footer-infoaboutus-gmaile__link
+		&__link {
+			padding: rem(3) rem(0);
+			color: $colorWhite;
+			font-size: rem(16);
+			@include adaptiveValue("font-size", 16, 12, 991.98);
+			@include adaptiveValue("font-size", 18, 16, 0, 767.98);
+			font-weight: 700;
+
+			@media (min-width: $mobile) {
+				margin-top: rem(10);
+			}
+
+			@media (max-width: $tablet) and (min-width: $mobile) {
+				font-size: rem(12);
+			}
+		}
+	}
+}

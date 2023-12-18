@@ -1,7 +1,7 @@
 <template>
 	<div class="header__top header-top">
 		<div class="header-top__container">
-			<div class="header-top__body">
+			<div class="header-top__body d-flex justify-content-between align-items-center">
 				<logo-block></logo-block>
 				<search-block></search-block>
 				<bar-block></bar-block>
