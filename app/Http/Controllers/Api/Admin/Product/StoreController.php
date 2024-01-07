@@ -4,18 +4,14 @@ namespace App\Http\Controllers\Api\Admin\Product;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\StoreRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\QueryException;
-
-use App\Models\Project\Product;
-use App\Models\Project\Media;
 use App\Models\Project\Description;
+use App\Models\Project\Media;
+use App\Models\Project\Product;
 use App\Models\Project\Tag;
-
-use Intervention\Image\Facades\Image;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class StoreController extends Controller
 {

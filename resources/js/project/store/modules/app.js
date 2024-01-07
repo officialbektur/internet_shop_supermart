@@ -15,6 +15,7 @@ const actions = {
 				commit("setApp", response.data)
 			}
 		} catch (error) {
+            console.log(error)
 		}
 	},
 	metaInfo({ getters, commit, dispatch }, { title, description = 'Все продукты у нас!' }) {

@@ -14,7 +14,7 @@
 					</button>
 				</div>
 				<div class="popup__main">
-					<div v-if="infos && infos.adresses" class="popup__map popup-map">
+					<div v-if="infos && infos.adresses && infos.adresses.length > 0" class="popup__map popup-map">
 						<div class="popup-map__image">
 							<iframe :src="infos.adresses[0].map" id="map" allowfullscreen="" loading="lazy"></iframe>
 						</div>

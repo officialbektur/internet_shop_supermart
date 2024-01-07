@@ -23,7 +23,7 @@ return new class extends Migration
 			$table->softDeletes();
 		});
 		// Устанавливаем начальное значение для автоинкрементного поля 'id'
-		DB::statement('ALTER TABLE products AUTO_INCREMENT = 1000');
+		// DB::statement('ALTER TABLE products AUTO_INCREMENT = 1000');
 	}
 
 	/**

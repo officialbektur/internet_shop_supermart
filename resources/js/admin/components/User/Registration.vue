@@ -77,7 +77,7 @@
 							<label
 								for="password_confirmation"
 								class="block-form__label">
-								Введите пароль*:
+								Введите повторно пароль*:
 							</label>
 							<div class="block-form-item__content block-form-input">
 								<div class="block-form-input__icon">

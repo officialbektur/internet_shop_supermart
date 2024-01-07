@@ -10,12 +10,6 @@ use App\Models\Project\App\Telephone;
 use App\Models\Project\App\PlanWork;
 use App\Models\Project\App\Soc;
 
-use App\Http\Resources\Project\App\Adress\AdressResource;
-use App\Http\Resources\Project\App\Email\EmailResource;
-use App\Http\Resources\Project\App\Telephone\TelephoneResource;
-use App\Http\Resources\Project\App\PlanWork\PlanWorkResource;
-use App\Http\Resources\Project\App\Soc\SocResource;
-
 class IndexController extends Controller
 {
 	public function __invoke()
@@ -25,11 +19,11 @@ class IndexController extends Controller
 	protected function aboutinfo()
 	{
 		return [
-			'adresses' => AdressResource::collection(Adress::all()),
-			'telephones' => TelephoneResource::collection(Telephone::all()),
-			'emails' => EmailResource::collection(Email::all()),
-			'plan_works' => new PlanWorkResource(PlanWork::first()),
-			'socs' => SocResource::collection(Soc::all()),
+            'adresses' => \App\Http\Resources\Project\App\Adress\AdressResource::collection(Adress::all()),
+            'telephones' => \App\Http\Resources\Project\App\Telephone\TelephoneResource::collection(Telephone::all()),
+            'emails' => \App\Http\Resources\Project\App\Email\EmailResource::collection(Email::all()),
+            'plan_works' => PlanWork::first() ? \App\Http\Resources\Project\App\PlanWork\PlanWorkResource::make(PlanWork::latest()->first()) : [],
+            'socs' => \App\Http\Resources\Project\App\Soc\SocResource::collection(Soc::all()),
 		];
 	}
 }
