@@ -32,14 +32,3 @@ Route::group(['namespace' => 'App\Http\Controllers\Project'], function () {
 		Route::get('/{page}', IndexController::class)->where('page', '.*');
 	});
 });
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
