@@ -32,7 +32,7 @@
 									data-draganandgrop-card
 									draggable="true"
 									class="mrb-admin-form-media__content"
-									:class="{ '_active': product && product.media_count > 0 && product.media[index] }">
+									:class="{ '_active': product && product.media_count > index }">
 									<input
 										@change="handleFileChange($event)"
 										:ref="`inputImages${index}`"
@@ -41,11 +41,11 @@
 										accept=".jpg, .png, .jpeg, .webp" type="file"
 										name="images[]"
 										multiple
-										:data-image-value="product && product.media_count > 0 && product.media[index] ? product.media[index]['id'] : ''"
+										:data-image-value="product && product.media_count > index && product.media[index] ? product.media[index]['id'] : ''"
 										class="mrb-admin-form-media-block__input">
 									<div class="mrb-admin-form-media-block__preview">
 										<img
-											v-if="product && product.media_count > 0 && product.media[index]"
+											v-if="product && product.media_count > index && product.media[index]"
 											:src="product.media[index]['src_average']"
 											:alt="product.media[index]['src_average']">
 									</div>
